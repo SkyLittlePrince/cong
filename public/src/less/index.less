@@ -1,0 +1,76 @@
+@import "nav.less";
+
+.clear {
+	clear: both;
+}
+
+body {
+	background-color: gray;
+	margin: 0px;
+
+	#container {
+		position: relative;
+  		background-color: #7ecac8;
+		min-height: 472px;
+		height: 472px;
+		width: 100%;
+		font-family: "微软雅黑";
+		clear: both;
+
+		.bg-slider {
+			
+		}
+
+		.input-wrapper {
+			top: 50%;
+			left: 50%;
+			width: 835px;
+			height: 110px;
+			margin-top: -56px;
+			position: absolute;
+			border-radius: 20px;
+			margin-left: -414px;
+			background-color: rgba(255, 255, 255, 0.08);
+
+			.input-wrapper-2 {
+				width: 780px;
+				margin: 0 auto;
+				margin-top: 15px;
+				border-radius: 20px;
+				padding: 10px 11px 10px 11px;
+				background-color: rgba(255, 255, 255, 0.1);
+
+				#input {
+					float: left;
+					border: 0px;
+					outline:none;
+					width: 662px;
+					height: 40px;
+					padding: 10px;
+					color: #3a6209;
+					font-size: 25px;
+					border-radius: 10px;
+				}
+
+				input:focus {
+					border: 0px;
+				} 
+
+				.search-btn {
+					width: 78px;
+					height: 60px;
+					margin-left: 15px;
+					background-color: red;
+					float: left;
+					border-radius: 10px;
+				}
+
+				.search-btn:hover {
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}
+
+

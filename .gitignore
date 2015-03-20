@@ -1,0 +1,6 @@
+node_modules/
+vendor/
+lib/
+media/
+.svn/
+public/node_modules
