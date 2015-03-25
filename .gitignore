@@ -4,3 +4,4 @@ lib/
 media/
 .svn/
 public/node_modules
+public/.sass-cache

@@ -1,6 +1,7 @@
 module.exports = (grunt)->
 
     stringify = require 'stringify'
+    coffeeify = require 'coffeeify'
 
     grunt.initConfig
         concurrent: 
@@ -20,22 +21,40 @@ module.exports = (grunt)->
             dev: ['dev']
             bin: ['bin']
 
-        browserify:
-            dist: 
-                files: 
-                  'dev/js/index.js': ['src/js/a.js', 'src/js/b.js']
+        browserify: 
+          common:
+            options:
+              preBundleCB: (b)->
+                b.transform(coffeeify)
+                b.transform(stringify({extensions: ['.hbs', '.html', '.tpl', '.txt']}))
+            expand: true
+            flatten: true
+            src: ['src/common/common.coffee', 'src/main.coffee']
+            dest: 'bin/js/'
+            ext: '.js'
+
+          components: 
+            options:
+              preBundleCB: (b)->
+                b.transform(coffeeify)
+                b.transform(stringify({extensions: ['.hbs', '.html', '.tpl', '.txt']}))
+            expand: true
+            flatten: true
+            src: ['src/components/**/*.coffee']
+            dest: 'bin/js/components/'
+            ext: '.js'
 
         watch:
             compile:
                 options:
                     livereload: 1337
-                files: ['src/**/*.less', 'src/**/*.js']
-                tasks: ['browserify', 'less', 'copy']
+                files: ['src/**/*.scss', 'src/**/*.coffee']
+                tasks: ['browserify', 'sass']
 
-        less:
-            dev:
+        sass:
+            dist:
                 files:
-                    'dev/css/index.css': ['src/less/index.less']
+                     'bin/style.css': ['src/**/*.scss']
 
         cssmin: 
             compress: 
@@ -54,12 +73,13 @@ module.exports = (grunt)->
     grunt.loadNpmTasks 'grunt-contrib-watch'
     grunt.loadNpmTasks 'grunt-contrib-uglify'
     grunt.loadNpmTasks 'grunt-contrib-cssmin'
+    grunt.loadNpmTasks "grunt-contrib-sass"
 
     grunt.registerTask 'default', ->
         grunt.task.run [
             'clean'
             'browserify'
-            'less'
+            'sass'
             'copy:dev'
             'watch'
         ]
@@ -68,7 +88,7 @@ module.exports = (grunt)->
         grunt.task.run [
             'clean:dev'
             'browserify'
-            'less'
+            'sass'
             'clean:bin'
             'uglify'
             'cssmin'

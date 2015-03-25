@@ -19,6 +19,8 @@
     "stringify": "^2.2.0",
     "grunt-contrib-copy": "~0.5.0",
     "grunt-contrib-cssmin": "~0.5.0",
-    "grunt-css-import": "~0.1.6"
+    "grunt-css-import": "~0.1.6",
+    "coffeeify": "~0.6.0",
+    "grunt-contrib-sass": "*"
   }
 }
