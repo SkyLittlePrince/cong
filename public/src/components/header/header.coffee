@@ -7,5 +7,3 @@ Vue.component 'c-header',
             console.log(123)
     create: ->
         console.log('header loaded')
-
-

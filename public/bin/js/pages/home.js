@@ -2,10 +2,7 @@
 var mainVm;
 
 mainVm = new Vue({
-  el: '#container',
-  data: {
-    currentView: 'c-footer'
-  }
+  el: '.container'
 });
 
 

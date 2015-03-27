@@ -17,6 +17,6 @@ Vue.component('c-header', {
 
 
 },{"./header.html":2}],2:[function(require,module,exports){
-module.exports = "<div id=\"header\">\r\n    <div class=\"logo\">cong</div>\r\n</div>";
+module.exports = "<div id=\"header\">\r\n    <div class=\"logo\">\r\n        <img src=\"\" alt=\"\">\r\n    </div>\r\n    <ul class=\"nav\">\r\n        <li>首页</li>\r\n        <li>交易中心</li>\r\n        <li>赏金猎人</li>\r\n    </ul>\r\n    <!-- 用户已经登录 -->\r\n    <ul class=\"user-info\">\r\n        <li>\r\n            <img src=\"\" alt=\"\" class=\"head-portrait\">\r\n        </li>\r\n        <li class=\"message\">\r\n            <span>(6)</span>\r\n        </li>\r\n        <li>\r\n            <span class=\"help\"></span>\r\n        </li>\r\n        <li>\r\n            <a href=\"#\">\r\n                <span class=\"shopping-cart\"></span>\r\n                <span>购物车</span>\r\n            </a>\r\n        </li>\r\n    </ul>\r\n    <!-- 用户未登录 -->\r\n</div>";
 
 },{}]},{},[1]);

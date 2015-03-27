@@ -44,17 +44,28 @@ module.exports = (grunt)->
             dest: 'bin/js/components/'
             ext: '.js'
 
+          pages: 
+            options:
+              preBundleCB: (b)->
+                b.transform(coffeeify)
+                b.transform(stringify({extensions: ['.hbs', '.html', '.tpl', '.txt']}))
+            expand: true
+            flatten: true
+            src: ['src/pages/**/*.coffee']
+            dest: 'bin/js/pages/'
+            ext: '.js'
+
         watch:
             compile:
                 options:
                     livereload: 1337
                 files: ['src/**/*.scss', 'src/**/*.coffee']
-                tasks: ['browserify', 'sass']
+                tasks: ['browserify', 'less']
 
-        sass:
-            dist:
-                files:
-                     'bin/style.css': ['src/**/*.scss']
+        less:    
+          dev:
+            files:
+              'bin/style.css': ['src/**/*.less']
 
         cssmin: 
             compress: 
@@ -73,13 +84,13 @@ module.exports = (grunt)->
     grunt.loadNpmTasks 'grunt-contrib-watch'
     grunt.loadNpmTasks 'grunt-contrib-uglify'
     grunt.loadNpmTasks 'grunt-contrib-cssmin'
-    grunt.loadNpmTasks "grunt-contrib-sass"
+    grunt.loadNpmTasks 'grunt-contrib-less'
 
     grunt.registerTask 'default', ->
         grunt.task.run [
             'clean'
             'browserify'
-            'sass'
+            'less'
             'copy:dev'
             'watch'
         ]
@@ -88,7 +99,7 @@ module.exports = (grunt)->
         grunt.task.run [
             'clean:dev'
             'browserify'
-            'sass'
+            'less'
             'clean:bin'
             'uglify'
             'cssmin'

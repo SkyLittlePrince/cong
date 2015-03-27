@@ -1,0 +1,31 @@
+/* 常见CSS3属性混合*/
+.transition(@type: all; @time: .3s; @ease-type: ease;) {
+-webkit-transition: @type @time @ease-type;
+   -moz-transition: @type @time @ease-type;
+    -ms-transition: @type @time @ease-type;
+     -o-transition: @type @time @ease-type;
+        transition: @type @time @ease-type;
+}
+
+.border-radius (@radius: 5px) {
+  border-radius: @radius;
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+}
+
+.box-shadow (@x: 0, @y: 0, @blur: 1px, @color: #000) {
+  box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  -webkit-box-shadow: @arguments;
+}
+
+html, body {
+    height: 100%;
+}
+body {
+    font-family: 'microsoft yahei',Verdana,Arial,Helvetica;
+}
+
+.container {
+  width: 1024px;
+}
