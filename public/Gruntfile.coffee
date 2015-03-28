@@ -18,7 +18,7 @@ module.exports = (grunt)->
                 ]
 
         clean:
-            dev: ['dev']
+            dist: ['dist']
             bin: ['bin']
 
         browserify: 
@@ -59,7 +59,7 @@ module.exports = (grunt)->
             compile:
                 options:
                     livereload: 1337
-                files: ['src/**/*.scss', 'src/**/*.coffee']
+                files: ['src/**/*.less', 'src/**/*.coffee', 'src/**/*.html']
                 tasks: ['browserify', 'less']
 
         less:    
@@ -70,12 +70,12 @@ module.exports = (grunt)->
         cssmin: 
             compress: 
                 files: 
-                    'bin/css/index.css': [ "dev/css/index.css"]
+                    'dist/style.min.css': [ "bin/style.css"]
 
         uglify:
             build:
                 files:
-                    'bin/js/main.js': ['dev/js/index.js']
+                    'dist/js/main.min.js': ['bin/js/**/*.js']
 
     grunt.loadNpmTasks 'grunt-browserify'
     grunt.loadNpmTasks 'grunt-contrib-less'
@@ -97,11 +97,11 @@ module.exports = (grunt)->
 
     grunt.registerTask 'prod', ->
         grunt.task.run [
-            'clean:dev'
+            'clean:dist'
             'browserify'
             'less'
-            'clean:bin'
             'uglify'
             'cssmin'
+            'clean:bin'
         ]
 

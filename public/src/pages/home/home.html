@@ -3,12 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
     <title>主页</title>
+    <link rel="stylesheet" type="text/css" href="./../../../bin/style.css">
 </head>
 <body>
-    <div class="contianer">
+    <div class="container">
+        <div v-component="c-header"></div>
+        <div v-component="c-footer"></div>
     </div>
 </body>
 <script type="text/javascript" src="./../../../packages/bower_components/vue/dist/vue.min.js"></script>
 <script type="text/javascript" src="./../../../bin/js/components/header.js"></script>
+<!-- <script type="text/javascript" src="./../../../bin/js/components/footer.js"></script> -->
 <script type="text/javascript" src="./../../../bin/js/pages/home.js"></script>
 </html>

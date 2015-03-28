@@ -1,2 +1,3 @@
-mainVm = new Vue 
-  el: '.container'
+home = new Vue({
+    el: '.container'
+});
