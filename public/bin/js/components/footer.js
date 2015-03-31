@@ -14,6 +14,6 @@ Vue.component('c-footer', {
 
 
 },{"./footer.html":2}],2:[function(require,module,exports){
-module.exports = "<div id=\"footer\">\r\n  <a href=\"#\" target=\"_blank\">关于</a>\r\n  <a href=\"#\" target=\"_blank\">合作</a>\r\n  <a v-on=\"click: feedback\">反馈</a>\r\n</div>";
+module.exports = "<div id=\"footer\">\n  <a href=\"#\" target=\"_blank\">关于</a>\n  <a href=\"#\" target=\"_blank\">合作</a>\n  <a v-on=\"click: feedback\">反馈</a>\n</div>";
 
 },{}]},{},[1]);

@@ -4,10 +4,10 @@ module.exports = (grunt)->
     coffeeify = require 'coffeeify'
 
     grunt.initConfig
-        concurrent: 
-            dev: 
+        concurrent:
+            dev:
                 tasks: ["nodemon", "watch"]
-                options: 
+                options:
                     logConcurrentOutput: true
 
         copy:
@@ -21,7 +21,7 @@ module.exports = (grunt)->
             dist: ['dist']
             bin: ['bin']
 
-        browserify: 
+        browserify:
           common:
             options:
               preBundleCB: (b)->
@@ -33,7 +33,7 @@ module.exports = (grunt)->
             dest: 'bin/js/'
             ext: '.js'
 
-          components: 
+          components:
             options:
               preBundleCB: (b)->
                 b.transform(coffeeify)
@@ -44,7 +44,7 @@ module.exports = (grunt)->
             dest: 'bin/js/components/'
             ext: '.js'
 
-          pages: 
+          pages:
             options:
               preBundleCB: (b)->
                 b.transform(coffeeify)
@@ -62,14 +62,14 @@ module.exports = (grunt)->
                 files: ['src/**/*.less', 'src/**/*.coffee', 'src/**/*.html']
                 tasks: ['browserify', 'less']
 
-        less:    
+        less:
           dev:
             files:
               'bin/style.css': ['src/**/*.less']
 
-        cssmin: 
-            compress: 
-                files: 
+        cssmin:
+            compress:
+                files:
                     'dist/style.min.css': [ "bin/style.css"]
 
         uglify:

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>丛丛网－首页</title>
-	<link rel="stylesheet" type="text/css" href="bin/css/index.css">
+	<link rel="stylesheet" type="text/css" href="/bin/style.css">
 </head>
 <body>
 		<header>

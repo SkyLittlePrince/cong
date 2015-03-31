@@ -1,7 +1,12 @@
 node_modules/
-vendor/
-lib/
-media/
 .svn/
 public/node_modules
 public/.sass-cache
+/bootstrap/compiled.php
+/vendor
+composer.phar
+composer.lock  # Remove this one after you create a project
+.env.*.php
+.env.php
+.DS_Store
+Thumbs.db
