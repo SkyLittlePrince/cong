@@ -4,20 +4,22 @@
 	</div>
 	<nav>
 		<ul>
-			<li class="focus">首页</li>
-			<li>购物中心</li>
-			<li>赏金猎人</li>
+			<li class="focus">
+				<a href="/" >首页</a>
+			</li>
+			<li><a href="/buy-center" >购物中心</a></li>
+			<li><a href="/bonus-hunter" >赏金猎人</a></li>
 		</ul>
 	</nav>
 	<div class="tools"> 
 		<span>
 			<img src="" />
-			<a href="">注册</a>
+			<a href="/register">注册</a>
 			/
-			<a href="">登录</a>
+			<a href="/login">登录</a>
 		</span>
 		<span>
-			<a href="">帮助</a>
+			<a href="/help">帮助</a>
 		</span>
 		<span>
 			<img src="" />
