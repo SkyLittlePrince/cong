@@ -1,0 +1,40 @@
+
+@footer-bg: #7ecac8;
+@footer-font-color: #eff8f7;
+@footer-height: 68px;
+
+#main {
+	padding-bottom: @footer-height;
+}
+
+footer {
+	width: 100%;
+	height: @footer-height;
+	display: block;
+	position: absolute;
+	bottom: 0px;
+	float: left;
+	background-color: @footer-bg;
+
+	ul {
+        list-style: none;
+        padding: 0px;
+        margin: 0 auto;
+        width: 570px;
+        height: 68px;
+        line-height: 68px;
+        vertical-align: middle;
+
+		li {
+			float: left;
+			margin-left: 40px;
+
+			a {
+				color: @footer-font-color;
+				text-decoration: none;
+				font-family: "微软雅黑";
+				font-size: 14px;
+			}
+		}
+	}
+}

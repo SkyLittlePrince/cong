@@ -13,13 +13,11 @@ module.exports = (grunt)->
         copy:
             dev:
                 files: [
-                    {expand: true, flatten: true, src: ["dev/css/*"], dest: 'bin/css/'}
-                    {expand: true, flatten: true, src: ["dev/js/*"], dest: 'bin/js/'}
+                    {expand: true, flatten: true, src: ["lib/js/jquery/*"], dest: 'dist/js/lib/jquery/'}
                 ]
 
         clean:
             dist: ['dist']
-            bin: ['bin']
 
         browserify:
           common:
@@ -30,7 +28,7 @@ module.exports = (grunt)->
             expand: true
             flatten: true
             src: ['src/common/common.coffee', 'src/main.coffee']
-            dest: 'bin/js/'
+            dest: 'dist/js/'
             ext: '.js'
 
           components:
@@ -41,7 +39,7 @@ module.exports = (grunt)->
             expand: true
             flatten: true
             src: ['src/components/**/*.coffee']
-            dest: 'bin/js/components/'
+            dest: 'dist/js/components/'
             ext: '.js'
 
           pages:
@@ -52,30 +50,32 @@ module.exports = (grunt)->
             expand: true
             flatten: true
             src: ['src/pages/**/*.coffee']
-            dest: 'bin/js/pages/'
+            dest: 'dist/js/pages/'
             ext: '.js'
 
         watch:
             compile:
                 options:
                     livereload: 1337
-                files: ['src/**/*.less', 'src/**/*.coffee', 'src/**/*.html']
+                files: ['src/**/*.less', 'src/**/*.coffee']
                 tasks: ['browserify', 'less']
 
         less:
-          dev:
-            files:
-              'bin/style.css': ['src/**/*.less']
+            components:
+                files:
+                    'dist/css/components.css': ['src/components/**/*.less']
+                    'dist/css/home.css': ['src/pages/home/*.less']
+                    'dist/css/common.css': ['src/common/*.less']
 
         cssmin:
             compress:
                 files:
-                    'dist/style.min.css': [ "bin/style.css"]
+                    'dist/components.min.css': [ "dist/components.css"]
 
         uglify:
             build:
                 files:
-                    'dist/js/main.min.js': ['bin/js/**/*.js']
+                    'dist/js/main.min.js': ['dist/js/**/*.js']
 
     grunt.loadNpmTasks 'grunt-browserify'
     grunt.loadNpmTasks 'grunt-contrib-less'
@@ -89,19 +89,19 @@ module.exports = (grunt)->
     grunt.registerTask 'default', ->
         grunt.task.run [
             'clean'
+            'copy'
             'browserify'
             'less'
-            'copy:dev'
             'watch'
         ]
 
     grunt.registerTask 'prod', ->
         grunt.task.run [
-            'clean:dist'
+            'clean'
+            'copy'
             'browserify'
             'less'
             'uglify'
             'cssmin'
-            'clean:bin'
         ]
 
