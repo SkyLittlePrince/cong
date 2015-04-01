@@ -16,7 +16,7 @@ Route::get('/', function()
 	return View::make('home');
 });
 
-Route::get('/cyrilzhao', function()
+Route::get('/login', function()
 {
-	return View::make('home');
+	return View::make('login');
 });
