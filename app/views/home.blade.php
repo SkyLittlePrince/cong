@@ -45,6 +45,14 @@
             </form>
         </div>
     </div>
+
+    <div id="button-pic">
+        <img src="./images/common/button-pic.png" alt="button-pic">
+    </div>
+
+    <div id="process">
+        <img src="./images/common/liucheng.png" alt="process">
+    </div>
 </div>
 @include('components.footer')
 @stop
