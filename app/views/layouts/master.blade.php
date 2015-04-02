@@ -15,13 +15,14 @@
 </head>
 
 <body style="margin:0">
-	<div class="container" id = "wrapper">
+	<div id = "wrapper">
 		@section('body')
 			<div></div>
 		@show
 	</div>
 	@section('js')
 	<script type="text/javascript" src='./dist/js/lib/jquery/jquery-1.11.2.min.js'></script>
+	<script type="text/javascript" src='./dist/js/lib/jquery/unslider.js'></script>
 	<script type="text/javascript" src='./dist/js/common.js'></script>
 	@show
 </body>
