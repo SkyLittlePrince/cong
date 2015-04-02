@@ -1,74 +1,132 @@
-.clear {
-	clear: both;
-}
+@import './../../common/common.less';
 
-body {
-	margin: 0px;
-
-	#main {
-		padding-bottom: 68px;
-		width: 1024px;
+@slider-width: 1024px;
+@slider-height: 470px;
+#main {
+	width: 1024px;
+	margin: 0 auto;
+	position: relative;
+	#slider {
+		width: @slider-width;
 		margin: 0 auto;
-		clear: both;
-		height: 100%;
-		margin-top: 200px;
 		position: relative;
-		font-family: "微软雅黑";
+		overflow: auto;
+		ul {
+			padding-top: 0px;
+		}
+		ul li {
+			height: @slider-height;
+			float: left;
+			img {
+				width: @slider-width;
+				height: @slider-height;
+			}
+		}
+		.dots {
+			position: absolute;
+			left: 50%;
+			margin-left: -40px;
+			right: 0;
+			bottom: 20px;
+			-webkit-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+			-moz-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+			-ms-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+			-o-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+			filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+			li {
+				display: inline-block;
+				width: 7px;
+				height: 7px;
+				margin: 0 4px;
+				text-indent: -999em;
+				border: 2px solid #fff;
+				border-radius: 6px;
+				cursor: pointer;
+				opacity: .4;
+				-webkit-transition: background .5s, opacity .5s;
+				-moz-transition: background .5s, opacity .5s;
+				transition: background .5s, opacity .5s;
+			}
+			li.active {
+				background: #fff;
+				opacity: 1;
+			}
+		}
+	}
+	@search-bar-width: 832px;
+	@search-bar-height: 113px;
+	@search-bg-width: 798px;
+	@search-bg-height: 83px;
 
-		.bg-slider {
+	#search-bar {
+		// 确定搜索框的位置
+		width: @search-bar-width;
+		height: @search-bar-height;
+		position: absolute;
+		top: 128px;
+		left: 50%;
+		margin-left: -(@search-bar-width/2);
+		overflow: hidden;
 
+		//实现最底层背景的透明效果
+		.search-bg {
+			width: 100%;
+			height: 100%;
+			background-color: #fff;
+			.opacity(0.3);
+			float: left; 
 		}
 
-		.input-wrapper {
-			top: 50%;
-			left: 50%;
-			width: 835px;
-			height: 110px;
-			margin-top: -56px;
+		//实现倒数第二层的背景透明效果
+		.search-container-bg {
+			background-color: #d1d2d4;
+			.opacity(0.3); 
+		}
+		//设置倒数第二层的位置
+		.search-container {
 			position: absolute;
-			border-radius: 20px;
-			margin-left: -414px;
-			background-color: rgba(255, 255, 255, 0.08);
-
-			.input-wrapper-2 {
-				width: 780px;
-				margin: 0 auto;
-				margin-top: 15px;
-				border-radius: 20px;
-				padding: 10px 11px 10px 11px;
-				background-color: rgba(255, 255, 255, 0.1);
-
-				#input {
-					float: left;
-					border: 0px;
-					outline:none;
-					width: 662px;
-					height: 40px;
-					padding: 10px;
-					color: #3a6209;
-					font-size: 25px;
-					border-radius: 10px;
+			float: left;
+			margin: 15px 17px;
+			width: @search-bg-width;			
+			height: @search-bg-height;
+		}
+		.search-box {
+			.search-box-container {
+				width: 665px;
+				height: 62px;
+				float: left;
+				margin-top: 10px;
+				margin-left: 13px; 
+				background-color: #fff;
+				input {
+					width: 100%;
+					height: 100%;
+					border: none;
+					padding-left: 20px;
+					color: #8ea37c;
+					font-size: 20px;
 				}
-
-				input:focus {
-					border: 0px;
-				} 
-
-				.search-btn {
-					width: 78px;
-					float: left;
-					height: 60px;
-					margin-left: 15px;
-					border-radius: 10px;
-					background-color: red;
+				input:-webkit-input-placeholder {
+					color: #8ea37c;
 				}
-
-				.search-btn:hover {
-					cursor: pointer;
+				input:-moz-placeholder {
+				  	color: #8ea37c;
 				}
+				input:-ms-input-placeholder {
+				  	color: #8ea37c;
+				}​
+				input:placeholder {
+					color: #8ea37c;
+				}
+			}
+			button {
+				float: left;
+				width: 84px;
+				height: 62px;
+				background: url(./../../images/common/search-btn.png) no-repeat;
+				border: none;
+				margin: 11px 0 0 20px;
 			}
 		}
 	}
 }
-
-
