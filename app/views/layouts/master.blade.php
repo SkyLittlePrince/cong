@@ -14,7 +14,7 @@
 </head>
 
 <body style="margin:0">
-	<div id="container">
+	<div class="container">
 		@section('body')
 			<div></div>
 		@show
