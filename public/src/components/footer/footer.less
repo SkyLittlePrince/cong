@@ -2,19 +2,16 @@
 @footer-font-color: #eff8f7;
 @footer-height: 68px;
 
-#main {
-	padding-bottom: @footer-height;
-}
-
 footer {
 	width: 100%;
-	height: @footer-height;
+	// height: @footer-height;
 	display: block;
 	position: absolute;
 	bottom: 0px;
-	float: left;
+	// float: left;
 	background-color: @footer-bg;
-
+	
+	clear: both;
 	ul {
         list-style: none;
         padding: 0px;
@@ -23,6 +20,7 @@ footer {
         height: 68px;
         line-height: 68px;
         vertical-align: middle;
+        overflow: hidden;
 
 		li {
 			float: left;
