@@ -8,6 +8,7 @@
 	<meta http-equiv="keywords" content="丛丛网">
 	<meta http-equiv="description" content="丛丛网">
 	@section('css')
+
 	<link rel="stylesheet" href="./dist/css/common.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="./dist/css/components.css" rel="stylesheet" type="text/css">
 	@show
