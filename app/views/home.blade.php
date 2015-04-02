@@ -9,7 +9,7 @@
 @stop
 
 @section('body')
-@include('components.header')
+@include('components.newheader')
 <div id="main">
 	<div class="bg-slider"></div>
 	<div class="input-wrapper">
@@ -20,7 +20,7 @@
 		</div>
 	</div>
 </div>
-@include('components.footer')
+<!-- @include('components.footer') -->
 @stop
 
 @section('js')
