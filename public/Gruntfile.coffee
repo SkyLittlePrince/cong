@@ -66,6 +66,7 @@ module.exports = (grunt)->
                     'dist/css/components.css': ['src/components/**/*.less']
                     'dist/css/home.css': ['src/pages/home/*.less']
                     'dist/css/login.css': ['src/pages/login/*.less']
+                    'dist/css/register.css': ['src/pages/register/*.less']
                     'dist/css/common.css': ['src/common/*.less']
 
         cssmin:

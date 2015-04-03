@@ -1,0 +1,151 @@
+
+@step-color: #b8ac8d;
+@step-active-color: #d5aa4a;
+@register-header-bg-color: #7ecac9;
+
+@import "../../common/common.less";
+
+.inputBox (@width: 283px; @height: 34px;) {
+	width: @width;
+	height: @height;
+	border: 1px solid #cae9e9;
+	padding: 5px 5px 5px 10px;
+	.border-radius(10px);
+	font-size: 15px;
+	outline: none;
+}
+
+#wrapper {
+	.register-area {
+		margin: 0 auto;
+		margin-top: 88px;
+		width: 800px;
+
+		.register-steps {
+			width: 510px;
+			margin: 0 auto;
+			font-size: 14px;
+
+			ul {
+				list-style: none;
+
+				li {
+					float: left;
+					width: 170px;
+					color: @step-color;
+					text-align: center;
+				}
+
+				.active {
+					color: @step-active-color;
+				}
+			}
+		}
+
+		.register-form {
+			width: 388px;
+			margin: 0 auto;
+			margin-top: 65px;
+
+			h2 {
+				margin: 0 auto;
+				width: 315px;
+				font-size: 22px;
+				text-align: center;
+				color: white;
+				height: 60px;
+				line-height: 60px;
+				vertical-align: middle;
+				border-top-left-radius: 10px;
+				border-top-right-radius: 10px;
+				background-color: @register-header-bg-color;
+			}
+
+			.register-body {
+				height: 250px;
+				background: url("../../images/register/bg.png") no-repeat;
+
+				.register-items {
+					margin: 0 auto;
+					width: 315px;
+					color: #9d9791;
+					font-size: 14px;
+					padding: 10px 0px 10px 14px;
+
+					.register-item {
+						margin-bottom: 12px;
+
+						input {
+							.inputBox
+						}
+
+						#auth-code {
+							width: 110px;
+							float: left;
+						}
+
+						#authcode-img {
+							float: left;
+							margin-left: 40px;
+						}
+
+						.agree-img, .disagree-img {
+							float: left;
+						}
+					}
+				}
+
+				.register-text {
+					width: 280px;
+					color: #9d9791;
+					line-height: 1.5em;
+					font-size: 15px;
+					margin: 0 auto;
+					margin-top: 30px;
+				}
+
+				.register-phone {
+					width: 280px;
+					color: #9d9791;
+					margin: 0 auto;
+					line-height: 1.5em;
+					margin-top: 20px;
+					font-size: 14px;
+				}
+
+				.register-authcode {
+					margin: 0 auto;
+					margin-top: 20px;
+					width: 280px;
+
+					#register-authcode {
+						.inputBox(110px);
+						float: left;
+					}
+
+					.register-sec {
+						line-height: 46px;
+						vertical-align: middle;
+						font-size: 16px;
+						color: #c2bfbc;
+						float: left;
+						margin-left: 20px;
+					}
+				}
+			}
+
+			input[type="button"] {
+				width: 100px;
+				height: 38px;
+				background-color: @register-header-bg-color;
+				border: 0px;
+				.border-radius(10px);
+				color: #fff;
+				font-size: 17px;
+				float: right;
+				margin-top: 15px;
+				cursor: pointer;
+			}
+		}
+	}
+}
