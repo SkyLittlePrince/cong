@@ -72,6 +72,7 @@ module.exports = (grunt)->
                     'dist/css/rewardtask2.css': ['src/pages/rewardtask2/*.less']
                     'dist/css/rewardtask3.css': ['src/pages/rewardtask3/*.less']
                     'dist/css/rewardtask4.css': ['src/pages/rewardtask4/*.less']
+                    'dist/css/rewardtask5.css': ['src/pages/rewardtask5/*.less']
 
         cssmin:
             compress:
