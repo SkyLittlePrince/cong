@@ -18,34 +18,53 @@
         <form>
             <ul>
                 <li class="title">
-                    <label for="title">任务主题:</label>
-                    <input type="text" name="title" id="title">
+                    <label class="label">任务主题:</label>
+                    <div class="col-right">
+                        <input type="text" name="title" id="title">
+                    </div>
+                    <div class="clear"></div>
                 </li>
                 <li class="price">
-                    <label for="price">赏金价格:</label>
-                    <input type="text" name="price" id="price" class="one-price"><span class="text">元(人民币)</span>
-                    <br/ >
-                    <input type="text" name="anotherprice" id="anotherprice" class="one-price">
-                    <label><input name="currency" type="radio" value="silver" />银币</label>
-                    <label><input name="currency" type="radio" value="copper" />铜币 </label>                   
-                    <label><input name="currency" type="radio" value="gold" />金币 </label>
+                    <label class="label">赏金价格:</label>
+                    <div class="col-right">
+                        <div>
+                            <input type="text" name="price" id="price" class="one-price">
+                            <span class="text">元(人民币)</span>
+                        </div>
+                        <div style="margin-top:10px;">
+                            <input type="text" name="anotherprice" id="anotherprice" class="one-price">
+                            <input name="currency" type="radio" value="silver" /> <label>银币</label>
+                            <input name="currency" type="radio" value="copper" /> <label>铜币</label>                   
+                            <input name="currency" type="radio" value="gold" /> <label>金币</label>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
                 </li>
                 <li class="time">
-                    <label>截止时间:</label>
-                    <input type="text" name="year"><span class="text">年</span>
-                    <input type="text" name="month"><span class="text">月</span>
-                    <input type="text" name="day"><span class="text">日</span>
-                    <input type="text" name="hour"><span class="text">时</span>
+                    <label class="label">截止时间:</label>
+                    <div class="col-right">
+                        <input type="text" name="year"><span class="text"> 年</span>
+                        <input type="text" name="month"><span class="text"> 月</span>
+                        <input type="text" name="day"><span class="text"> 日</span>
+                        <input type="text" name="hour"><span class="text"> 时</span>
+                    </div>
+                    <div class="clear"></div>
                 </li>
                 <li class="people">
-                    <label>中标人数:</label>
-                    <label><input name="people" type="radio" value="single" id="single" />单人</label>
-                    <label><input name="people" type="radio" value="multiple" />多人 </label>                   
-                    <label><input name="people" type="radio" value="custom" />自定义 </label>
-                    <input type="text" name="custompeople">
+                    <label class="label">中标人数:</label>
+                    <div class="col-right">
+                        <div>
+                            <input name="people" type="radio" value="single" id="single" /><label> 单人</label>
+                            <input name="people" type="radio" value="multiple" /><label> 多人</label>                   
+                            <input name="people" type="radio" value="custom" /><label> 自定义</label>
+                            <input type="text" name="custompeople">
+                        </div>
+                        
+                    </div>
+                    <div class="clear"></div>
                 </li>
                 <li class="detail">
-                    <label>任务详情:</label>
+                    <label class="label">任务详情:</label>
                     <textarea name="detail" id="detail" cols="30" rows="10"></textarea>
                 </li>
             </ul>

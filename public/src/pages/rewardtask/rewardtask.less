@@ -1,8 +1,29 @@
 @import './../../common/common.less';
 
+.bonus-input (@width: 31px, @margin-left: 0px) {
+	.border();
+	width: @width;
+	height: 31px;
+	margin-left: @margin-left;
+	outline: none;
+	padding: 0px 10px 0px 10px;
+}
+
+.label () {
+  	line-height: 31px;
+	vertical-align: middle;
+}
+
+.radio (@top: 0px, @height: 0px) {
+  	position: relative;
+  	height: @height;
+	top: @top;
+	margin-left: 5px;
+}
+
 #main {
 	@right-width: 750px;
-	@input-left: 15px;
+	@input-left: 5px;
 	width: 1024px;
 	margin: 0 auto;
 	padding-bottom: 68px;
@@ -11,69 +32,85 @@
 
 	.step1 {
 		background-color: #fff;
-		input {
-			.border();
-			height: 31px;
-			margin-left: @input-left;
-		}
-		input[type="radio"] {
-			position: relative;
-			top: 10px;
-			margin-left: 5px;
-		}
-		.text {
-			margin-left: 5px;
-		}
+		
 		form {
 			overflow: hidden;
 			position: relative;
-		}
-		ul {
-			float: left;
-			margin-left: 35px;
-			margin-top: 32px;
-			li {
-				margin-top: 10px;
-			}
-			.title {
-				margin-top: 0;
-				input {
-					width: 284px;
+
+			ul {
+				float: left;
+				margin-left: 35px;
+				margin-top: 32px;
+				li {
+					margin-bottom: 15px;
+
+					.label {
+						float: left;
+						margin-right: 10px;
+						line-height: 33px;
+						vertical-align: bottom;
+					}
+					.col-right {
+						float: left;						
+					}
 				}
-			}
-			.price {
-				.one-price {
-					width: 109px;
+
+				input[type="text"] {
+					.bonus-input(31px, @input-left);
 				}
-				#anotherprice {
-					margin-left: 95px;
+
+				.title {
+					margin-top: 0;
+					input {
+						width: 284px;
+					}
 				}
-			}
-			.time {
-				input {
-					width: 52px;
-					margin-left: 0;					
+				.price {
+					.one-price {
+						width: 109px;
+					}
+					label {
+						.label;
+					}
+					input[type="radio"] {
+						.radio(10px, 31px);
+					}
 				}
-				input[name="year"] {
-					margin-left: @input-left;
+				.time {
+					input {
+						.bonus-input(37px, @input-left);
+					}
 				}
-			}
-			.people {
-				input[name="custompeople"] {
-					width: 92px;
-					margin-left: 5px;
+				.people {
+					input[name="custompeople"] {
+						.bonus-input (92px, 5px);
+						position: relative;
+						bottom: 10px;
+					}
+					#single {
+						margin-left: @input-left;
+					}
+					.col-right {
+						label {
+							.label;
+							position: relative;
+							bottom: 10px;
+						}
+						input[type="radio"] {
+							.radio(0px, 31px);
+						}
+					}
 				}
-				#single {
-					margin-left: @input-left;
-				}
-			}
-			.detail {
-				textarea {
-					.border();
-					overflow: auto;
-					width: 547px;
-					height: 141px;
-					margin-left: @input-left;
+				.detail {
+					textarea {
+						.border();
+						overflow: auto;
+						width: 547px;
+						height: 141px;
+						margin-left: @input-left;
+						padding: 10px;
+						outline: none;
+					}
 				}
 			}
 		}
