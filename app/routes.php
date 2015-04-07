@@ -30,3 +30,8 @@ Route::get('/rewardtask', function()
 {
 	return View::make('rewardtask');
 });
+
+Route::get('/rewardtask2', function()
+{
+	return View::make('rewardtask2');
+});

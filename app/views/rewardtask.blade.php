@@ -14,7 +14,7 @@
     @include('components.bountyhunterleft')
     @include('components.rewardtaskheader')
     
-    <div class="step1">
+    <div class="step1 rewardtaskstep">
         <form>
             <ul>
                 <li class="title">
@@ -60,7 +60,7 @@
             </div>
         </form>
         <div class="next-step">
-            <a href="" class="btn">下一步</a>
+            <a href="/rewardtask2" class="btn">下一步</a>
         </div>
     </div>
 </div>

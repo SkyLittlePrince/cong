@@ -1,3 +1,8 @@
+/*
+ * 定义全局Less样式
+ * 定义常见class样式
+ */
+
 @import 'common.less';
 
 @page-bg-color: #f3f3f3;
@@ -27,6 +32,23 @@ body {
     background-color: @page-bg-color;
 }
 
+#main {
+    width: 1024px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+//悬赏任务begin
+.rewardtaskstep {
+    @right-width: 750px;
+    width: @right-width;
+    float: left;
+    margin-left: 25px;
+    margin-top: 12px;
+    color: #787878;
+    overflow: hidden;
+}
+//悬赏任务end
 .btn {
     width: 98px;
     height: 35px;
@@ -41,3 +63,11 @@ body {
     .border-radius(10px);
     color: #fff;
 }
+.clear {
+  clear: both;
+}
+
+.hidden {
+  display: none;
+}
+
