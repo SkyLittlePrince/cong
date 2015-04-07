@@ -1,3 +1,4 @@
+@import 'common.less';
 
 @page-bg-color: #f3f3f3;
 
@@ -22,6 +23,21 @@ body {
     height: auto !important;
     height: 100%; /*IE6不识别min-height*/
     position: relative;
-    padding-bottom: 68px;
+    // padding-bottom: 68px;
     background-color: @page-bg-color;
+}
+
+.btn {
+    width: 98px;
+    height: 35px;
+    line-height: 35px;
+    font-family: "Microsoft YaHei";
+    text-align: center;
+    background-color: #7ecac9;
+    font-size: 18px;
+    display: inline-block;
+    margin: 0 auto;
+    margin-top: 12px;
+    .border-radius(10px);
+    color: #fff;
 }

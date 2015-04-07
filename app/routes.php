@@ -25,3 +25,8 @@ Route::get('/register', function()
 {
 	return View::make('register');
 });
+
+Route::get('/rewardtask', function()
+{
+	return View::make('rewardtask');
+});
