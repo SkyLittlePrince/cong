@@ -35,3 +35,14 @@ Route::get('/rewardtask2', function()
 {
 	return View::make('rewardtask2');
 });
+
+Route::get('/rewardtask3', function()
+{
+	return View::make('rewardtask3');
+});
+
+Route::get('/rewardtask4', function()
+{
+	return View::make('rewardtask4');
+});
+
