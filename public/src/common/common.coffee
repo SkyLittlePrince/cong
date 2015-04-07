@@ -1,3 +1,3 @@
 
 $(document).ready ()->
-	console.log "hello"
+	common = 1

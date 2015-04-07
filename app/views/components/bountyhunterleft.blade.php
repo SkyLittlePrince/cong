@@ -1,7 +1,7 @@
 <div id="left-nav">
 	<div class="user-info">
 		<div class="avatar component">
-			<img src="./images/common/avatar.png" alt="avatar">
+			<img src="/images/common/avatar.png" alt="avatar">
 		</div>
 		<div class="info component">
 			<p>Vivine</p>
@@ -18,10 +18,10 @@
 	<div class="nav">
 		<ul>
 			<li class="active">
-				<a href="">悬赏任务</a>
+				<a href="/rewardtask">悬赏任务</a>
 			</li>
 			<li>
-				<a href="">倒价竞拍</a>
+				<a href="/auction">倒价竞拍</a>
 			</li>
 			<li>
 				<a href="">议价招标</a>
