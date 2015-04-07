@@ -10,6 +10,7 @@
 
 @section('body')
 @include('components.header')
+@include('components.task-banner')
 <div id="main">
     @include('components.bountyhunterleft')
     @include('components.rewardtaskheader')

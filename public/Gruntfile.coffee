@@ -9,7 +9,6 @@ module.exports = (grunt)->
                 tasks: ["nodemon", "watch"]
                 options:
                     logConcurrentOutput: true
-
         copy:
             dev:
                 files: [
@@ -20,38 +19,39 @@ module.exports = (grunt)->
             dist: ['dist']
 
         browserify:
-          common:
-            options:
-              preBundleCB: (b)->
-                b.transform(coffeeify)
-                b.transform(stringify({extensions: ['.hbs', '.html', '.tpl', '.txt']}))
-            expand: true
-            flatten: true
-            src: ['src/common/common.coffee', 'src/main.coffee']
-            dest: 'dist/js/'
-            ext: '.js'
+            common:
+                options:
+                  preBundleCB: (b)->
+                    b.transform(coffeeify)
+                    b.transform(stringify({extensions: ['.hbs', '.html', '.tpl', '.txt']}))
+                expand: true
+                flatten: true
 
-          components:
-            options:
-              preBundleCB: (b)->
-                b.transform(coffeeify)
-                b.transform(stringify({extensions: ['.hbs', '.html', '.tpl', '.txt']}))
-            expand: true
-            flatten: true
-            src: ['src/components/**/*.coffee']
-            dest: 'dist/js/components/'
-            ext: '.js'
+                src: ['src/common/common.coffee']
+                dest: 'dist/js/'
+                ext: '.js'
 
-          pages:
-            options:
-              preBundleCB: (b)->
-                b.transform(coffeeify)
-                b.transform(stringify({extensions: ['.hbs', '.html', '.tpl', '.txt']}))
-            expand: true
-            flatten: true
-            src: ['src/pages/**/*.coffee']
-            dest: 'dist/js/pages/'
-            ext: '.js'
+            components:
+                options:
+                  preBundleCB: (b)->
+                    b.transform(coffeeify)
+                    b.transform(stringify({extensions: ['.hbs', '.html', '.tpl', '.txt']}))
+                expand: true
+                flatten: true
+                files: {
+                    'dist/js/components.js': ['src/components/**/*.coffee'],
+                }
+
+            pages:
+                options:
+                  preBundleCB: (b)->
+                    b.transform(coffeeify)
+                    b.transform(stringify({extensions: ['.hbs', '.html', '.tpl', '.txt']}))
+                expand: true
+                flatten: true
+                src: ['src/pages/**/*.coffee']
+                dest: 'dist/js/pages/'
+                ext: '.js'
 
         watch:
             compile:
@@ -73,6 +73,11 @@ module.exports = (grunt)->
                     'dist/css/rewardtask3.css': ['src/pages/rewardtask3/*.less']
                     'dist/css/rewardtask4.css': ['src/pages/rewardtask4/*.less']
                     'dist/css/rewardtask5.css': ['src/pages/rewardtask5/*.less']
+                    'dist/css/auction/step-1.css': ['src/pages/auction/step-1.less']
+                    'dist/css/auction/step-2.css': ['src/pages/auction/step-2.less']
+                    'dist/css/auction/step-3.css': ['src/pages/auction/step-3.less']
+                    'dist/css/auction/step-4.css': ['src/pages/auction/step-4.less']
+                    'dist/css/auction/step-5.css': ['src/pages/auction/step-5.less']
 
         cssmin:
             compress:

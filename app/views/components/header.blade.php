@@ -1,10 +1,10 @@
 <header>
 <div id="header">
     <a href="/" class="logo">
-        <img src="./images/common/logo-1.png" alt="logo" class="head-portrait" width="160" height="80" />
+        <img src="/images/common/logo-1.png" alt="logo" class="head-portrait" width="160" height="80" />
     </a>
     <ul class="nav">
-        <li class="active">
+        <li>
             <a href="/">首页</a>
         </li>
         <li>
@@ -18,7 +18,7 @@
     <ul class="user-info">
         <li class="info">
             <a href="#">
-                <img src="./images/common/avatar.png" alt="avatar">
+                <img src="/images/common/avatar.png" alt="avatar">
                 <span>Vivine</span>
             </a>
         </li>

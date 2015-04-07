@@ -51,4 +51,13 @@ Route::get('/rewardtask5', function()
 	return View::make('rewardtask5');
 });
 
+Route::get('/auction/{step?}', function($step = null) 
+{
+	if($step == null) {
+		return View::make('auctions.step-1');
+	} else {
+		return View::make('auctions.' . $step);
+	}
+});
+
 
