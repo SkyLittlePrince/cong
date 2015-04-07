@@ -5,7 +5,7 @@
 		</div>
 		<div class="info component">
 			<p>Vivine</p>
-	        <p>学号FC634085</p>
+	        <p>学号 FC634085</p>
 		</div>
 	</div>
 	<div class="address-info">

@@ -1,6 +1,6 @@
 #left-nav {
 	@nav-color: #7ecac9;
-	@component-color: #d3c615;
+	@component-color: #bca890;
 	@width: 175px;
 	@height: 285px;
 	@info-width: 50px;
@@ -28,6 +28,8 @@
 		.info {
 			width: @width - @info-width - 22;
 			padding-top: 6px;
+			font-size: 14px;
+			line-height: 1.5em;
 		}
 
 		color: @component-color;
@@ -36,6 +38,7 @@
 	.address-info {
 		@line-height: 33px;
 		overflow: hidden;
+		margin-top: 10px;
 		width: 100%;
 		li {
 			height: @line-height;
@@ -50,6 +53,7 @@
 	.nav {
 		margin-top: 13px;
 		li {
+			border-bottom: 1px solid #fff;
 			a {
 				display: block;
 				width: 100%;
@@ -58,11 +62,19 @@
 				padding-left: 30px;
 				color: #787878;
 			}
+			a:hover {
+				color: #fff;
+			}
 			&.active {
 				background-color: @nav-color;
 				a {
 					color: #fff;
 				}
+			}
+			&:hover {
+				background-color: @nav-color;
+				cursor: pointer;
+				color: #fff;
 			}
 		}
 	}
