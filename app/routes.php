@@ -46,3 +46,9 @@ Route::get('/rewardtask4', function()
 	return View::make('rewardtask4');
 });
 
+Route::get('/rewardtask5', function()
+{
+	return View::make('rewardtask5');
+});
+
+
