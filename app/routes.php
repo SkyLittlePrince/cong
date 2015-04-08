@@ -26,7 +26,12 @@ Route::get('/register', function()
 	return View::make('register');
 });
 
-Route::get('/rewardtask/{step?}', function($step = null) 
+Route::get('/bounty-hunter', function()
+{
+	return View::make('bounty-hunter');
+});
+
+Route::get('/reward-task/{step?}', function($step = null) 
 {
 	if($step == null) {
 		return View::make('rewardtasks.step-1');

@@ -11,7 +11,7 @@
             <a href="">交易中心</a>
         </li>
         <li>
-            <a href="/rewardtask">赏金猎人</a>
+            <a href="/bounty-hunter">赏金猎人</a>
         </li>
     </ul>
     <!-- 用户已经登录 -->

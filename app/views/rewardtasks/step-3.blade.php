@@ -41,36 +41,46 @@
                     <label class="label">充值渠道：</label>
                     <div class="banks">
                         <div class="bank-item">
-                            <input type="radio" id= "cb" name="bank">
-                            <label for="cb"><img src="/images/rewardtask/cb.gif" alt="cb" class="bank" width="150" height="30" /></label>
+                            <input type="radio" id="cb" name="bank">
+                            <label for="cb">
+                                <img src="/images/rewardtask/cb.png" alt="cb" class="bank"/>
+                            </label>
                         </div>
                         <div class="bank-item">
-                            <input type="radio" id= "ccb" name="bank">
-                            <label for="ccb"><img src="/images/rewardtask/ccb.gif" alt="ccb" class="bank" width="150" height="30" />
+                            <input type="radio" id="ccb" name="bank">
+                            <label for="ccb">
+                                <img src="/images/rewardtask/ccb.png" alt="ccb" class="bank"/>
+                            </label>
                         </div>
                         <div class="bank-item">
-                            <input type="radio" id= "cgb" name="bank">
-                            <label for="cgb"><img src="/images/rewardtask/cgb.gif" alt="cgb" class="bank" width="150" height="30" />
+                            <input type="radio" id="cgb" name="bank">
+                            <label for="cgb">
+                                <img src="/images/rewardtask/cgb.png" alt="cgb" class="bank"/>
+                            </label>
                         </div>
                         <div class="bank-item">
-                            <input type="radio" id= "icbc" name="bank">
-                            <label for="icbc"><img src="/images/rewardtask/icbc.gif" alt="icbc" class="bank" width="150" height="30" />
+                            <input type="radio" id="icbc" name="bank">
+                            <label for="icbc">
+                                <img src="/images/rewardtask/icbc.png" alt="icbc" class="bank"/>
+                            </label>
                         </div>
                         <div class="bank-item">
-                            <input type="radio" id= "abc" name="bank">
-                            <label for="abc"><img src="/images/rewardtask/abc.gif" alt="abc" class="bank" width="150" height="30" />
+                            <input type="radio" id="abc" name="bank">
+                            <label for="abc">
+                                <img src="/images/rewardtask/abc.png" alt="abc" class="bank"/>
+                            </label>
                         </div>
                         <div class="bank-item">
-                            <input type="radio" id= "ibc" name="bank">
-                            <label for="ibc"><img src="/images/rewardtask/ibc.gif" alt="ibc" class="bank" width="150" height="30" />
+                            <input type="radio" id="sbc" name="bank">
+                            <label for="sbc">
+                                <img src="/images/rewardtask/sbc.png" alt="sbc" class="bank"/>
+                            </label>
                         </div>
                         <div class="bank-item">
-                            <input type="radio" id= "sbc" name="bank">
-                            <label for="sbc"><img src="/images/rewardtask/sbc.gif" alt="sbc" class="bank" width="150" height="30" />
-                        </div>
-                        <div class="bank-item">
-                            <input type="radio" id= "alipay" name="bank">
-                            <label for="alipay"><img src="/images/rewardtask/alipay.gif" alt="alipay" class="bank" width="150" height="30" />
+                            <input type="radio" id="alipay" name="bank">
+                            <label for="alipay">
+                                <img src="/images/rewardtask/alipay.png" alt="alipay" class="bank"/>
+                            </label>
                         </div>
                         <div class="clear"></div>
                     </div>
@@ -78,8 +88,8 @@
             </ul>
         </form>
         <div class="next-step">
-            <a href="/rewardtask/step-2" class="btn last">上一步</a>
-            <a href="/rewardtask/step-4" class="btn next">下一步</a>
+            <a href="/reward-task/step-2" class="btn last">上一步</a>
+            <a href="/reward-task/step-4" class="btn next">下一步</a>
         </div>
     </div>
 </div>

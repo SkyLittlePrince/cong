@@ -68,6 +68,7 @@ module.exports = (grunt)->
                     'dist/css/login.css': ['src/pages/login/*.less']
                     'dist/css/register.css': ['src/pages/register/*.less']
                     'dist/css/common.css': ['src/common/*.less']
+                    'dist/css/bounty-hunter.css': ['src/pages/bountyhunter/*.less']
                     'dist/css/rewardtask/step-1.css': ['src/pages/rewardtask/step-1.less']
                     'dist/css/rewardtask/step-2.css': ['src/pages/rewardtask/step-2.less']
                     'dist/css/rewardtask/step-3.css': ['src/pages/rewardtask/step-3.less']

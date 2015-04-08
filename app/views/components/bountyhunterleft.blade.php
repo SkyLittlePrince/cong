@@ -18,7 +18,7 @@
 	<div class="nav">
 		<ul>
 			<li class="active">
-				<a href="/rewardtask">悬赏任务</a>
+				<a href="/reward-task">悬赏任务</a>
 			</li>
 			<li>
 				<a href="/auction">倒价竞拍</a>

@@ -1,0 +1,41 @@
+
+#left-nav {
+	height: 180px;
+	padding-top: 20px;
+
+	.user-info {
+		display: none;
+	}
+
+	.address-info {
+		display: none;
+	}
+}
+
+#bounty-hunter-header {
+	@nav-height: 31px;
+	@nav-bg-color: #7ecac8;
+	margin: 12px 0px 14px 36px;
+
+	.nav {
+		width: 220px;
+		height: @nav-height;
+		float: left;
+		margin-right: 27px;
+		background-color: #fff;
+		line-height: @nav-height;
+		vertical-align: middle;
+		text-align: center;
+
+		&.active {
+			background-color: @nav-bg-color;
+			color: #fff;
+		}
+
+		&:hover {
+			background-color: @nav-bg-color;
+			color: #fff;
+			cursor: pointer;
+		}
+	}
+}
