@@ -24,7 +24,7 @@
 				<input type="password" id="password" placeholder="密码："/>
 			</div>
 			<div class="login-item">
-				<input type="password" id="authcode" placeholder="验证码"/>
+				<input type="text" id="authcode" placeholder="验证码"/>
 				<img src="/captcha" id="authcode-img" width="128" height="46" />
 				<div class="clear"></div>
 			</div>
@@ -43,4 +43,5 @@
 
 @section('js')
     @parent
+    <script type="text/javascript" src='./dist/js/pages/login.js'></script>
 @stop
