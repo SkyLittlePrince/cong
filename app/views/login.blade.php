@@ -25,7 +25,7 @@
 			</div>
 			<div class="login-item">
 				<input type="password" id="authcode" placeholder="验证码"/>
-				<img src="aaa" id="authcode-img" width="128" height="46" />
+				<img src="/captcha" id="authcode-img" width="128" height="46" />
 				<div class="clear"></div>
 			</div>
 			<div class="login-link">

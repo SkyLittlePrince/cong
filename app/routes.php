@@ -16,9 +16,16 @@ Route::get('/', function()
 	return View::make('home');
 });
 
-Route::get('/login', function()
+// 用户登录
+// 验证码
+Route::get('captcha', 'SessionsController@captcha');
+Route::get('login', 'SessionsController@getLogin');
+Route::post('login', 'SessionsController@postLogin');
+
+// 需要登录验证才能操作的接口
+Route::group(array('before' => 'auth'), function()
 {
-	return View::make('login');
+    Route::get('logout', ['as' => 'logout', 'uses' => 'SessionsController@getLogout']);
 });
 
 Route::get('/register', function()
