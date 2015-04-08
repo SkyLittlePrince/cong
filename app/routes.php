@@ -26,29 +26,13 @@ Route::get('/register', function()
 	return View::make('register');
 });
 
-Route::get('/rewardtask', function()
+Route::get('/rewardtask/{step?}', function($step = null) 
 {
-	return View::make('rewardtask');
-});
-
-Route::get('/rewardtask2', function()
-{
-	return View::make('rewardtask2');
-});
-
-Route::get('/rewardtask3', function()
-{
-	return View::make('rewardtask3');
-});
-
-Route::get('/rewardtask4', function()
-{
-	return View::make('rewardtask4');
-});
-
-Route::get('/rewardtask5', function()
-{
-	return View::make('rewardtask5');
+	if($step == null) {
+		return View::make('rewardtasks.step-1');
+	} else {
+		return View::make('rewardtasks.' . $step);
+	}
 });
 
 Route::get('/auction/{step?}', function($step = null) 

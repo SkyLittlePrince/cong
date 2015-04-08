@@ -5,7 +5,7 @@
 @stop
 @section('css')
     @parent
-    <link rel="stylesheet" type="text/css" href="./dist/css/rewardtask3.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/rewardtask/step-3.css">
 @stop
 
 @section('body')
@@ -26,42 +26,42 @@
                 <ul>
                     <li>
                         <input type="radio" id= "cb" name="cb">
-                        <img src="./images/rewardtask/cb.gif" alt="cb" class="bank" width="150" height="30" />   
+                        <img src="/images/rewardtask/cb.gif" alt="cb" class="bank" width="150" height="30" />   
                     </li>
                     <li>
                         <input type="radio" id= "ccb" name="ccb">
-                        <img src="./images/rewardtask/ccb.gif" alt="ccb" class="bank" width="150" height="30" />   
+                        <img src="/images/rewardtask/ccb.gif" alt="ccb" class="bank" width="150" height="30" />   
                     </li>
                     <li>
                         <input type="radio" id= "cgb" name="cgb">
-                        <img src="./images/rewardtask/cgb.gif" alt="cgb" class="bank" width="150" height="30" />   
+                        <img src="/images/rewardtask/cgb.gif" alt="cgb" class="bank" width="150" height="30" />   
                     </li>
                     <li>
                         <input type="radio" id= "icbc" name="icbc">
-                        <img src="./images/rewardtask/icbc.gif" alt="icbc" class="bank" width="150" height="30" />   
+                        <img src="/images/rewardtask/icbc.gif" alt="icbc" class="bank" width="150" height="30" />   
                     </li>
                     <li>
                         <input type="radio" id= "abc" name="abc">
-                        <img src="./images/rewardtask/abc.gif" alt="abc" class="bank" width="150" height="30" />   
+                        <img src="/images/rewardtask/abc.gif" alt="abc" class="bank" width="150" height="30" />   
                     </li>
                     <li>
                         <input type="radio" id= "ibc" name="ibc">
-                        <img src="./images/rewardtask/ibc.gif" alt="ibc" class="bank" width="150" height="30" />   
+                        <img src="/images/rewardtask/ibc.gif" alt="ibc" class="bank" width="150" height="30" />   
                     </li>
                     <li>
                         <input type="radio" id= "sbc" name="sbc">
-                        <img src="./images/rewardtask/sbc.gif" alt="sbc" class="bank" width="150" height="30" />   
+                        <img src="/images/rewardtask/sbc.gif" alt="sbc" class="bank" width="150" height="30" />   
                     </li>
                     <li>
                         <input type="radio" id= "alipay" name="alipay">
-                        <img src="./images/rewardtask/alipay.gif" alt="alipay" class="bank" width="150" height="30" />   
+                        <img src="/images/rewardtask/alipay.gif" alt="alipay" class="bank" width="150" height="30" />   
                     </li>
                 </ul>
             </form>
         </div>
         <div class="next-step">
-            <a href="/rewardtask2" class="btn last">上一步</a>
-            <a href="/rewardtask4" class="btn next">下一步</a>
+            <a href="/rewardtask/step-2" class="btn last">上一步</a>
+            <a href="/rewardtask/step-4" class="btn next">下一步</a>
         </div>
     </div>
 </div>

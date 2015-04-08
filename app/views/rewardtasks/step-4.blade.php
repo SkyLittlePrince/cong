@@ -5,7 +5,7 @@
 @stop
 @section('css')
     @parent
-    <link rel="stylesheet" type="text/css" href="./dist/css/rewardtask4.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/rewardtask/step-4.css">
 @stop
 
 @section('body')
@@ -37,8 +37,8 @@
             </form>
         </div>
         <div class="next-step">
-            <a href="/rewardtask3" class="btn last">上一步</a>
-            <a href="/rewardtask5" class="btn next">下一步</a>
+            <a href="/rewardtask/step-3" class="btn last">上一步</a>
+            <a href="/rewardtask/step-5" class="btn next">下一步</a>
         </div>
     </div>
 </div>
