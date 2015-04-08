@@ -25,35 +25,35 @@
             <form>
                 <ul>
                     <li>
-                        <input type="radio" id= "cb" name="cb">
+                        <input type="radio" id= "cb" name="paybank">
                         <img src="/images/rewardtask/cb.gif" alt="cb" class="bank" width="150" height="30" />   
                     </li>
                     <li>
-                        <input type="radio" id= "ccb" name="ccb">
+                        <input type="radio" id= "ccb" name="paybank">
                         <img src="/images/rewardtask/ccb.gif" alt="ccb" class="bank" width="150" height="30" />   
                     </li>
                     <li>
-                        <input type="radio" id= "cgb" name="cgb">
+                        <input type="radio" id= "cgb" name="paybank">
                         <img src="/images/rewardtask/cgb.gif" alt="cgb" class="bank" width="150" height="30" />   
                     </li>
                     <li>
-                        <input type="radio" id= "icbc" name="icbc">
+                        <input type="radio" id= "icbc" name="paybank">
                         <img src="/images/rewardtask/icbc.gif" alt="icbc" class="bank" width="150" height="30" />   
                     </li>
                     <li>
-                        <input type="radio" id= "abc" name="abc">
+                        <input type="radio" id= "abc" name="paybank">
                         <img src="/images/rewardtask/abc.gif" alt="abc" class="bank" width="150" height="30" />   
                     </li>
                     <li>
-                        <input type="radio" id= "ibc" name="ibc">
+                        <input type="radio" id= "ibc" name="paybank">
                         <img src="/images/rewardtask/ibc.gif" alt="ibc" class="bank" width="150" height="30" />   
                     </li>
                     <li>
-                        <input type="radio" id= "sbc" name="sbc">
+                        <input type="radio" id= "sbc" name="paybank">
                         <img src="/images/rewardtask/sbc.gif" alt="sbc" class="bank" width="150" height="30" />   
                     </li>
                     <li>
-                        <input type="radio" id= "alipay" name="alipay">
+                        <input type="radio" id= "alipay" name="paybank">
                         <img src="/images/rewardtask/alipay.gif" alt="alipay" class="bank" width="150" height="30" />   
                     </li>
                 </ul>
