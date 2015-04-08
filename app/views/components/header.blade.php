@@ -1,6 +1,6 @@
 <header>
 <div id="header">
-    <a href="/" class="logo">
+    <a href="/" class="logo" style="height: 80px;">
         <img src="/images/common/logo-1.png" alt="logo" class="head-portrait" width="160" height="80" />
     </a>
     <ul class="nav">
