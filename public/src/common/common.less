@@ -1,3 +1,7 @@
+/*
+ * 充分利用Less的语法特性
+ */
+
 /* 常见CSS3属性混合*/
 .transition(@type: all; @time: .3s; @ease-type: ease;) {
 -webkit-transition: @type @time @ease-type;
@@ -25,12 +29,7 @@
   opacity: @opa;          
 }
 
-.clear {
-  clear: both;
+.border() {
+  border: solid 1px #d8d8d8;
+  .border-radius(10px);
 }
-
-.hidden {
-  display: none;
-
-}
-

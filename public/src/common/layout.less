@@ -1,3 +1,9 @@
+/*
+ * 定义全局Less样式
+ * 定义常见class样式
+ */
+
+@import 'common.less';
 
 @page-bg-color: #f3f3f3;
 
@@ -22,6 +28,57 @@ body {
     height: auto !important;
     height: 100%; /*IE6不识别min-height*/
     position: relative;
-    padding-bottom: 68px;
+    // padding-bottom: 68px;
     background-color: @page-bg-color;
 }
+
+#main {
+    width: 1024px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+//悬赏任务begin
+.rewardtaskstep {
+    @right-width: 750px;
+    width: @right-width;
+    float: left;
+    margin-left: 25px;
+    margin-top: 12px;
+    color: #787878;
+    overflow: hidden;
+}
+.next-step {
+    margin-top: 20px;
+    text-align: center;
+    .last {
+        background-color: #cdcdcd;
+        color: #665b4d;
+    }
+    .next {
+        margin-left: 75px;
+    }
+}
+//悬赏任务end
+.btn {
+    width: 98px;
+    height: 35px;
+    line-height: 35px;
+    font-family: "Microsoft YaHei";
+    text-align: center;
+    background-color: #7ecac9;
+    font-size: 18px;
+    display: inline-block;
+    margin: 0 auto;
+    margin-top: 12px;
+    .border-radius(10px);
+    color: #fff;
+}
+.clear {
+  clear: both;
+}
+
+.hidden {
+  display: none;
+}
+

@@ -9,8 +9,8 @@
 	<meta http-equiv="description" content="丛丛网">
 	@section('css')
 
-	<link rel="stylesheet" href="./dist/css/common.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="./dist/css/components.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="/dist/css/common.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="/dist/css/components.css" rel="stylesheet" type="text/css">
 	@show
 </head>
 
@@ -21,9 +21,10 @@
 		@show
 	</div>
 	@section('js')
-	<script type="text/javascript" src='./dist/js/lib/jquery/jquery-1.11.2.min.js'></script>
-	<script type="text/javascript" src='./dist/js/lib/jquery/unslider.js'></script>
-	<script type="text/javascript" src='./dist/js/common.js'></script>
+	<script type="text/javascript" src='/dist/js/lib/jquery/jquery-1.11.2.min.js'></script>
+	<script type="text/javascript" src='/dist/js/lib/jquery/unslider.js'></script>
+	<script type="text/javascript" src='/dist/js/components.js'></script>
+	<script type="text/javascript" src='/dist/js/common.js'></script>
 	@show
 </body>
 <html>
