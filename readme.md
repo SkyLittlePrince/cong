@@ -4,6 +4,8 @@
 cp app/config/database.php.example app/config/database.php
 
 CREATE DATABASE `congcong` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+# php artisan migrate:refresh
+php artisan migrate:refresh --seed
 ```
 
 ## Official Documentation
