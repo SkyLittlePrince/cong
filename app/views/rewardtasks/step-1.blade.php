@@ -5,7 +5,7 @@
 @stop
 @section('css')
     @parent
-    <link rel="stylesheet" type="text/css" href="./dist/css/rewardtask.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/rewardtask.css">
 @stop
 
 @section('body')
@@ -72,7 +72,7 @@
             <div class="accessory">
                 <p>附件上传</p>
                 <div class="img-box">
-                    <img src="./images/rewardtask/fileimg.gif" alt="fileimg" class="fileimg" width="109" height="109" />
+                    <img src="/images/rewardtask/fileimg.gif" alt="fileimg" class="fileimg" width="109" height="109" />
                 </div>
                 <a href="javascript:;" class="a-upload">
                     <input type="file" name="" id="">选择文件
@@ -80,7 +80,7 @@
             </div>
         </form>
         <div class="next-step">
-            <a href="/rewardtask2" class="btn">下一步</a>
+            <a href="/rewardtask/step-2" class="btn">下一步</a>
         </div>
     </div>
 </div>

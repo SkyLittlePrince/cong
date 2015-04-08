@@ -5,7 +5,7 @@
 @stop
 @section('css')
     @parent
-    <link rel="stylesheet" type="text/css" href="/dist/css/auction/step-2.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/auction/step-4.css">
 @stop
 
 @section('body')
@@ -36,8 +36,8 @@
             </ul>
         </form>
         <div class="next-step">
-            <a href="/auction/step-1" class="btn last">上一步</a>
-            <a href="/auction/step-3" class="btn next">现在支付</a>
+            <a href="/auction/step-3" class="btn last">上一步</a>
+            <a href="/auction/step-5" class="btn next">现在支付</a>
         </div>
     </div>
 </div>
