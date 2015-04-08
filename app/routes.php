@@ -47,6 +47,15 @@ Route::get('/reward-task/{step?}', function($step = null)
 	}
 });
 
+Route::get('/employer/{step?}', function($step = null) 
+{
+	if($step == null) {
+		return View::make('employer.home');
+	} else {
+		return View::make('employer.' . $step);
+	}
+});
+
 Route::get('/auction/{step?}', function($step = null) 
 {
 	if($step == null) {

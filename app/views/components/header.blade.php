@@ -8,7 +8,7 @@
             <a href="/">首页</a>
         </li>
         <li>
-            <a href="">交易中心</a>
+            <a href="/employer">交易中心</a>
         </li>
         <li>
             <a href="/bounty-hunter">赏金猎人</a>

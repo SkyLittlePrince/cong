@@ -1,15 +1,21 @@
-
+@task-banner-width: 1024px;
+@task-banner-height: 46px;
 #task-banner {
+	width: @task-banner-width;
+	height: @task-banner-height;
+	margin: 0 auto;
 	font-size: 14px;
-	margin: 30px 140px -20px 0px;
-
 	span {
+		line-height: @task-banner-height;
 		float: right;
 		margin-right: 20px;
 
 		a {
 			color: #9d733e;
 			font-family: "Adobe 黑体 Std";
+		}
+		&:first-child {
+			margin-right: 31px;
 		}
 	}
 }
