@@ -5,7 +5,7 @@
 @stop
 @section('css')
     @parent
-    <link rel="stylesheet" type="text/css" href="/dist/css/rewardtask.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/rewardtask/step1.css">
 @stop
 
 @section('body')
