@@ -37,6 +37,7 @@ class SessionsController extends BaseController {
 	public function postLogin()
 	{
 		$captcha = Input::get('captcha');
+		\Debugbar::warning($captcha);
 		if($builder->testPhrase($captcha)) {
 			$email = Input::get('email');
 			$password = Input::get('password');
@@ -44,7 +45,6 @@ class SessionsController extends BaseController {
 		    {
 		        return Redirect::intended('/')->with('message', '成功登录');
 		    } else {
-		    	return Response::json(array('name' => 'Steve', 'state' => 'CA'));
 		        return Redirect::to('login')
 		        	->with('message', '用户名密码不正确')
 		        	->withInput();

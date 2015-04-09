@@ -15,27 +15,29 @@
 		<img src="./images/login/login.jpg" alt="login" width="400" height="300" />
 	</div>
 	<div class="page-right">
-		<h2>用户登录</h2>
-		<div class="login-form">
-			<div class="login-item">
-				<input type="text" id="loginname" placeholder="用户名：手机号／邮箱" />
+		<from action="/login" method="post">
+			<h2>用户登录</h2>
+			<div class="login-form">
+				<div class="login-item">
+					<input type="text" id="loginname" name="email" placeholder="用户名：手机号／邮箱" />
+				</div>
+				<div class="login-item">
+					<input type="password" id="password" name="password" placeholder="密码："/>
+				</div>
+				<div class="login-item">
+					<input type="text" id="authcode" name="captcha" placeholder="验证码"/>
+					<img src="/captcha" id="authcode-img" width="128" height="46" />
+					<div class="clear"></div>
+				</div>
+				<div class="login-link">
+					<a href="/register">注册</a>
+					 ／ 
+					<a href="/forgot-password">忘记密码？</a>
+				</div>
 			</div>
-			<div class="login-item">
-				<input type="password" id="password" placeholder="密码："/>
-			</div>
-			<div class="login-item">
-				<input type="text" id="authcode" placeholder="验证码"/>
-				<img src="/captcha" id="authcode-img" width="128" height="46" />
-				<div class="clear"></div>
-			</div>
-			<div class="login-link">
-				<a href="/register">注册</a>
-				 ／ 
-				<a href="/forgot-password">忘记密码？</a>
-			</div>
-		</div>
 
-		<input type="button" id="login-btn" value="确定" />
+			<input type="submit" id="login-btn" value="确定" />
+		</from>
 	</div>
 </div>
 @include('components.footer')
@@ -43,5 +45,4 @@
 
 @section('js')
     @parent
-    <script type="text/javascript" src='./dist/js/pages/login.js'></script>
 @stop

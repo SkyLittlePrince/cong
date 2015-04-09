@@ -82,9 +82,6 @@ return array(
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 
-	// for laravel-debugbar
-	'Debugbar' => 'Barryvdh\Debugbar\Facade',
-
 	/*
 	|--------------------------------------------------------------------------
 	| Autoloaded Service Providers
@@ -195,6 +192,9 @@ return array(
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
 
+
+		// for laravel-debugbar
+		'Debugbar'          => 'Barryvdh\Debugbar\Facade',
 	),
 
 );
