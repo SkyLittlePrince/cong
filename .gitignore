@@ -15,3 +15,5 @@ Thumbs.db
 composer.lock
 
 /*.mwb.bak
+
+/app/storage/debugbar
