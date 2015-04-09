@@ -3,23 +3,22 @@
 // Composer: "fzaninotto/faker": "v1.3.0"
 use Faker\Factory as Faker;
 
-class UserTableSeeder extends Seeder {
+class UsersTableSeeder extends Seeder {
 
 	public function run()
 	{
 		$faker = Faker::create();
 
-		foreach(range(1, 10) as $index)
-		{
-			User::create(
-				array(
-					"username" => "user_" . $index,
-                	"password" => Hash::make("zhaojian"),
-                	"email" => "user_" . $index . "@qq.com",
-                	"gender" => "male"
-	            )
-			);
-		}
+		User::create(
+			array(
+				"username" => "yangfusheng",
+            	"password" => Hash::make("12345678"),
+            	"email" => "1459232621@qq.com",
+            	"gender" => "male",
+            	"mobile" => "13560474456",
+            	"role_id" => 1
+            )
+		);
 	}
 
 }

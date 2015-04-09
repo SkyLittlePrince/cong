@@ -18,9 +18,9 @@ Route::get('/', function()
 
 // 用户登录
 // 验证码
-Route::get('captcha', 'SessionsController@captcha');
-Route::get('login', 'SessionsController@getLogin');
-Route::post('login', 'SessionsController@postLogin');
+// Route::get('captcha', 'SessionsController@captcha');
+Route::get('login', 'SessionsController@login');
+Route::post('login', 'SessionsController@login');
 
 // 需要登录验证才能操作的接口
 Route::group(array('before' => 'auth'), function()

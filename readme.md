@@ -8,6 +8,10 @@ CREATE DATABASE `congcong` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 php artisan migrate:refresh --seed
 ```
 
+## Test
+
+`phpunit`
+
 ## Official Documentation
 
 Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).

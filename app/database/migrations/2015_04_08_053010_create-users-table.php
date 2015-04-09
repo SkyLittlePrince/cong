@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration {
 	        $table->string('mobile', 100)->unique();
 	        $table->string('gender', 100);
 	        $table->integer('role_id')->unsigned();
-	        $table->string('remember_token', 62)->default('default');
+	        $table->string('remember_token', 256)->default('default');
 	        $table->timestamps();
         });
 

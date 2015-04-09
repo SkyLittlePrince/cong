@@ -18,41 +18,47 @@ class SessionsController extends BaseController {
 	*/
 
 	public function captcha()
-	{
+	{	
 		$builder = new CaptchaBuilder;
 		$builder->build();
 		$phrase = $builder->getPhrase();
-		$_SESSION['phrase'] = $phrase;
+		Log::info('captcha is '.$phrase);
+		Session::put('phrase', $phrase);
 		header("Cache-Control: no-cache, must-revalidate");
 		header('Content-Type: image/jpeg');
 		$builder->output();
 		exit;
 	}
 
-	public function getLogin()
-	{
-		return View::make('login');
-	}
-
-	public function postLogin()
-	{
-		$captcha = Input::get('captcha');
-		\Debugbar::warning($captcha);
-		if($builder->testPhrase($captcha)) {
-			$email = Input::get('email');
-			$password = Input::get('password');
-		    if (Auth::attempt(array('email' => $email, 'password' => $password)))
-		    {
-		        return Redirect::intended('/')->with('message', '成功登录');
-		    } else {
-		        return Redirect::to('login')
-		        	->with('message', '用户名密码不正确')
-		        	->withInput();
-		    }
-		} else {
-		    return Redirect::to('login')
-		        	->with('message', '验证码有误')
-		        	->withInput();
+	public function login()
+	{	
+		$builder = new CaptchaBuilder;
+		$builder->build();
+		
+		Log::info('request method is '.$_SERVER['REQUEST_METHOD']);
+		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$phrase = $builder->getPhrase();
+			Log::info('captcha is '.$phrase);
+			Session::put('phrase', $phrase);
+			return View::make('login')->with('captcha', $builder);
+		} else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+			$captcha = Input::get('captcha');
+			Log::info('$captcha is '.$captcha);
+			$sessionCaptcha = Session::get('phrase');
+			if($captcha == $sessionCaptcha) {
+				$email = Input::get('email');
+				$password = Input::get('password');
+				$hashedPassword = Hash::make($password);
+				Log::info('auth is '.Auth::attempt(array('email' => $email, 'password' => $password)));
+			    if (Auth::attempt(array('email' => $email, 'password' => $password), false))
+			    {
+			        return Redirect::intended('/')->with('message', '成功登录');
+			    } else {
+			        return Redirect::to('login')->with('message', '用户名密码不正确')->withInput();
+			    }
+			} else {
+			    return Redirect::to('login')->with('message', '验证码有误')->withInput();
+			}
 		}
 	}
 

@@ -19,7 +19,11 @@ App::before(function($request)
 
 App::after(function($request, $response)
 {
-	//
+    if ( Auth::check()){
+        $ckname = uth::getRecallerName(); //Get the name of the cookie, where remember me expiration time is stored
+        $ckval = Cookie::get($ckname); //Get the value of the cookie
+        return $response->withCookie(Cookie::make($ckname, $ckval, 360)); //change the expiration time
+    }
 });
 
 /*
