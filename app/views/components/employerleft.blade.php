@@ -17,7 +17,7 @@
 	</div>
 	<div class="nav">
 		<ul>
-			<li class="active">
+			<li>
 				<a href="">交易管理</a>
 			</li>
 			<li>
