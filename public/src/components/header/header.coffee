@@ -6,6 +6,8 @@ $(document).ready ()->
 
 	if(target == "")
 		index = 0;
+	else if  (target == "employer")
+		index  = 1
 	else if(target == "rewardtask") 
 		index = 2;
 
