@@ -4,7 +4,7 @@ $(document).ready ()->
 
 	target = pathname.split("/")[1];
 
-	if(target == "rewardtask")
+	if(target == "reward-task")
 		index = 0;
 	else if(target == "auction") 
 		index = 1;

@@ -33,36 +33,42 @@ Route::get('/register', function()
 	return View::make('register');
 });
 
+// 赏金猎人
 Route::get('/bounty-hunter', function()
 {
-	return View::make('bounty-hunter');
+	return View::make('bountyHunter.index');
 });
 
 Route::get('/reward-task/{step?}', function($step = null) 
 {
 	if($step == null) {
-		return View::make('rewardtasks.step-1');
+		return View::make('bountyHunter.rewardTasks.step-1');
 	} else {
-		return View::make('rewardtasks.' . $step);
-	}
-});
-
-Route::get('/employer/{step?}', function($step = null) 
-{
-	if($step == null) {
-		return View::make('employer.home');
-	} else {
-		return View::make('employer.' . $step);
+		return View::make('bountyHunter.rewardTasks.' . $step);
 	}
 });
 
 Route::get('/auction/{step?}', function($step = null) 
 {
 	if($step == null) {
-		return View::make('auctions.step-1');
+		return View::make('bountyHunter.auctions.step-1');
 	} else {
-		return View::make('auctions.' . $step);
+		return View::make('bountyHunter.auctions.' . $step);
 	}
 });
 
+// 交易中心
+Route::get('/employer/{step?}', function($step = null) 
+{
+	if($step == null) {
+		return View::make('tradingCenter.employer.index');
+	} else {
+		return View::make('tradingCenter.employer.' . $step);
+	}
+});
+
+Route::get('/account', function()
+{
+	return View::make('tradingCenter.account.info');
+});
 

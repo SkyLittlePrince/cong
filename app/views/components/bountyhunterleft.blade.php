@@ -2,7 +2,7 @@
 	@include('components.user-info-banner')
 	<div class="nav">
 		<ul>
-			<li class="active">
+			<li>
 				<a href="/reward-task">悬赏任务</a>
 			</li>
 			<li>

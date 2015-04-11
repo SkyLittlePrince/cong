@@ -26,15 +26,19 @@
 			margin-left: 0px;
 		}
 
-		&.active {
-			background-color: @nav-bg-color;
-			color: #fff;
-		}
+		a {
+			display: block;
+			color: @nav-color;
 
-		&:hover {
-			background-color: @nav-bg-color;
-			color: #fff;
-			cursor: pointer;
+			&:hover {
+				color: #fff;
+				background-color: @nav-bg-color;
+			}
+
+			&.active {
+				background-color: @nav-bg-color;
+				color: #fff;
+			}
 		}
 	}
 }
