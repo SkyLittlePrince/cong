@@ -80,6 +80,7 @@ module.exports = (grunt)->
                     'dist/css/auction/step-4.css': ['src/pages/auction/step-4.less']
                     'dist/css/auction/step-5.css': ['src/pages/auction/step-5.less']
                     'dist/css/employer/employerhome.css': ['src/pages/employer/employerhome.less']
+                    'dist/css/mynews/messagenotification.css': ['src/pages/mynews/messagenotification.less']
 
         cssmin:
             compress:

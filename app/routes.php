@@ -56,6 +56,15 @@ Route::get('/employer/{step?}', function($step = null)
 	}
 });
 
+Route::get('/mynews/{step?}', function($step = null) 
+{
+	if($step == null) {
+		return View::make('mynews.messagenotification');
+	} else {
+		return View::make('mynews.' . $step);
+	}
+});
+
 Route::get('/auction/{step?}', function($step = null) 
 {
 	if($step == null) {
