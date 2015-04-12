@@ -1,8 +1,24 @@
+@import './../../common/common.less';
 @import './common.less';
+@page-address: "./../../../images/icon";
 
 @width: 750px;
 @margin: 32px;
-.messagenotification {
+.btn(@padding: 3px 9px) {
+	font-size: 16px;
+	padding:@padding;
+	background-color: #7ecaca;
+	color: #fff;
+	margin-left: 16px;
+	outline: none;
+	text-align: center;
+	border: none;
+	.border-radius(12px);
+}
+
+.message-notification {
+	font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体"; 
+	padding-bottom: 10px;
 	.message-wrapper {
 		width: @width - 2 * @margin;
 		margin: 0 auto;
@@ -21,6 +37,75 @@
 			.status {
 				float: right;
 			}
+		}
+		label {
+			float: left;
+		}
+		.col-right {
+			float: left;
+			padding-left: 11px;
+		}
+
+		.operate {
+			margin-top: 15px;
+			overflow: hidden;
+			input[type="button"] {
+				.btn();
+			}
+			.mark-all {
+				margin-left: 0;
+			}
+		}
+
+		.messages {
+			color: #c4b49a;
+			padding-bottom: 17px;
+			border-bottom: solid 1px #dcdcdc;
+			ul li {
+				overflow: hidden;
+				margin-top: 22px;
+				.col-right {
+					background: url('@{page-address}/message-white.png') no-repeat 11px 2px;
+					padding-left: 37px;
+				}
+			}
+		}
+
+		.pagination {
+			overflow: hidden;
+			color: #c4b49a;
+			margin-top: 18px;
+			.page-num {
+				margin-right: 12px;
+				.num {
+					display: inline-block;
+					line-height: 28px;
+					width: 25px;
+					height: 28px;
+					text-align: center;
+					font-weight: 600;
+					font-size: 16px;
+					color: #6b6646;
+					&.active {
+						color: #7dc3c3;
+					}
+				}
+				img {
+					vertical-align: top;
+				}
+			}
+			.to-page {
+				color: #6b6646;
+				font-weight: 600;
+				input[type="button"] {
+					.btn(3px 16px);
+				}
+				input[type="text"] {
+					width: 48px;
+					height: 13px;
+					margin:0 2px;
+				}
+ 			}
 		}
 	}
 }
