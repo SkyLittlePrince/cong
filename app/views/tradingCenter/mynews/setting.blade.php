@@ -87,5 +87,5 @@
 
 @section('js')
     @parent
-    <script type="text/javascript" src='/dist/js/pages/index.js'></script>
+    <script type="text/javascript" src='/dist/js/pages/setting.js'></script>
 @stop

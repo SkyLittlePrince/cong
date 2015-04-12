@@ -1,0 +1,20 @@
+@import './common.less';
+@page-address: "../../../../images/icon";
+
+.message-history {
+	min-height: 411px;
+	.no-message {
+		width: 21px;
+		height: 21px;
+		margin-top: -1px;
+		background: url("@{page-address}/icon-exclamation.gif") no-repeat;
+	}
+	.messages {
+		color: #c5b496;
+		padding-bottom: 17px;
+		ul li {
+			overflow: hidden;
+			margin-top: 22px;
+		}
+	}
+}

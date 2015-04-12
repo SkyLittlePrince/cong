@@ -25,7 +25,12 @@
 		&:first-child {
 			margin-left: 0px;
 		}
-
+		&.active {
+			background-color: @nav-bg-color;
+			a {
+				color: #fff;
+			}
+		}
 		a {
 			display: block;
 			color: @nav-color;
@@ -33,11 +38,6 @@
 			&:hover {
 				color: #fff;
 				background-color: @nav-bg-color;
-			}
-
-			&.active {
-				background-color: @nav-bg-color;
-				color: #fff;
 			}
 		}
 	}
