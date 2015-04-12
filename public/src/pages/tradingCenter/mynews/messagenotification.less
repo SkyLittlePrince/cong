@@ -1,0 +1,26 @@
+@import './common.less';
+
+@width: 750px;
+@margin: 32px;
+.messagenotification {
+	.message-wrapper {
+		width: @width - 2 * @margin;
+		margin: 0 auto;
+		margin-top: 18px;
+		.banner {
+			border-bottom: solid 1px #dcdcdc;
+			overflow: hidden;
+			color: #787878;
+			span {
+				padding-bottom: 7px;
+				display: inline-block;
+			}
+			.title {
+				float: left;
+			}
+			.status {
+				float: right;
+			}
+		}
+	}
+}

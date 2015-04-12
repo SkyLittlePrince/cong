@@ -83,6 +83,7 @@ module.exports = (grunt)->
                     'dist/css/tradingCenter/account/index.css': ['src/pages/tradingCenter/account/index.less']
                     'dist/css/tradingCenter/account/info.css': ['src/pages/tradingCenter/account/info.less']
                     'dist/css/tradingCenter/layout.css': ['src/pages/tradingCenter/layout.less']
+                    'dist/css/tradingCenter/mynews/messagenotification.css': ['src/pages/tradingCenter/mynews/messagenotification.less']
 
         cssmin:
             compress:

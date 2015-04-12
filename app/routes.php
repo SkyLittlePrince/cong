@@ -58,6 +58,15 @@ Route::get('/auction/{step?}', function($step = null)
 });
 
 // 交易中心
+Route::get('/mynews/{step?}', function($step = null) 
+{
+	if($step == null) {
+		return View::make('tradingCenter.mynews.messagenotification');
+	} else {
+		return View::make('tradingCenter.mynews.' . $step);
+	}
+});
+
 Route::get('/employer/{step?}', function($step = null) 
 {
 	if($step == null) {
