@@ -69,6 +69,6 @@ Route::get('/employer/{step?}', function($step = null)
 
 Route::get('/account', function()
 {
-	return View::make('tradingCenter.account.info');
+	return View::make('tradingCenter.account.index');
 });
 
