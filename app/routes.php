@@ -61,7 +61,7 @@ Route::get('/auction/{step?}', function($step = null)
 Route::get('/mynews/{step?}', function($step = null) 
 {
 	if($step == null) {
-		return View::make('tradingCenter.mynews.messagenotification');
+		return View::make('tradingCenter.mynews.index');
 	} else {
 		return View::make('tradingCenter.mynews.' . $step);
 	}
@@ -75,6 +75,8 @@ Route::get('/employer/{step?}', function($step = null)
 		return View::make('tradingCenter.employer.' . $step);
 	}
 });
+
+
 
 Route::get('/account', function()
 {

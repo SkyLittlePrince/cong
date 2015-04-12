@@ -6,7 +6,7 @@
 
 @section('css')
     @parent
-    <link rel="stylesheet" type="text/css" href="./dist/css/tradingCenter/account/index.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/tradingCenter/account/index.css">
 @stop
 
 @section('tradingCenter-left-nav')

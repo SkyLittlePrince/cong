@@ -6,8 +6,8 @@
 
 @section('css')
     @parent
-    <link rel="stylesheet" type="text/css" href="./dist/css/tradingCenter/mynews/messagenotification.css">
-    <link rel="stylesheet" type="text/css" href="./dist/css/checkbox/checkbox.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/tradingCenter/mynews/index.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/checkbox/checkbox.css">
 @stop
 
 @section('tradingCenter-left-nav')
@@ -116,5 +116,5 @@
 
 @section('js')
     @parent
-    <script type="text/javascript" src='./dist/js/pages/messagenotification.js'></script>
+    <script type="text/javascript" src='/dist/js/pages/index.js'></script>
 @stop
