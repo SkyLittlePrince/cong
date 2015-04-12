@@ -6,6 +6,7 @@
 @section('css')
     @parent
     <link rel="stylesheet" type="text/css" href="./dist/css/tradingCenter/mynews/messagenotification.css">
+    <link rel="stylesheet" type="text/css" href="./dist/css/checkbox/checkbox.css">
 @stop
 
 @section('body')
@@ -14,14 +15,14 @@
     @include('components.task-banner')
     @include('components.mynewsleft')
    	@include('components.tradingcenterheader')
-   	<div class="mynews-component message-notification">
+   	<div class="mynews-component message-notification my-self-checkbox">
    		<div class="message-wrapper">
 	   		<div class="banner">
 	   			<span class="title">广告/活动(<span>2</span>)</span>
 	   			<span class="status">未读/全部(<span>3</span>)</span>
 	   		</div>
 	   		<div class="operate">
-                <label for="check-box">
+                <label class="my-self-checkbox-label">
                     <input type="checkbox" name="message" value="all" class="select-all">
                 </label>
                 <div class="col-right">
@@ -33,7 +34,23 @@
 	   		<div class="messages">
 	   			<ul>
 	   				<li class="one-message">
-                        <label>
+                        <label class="my-self-checkbox-label">
+                            <input type="checkbox" name="message" value="message1" style="display:hidden;">
+                        </label>             
+                        <div class="col-right">
+                            你秀才艺我给钱,现在正式接收报名!
+                        </div>
+                    </li>
+                    <li class="one-message">
+                        <label class="my-self-checkbox-label">
+                            <input type="checkbox" name="message" value="message1" style="display:hidden;">
+                        </label>             
+                        <div class="col-right">
+                            你秀才艺我给钱,现在正式接收报名!
+                        </div>
+                    </li>
+                    <li class="one-message">
+                        <label class="my-self-checkbox-label">
                             <input type="checkbox" name="message" value="message1">
                         </label>             
                         <div class="col-right">
@@ -41,7 +58,7 @@
                         </div>
                     </li>
                     <li class="one-message">
-                        <label>
+                        <label class="my-self-checkbox-label">
                             <input type="checkbox" name="message" value="message1">
                         </label>             
                         <div class="col-right">
@@ -49,7 +66,7 @@
                         </div>
                     </li>
                     <li class="one-message">
-                        <label>
+                        <label class="my-self-checkbox-label">
                             <input type="checkbox" name="message" value="message1">
                         </label>             
                         <div class="col-right">
@@ -57,7 +74,7 @@
                         </div>
                     </li>
                     <li class="one-message">
-                        <label>
+                        <label class="my-self-checkbox-label">
                             <input type="checkbox" name="message" value="message1">
                         </label>             
                         <div class="col-right">
@@ -65,23 +82,7 @@
                         </div>
                     </li>
                     <li class="one-message">
-                        <label>
-                            <input type="checkbox" name="message" value="message1">
-                        </label>             
-                        <div class="col-right">
-                            你秀才艺我给钱,现在正式接收报名!
-                        </div>
-                    </li>
-                    <li class="one-message">
-                        <label>
-                            <input type="checkbox" name="message" value="message1">
-                        </label>             
-                        <div class="col-right">
-                            你秀才艺我给钱,现在正式接收报名!
-                        </div>
-                    </li>
-                    <li class="one-message">
-                        <label>
+                        <label class="my-self-checkbox-label">
                             <input type="checkbox" name="message" value="message1">
                         </label>             
                         <div class="col-right">
@@ -117,4 +118,5 @@
 
 @section('js')
     @parent
+    <script type="text/javascript" src='./dist/js/pages/messagenotification.js'></script>
 @stop
