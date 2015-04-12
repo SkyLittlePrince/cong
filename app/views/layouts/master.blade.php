@@ -17,7 +17,7 @@
 <body style="margin:0">
 	<div id = "wrapper">
 		@section('body')
-			<div></div>
+			@include('components.header')
 		@show
 	</div>
 	@section('js')

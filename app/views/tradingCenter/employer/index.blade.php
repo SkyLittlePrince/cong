@@ -1,20 +1,20 @@
-@extends('layouts.master')
+@extends('tradingCenter.layout')
 
 @section('title')
     <title>丛丛网－雇主首页</title>
 @stop
+
 @section('css')
     @parent
-    <link rel="stylesheet" type="text/css" href="./dist/css/tradingCenter/employer/index.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/tradingCenter/employer/index.css">
 @stop
 
-@section('body')
-@include('components.header')
-<div id="main">
-    @include('components.task-banner')
+@section('tradingCenter-left-nav')
     @include('components.employerleft')
-   	@include('components.tradingcenterheader')
-    <div class="employer-content">
+@stop
+
+@section('tradingCenter-content')
+	<div class="employer-content">
 	    <div class="my-order">
 	    	<div class="order-banner">我的订单</div>
 	    	<div class="one-order">
@@ -62,40 +62,34 @@
 	    </div>
 
 	    <div class="my-history">
-    		<div class="trade one-history left">
-    			<div class="banner">我和他们交易过</div>
-    			<div class="panel">
-    				<p class="message">Hi~你还没有交易过呢，快去看看哪些服务商能为你解决问题吧~</p>
-    				<a class="see-now" href="#">立即查看</a>
-    			</div>
-    		</div>
-    		<div class="trade one-history right">
-    			<div class="banner">我收藏的服务</div>
-    			<div class="panel">
-    				<p class="message">Hi~你还没收藏任何服务，收藏服务能让你快速找到中意的服务及服务商~</p>
-    				<a class="see-now" href="#">立即查看</a>
-    			</div>
-    		</div>
-    		<div class="trade one-history left">
-    			<div class="banner">我收藏的需求</div>
-    			<div class="panel">
-    				<p class="message">Hi~你还没收藏任何需求，现在去需求大厅看看吧~</p>
-    				<a class="see-now" href="#">立即查看</a>
-    			</div>
-    		</div>
-    		<div class="trade one-history right">
-    			<div class="banner">最近浏览的需求</div>
-    			<div class="panel">
-    				<p class="message">Hi~快去看看小伙伴们有哪些需求在这里成功得到解决~</p>
-    				<a class="see-now" href="#">立即查看</a>
-    			</div>
-    		</div>
+			<div class="trade one-history left">
+				<div class="banner">我和他们交易过</div>
+				<div class="panel">
+					<p class="message">Hi~你还没有交易过呢，快去看看哪些服务商能为你解决问题吧~</p>
+					<a class="see-now" href="#">立即查看</a>
+				</div>
+			</div>
+			<div class="trade one-history right">
+				<div class="banner">我收藏的服务</div>
+				<div class="panel">
+					<p class="message">Hi~你还没收藏任何服务，收藏服务能让你快速找到中意的服务及服务商~</p>
+					<a class="see-now" href="#">立即查看</a>
+				</div>
+			</div>
+			<div class="trade one-history left">
+				<div class="banner">我收藏的需求</div>
+				<div class="panel">
+					<p class="message">Hi~你还没收藏任何需求，现在去需求大厅看看吧~</p>
+					<a class="see-now" href="#">立即查看</a>
+				</div>
+			</div>
+			<div class="trade one-history right">
+				<div class="banner">最近浏览的需求</div>
+				<div class="panel">
+					<p class="message">Hi~快去看看小伙伴们有哪些需求在这里成功得到解决~</p>
+					<a class="see-now" href="#">立即查看</a>
+				</div>
+			</div>
 	    </div>
-    </div>
-</div>
-@include('components.footer')
-@stop
-
-@section('js')
-    @parent
+	</div>
 @stop

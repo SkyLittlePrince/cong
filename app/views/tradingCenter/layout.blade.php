@@ -1,28 +1,23 @@
 @extends('layouts.master')
 
-@section('title')
-    <title>丛丛网－交易中心</title>
-@stop
 @section('css')
-    @parent
-    <link rel="stylesheet" type="text/css" href="./dist/css/tradingCenter/layout.css">
-@stop
+    <link rel="stylesheet" type="text/css" href="/dist/css/tradingCenter/layout.css">
+@append
 
 @section('body')
-@include('components.header')
-<div id="main">
-    @include('components.task-banner')
-    @section('left-nav')
-    	@include('components.employerleft')
-   	@show
-   	@include('components.tradingcenterheader')
-   	@section('content')
-    	
-    @show
-</div>
-@include('components.footer')
-@stop
+    @parent
+    <div id="main">
+        @include('components.task-banner')
+
+        @yield('tradingCenter-left-nav')
+
+       	@include('components.tradingcenterheader')
+
+       	@yield('tradingCenter-content')
+    </div>
+    @include('components.footer')
+@append
 
 @section('js')
-    @parent
-@stop
+
+@append
