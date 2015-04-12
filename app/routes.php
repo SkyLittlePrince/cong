@@ -65,7 +65,7 @@ Route::get('bounty-hunter/auction', function($step = null)
 Route::get('/mynews/{step?}', function($step = null) 
 {
 	if($step == null) {
-		return View::make('tradingCenter.mynews.messagenotification');
+		return View::make('tradingCenter.mynews.index');
 	} else {
 		return View::make('tradingCenter.mynews.' . $step);
 	}

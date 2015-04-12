@@ -2,9 +2,7 @@
 @import './common.less';
 @page-address: "../../../../images/icon";
 
-@width: 750px;
-@margin: 32px;
-.btn(@padding: 3px 9px) {
+.button(@padding: 3px 9px) {
 	font-size: 16px;
 	padding:@padding;
 	background-color: #7ecaca;
@@ -20,47 +18,18 @@
 	font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体"; 
 	padding-bottom: 10px;
 	.message-wrapper {
-		width: @width - 2 * @margin;
-		margin: 0 auto;
-		margin-top: 18px;
-		.banner {
-			border-bottom: solid 1px #dcdcdc;
-			overflow: hidden;
-			color: #787878;
-			span {
-				padding-bottom: 7px;
-				display: inline-block;
-			}
-			.title {
-				float: left;
-			}
-			.status {
-				float: right;
-			}
-		}
-		label {
-			display: inline-block;
-			margin-top: 1px;
-			float: left;
-		}
-		.col-right {
-			float: left;
-			padding-left: 11px;
-		}
-
 		.operate {
 			margin-top: 15px;
 			overflow: hidden;
 			input[type="button"] {
-				.btn();
+				.button();
 			}
 			.mark-all {
 				margin-left: 0;
 			}
 		}
-
 		.messages {
-			color: #c4b49a;
+			color: #c5b496;
 			padding-bottom: 17px;
 			border-bottom: solid 1px #dcdcdc;
 			ul li {
@@ -72,7 +41,6 @@
 				}
 			}
 		}
-
 		.pagination {
 			overflow: hidden;
 			color: #c4b49a;
@@ -100,7 +68,7 @@
 				color: #6b6646;
 				font-weight: 600;
 				input[type="button"] {
-					.btn(3px 16px);
+					.button(3px 16px);
 				}
 				input[type="text"] {
 					width: 48px;

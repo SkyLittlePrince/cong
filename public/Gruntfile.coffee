@@ -96,7 +96,10 @@ module.exports = (grunt)->
                     'dist/css/tradingCenter/account/protect-password.css': ['src/pages/tradingCenter/account/protect-password.less']
                     'dist/css/tradingCenter/account/pay-account.css': ['src/pages/tradingCenter/account/pay-account.less']
                     'dist/css/tradingCenter/layout.css': ['src/pages/tradingCenter/layout.less']
-                    'dist/css/tradingCenter/mynews/messagenotification.css': ['src/pages/tradingCenter/mynews/messagenotification.less']
+                    'dist/css/tradingCenter/mynews/index.css': ['src/pages/tradingCenter/mynews/index.less']
+                    'dist/css/tradingCenter/mynews/setting.css': ['src/pages/tradingCenter/mynews/setting.less']
+                    'dist/css/tradingCenter/mynews/history.css': ['src/pages/tradingCenter/mynews/history.less']
+                    'dist/css/tradingCenter/mynews/trading-reminder.css': ['src/pages/tradingCenter/mynews/trading-reminder.less']
 
         cssmin:
             compress:
