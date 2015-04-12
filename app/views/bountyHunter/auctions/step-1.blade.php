@@ -45,7 +45,7 @@
                 </div>
             </form>
             <div class="next-step">
-                <a href="/auction/step-2" class="btn">下一步</a>
+                <a href="/bounty-hunter/auction?step=2" class="btn">下一步</a>
             </div>
         </div>
     </div>

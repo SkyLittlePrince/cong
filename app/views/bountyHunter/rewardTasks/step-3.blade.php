@@ -88,8 +88,8 @@
                 </ul>
             </form>
             <div class="next-step">
-                <a href="/reward-task/step-2" class="btn last">上一步</a>
-                <a href="/reward-task/step-4" class="btn next">下一步</a>
+                <a href="/bounty-hunter/reward-task?step=2" class="btn last">上一步</a>
+                <a href="/bounty-hunter/reward-task?step=4" class="btn next">下一步</a>
             </div>
         </div>
     </div>

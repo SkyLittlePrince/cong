@@ -1,12 +1,12 @@
 @extends('tradingCenter.layout')
 
 @section('title')
-    <title>丛丛网－账号设置</title>
+    <title>丛丛网－账号密码保护</title>
 @stop
 
 @section('css')
     @parent
-    <link rel="stylesheet" type="text/css" href="/dist/css/tradingCenter/account/index.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/tradingCenter/account/protect-password.css">
 @stop
 
 @section('tradingCenter-left-nav')

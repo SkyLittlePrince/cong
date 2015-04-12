@@ -2,7 +2,8 @@
 $(document).ready ()->
 	pathname = document.location.pathname
 
-	target = pathname.split("/")[1];
+	target = pathname.split("/")[2];
+	console.log target
 
 	if(target == "reward-task")
 		index = 0;

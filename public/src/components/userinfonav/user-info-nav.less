@@ -1,0 +1,45 @@
+@info-width: 50px;
+@width: 175px;
+@component-color: #bca890;
+
+#user-info-banner {
+	.user-info {
+		width: 100%;
+		height: @info-width;
+		padding-top: 11px;
+		color: @component-color;
+
+		.component {
+			float: left;
+		}
+		.avatar {
+			padding: 0 8px 0 14px;  
+			img {
+				width: @info-width;
+				height: @info-width;
+			}
+		}
+		.info {
+			width: @width - @info-width - 22;
+			padding-top: 6px;
+			font-size: 12px;
+			line-height: 1.5em;
+		}
+	}
+	//地点样式
+	.address-info {
+		@line-height: 33px;
+		overflow: hidden;
+		margin-top: 10px;
+		width: 100%;
+		font-size: 14px;
+		li {
+			height: @line-height;
+			line-height: @line-height;
+			width: 33.33%;
+			float: left;
+			color: @component-color;
+			text-align: center;
+		}
+	}
+}

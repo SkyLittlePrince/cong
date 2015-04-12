@@ -42,8 +42,8 @@
             </div>
 
             <div class="next-step">
-                <a href="/reward-task/step-1" class="btn last">上一步</a>
-                <a href="/reward-task/step-3" class="btn next">现在支付</a>
+                <a href="/bounty-hunter/reward-task?step=1" class="btn last">上一步</a>
+                <a href="/bounty-hunter/reward-task?step=3" class="btn next">现在支付</a>
             </div>
         </div>
     </div>

@@ -37,8 +37,8 @@
                 </form>
             </div>
             <div class="next-step">
-                <a href="/reward-task/step-3" class="btn last">上一步</a>
-                <a href="/reward-task/step-5" class="btn next">下一步</a>
+                <a href="/bounty-hunter/reward-task?step=3" class="btn last">上一步</a>
+                <a href="/bounty-hunter/reward-task?step=5" class="btn next">下一步</a>
             </div>
         </div>
     </div>

@@ -3,10 +3,10 @@
 	<div class="nav">
 		<ul>
 			<li>
-				<a href="/reward-task">悬赏任务</a>
+				<a href="/bounty-hunter/reward-task">悬赏任务</a>
 			</li>
 			<li>
-				<a href="/auction">倒价竞拍</a>
+				<a href="/bounty-hunter/auction">倒价竞拍</a>
 			</li>
 			<li>
 				<a href="">议价招标</a>

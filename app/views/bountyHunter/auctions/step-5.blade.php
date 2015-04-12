@@ -20,7 +20,7 @@
                 <p>任务发布成功</p>
             </div>
             <div class="next-step">
-                <a href="/rewardtask" class="btn return">返回赏金猎人</a>
+                <a href="/bounty-hunter" class="btn return">返回赏金猎人</a>
                 <a href="/" class="btn next">返回首页</a>
             </div>
         </div>

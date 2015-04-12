@@ -19,5 +19,5 @@
 @append
 
 @section('js')
-
+	
 @append

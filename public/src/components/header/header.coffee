@@ -3,12 +3,14 @@ $(document).ready ()->
 	pathname = document.location.pathname
 
 	target = pathname.split("/")[1];
-
+	console.log target
+	console.log "cyrilzhao"
+	
 	if(target == "")
 		index = 0;
-	else if  (target == "employer")
+	else if (target == "employer")
 		index  = 1
-	else if(target == "rewardtask") 
+	else if(target == "bounty-hunter") 
 		index = 2;
 
 	if(index != undefined)
