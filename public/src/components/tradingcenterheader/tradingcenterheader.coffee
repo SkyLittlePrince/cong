@@ -1,7 +1,7 @@
 $(document).ready ()->
 	pathname = document.location.pathname
 
-	target = pathname.split("/")[1];
+	target = pathname.split("/")[2];
 
 	if(target == "employer")
 		index = 0;
@@ -12,5 +12,4 @@ $(document).ready ()->
 
 	if(index != undefined)
 		nav = $("#trading-center-header").find(".nav").removeClass("active");
-		console.log($(nav[index]));
 		$(nav[index]).addClass("active");

@@ -3,12 +3,9 @@ $(document).ready ()->
 	pathname = document.location.pathname
 
 	target = pathname.split("/")[1];
-	console.log target
-	console.log "cyrilzhao"
-	
 	if(target == "")
 		index = 0;
-	else if (target == "employer")
+	else if (target == "trading-center")
 		index  = 1
 	else if(target == "bounty-hunter") 
 		index = 2;

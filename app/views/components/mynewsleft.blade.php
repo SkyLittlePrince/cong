@@ -1,4 +1,4 @@
-<div id="employer-left-nav">
+<div id="employer-left-nav" class="left-nav-bar">
     @include('components.user-info-banner')
     <div class="nav">
         <ul>

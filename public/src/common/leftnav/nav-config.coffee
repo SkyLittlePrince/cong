@@ -1,10 +1,27 @@
 
 navConfig = {
+	bountyHunter: {
+		subNavIndexes: {
+
+		},
+		navIndexes: {
+			"reward-task": 0,
+			"auction": 1
+		}
+	}
+	employer: {
+		subNavIndexes: {
+
+		},
+		navIndexes: {
+			
+		}
+	}
 	account: {
 		subNavIndexes: {
 			"base-info": 0,
-			"address": 1,
-			"contact": 2,
+			"contact": 1,
+			"address": 2,
 			"card": 3,
 			"bind-phone": 4,
 			"bind-email": 5,
@@ -13,7 +30,7 @@ navConfig = {
 			"protect-login": 8,
 			"protect-password": 9
 		},
-		NavIndexes: {
+		navIndexes: {
 			"base-info": 0,
 			"address": 0,
 			"contact": 0,
@@ -27,6 +44,14 @@ navConfig = {
 			"protect-login": 4,
 			"protect-password": 4,
 			"pay-account": 5
+		}
+	},
+	mynews: {
+		subNavIndexes: {
+
+		},
+		navIndexes: {
+			
 		}
 	}
 }

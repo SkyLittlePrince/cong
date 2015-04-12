@@ -14,7 +14,7 @@
 @stop
 
 @section('tradingCenter-content')
-	
+	<div>cyrilzhao</div>
 @stop
 
 @section('js')
