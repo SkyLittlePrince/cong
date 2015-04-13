@@ -1,0 +1,89 @@
+@order-component-padding-top: 23px;
+@order-bg-color: #9fd5d5;
+@one-order-height: 79px;
+@page-color: #666633; 
+.order-p {
+    padding-top: @order-component-padding-top;
+}
+.line-two {
+    margin-top: 5px;
+}
+.banner(@width, @height, @color) {
+        width: @width;
+        height: @height;
+        background-color: @order-bg-color;
+        line-height: @height;
+        color: @color;
+        text-align: center;
+}
+.my-order {
+    .order-banner {
+        .banner(100%, 29px, #fff);
+    }
+    .one-order {
+        background-color: #fff;
+        margin-top: 7px;
+        height: @one-order-height;
+        overflow: hidden;
+        color: @page-color;
+        font-size: 13px;
+
+        @num-width: 113px;
+        @date-width: 145px;
+        @pic-width: 112px;
+        @title-width: 241px;
+        @status-width: 750px - @num-width - @date-width - @pic-width - @title-width;
+        .order-component {
+            float: left;
+            height: 100%;
+            overflow: hidden;
+        }
+        .order-child(@width, @padding-left: 0px) {
+            font-size: 12px;
+            width: @width;
+            p {
+                padding-left: @padding-left; 
+            }
+        }
+        .order-num {
+            .order-child(@num-width, 19px);
+            p {
+                word-break:break-all;   //单词强制换行
+            }
+        }
+        .order-date {
+            width: @date-width;
+            font-weight: bold;
+            p {
+                line-height: @one-order-height;
+                float: right;
+            }
+        }   
+        .order-pic {
+            width: @pic-width;
+            overflow: hidden;
+            //实现图片的垂直居中
+            display: table;
+            span {
+                display: table-cell;
+                vertical-align: middle;
+            }
+            img {
+                width: 40px;
+                height: 40px;
+                float: right;
+            }
+        }
+        .order-title {
+            .order-child(@title-width, 20px);
+            .price {
+                font-size: 16px;
+                color: #b08511;
+            }
+        }
+        .order-status {
+            font-weight: bold;
+            .order-child(@status-width, 60px);
+        }
+    }
+}

@@ -3,7 +3,7 @@ $(document).ready ()->
 
 	target = pathname.split("/")[2];
 
-	if(target == "employer")
+	if(target == "buyer")
 		index = 0;
 	else if  (target == "account")
 		index  = 1
