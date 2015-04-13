@@ -84,11 +84,16 @@ Route::get('/trading-center/mynews/trading-reminder', function()
 });
 
 
-// 交易中心-雇主首页
-Route::get('/trading-center/employer', function() 
+// 交易中心-买家中心
+Route::get('/trading-center/buyer/', function() 
 {
-	return View::make('tradingCenter.employer.index');
+	return View::make('tradingCenter.buyer-center.index');
 });
+Route::get('/trading-center/buyer/trading/list', function() 
+{
+	return View::make('tradingCenter.buyer-center.trading-manage.trading-list');
+});
+
 
 // 交易中心－账号设置
 Route::get('/trading-center/account', function()
