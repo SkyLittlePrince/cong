@@ -62,16 +62,27 @@ Route::get('bounty-hunter/auction', function($step = null)
 });
 
 // 交易中心-我的消息
-Route::get('/trading-center/mynews', function($step = null) 
+Route::get('/trading-center/mynews', function()
 {
-	$step = Input::get("step");
-
-	if($step == null) {
-		return View::make('tradingCenter.mynews.index');
-	} else {
-		return View::make('tradingCenter.mynews.step-' . $step);
-	}
+	return View::make('tradingCenter.mynews.notification');
 });
+Route::get('/trading-center/mynews/notification', function()
+{
+	return View::make('tradingCenter.mynews.notification');
+});
+Route::get('/trading-center/mynews/setting', function()
+{
+	return View::make('tradingCenter.mynews.setting');
+});
+Route::get('/trading-center/mynews/history', function()
+{
+	return View::make('tradingCenter.mynews.history');
+});
+Route::get('/trading-center/mynews/trading-reminder', function()
+{
+	return View::make('tradingCenter.mynews.trading-reminder');
+});
+
 
 // 交易中心-雇主首页
 Route::get('/trading-center/employer', function() 

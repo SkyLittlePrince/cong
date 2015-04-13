@@ -11,7 +11,7 @@
 @stop
 
 @section('tradingCenter-left-nav')
-    @include('components.mynewsleft')
+    @include('components.mynews-left')
 @stop
 
 @section('tradingCenter-content')
