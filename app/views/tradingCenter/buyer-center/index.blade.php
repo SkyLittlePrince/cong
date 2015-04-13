@@ -6,7 +6,7 @@
 
 @section('css')
     @parent
-    <link rel="stylesheet" type="text/css" href="/dist/css/tradingCenter/employer/index.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/tradingCenter/buyer-center/index.css">
 @stop
 
 @section('tradingCenter-left-nav')
@@ -14,7 +14,7 @@
 @stop
 
 @section('tradingCenter-content')
-	<div class="employer-content">
+	<div class="buyer-content">
 	    <div class="my-order">
 	    	<div class="order-banner">我的订单</div>
 	    	<div class="one-order">

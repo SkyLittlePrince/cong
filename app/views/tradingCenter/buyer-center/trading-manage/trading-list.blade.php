@@ -6,7 +6,7 @@
 
 @section('css')
     @parent
-    <link rel="stylesheet" type="text/css" href="/dist/css/tradingCenter/employer/index.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/tradingCenter/buyer-center/trading-manage/trading-list.css">
 @stop
 
 @section('tradingCenter-left-nav')
@@ -14,7 +14,7 @@
 @stop
 
 @section('tradingCenter-content')
-	<div class="employer-content">
+	<div class="buyer-content">
 	    <div class="my-order">
 	    	<div class="order-banner">我的交易</div>
 	    	<div class="one-order">
@@ -102,6 +102,25 @@
 				</div>
 	    	</div>
 	    </div>
+	    <div class="pagination">
+                <div class="right to-page">
+                    <p>
+                        共<span class="page-count">3</span>页,到第<input type="text" >页
+                        <input type="button" value="确定">
+                    </p>
+                </div>
+	   			<div class="page-num right">
+                    <a href="#">
+                        <img src="/images/icon/icon-arrow-left.png" alt="icon-left" width="28" height="28" />         
+                    </a>
+                    <span class="num active">1</span>
+                    <span class="num">2</span>
+                    <span class="num">3</span>
+                    <a href="#">
+                        <img src="/images/icon/icon-arrow-right.png" alt="icon-right" width="28" height="28" />
+                    </a>
+                </div>
+	   		</div>
 	</div>
 @stop
 

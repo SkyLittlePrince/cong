@@ -80,7 +80,7 @@ module.exports = (grunt)->
                     'dist/css/bountyHunter/auction/step-3.css': ['src/pages/bountyHunter/auction/step-3.less']
                     'dist/css/bountyHunter/auction/step-4.css': ['src/pages/bountyHunter/auction/step-4.less']
                     'dist/css/bountyHunter/auction/step-5.css': ['src/pages/bountyHunter/auction/step-5.less']
-                    'dist/css/tradingCenter/employer/index.css': ['src/pages/tradingCenter/employer/index.less']
+                    'dist/css/tradingCenter/buyer-center/index.css': ['src/pages/tradingCenter/buyer-center/index.less']
                     'dist/css/tradingCenter/account/index.css': ['src/pages/tradingCenter/account/index.less']
                     'dist/css/tradingCenter/account/base-info.css': ['src/pages/tradingCenter/account/base-info.less']
                     'dist/css/tradingCenter/account/contact.css': ['src/pages/tradingCenter/account/contact.less']
@@ -100,6 +100,8 @@ module.exports = (grunt)->
                     'dist/css/tradingCenter/mynews/setting.css': ['src/pages/tradingCenter/mynews/setting.less']
                     'dist/css/tradingCenter/mynews/history.css': ['src/pages/tradingCenter/mynews/history.less']
                     'dist/css/tradingCenter/mynews/trading-reminder.css': ['src/pages/tradingCenter/mynews/trading-reminder.less']
+                    'dist/css/tradingCenter/buyer-center/trading-manage/trading-list.css': ['src/pages/tradingCenter/buyer-center/trading-manage/trading-list.less']
+                    'dist/css/tradingCenter/buyer-center/trading-manage/trading-comment.css': ['src/pages/tradingCenter/buyer-center/trading-manage/trading-comment.less']
 
         cssmin:
             compress:

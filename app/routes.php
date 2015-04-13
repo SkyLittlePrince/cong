@@ -93,6 +93,11 @@ Route::get('/trading-center/buyer/trading/list', function()
 {
 	return View::make('tradingCenter.buyer-center.trading-manage.trading-list');
 });
+Route::get('/trading-center/buyer/trading/comment', function() 
+{
+	return View::make('tradingCenter.buyer-center.trading-manage.trading-comment');
+});
+
 
 
 // 交易中心－账号设置

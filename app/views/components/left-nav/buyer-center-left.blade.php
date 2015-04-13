@@ -3,7 +3,7 @@
 	<div class="nav">
 		<ul>
 			<li>
-				<a href="">交易管理</a>
+				<a href="/trading-center/buyer/trading/list">交易管理</a>
 			</li>
 			<li>
 				<a href="">我的账本</a>

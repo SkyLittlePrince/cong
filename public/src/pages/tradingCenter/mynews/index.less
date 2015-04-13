@@ -1,5 +1,6 @@
 @import '../../../common/common.less';
 @import './common.less';
+@import './../common/pagination.less';
 @page-address: "../../../../images/icon";
 
 .button(@padding: 3px 9px) {
@@ -40,42 +41,6 @@
 					padding-left: 37px;
 				}
 			}
-		}
-		.pagination {
-			overflow: hidden;
-			color: #c4b49a;
-			margin-top: 18px;
-			.page-num {
-				margin-right: 12px;
-				.num {
-					display: inline-block;
-					line-height: 28px;
-					width: 25px;
-					height: 28px;
-					text-align: center;
-					font-weight: 600;
-					font-size: 16px;
-					color: #6b6646;
-					&.active {
-						color: #7dc3c3;
-					}
-				}
-				img {
-					vertical-align: top;
-				}
-			}
-			.to-page {
-				color: #6b6646;
-				font-weight: 600;
-				input[type="button"] {
-					.button(3px 16px);
-				}
-				input[type="text"] {
-					width: 48px;
-					height: 13px;
-					margin:0 2px;
-				}
- 			}
 		}
 	}
 }
