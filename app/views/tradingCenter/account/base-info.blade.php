@@ -10,7 +10,7 @@
 @stop
 
 @section('tradingCenter-left-nav')
-    @include('components..left-nav.account-left-nav')
+    @include('components.left-nav.account-left-nav')
 @stop
 
 @section('tradingCenter-content')

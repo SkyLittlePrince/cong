@@ -10,7 +10,7 @@
 @stop
 
 @section('tradingCenter-left-nav')
-    @include('components..left-nav.account-left-nav')
+    @include('components.left-nav.account-left-nav')
 @stop
 
 @section('tradingCenter-content')
@@ -19,31 +19,31 @@
 		<hr />		
 		<div class="content-main">
 			<div class="content-row">
-				<label>电子邮箱：</label>
+				<label for="email">电子邮箱：</label>
 				<div class="content-input">
 					<input type="text" id="email" name="email" />
 				</div>
 			</div>
 			<div class="content-row">
-				<label>手机号码：</label>
+				<label for="phone">手机号码：</label>
 				<div class="content-input">
 					<input type="text" id="phone" name="phone" />
 				</div>
 			</div>
 			<div class="content-row">
-				<label>微信：</label>
+				<label for="wechat">微信：</label>
 				<div class="content-input">
 					<input type="text" id="wechat" name="wechat" />
 				</div>
 			</div>
 			<div class="content-row">
-				<label>QQ：</label>
+				<label for="QQ">QQ：</label>
 				<div class="content-input">
 					<input type="text" id="QQ" name="QQ" />
 				</div>
 			</div>
 			<div class="content-row">
-				<label>所在地：</label>
+				<label for="prov">所在地：</label>
 				<div class="content-input">
 					<input type="text" id="prov" name="prov" /> 省 
 					<input type="text" id="city" name="city" /> 市 
@@ -52,7 +52,7 @@
 				</div>
 			</div>
 			<div class="content-row">
-				<label>详细地址：</label>
+				<label for="address">详细地址：</label>
 				<div class="content-input">
 					<input type="text" id="address" name="address" />
 				</div>
