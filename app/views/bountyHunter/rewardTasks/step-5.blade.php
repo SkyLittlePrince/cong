@@ -12,7 +12,7 @@
     @parent
     <div id="main">
         @include('components.task-banner')
-        @include('components.bountyhunterleft')
+        @include('components.left-nav.bounty-hunter-left')
         @include('components.rewardtaskheader')
         <div class="step5 rewardtaskstep">
             <div class="success">

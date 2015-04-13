@@ -25,7 +25,7 @@
         </div>
 
         <div class="baner">
-            @include('components.bountyhunterleft')
+            @include('components.left-nav.bounty-hunter-left')
             @include('components.notification-banner')
             <div class="clear"></div>
         </div>

@@ -1,5 +1,5 @@
 <div id="bounty-hunter-left-nav" class="left-nav-bar">
-	@include('components.user-info-banner')
+	@include('components.left-nav.user-info-banner')
 	<div class="nav">
 		<ul>
 			<li>

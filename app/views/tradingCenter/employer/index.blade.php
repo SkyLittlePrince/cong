@@ -10,7 +10,7 @@
 @stop
 
 @section('tradingCenter-left-nav')
-    @include('components.employerleft')
+    @include('components.left-nav.employer-left')
 @stop
 
 @section('tradingCenter-content')
