@@ -58,7 +58,7 @@
 				</div>
 			</div>
 			<div class="content-row">
-
+                <a href="" class="btn" id="contact-save-btn">保存</a>
 			</div>
 		</div>
 	</div>

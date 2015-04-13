@@ -14,6 +14,7 @@
        	@include('components.tradingcenterheader')
 
        	@yield('tradingCenter-content')
+        <div class="clear"></div>
     </div>
     @include('components.footer')
 @append
