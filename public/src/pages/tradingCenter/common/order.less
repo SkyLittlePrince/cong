@@ -17,8 +17,43 @@
         text-align: center;
 }
 .my-order {
+    @num-width: 113px;
+    @date-width: 145px;
+    @pic-width: 112px;
+    @title-width: 241px;
+    @status-width: 750px - @num-width - @date-width - @pic-width - @title-width;
     .order-banner {
         .banner(100%, 29px, #fff);
+    }
+    .list-banner {
+        ul {
+            overflow: hidden;
+            height: 33px;
+            background-color: #fff;
+            font-size: 16px;
+            color: #6b6648; 
+            margin-top: 12px;
+            li {
+                float: left;
+                line-height: 33px;
+            }
+            .info {
+                width: @num-width;
+                text-align: center;
+            }
+            .date {
+                width: @date-width;
+                text-indent: 100px;
+            }
+            .name {
+                width: @pic-width + @title-width;
+                text-indent: 200px;
+            }
+            .status {
+                width: @status-width;
+                text-indent: 67px;
+            }
+        }
     }
     .one-order {
         background-color: #fff;
@@ -28,11 +63,6 @@
         color: @page-color;
         font-size: 13px;
 
-        @num-width: 113px;
-        @date-width: 145px;
-        @pic-width: 112px;
-        @title-width: 241px;
-        @status-width: 750px - @num-width - @date-width - @pic-width - @title-width;
         .order-component {
             float: left;
             height: 100%;

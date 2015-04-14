@@ -97,6 +97,14 @@ Route::get('/trading-center/buyer/trading/comment', function()
 {
 	return View::make('tradingCenter.buyer-center.trading-manage.trading-comment');
 });
+Route::get('/trading-center/buyer/mybook', function() 
+{
+	return View::make('tradingCenter.buyer-center.my-book.my-book');
+});
+Route::get('/trading-center/buyer/comment/manage', function() 
+{
+	return View::make('tradingCenter.buyer-center.comment-manage.comment-manage');
+});
 
 
 

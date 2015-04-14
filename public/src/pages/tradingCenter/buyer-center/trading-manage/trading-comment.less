@@ -1,8 +1,11 @@
+@import './../../../../common/common.less';
+
 #main {
     width: 1024px;
     margin: 0 auto;
     margin-top: 16px;
     .banner {
+
         @banner-height: 65px;
         background-color: #fff;
         width: 100%;
@@ -13,6 +16,44 @@
         .order-component {
             margin-left: 27px;
             line-height: @banner-height;
+        }
+    }
+    .comment-main {
+        background-color: #fff;
+        margin-top: 14px;
+        overflow: hidden;
+        padding-bottom: 65px;
+        .pic {
+            float: left;
+            margin-top: 33px;
+            margin-left: 20px;
+        }
+        .info {
+            margin-top: 58px;
+            float: left;
+            margin-left: 24px;
+            font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
+                font-size: 14px;
+            .tip {
+                color: #af8d4d;
+                padding-bottom: 21px;
+            }
+            .score {
+                padding-bottom: 15px;
+                color: #666;
+            }
+            textarea {
+                width: 619px;
+                height: 135px;
+                .border-radius();
+                outline: none;
+                font-size: 16px;
+                color: #666;
+            }
+            .operate-btn {
+                text-align: center;
+                margin-top: 43px;
+            }
         }
     }
 }
