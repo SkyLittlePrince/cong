@@ -1,0 +1,51 @@
+@import '../../../common/common.less';
+
+.protect-login-content {
+	.content-main {
+		margin-top: 20px;
+
+		.content-row {
+			@line-height: 35px;
+
+			width: 100%;
+			float: left;
+			margin-bottom: 15px;
+
+			img {
+				float: left;
+			}
+
+			.warning {
+				color: #c5b498;
+				line-height: 22px;
+				vertical-align: middle;
+				float: left;
+				margin-left: 12px; 
+				width: 650px;
+			}
+
+			.label {
+				float: left;
+				line-height: @line-height;
+				vertical-align: middle;
+				width: 100px;
+			}
+
+			.content-input {
+				float: left;
+
+				input[type="text"] {
+					.input(284px, 35px);
+				}
+			}
+
+			#change-password-confirm-btn {
+				margin: 0 auto;
+				margin-bottom: 20px;
+				margin-top: 20px;
+				display: block;
+				font-size: 14px;
+			}
+		}
+	}
+}
