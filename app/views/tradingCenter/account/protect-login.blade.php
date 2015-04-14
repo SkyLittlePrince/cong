@@ -23,8 +23,8 @@
 				<span class="warning">当你设置账号登录保护后，任何异常的登录行为，都不会被允许，只有在经过您的手机验证通过后方可登录成功</span>
 			</div>	
 			<div class="content-row">
-				<span>状态：未开通</span>
-                <a href="" class="btn" id="protect-login-confirm-btn">确定</a>
+				<span class="text">状态：未开通</span>
+                <a href="" class="btn" id="protect-login-confirm-btn">立即开通</a>
 			</div>
 		</div>
 	</div>
