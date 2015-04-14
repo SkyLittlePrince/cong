@@ -102,6 +102,8 @@ module.exports = (grunt)->
                     'dist/css/tradingCenter/mynews/trading-reminder.css': ['src/pages/tradingCenter/mynews/trading-reminder.less']
                     'dist/css/tradingCenter/buyer-center/trading-manage/trading-list.css': ['src/pages/tradingCenter/buyer-center/trading-manage/trading-list.less']
                     'dist/css/tradingCenter/buyer-center/trading-manage/trading-comment.css': ['src/pages/tradingCenter/buyer-center/trading-manage/trading-comment.less']
+                    'dist/css/tradingCenter/buyer-center/comment-manage/comment-manage.css': ['src/pages/tradingCenter/buyer-center/comment-manage/comment-manage.less']
+                    'dist/css/tradingCenter/buyer-center/my-book/my-book.css': ['src/pages/tradingCenter/buyer-center/my-book/my-book.less']
 
         cssmin:
             compress:

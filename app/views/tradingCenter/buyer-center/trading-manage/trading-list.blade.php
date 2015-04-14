@@ -17,6 +17,14 @@
 	<div class="buyer-content">
 	    <div class="my-order">
 	    	<div class="order-banner">我的交易</div>
+	    	<div class="list-banner">
+                <ul>
+                    <li class="info">订单信息</li>
+                    <li class="date">日期</li>
+                    <li class="name">项目</li>
+                    <li class="status">状态</li>
+                </ul>
+            </div>
 	    	<div class="one-order">
 	    		<div class="order-num order-component">
 	    			<p class="order-p">订单号<span>WX187369727786</span></p>	

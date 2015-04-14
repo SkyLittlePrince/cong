@@ -6,7 +6,7 @@
 				<a href="/trading-center/buyer/trading/list">交易管理</a>
 			</li>
 			<li>
-				<a href="">我的账本</a>
+				<a href="/trading-center/buyer/mybook">我的账本</a>
 			</li>
 			<li>
 				<a href="">评价管理</a>
