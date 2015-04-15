@@ -71,6 +71,7 @@ class Process
 			this.content.find(".process-el").attr "data-color", config.color
 
 		this.container.append this.content
+		this.container.append "<div style='clear:both;'></div>"
 
 		return this
 
