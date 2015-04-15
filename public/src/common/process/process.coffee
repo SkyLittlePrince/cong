@@ -77,13 +77,16 @@ class Process
 
 	# @desc 	从左至右激活插件中的元素，未被激活的元素将显示默认颜色
 	# @param activeLength 	要激活的元素个数 	
-	active: (activeLength)->
+	active: (activeLength, callback)->
 		$els = this.content.find(".process-el")
 
 		for i in [0..activeLength-1]
 			console.log i
 			color = $($els[i]).attr("data-color")
 			$($els[i]).css("background-color", color)
+
+		if callback && $.isFunction(callback)
+			callback()
 
 		return this
 

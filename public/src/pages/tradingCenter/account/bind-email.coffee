@@ -9,4 +9,6 @@ $(document).ready ()->
 		height: 6,
 		width: 151,
 		color: "#face00"
-	}).show().active(1)
+	}).show().active(1, ()->
+		console.log $(".bind-steps .step:first").css("color", "#a9845b");
+	);
