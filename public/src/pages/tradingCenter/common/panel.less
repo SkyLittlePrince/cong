@@ -1,38 +1,55 @@
-@page-color: #7f7d60;
-.my-history {
-    .left {
-        float: left;
-    }
-    .right {
-        float: right;
-    }
-    .one-history {
-        width: 356px;
-        margin-top: 17px;
-        color: @page-color;
-        .banner {
-            .banner(100%, 32px, #7f7d60);
-        }
-        .panel {
-            width: 100%;
-            height: 99px;
-            background-color: #fff;
-            margin-top: 9px;
-            position: relative;
-            display: table;
-            font-size: 14px;
-            -moz-box-shadow:2px 2px 12px #ADADAD; -webkit-box-shadow:2px 2px 12px #ADADAD; box-shadow:2px 2px 12px #ADADAD;
+/*
+ * 带有标题和白色背景内容块的panel
+ */
 
-            .message {
-                padding: 0 60px;
-                display: table-cell;
-                vertical-align: middle;
+@order-bg-color: #9fd5d5;
+@page-color: #7f7d60;
+
+// 小面板的标题
+.banner(@width, @height, @color) {
+    width: @width;
+    height: @height;
+    background-color: @order-bg-color;
+    line-height: @height;
+    color: @color;
+    text-align: center;
+    font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
+    font-size: 14px;
+}
+
+.panels(@panel-width, @margin-top) {
+    .my-history {
+        width: 100%;
+        overflow: hidden;
+        margin-top: @margin-top;
+        .one-history {
+            width: @panel-width;
+            color: @page-color;
+            margin-bottom: 10px;
+            .banner {
+                .banner(100%, 32px, #663);
             }
-            .see-now {
-                position: absolute;
-                right: 18px;
-                bottom: 14px;
-                color: #7ecac9;
+            .panel {
+                width: 100%;
+                height: 99px;
+                background-color: #fff;
+                margin-top: 9px;
+                position: relative;
+                display: table;
+                font-size: 14px;
+                -moz-box-shadow:2px 2px 12px #ADADAD; -webkit-box-shadow:2px 2px 12px #ADADAD; box-shadow:2px 2px 12px #ADADAD;
+
+                .message {
+                    padding: 0 60px;
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+                .see-now {
+                    position: absolute;
+                    right: 18px;
+                    bottom: 14px;
+                    color: #7ecac9;
+                }
             }
         }
     }

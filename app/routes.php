@@ -105,6 +105,14 @@ Route::get('/trading-center/buyer/comment/manage', function()
 {
 	return View::make('tradingCenter.buyer-center.comment-manage.comment-manage');
 });
+Route::get('/trading-center/buyer/report/manage/', function() 
+{
+	return View::make('tradingCenter.buyer-center.report-manage.index');
+});
+Route::get('/trading-center/buyer/report/manage/my-report', function() 
+{
+	return View::make('tradingCenter.buyer-center.report-manage.launch-report');
+});
 
 
 

@@ -104,6 +104,8 @@ module.exports = (grunt)->
                     'dist/css/tradingCenter/buyer-center/trading-manage/trading-comment.css': ['src/pages/tradingCenter/buyer-center/trading-manage/trading-comment.less']
                     'dist/css/tradingCenter/buyer-center/comment-manage/comment-manage.css': ['src/pages/tradingCenter/buyer-center/comment-manage/comment-manage.less']
                     'dist/css/tradingCenter/buyer-center/my-book/my-book.css': ['src/pages/tradingCenter/buyer-center/my-book/my-book.less']
+                    'dist/css/tradingCenter/buyer-center/report-manage/index.css': ['src/pages/tradingCenter/buyer-center/report-manage/index.less']
+                    'dist/css/tradingCenter/buyer-center/report-manage/launch-report.css': ['src/pages/tradingCenter/buyer-center/report-manage/launch-report.less']
 
         cssmin:
             compress:
