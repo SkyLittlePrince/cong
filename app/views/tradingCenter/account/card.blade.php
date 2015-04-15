@@ -15,7 +15,7 @@
 
 @section('tradingCenter-content')
 	<div class="card-content tradingCenter-content">
-		<h3>邮寄地址</h3>
+		<h3>名片</h3>
 		<hr />
 		<div class="content-main">
 			<div class="img-info">
