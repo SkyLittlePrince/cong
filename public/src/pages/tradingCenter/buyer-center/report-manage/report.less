@@ -1,0 +1,65 @@
+@import './../../common/trading-layout.less';
+@import '../../../../common/common.less';
+
+.content-main {
+    font-size: 14px;
+    margin-top: 20px;
+    overflow: hidden;
+    color: #d4c5a6;
+    
+    .content-row {
+        overflow: hidden;
+        @line-height: 34px;
+        width: 100%;
+        float: left;
+        margin-bottom: 11px;
+
+        label {
+            float: left;
+            line-height: @line-height;
+            vertical-align: middle;
+            width: 74px;
+            text-align: right;
+        }
+
+        .content-input {
+            margin-left: 12px;
+            float: left;
+            input {
+                .input(284px, @line-height);
+            }
+        }
+        .report-info {
+            width: 600px;
+            .info {
+                color: #666;
+                line-height: @line-height;
+            }
+            .date {
+                float: right; 
+            }
+        }
+    }
+    .status {
+        float: left;
+        width: 644px;
+        height: 78px;
+        border: solid 1px #dedede;
+        color: #666;
+        @line-height: 39px;
+        margin: 0 0 51px 23px; 
+        .ststua-bar {
+            background-color: #c0eae9;
+        }
+        .status-line {
+            height: 50%;
+            width: 100%;
+            span {
+                display: inline-block;
+                width: 49%;
+                text-align: center;
+                line-height: @line-height; 
+            }
+        }
+    } 
+}

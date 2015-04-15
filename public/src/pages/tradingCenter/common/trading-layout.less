@@ -1,0 +1,45 @@
+/*
+ * 交易中心公共布局样式
+ * 适合左边导航栏 + 右边顶部导航栏 + 右边白色背景面板布局
+ */
+
+//避免页面主体都是float布局而造成的高度坍塌问题
+#main {
+    overflow: hidden;
+}
+
+// 右边白色背景面板布局
+.trading-content {
+    width: 750px;
+    margin-left: 30px;
+    overflow: hidden;
+    margin-top: 10px;
+    background-color: #fff;
+    float: left;
+    min-height: 472px;
+}
+
+// 右边白色背景面板中带有小标题的局部面板布局
+@width: 750px;
+@margin: 32px;
+.content-wrapper {
+    width: @width - 2 * @margin;
+    margin: 0 auto;
+    margin-top: 18px;
+    // 局部面板的标题部分
+    .banner {
+        border-bottom: solid 1px #dcdcdc;
+        overflow: hidden;
+        color: #787878;
+        h3 {
+            padding-bottom: 7px;
+            display: inline-block;
+        }
+        .title {
+            float: left;
+        }
+        .status {
+            float: right;
+        }
+    }
+}

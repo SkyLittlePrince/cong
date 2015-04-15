@@ -12,7 +12,7 @@
 				<a href="">评价管理</a>
 			</li>
 			<li>
-				<a href="">举报管理</a>
+				<a href="/trading-center/buyer/report/manage/">举报管理</a>
 			</li>
 			<li>
 				<a href="">邀请站外好友</a>
