@@ -31,16 +31,17 @@ class Process
 		this.config = config
 		this.container = $ config.container
 
+		# 根据用户传入的参数创建插件主体及内部元素
 		this.content = $ "<div id='process-content'></div>"
 		for i in [0...config.length]
 			$el = $ "<div class='process-el'></div>"
 			this.content.append $el
 
+		# 设置插件的基本样式
 		this.content.css {
 			"float": "left",
 			"display": "none"
 		}
-	
 		this.content.find(".process-el").css {
 			"width": config.width + "px",
 			"height": config.height + "px",
@@ -48,6 +49,7 @@ class Process
 			"float": "left"
 		}
 
+		# 判断是要设定所有元素的长度还是根据数组设置每个元素的长度
 		if config.width.length
 			this.content.find(".process-el").each (index, elem)->
 				$elem = $ elem
@@ -58,6 +60,7 @@ class Process
 		else 
 			this.content.find(".process-el").css "width", config.width + "px"
 
+		# 判断是要设定所有元素的颜色还是根据数组设置每个元素的颜色
 		if $.isArray(config.color)
 			this.content.find(".process-el").each (index, elem)->
 				if config.color[index]
