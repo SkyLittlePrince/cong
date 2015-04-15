@@ -26,10 +26,10 @@
                     <div class="panel">
                         <ul class="content-list">
                             <li>
-                                <a href="">举报主题举报主题</a>
+                                <a href="/trading-center/buyer/report/manage/my-report">举报主题举报主题</a>
                             </li>
                             <li>
-                                <a href="">举报主题举报主题</a>
+                                <a href="/trading-center/buyer/report/manage/my-report">举报主题举报主题</a>
                             </li>
                         </ul>
                     </div>
@@ -39,10 +39,10 @@
                     <div class="panel">
                         <ul class="content-list">
                             <li>
-                                <a href="">举报主题举报主题</a>
+                                <a href="/trading-center/buyer/report/manage/receive-report">举报主题举报主题</a>
                             </li>
                             <li>
-                                <a href="">举报主题举报主题</a>
+                                <a href="/trading-center/buyer/report/manage/receive-report">举报主题举报主题</a>
                             </li>
                         </ul>
                     </div>

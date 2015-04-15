@@ -113,7 +113,10 @@ Route::get('/trading-center/buyer/report/manage/my-report', function()
 {
 	return View::make('tradingCenter.buyer-center.report-manage.launch-report');
 });
-
+Route::get('/trading-center/buyer/report/manage/receive-report', function() 
+{
+	return View::make('tradingCenter.buyer-center.report-manage.receive-report');
+});
 
 
 // 交易中心－账号设置
