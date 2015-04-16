@@ -5,14 +5,14 @@
 @stop
 @section('css')
     @parent
-    <link rel="stylesheet" type="text/css" href="./dist/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/login.css">
 @stop
 
 @section('body')
 	@parent
 	<div id="main">
 		<div class="page-left">
-			<img src="./images/login/login.jpg" alt="login" width="400" height="300" />
+			<img src="/images/login/login.jpg" alt="login" width="400" height="300" />
 		</div>
 		<div class="page-right">
 			{{ Form::open(array('url' => 'login', 'method' => 'post')) }}
