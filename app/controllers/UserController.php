@@ -1,5 +1,7 @@
 <?php
 
+use Gregwar\Captcha\CaptchaBuilder;
+
 class UserController extends \BaseController {
 
 	public function postCreate()  //user register
@@ -60,4 +62,75 @@ class UserController extends \BaseController {
 			return Response::json(array('errCode' => '0','message' => '注册成功!'));
 	}
 
+	public function getLogin()
+	{
+		$builder = new CaptchaBuilder;
+		$builder->build();
+
+		$phrase = $builder->getPhrase();	
+		Session::put('phrase', $phrase);
+
+		return View::make('login')->with('captcha', $builder);
+	}
+
+	public function postLogin() //user login
+	{
+		$login = Input::get('loginname');  //login token
+		$password = Input::get('password');
+		$captcha = Input::get('captcha');
+		$sessionCaptcha = Session::get('phrase');
+
+		if($captcha != $sessionCaptcha)
+			return Redirect::to('user/getLogin')->with('message', '验证码有误!')->withInput(); 
+
+		$reg = "/^[_.0-9a-z-a-z-]+@([0-9a-z][0-9a-z-]+.)+[a-z]{2,4}$/";
+		$user = null;
+		if(preg_match($reg, $login))
+		{
+			$user = User::where('email',$login)->first();
+		}
+		else
+		{
+			$user = User::where('mobile',$login)->first();
+		}
+
+		if(!isset($user))
+		{
+			return Response::json(array('errCode' => '1','message' => '用户不存在!'));
+		}
+
+		$cred = array(
+				'username' => $user->username,
+				'password' => $password
+			);
+
+		try
+		{
+			$user = Sentry::authenticate($cred,false);
+			if(isset($user))
+			{
+				return Response::json(array('errCode' => '0','message' => '登陆成功!'));
+			}
+			else
+			{
+				return Response::json(array('errCode' => '2','message' => '密码错误!')); 
+			}
+		}
+		catch(Exception $e)
+		{
+			return Response::json(array('errCode' => '3','message' => '用户名或密码错误!'));
+		}
+	}
+
+	public function getDelete()  //admin delete user
+	{
+		$id = Input::get('id');
+		$user = User::find($id);
+
+		if(!isset($user))
+			return Response::json(array('errCode' => '1','message' => '用户不存在!'));
+
+		$user->delete();
+		return Response::json(array('errCode' => 0,'message' => '删除成功!'));
+	}
 }

@@ -11,6 +11,11 @@
 |
 */
 
+Route::group(array('prefix' => 'user'),function()
+{
+	Route::get('register','UserController@getLogin');
+});
+
 Route::get('/', function()
 {
 	return View::make('home');
@@ -21,6 +26,8 @@ Route::get('/', function()
 // Route::get('captcha', 'SessionsController@captcha');
 Route::get('login', 'SessionsController@login');
 Route::post('login', 'SessionsController@login');
+
+
 
 // 需要登录验证才能操作的接口
 Route::group(array('before' => 'auth'), function()
