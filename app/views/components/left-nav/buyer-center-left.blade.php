@@ -9,7 +9,7 @@
 				<a href="/trading-center/buyer/mybook">我的账本</a>
 			</li>
 			<li>
-				<a href="">评价管理</a>
+				<a href="/trading-center/buyer/comment/manage">评价管理</a>
 			</li>
 			<li>
 				<a href="/trading-center/buyer/report/manage/">举报管理</a>
