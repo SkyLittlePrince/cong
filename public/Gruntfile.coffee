@@ -107,6 +107,7 @@ module.exports = (grunt)->
                     'dist/css/tradingCenter/buyer-center/report-manage/index.css': ['src/pages/tradingCenter/buyer-center/report-manage/index.less']
                     'dist/css/tradingCenter/buyer-center/report-manage/report.css': ['src/pages/tradingCenter/buyer-center/report-manage/report.less']
                     'dist/css/tradingCenter/buyer-center/report-manage/receive-report.css': ['src/pages/tradingCenter/buyer-center/report-manage/receive-report.less']
+                    'dist/css/tradingCenter/buyer-center/invite.css': ['src/pages/tradingCenter/buyer-center/invite.less']
 
         cssmin:
             compress:

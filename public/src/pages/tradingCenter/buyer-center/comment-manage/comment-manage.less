@@ -1,0 +1,119 @@
+@import './../../common/trading-layout.less';
+@import './../../../../common/common.less';
+
+@image-path: './../../../../../images/tradingcenter/buyer';
+
+.buyer-content {
+    .shop-rating {
+        margin-top: 20px;
+        .title {
+            font-size: 12px;
+            color: #cc9;
+        }
+         hr {
+            border: 0px;
+            border-top: 1px solid #bbbbbb;
+        }
+    }
+    .shop-rating {
+        .rating-bar {
+            width: 100%;
+            height: 40px;
+            margin-top: 30px;
+            margin-bottom: 29px;
+            .line {
+                height: 50%;
+                line-height: 20px; 
+                .comment {
+                    color: #6cc;
+                    span {
+                        color: #f90;
+                        font-size: 16px;
+                    }
+                }
+                .index {
+                    font-size: 14px;
+                    display: inline-block;
+                    width: 49%;
+                    text-indent: 93px;
+                    line-height: 100%;
+                }
+                .score {
+                    color: #999;
+                    font-size: 12px;
+                }
+            }
+        }
+        .all-rating-bar {
+            width: 644px;
+            height: 78px;
+            margin: 0 auto;
+            border: solid #bbb 1px;
+            margin-top: 26px;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 40px;
+            .line {
+                width: 100%;
+                height: 50%;
+            }
+            .time {
+                background-color: #c0eae9;
+                span {
+                    line-height: 39px;
+                    margin-left: 40px;
+                    &:first-child {
+                        margin-left: 148px;
+                    }
+                }
+            }
+            .comment-content {
+                p {
+                    line-height: 39px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    .server-comment {
+        color: #666;
+        p {
+            overflow: hidden;
+            a {
+                float: right;
+                font-size: 12px;
+                color: #c4b596;
+            }
+        }
+        .option-comment {
+            font-weight: bold;
+            .to-serve {
+                margin-left: 10px;
+            }
+            span {
+                font-size: 12px;
+                display: inline-block;
+                height: 26px;
+                padding-top: 5px;
+                width: 117px;
+                text-align: center;
+                &.active {
+                    background: url('@{image-path}/bubble.png') no-repeat;
+                    color: #fff;
+                }
+            }
+        }
+        .comment-radio {
+            margin-top: 15px;
+            input[type="radio"] {
+                margin-left: 25px;
+                &:first-child {
+                    margin-left: 10px;
+                }
+            }
+            label {
+                margin-left: -5px;
+            }
+        }
+    }
+}
