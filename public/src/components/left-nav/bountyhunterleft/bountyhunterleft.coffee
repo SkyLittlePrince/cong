@@ -5,4 +5,4 @@ $(document).ready ()->
 
 	nav = pathname.split("/")[2];
 
-	leftNav = new LeftNav(nav, "#bounty-hunter-left-nav", "bountyHunter")	
+	leftNav = new LeftNav(nav, "#buyer-left-nav", "buyer")	
