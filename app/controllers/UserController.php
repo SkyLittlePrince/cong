@@ -4,7 +4,19 @@ use Gregwar\Captcha\CaptchaBuilder;
 
 class UserController extends \BaseController {
 
-	public function postCreate()  //user register
+	public function getRegister()
+	{
+
+		$builder = new CaptchaBuilder;
+		$builder->build();
+
+		$phrase = $builder->getPhrase();	
+		Session::put('phrase', $phrase);
+
+		return View::make('register')->with('captcha', $builder);
+	}
+
+	public function postRegister()  //user register
 	{
 		$username = Input::get('username');
 		$password = Input::get('password');
@@ -81,7 +93,7 @@ class UserController extends \BaseController {
 		$sessionCaptcha = Session::get('phrase');
 
 		if($captcha != $sessionCaptcha)
-			return Redirect::to('user/getLogin')->with('message', '验证码有误!')->withInput(); 
+			return Redirect::to('user/login')->with('message', '验证码有误!')->withInput(); 
 
 		$reg = "/^[_.0-9a-z-a-z-]+@([0-9a-z][0-9a-z-]+.)+[a-z]{2,4}$/";
 		$user = null;
@@ -126,6 +138,10 @@ class UserController extends \BaseController {
 	{
 		$id = Input::get('id');
 		$user = User::find($id);
+		$admin = Sentry::getUser();
+
+		if($admin->role_id != 3)
+			return Response::json(array('errCode' => 1,'message' => '你没有该操作权限!'));
 
 		if(!isset($user))
 			return Response::json(array('errCode' => '1','message' => '用户不存在!'));

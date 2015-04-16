@@ -13,7 +13,10 @@
 
 Route::group(array('prefix' => 'user'),function()
 {
-	Route::get('register','UserController@getLogin');
+	Route::get('register','UserController@getRegister');
+	Route::post('register','UserController@postRegister');
+	Route::post('login','UserController@postLogin');
+	Route::get('login','UserController@getLogin');
 });
 
 Route::get('/', function()

@@ -15,7 +15,7 @@
 			<img src="/images/login/login.jpg" alt="login" width="400" height="300" />
 		</div>
 		<div class="page-right">
-			{{ Form::open(array('url' => 'login', 'method' => 'post')) }}
+			{{ Form::open(array('url' => 'user/login', 'method' => 'post')) }}
 				<h2>用户登录</h2>
 				<div class="login-form">
 					<div class="login-item">

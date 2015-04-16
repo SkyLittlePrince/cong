@@ -32,7 +32,7 @@
 						</div>
 						<div class="register-item">
 							<input type="text" id="auth-code" placeholder="输入验证码" />
-							<img src="aaa" id="authcode-img"  width="128" height="45" />
+							<img src="{{ $captcha->inline() }}" id="authcode-img"  width="128" height="45" />
 							<div class="clear"></div>
 						</div>
 						<div class="register-item" style="line-height:18px;vertical-align:top;margin-top: 30px;"> 
