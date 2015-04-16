@@ -41,135 +41,175 @@ Route::get('/register', function()
 });
 
 // 赏金猎人
-Route::get('/bounty-hunter', function()
+Route::group(array('prefix' => 'bounty-hunter'),function()
 {
-	return View::make('bountyHunter.index');
+	Route::get('/', function()
+	{
+		return View::make('bountyHunter.index');
+	});
+
+	// 悬赏任务
+	Route::get('reward-task', function($step = null) 
+	{
+		$step = Input::get("step");
+
+		if($step == null) {
+			return View::make('bountyHunter.rewardTasks.step-1');
+		} else {
+			return View::make('bountyHunter.rewardTasks.step-' . $step);
+		}
+	});
+
+	// 倒价竞拍
+	Route::get('auction', function($step = null) 
+	{
+		$step = Input::get("step");
+		
+		if($step == null) {
+			return View::make('bountyHunter.auctions.step-1');
+		} else {
+			return View::make('bountyHunter.auctions.step-' . $step);
+		}
+	});
 });
 
-Route::get('bounty-hunter/reward-task', function($step = null) 
+// 交易中心
+Route::group(array('prefix' => 'trading-center'),function()
 {
-	$step = Input::get("step");
+	// 我的消息
+	Route::group(array('prefix' => 'mynews'),function()
+	{
+		Route::get('/', function()
+		{
+			return View::make('tradingCenter.mynews.notification');
+		});
+		Route::get('notification', function()
+		{
+			return View::make('tradingCenter.mynews.notification');
+		});
+		Route::get('setting', function()
+		{
+			return View::make('tradingCenter.mynews.setting');
+		});
+		Route::get('history', function()
+		{
+			return View::make('tradingCenter.mynews.history');
+		});
+		Route::get('trading-reminder', function()
+		{
+			return View::make('tradingCenter.mynews.trading-reminder');
+		});
+	});
 
-	if($step == null) {
-		return View::make('bountyHunter.rewardTasks.step-1');
-	} else {
-		return View::make('bountyHunter.rewardTasks.step-' . $step);
-	}
-});
+	// 买家中心
+	Route::group(array('prefix' => 'buyer'),function()
+	{
+		Route::get('/', function() 
+		{
+			return View::make('tradingCenter.buyer-center.index');
+		});
+		Route::get('trading/list', function() 
+		{
+			return View::make('tradingCenter.buyer-center.trading-manage.trading-list');
+		});
+		Route::get('trading/comment', function() 
+		{
+			return View::make('tradingCenter.buyer-center.trading-manage.trading-comment');
+		});
+		Route::get('mybook', function() 
+		{
+			return View::make('tradingCenter.buyer-center.my-book.my-book');
+		});
+		Route::get('comment/manage', function() 
+		{
+			return View::make('tradingCenter.buyer-center.comment-manage.comment-manage');
+		});
+		Route::get('report/manage/', function() 
+		{
+			return View::make('tradingCenter.buyer-center.report-manage.index');
+		});
+		Route::get('report/manage/my-report', function() 
+		{
+			return View::make('tradingCenter.buyer-center.report-manage.launch-report');
+		});
+		Route::get('report/manage/receive-report', function() 
+		{
+			return View::make('tradingCenter.buyer-center.report-manage.receive-report');
+		});
+		Route::get('invite', function() 
+		{
+			return View::make('tradingCenter.buyer-center.invite-friends');
+		});
+	});
 
-Route::get('bounty-hunter/auction', function($step = null) 
-{
-	$step = Input::get("step");
+	// 账号设置
+	Route::group(array('prefix' => 'account'),function()
+	{
+		Route::get('/', function()
+		{
+			return View::make('tradingCenter.account.index');
+		});
+		Route::get('base-info', function()
+		{
+			return View::make('tradingCenter.account.base-info');
+		});
+		Route::get('contact', function()
+		{
+			return View::make('tradingCenter.account.contact');
+		});
+		Route::get('address', function()
+		{
+			return View::make('tradingCenter.account.address');
+		});
+		Route::get('card', function()
+		{
+			return View::make('tradingCenter.account.card');
+		});
+		Route::get('user-info', function()
+		{
+			return View::make('tradingCenter.account.user-info');
+		});
+		Route::get('bind-phone', function()
+		{
+			return View::make('tradingCenter.account.bind-phone');
+		});
+		Route::get('bind-email', function()
+		{
+			return View::make('tradingCenter.account.bind-email');
+		});
+		Route::get('bind-weibo', function()
+		{
+			return View::make('tradingCenter.account.bind-weibo');
+		});
+		Route::get('authentication', function()
+		{
+			return View::make('tradingCenter.account.authentication');
+		});
+		Route::get('change-password', function()
+		{
+			return View::make('tradingCenter.account.change-password');
+		});
+		Route::get('protect-login', function()
+		{
+			return View::make('tradingCenter.account.protect-login');
+		});
+		Route::get('protect-password', function()
+		{
+			return View::make('tradingCenter.account.protect-password');
+		});
+		Route::get('pay-account', function()
+		{
+			return View::make('tradingCenter.account.pay-account');
+		});
+	});
 	
-	if($step == null) {
-		return View::make('bountyHunter.auctions.step-1');
-	} else {
-		return View::make('bountyHunter.auctions.step-' . $step);
-	}
-});
+	Route::group(array('prefix' => 'account'),function()
+	{
 
-// 交易中心-我的消息
-Route::get('/trading-center/mynews', function()
-{
-	return View::make('tradingCenter.mynews.notification');
-});
-Route::get('/trading-center/mynews/notification', function()
-{
-	return View::make('tradingCenter.mynews.notification');
-});
-Route::get('/trading-center/mynews/setting', function()
-{
-	return View::make('tradingCenter.mynews.setting');
-});
-Route::get('/trading-center/mynews/history', function()
-{
-	return View::make('tradingCenter.mynews.history');
-});
-Route::get('/trading-center/mynews/trading-reminder', function()
-{
-	return View::make('tradingCenter.mynews.trading-reminder');
-});
-
-
-// 交易中心-买家中心
-Route::get('/trading-center/buyer/', function() 
-{
-	return View::make('tradingCenter.buyer-center.index');
-});
-Route::get('/trading-center/buyer/trading/list', function() 
-{
-	return View::make('tradingCenter.buyer-center.trading-manage.trading-list');
-});
-Route::get('/trading-center/buyer/trading/comment', function() 
-{
-	return View::make('tradingCenter.buyer-center.trading-manage.trading-comment');
-});
-Route::get('/trading-center/buyer/mybook', function() 
-{
-	return View::make('tradingCenter.buyer-center.my-book.my-book');
-});
-Route::get('/trading-center/buyer/comment/manage', function() 
-{
-	return View::make('tradingCenter.buyer-center.comment-manage.comment-manage');
+	});
 });
 
 
 
-// 交易中心－账号设置
-Route::get('/trading-center/account', function()
-{
-	return View::make('tradingCenter.account.index');
-});
-Route::get('/trading-center/account/base-info', function()
-{
-	return View::make('tradingCenter.account.base-info');
-});
-Route::get('/trading-center/account/contact', function()
-{
-	return View::make('tradingCenter.account.contact');
-});
-Route::get('/trading-center/account/address', function()
-{
-	return View::make('tradingCenter.account.address');
-});
-Route::get('/trading-center/account/card', function()
-{
-	return View::make('tradingCenter.account.card');
-});
-Route::get('/trading-center/account/user-info', function()
-{
-	return View::make('tradingCenter.account.user-info');
-});
-Route::get('/trading-center/account/bind-phone', function()
-{
-	return View::make('tradingCenter.account.bind-phone');
-});
-Route::get('/trading-center/account/bind-email', function()
-{
-	return View::make('tradingCenter.account.bind-email');
-});
-Route::get('/trading-center/account/bind-weibo', function()
-{
-	return View::make('tradingCenter.account.bind-weibo');
-});
-Route::get('/trading-center/account/authentication', function()
-{
-	return View::make('tradingCenter.account.authentication');
-});
-Route::get('/trading-center/account/change-password', function()
-{
-	return View::make('tradingCenter.account.change-password');
-});
-Route::get('/trading-center/account/protect-login', function()
-{
-	return View::make('tradingCenter.account.protect-login');
-});
-Route::get('/trading-center/account/protect-password', function()
-{
-	return View::make('tradingCenter.account.protect-password');
-});
-Route::get('/trading-center/account/pay-account', function()
-{
-	return View::make('tradingCenter.account.pay-account');
-});
+
 

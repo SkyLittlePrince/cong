@@ -47,7 +47,6 @@
             </div>
         </div>
     </div>
-    @include('components.footer')
 @stop
 
 @section('js')

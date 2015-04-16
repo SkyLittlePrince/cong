@@ -5,7 +5,7 @@
 @stop
 @section('css')
     @parent
-    <link rel="stylesheet" type="text/css" href="./dist/css/register.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/register.css">
 @stop
 
 @section('body')
@@ -37,8 +37,8 @@
 						</div>
 						<div class="register-item" style="line-height:18px;vertical-align:top;margin-top: 30px;"> 
 							<input type="checkbox" name="agree" id="agree-box" class="hidden" />
-							<img src="./images/register/3.jpg" class="agree-img" width="16" height="16" />
-							<img src="./images/register/4.jpg" class="disagree-img hidden" width="16" height="16" />
+							<img src="/images/register/3.jpg" class="agree-img" width="16" height="16" />
+							<img src="/images/register/4.jpg" class="disagree-img hidden" width="16" height="16" />
 							<div style="margin-left:25px;">我同意《丛丛网协议》</div>
 						</div>
 					</div>
@@ -87,8 +87,8 @@
 				</div>
 			</div>
 		</div>
+		<div class="clear"></div>
 	</div>
-	@include('components.footer')
 @stop
 
 @section('js')

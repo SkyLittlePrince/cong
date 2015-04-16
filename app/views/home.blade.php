@@ -5,7 +5,7 @@
 @stop
 @section('css')
     @parent
-    <link rel="stylesheet" type="text/css" href="./dist/css/home.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/home.css">
 @stop
 
 @section('body')
@@ -14,19 +14,19 @@
         <div id="slider">
             <ul>
                 <li>
-                    <img src="./images/slider/slider1.png" alt="slider1">
+                    <img src="/images/slider/slider1.png" alt="slider1">
                 </li>
                 <li>
-                    <img src="./images/slider/slider1.png" alt="slider1">
+                    <img src="/images/slider/slider1.png" alt="slider1">
                 </li>
                 <li>
-                    <img src="./images/slider/slider1.png" alt="slider1">
+                    <img src="/images/slider/slider1.png" alt="slider1">
                 </li>
                 <li>
-                    <img src="./images/slider/slider1.png" alt="slider1">
+                    <img src="/images/slider/slider1.png" alt="slider1">
                 </li>
                 <li>
-                    <img src="./images/slider/slider1.png" alt="slider1">
+                    <img src="/images/slider/slider1.png" alt="slider1">
                 </li>
             </ul>
         </div>
@@ -47,18 +47,17 @@
         </div>
 
         <div id="button-pic">
-            <img src="./images/common/button-pic.png" alt="button-pic">
+            <img src="/images/common/button-pic.png" alt="button-pic">
         </div>
 
         <div id="process">
-            <img src="./images/common/liucheng.png" alt="process">
+            <img src="/images/common/liucheng.png" alt="process">
         </div>
     </div>
-    @include('components.footer')
 @stop
 
 @section('js')
     @parent
-    <script type="text/javascript" src='./dist/js/lib/jquery/unslider.js'></script>
-    <script type="text/javascript" src='./dist/js/pages/home.js'></script>
+    <script type="text/javascript" src='/dist/js/lib/jquery/unslider.js'></script>
+    <script type="text/javascript" src='/dist/js/pages/home.js'></script>
 @stop

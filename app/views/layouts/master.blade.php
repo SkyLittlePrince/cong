@@ -16,9 +16,11 @@
 
 <body style="margin:0">
 	<div id = "wrapper">
+		@include('components.header')
 		@section('body')
-			@include('components.header')
+		
 		@show
+		@include('components.footer')
 	</div>
 	@section('js')
 	<script type="text/javascript" src='/dist/js/lib/jquery/jquery-1.11.2.min.js'></script>

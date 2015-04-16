@@ -12,7 +12,7 @@
                 </ul>
             </li>
             <li>
-                <a href="/trading-center/account/user-info" class="nav-item">个人资料</a>
+                <a href="/trading-center/account/user-info" target="_blank" class="nav-item">个人资料</a>
             </li>
             <li>
                 <a href="javascript:void(0);" class="nav-item nav-a">账户绑定</a>

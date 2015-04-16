@@ -9,12 +9,16 @@ navConfig = {
 			"auction": 1
 		}
 	}
-	employer: {
+	buyer: {
 		subNavIndexes: {
 
 		},
 		navIndexes: {
-			
+			"trading": "0",
+			"mybook": "1",
+			"comment": "2",
+			"report": "3",
+			"invite": "4"
 		}
 	}
 	account: {

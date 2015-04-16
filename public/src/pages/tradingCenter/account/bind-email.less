@@ -1,0 +1,58 @@
+@import '../../../common/common.less';
+
+.bind-email-content {
+
+	.bind-steps {
+		margin-bottom: 20px;
+		font-size: 14px;
+		color: #d0beac;
+
+		.steps {
+			margin-top: 10px;
+
+			.step {
+				float: left;
+				width: 150px;
+				text-align: center;
+			}
+		}
+	}
+
+	.content-main {
+		margin-top: 20px;
+		color: #787878;
+		font-size: 14px;
+		font-family: "微软雅黑";
+
+		.content-row {
+			@line-height: 33px;
+
+			width: 100%;
+			float: left;
+			margin-bottom: 15px;
+
+			span {
+				line-height: @line-height;
+				vertical-align: middle;
+			}
+
+			ol {
+				.list {
+					line-height: 25px;
+					display: block;
+					list-style: decimal;
+				}
+			}
+
+			#new-email{
+				.input(249px, 33px);
+			}
+		}
+	}
+
+	#next-step-btn {
+		margin: 0 auto;
+		display: block;
+		margin-top: 20px;
+	}
+}
