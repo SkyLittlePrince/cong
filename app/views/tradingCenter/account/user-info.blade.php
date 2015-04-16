@@ -193,7 +193,6 @@
     	</div>
         <div class="clear"></div>
     </div>
-    @include('components.footer')
 @append
 
 

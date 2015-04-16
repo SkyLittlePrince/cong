@@ -39,8 +39,8 @@
 				<input type="submit" id="login-btn" value="确定" />
 			{{ Form::close() }}
 		</div>
+		<div class="clear"></div>
 	</div>
-	@include('components.footer')
 @stop
 
 @section('js')

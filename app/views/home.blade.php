@@ -54,7 +54,6 @@
             <img src="/images/common/liucheng.png" alt="process">
         </div>
     </div>
-    @include('components.footer')
 @stop
 
 @section('js')

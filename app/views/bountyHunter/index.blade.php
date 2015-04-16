@@ -120,7 +120,6 @@
         </div>
         <div class="clear"></div>
     </div>
-    @include('components.footer')
 @stop
 
 @section('js')

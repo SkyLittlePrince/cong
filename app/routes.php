@@ -195,7 +195,14 @@ Route::group(array('prefix' => 'trading-center'),function()
 			return View::make('tradingCenter.account.pay-account');
 		});
 	});
+	
+	Route::group(array('prefix' => 'account'),function()
+	{
+
+	});
 });
+
+
 
 
 
