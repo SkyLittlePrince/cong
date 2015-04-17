@@ -13,10 +13,21 @@
 
 Route::group(array('prefix' => 'user'),function()
 {
+	Route::get('captcha','UserController@captcha');
+	Route::post('checkCapcha','UserController@checkCapcha');
+	Route::get('getCheckRegister','UserController@getCheckRegister');
+	Route::post('checkRegister','UserController@checkRegister');
 	Route::get('register','UserController@getRegister');
 	Route::post('register','UserController@postRegister');
 	Route::post('login','UserController@postLogin');
 	Route::get('login','UserController@getLogin');
+});
+
+Route::group(array('prefix' => 'user','before' => 'auth.user.isIn'),function()
+{
+	Route::get('logout','UserController@getLogout');
+	Route::post('update','UserController@postUpdate');
+	Route::post('changePassword','UserController@postChangePassword');
 });
 
 Route::get('/', function()
