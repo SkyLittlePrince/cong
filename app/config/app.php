@@ -125,6 +125,8 @@ return array(
 		'Way\Generators\GeneratorsServiceProvider',
 		// for laravel-debugbar
 		'Barryvdh\Debugbar\ServiceProvider',
+		// for Sentry
+		'Cartalyst\Sentry\SentryServiceProvider',
 	),
 
 	/*
@@ -195,6 +197,8 @@ return array(
 
 		// for laravel-debugbar
 		'Debugbar'          => 'Barryvdh\Debugbar\Facade',
+		// for Sentry
+		'Sentry'            => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
 	),
 
 );
