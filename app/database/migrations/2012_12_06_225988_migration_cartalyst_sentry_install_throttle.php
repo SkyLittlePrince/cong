@@ -17,7 +17,7 @@
  * @copyright  (c) 2011 - 2013, Cartalyst LLC
  * @link       http://cartalyst.com
  */
-
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 class MigrationCartalystSentryInstallThrottle extends Migration {
