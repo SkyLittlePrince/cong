@@ -21,6 +21,17 @@ navConfig = {
 			"invite": "4"
 		}
 	}
+	seller: {
+		subNavIndexes: {
+
+		},
+		navIndexes: {
+			"register": "0",
+			"authentication": "1",
+			"my-store": "2",
+			"my-indents": "3"
+		}
+	}
 	account: {
 		subNavIndexes: {
 			"base-info": 0,
