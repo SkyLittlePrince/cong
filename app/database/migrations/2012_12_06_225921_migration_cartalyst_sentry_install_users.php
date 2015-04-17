@@ -32,8 +32,8 @@ class MigrationCartalystSentryInstallUsers extends Migration {
 		Schema::create('users', function($table)
 		{
 			$table->increments('id');
-			$table->string('email',100)->nullable();
-			$table->string('password',256);
+			$table->string('email');
+			$table->string('password');
 			$table->text('permissions')->nullable();
 			$table->boolean('activated')->default(0);
 			$table->string('activation_code')->nullable();
@@ -41,11 +41,15 @@ class MigrationCartalystSentryInstallUsers extends Migration {
 			$table->timestamp('last_login')->nullable();
 			$table->string('persist_code')->nullable();
 			$table->string('reset_password_code')->nullable();
-			$table->string('username',20)->unique();
-			$table->string('qq',20)->nullable();
-			$table->string('mobile',100)->nullable();
-			$table->integer('role_id')->default(1);
-			$table->boolean('gender')->default(0);
+			$table->string('first_name')->nullable();
+			$table->string('last_name')->nullable();
+
+			// Add it on 2015-04-17
+			$table->string('username');
+			$table->string('qq');
+			$table->string('mobile');
+			$table->boolean('gender')->default(0);  // 0=male 1=female
+
 			$table->timestamps();
 
 			// We'll need to ensure that MySQL uses the InnoDB engine to
@@ -53,6 +57,35 @@ class MigrationCartalystSentryInstallUsers extends Migration {
 			$table->engine = 'InnoDB';
 			$table->index('activation_code');
 			$table->index('reset_password_code');
+
+			// Add it on 2015-04-17
+			$table->unique('email');
+			$table->unique('username');
+			$table->unique('mobile');
+			$table->unique('qq');
+
+			// sentry 2.1.5 table
+			/*
+			$table->increments('id');
+			$table->string('email');
+			$table->string('password');
+			$table->text('permissions')->nullable();
+			$table->boolean('activated')->default(0);
+			$table->string('activation_code')->nullable();
+			$table->timestamp('activated_at')->nullable();
+			$table->timestamp('last_login')->nullable();
+			$table->string('persist_code')->nullable();
+			$table->string('reset_password_code')->nullable();
+			$table->string('first_name')->nullable();
+			$table->string('last_name')->nullable();
+			$table->timestamps();
+			// We'll need to ensure that MySQL uses the InnoDB engine to
+			// support the indexes, other engines aren't affected.
+			$table->engine = 'InnoDB';
+			$table->unique('email');
+			$table->index('activation_code');
+			$table->index('reset_password_code');
+			*/
 		});
 	}
 

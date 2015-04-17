@@ -38,8 +38,8 @@ Route::get('/', function()
 // 用户登录
 // 验证码
 // Route::get('captcha', 'SessionsController@captcha');
-Route::get('login', 'SessionsController@login');
-Route::post('login', 'SessionsController@login');
+// Route::get('login', 'SessionsController@login');
+// Route::post('login', 'SessionsController@login');
 
 
 
