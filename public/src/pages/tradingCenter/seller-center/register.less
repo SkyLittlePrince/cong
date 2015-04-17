@@ -1,0 +1,119 @@
+@import '../../../common/common.less';
+
+.seller-register-content {
+	.content-header {
+		background-color: #fff;
+		padding: 15px 45px 18px 35px;
+		font-size: 14px;
+
+		.title {
+			color: #787878;
+			margin-bottom: 17px;
+		}
+
+		.text {
+			color: #bca88d;
+			margin-bottom: 18px;
+			line-height: 1.2em;
+		}
+
+		.steps {
+			color: #d8b156;
+
+			span {
+				margin-right: 20px;
+			}
+		}
+	}
+
+	.content-main {
+		background-color: #fff;
+		margin-top: 11px;
+		padding: 25px 20px 30px 35px;
+		@line-height: 35px;
+
+		.content-left {
+			width: 370px;
+			float: left;
+			.content-row {
+				margin-bottom: 15px;
+
+				.label {
+					float: left;
+					line-height: @line-height;
+					vertical-align: middle;
+					width: 85px;
+				}
+				.content-input {
+					float: left;
+					position: relative;
+
+					.avatar-img {
+						float: left;
+						margin-left: 20px;
+						.border-radius(40px);
+					}
+
+					#avatar-btn {
+						float: left;
+						.border-radius(14px);
+						font-size: 12px;
+						line-height: 28px;
+						width: 76px;
+						height: 28px;
+						position: absolute;
+						bottom: 0px;
+						margin: 0px 0px 0px 105px;
+					}
+
+					input[type="text"] {
+						.input(260px, @line-height);
+					}
+
+					#captcha {
+						.input(120px, @line-height);
+						margin-right: 22px;
+						float: left;
+					}
+				}
+			}
+		}
+
+		.content-right {
+			float: left;
+			margin-left: 30px;
+
+			.content-row {
+				margin-bottom: 15px;
+				.label {
+					display: block;
+				}
+
+				textarea {
+					width: 264px;
+					padding: 10px;
+					.border-radius(10px);
+					border: 1px solid #dddddd;
+					margin-top: 10px;
+					outline: none;
+				}
+
+				#work-experience {
+					height: 67px;
+				}
+
+				#store-desc {
+					height: 122px;
+				}
+			}
+		}
+
+		.content-bottom {
+			#register-confirm {
+				margin: 0 auto;
+				display: block;
+			}
+		}
+	}
+}
+
