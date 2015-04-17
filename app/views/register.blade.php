@@ -25,10 +25,7 @@
 				<div class="register-body">
 					<div class="register-items">
 						<div class="register-item">
-							<input type="text" id="register-name" placeholder="填写手机号／邮箱" />
-						</div>
-						<div class="register-item">
-							<input type="text" id="region" placeholder="所在国家／地区" />
+							<input type="text" id="register-name" placeholder="填写手机号" />
 						</div>
 						<div class="register-item">
 							<input type="text" id="auth-code" placeholder="输入验证码" />

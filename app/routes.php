@@ -38,11 +38,6 @@ Route::group(array('before' => 'auth'), function()
     Route::get('logout', ['as' => 'logout', 'uses' => 'SessionsController@getLogout']);
 });
 
-Route::get('/register', function()
-{
-	return View::make('register');
-});
-
 // 赏金猎人
 Route::group(array('prefix' => 'bounty-hunter'),function()
 {

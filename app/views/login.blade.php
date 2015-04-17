@@ -30,9 +30,9 @@
 						<div class="clear"></div>
 					</div>
 					<div class="login-link">
-						<a href="/register">注册</a>
+						<a href="/user/register">注册</a>
 						 ／ 
-						<a href="/forgot-password">忘记密码？</a>
+						<a href="/user/forgot-password">忘记密码？</a>
 					</div>
 				</div>
 

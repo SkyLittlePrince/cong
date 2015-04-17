@@ -6,7 +6,6 @@ class UserController extends \BaseController {
 
 	public function getRegister()
 	{
-
 		$builder = new CaptchaBuilder;
 		$builder->build();
 
