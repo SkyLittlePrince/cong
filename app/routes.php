@@ -201,9 +201,12 @@ Route::group(array('prefix' => 'trading-center'),function()
 		});
 	});
 	
-	Route::group(array('prefix' => 'account'),function()
+	Route::group(array('prefix' => 'seller'),function()
 	{
-
+		Route::get('indent-evaluation', function()
+		{
+			return View::make('tradingCenter.seller-center.indent-evaluation');
+		});
 	});
 });
 
