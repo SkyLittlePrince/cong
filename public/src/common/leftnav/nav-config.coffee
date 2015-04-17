@@ -14,10 +14,10 @@ navConfig = {
 
 		},
 		navIndexes: {
-			"trading": "0",
+			"trading-list": "0",
 			"mybook": "1",
-			"comment": "2",
-			"report": "3",
+			"comment-manage": "2",
+			"report-manage": "3",
 			"invite": "4"
 		}
 	}
