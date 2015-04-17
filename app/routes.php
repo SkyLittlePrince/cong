@@ -49,11 +49,6 @@ Route::group(array('before' => 'auth'), function()
     Route::get('logout', ['as' => 'logout', 'uses' => 'SessionsController@getLogout']);
 });
 
-Route::get('/register', function()
-{
-	return View::make('register');
-});
-
 // 赏金猎人
 Route::group(array('prefix' => 'bounty-hunter'),function()
 {
@@ -122,11 +117,11 @@ Route::group(array('prefix' => 'trading-center'),function()
 		{
 			return View::make('tradingCenter.buyer-center.index');
 		});
-		Route::get('trading/list', function() 
+		Route::get('trading-list', function() 
 		{
 			return View::make('tradingCenter.buyer-center.trading-manage.trading-list');
 		});
-		Route::get('trading/comment', function() 
+		Route::get('trading-comment', function() 
 		{
 			return View::make('tradingCenter.buyer-center.trading-manage.trading-comment');
 		});
@@ -134,19 +129,19 @@ Route::group(array('prefix' => 'trading-center'),function()
 		{
 			return View::make('tradingCenter.buyer-center.my-book.my-book');
 		});
-		Route::get('comment/manage', function() 
+		Route::get('comment-manage', function() 
 		{
 			return View::make('tradingCenter.buyer-center.comment-manage.comment-manage');
 		});
-		Route::get('report/manage/', function() 
+		Route::get('report-manage', function() 
 		{
 			return View::make('tradingCenter.buyer-center.report-manage.index');
 		});
-		Route::get('report/manage/my-report', function() 
+		Route::get('launch-report', function() 
 		{
 			return View::make('tradingCenter.buyer-center.report-manage.launch-report');
 		});
-		Route::get('report/manage/receive-report', function() 
+		Route::get('receive-report', function() 
 		{
 			return View::make('tradingCenter.buyer-center.report-manage.receive-report');
 		});
@@ -217,9 +212,32 @@ Route::group(array('prefix' => 'trading-center'),function()
 		});
 	});
 	
-	Route::group(array('prefix' => 'account'),function()
+	Route::group(array('prefix' => 'seller'),function()
 	{
+		Route::get('register', function()
+		{
+			return View::make('tradingCenter.seller-center.register');
+		});
 
+		Route::get('my-store', function()
+		{
+			return View::make('tradingCenter.seller-center.my-store');
+		});
+
+		Route::get('my-indents', function()
+		{
+			return View::make('tradingCenter.seller-center.my-indents');
+		});
+
+		Route::get('authentication', function()
+		{
+			return View::make('tradingCenter.seller-center.authentication');
+		});
+
+		Route::get('indent-evaluation', function()
+		{
+			return View::make('tradingCenter.seller-center.indent-evaluation');
+		});
 	});
 });
 

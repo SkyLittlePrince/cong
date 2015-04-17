@@ -108,6 +108,12 @@ module.exports = (grunt)->
                     'dist/css/tradingCenter/buyer-center/report-manage/report.css': ['src/pages/tradingCenter/buyer-center/report-manage/report.less']
                     'dist/css/tradingCenter/buyer-center/report-manage/receive-report.css': ['src/pages/tradingCenter/buyer-center/report-manage/receive-report.less']
                     'dist/css/tradingCenter/buyer-center/invite.css': ['src/pages/tradingCenter/buyer-center/invite.less']
+                    'dist/css/tradingCenter/seller-center/layout.css': ['src/pages/tradingCenter/seller-center/layout.less']
+                    'dist/css/tradingCenter/seller-center/indent-evaluation.css': ['src/pages/tradingCenter/seller-center/indent-evaluation.less']
+                    'dist/css/tradingCenter/seller-center/register.css': ['src/pages/tradingCenter/seller-center/register.less']
+                    'dist/css/tradingCenter/seller-center/my-indents.css': ['src/pages/tradingCenter/seller-center/my-indents.less']
+                    'dist/css/tradingCenter/seller-center/my-store.css': ['src/pages/tradingCenter/seller-center/my-store.less']
+                    'dist/css/tradingCenter/seller-center/authentication.css': ['src/pages/tradingCenter/seller-center/authentication.less']
 
         cssmin:
             compress:
