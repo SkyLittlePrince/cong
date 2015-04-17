@@ -203,6 +203,26 @@ Route::group(array('prefix' => 'trading-center'),function()
 	
 	Route::group(array('prefix' => 'seller'),function()
 	{
+		Route::get('register', function()
+		{
+			return View::make('tradingCenter.seller-center.register');
+		});
+
+		Route::get('my-store', function()
+		{
+			return View::make('tradingCenter.seller-center.my-store');
+		});
+
+		Route::get('my-indents', function()
+		{
+			return View::make('tradingCenter.seller-center.my-indents');
+		});
+
+		Route::get('authentication', function()
+		{
+			return View::make('tradingCenter.seller-center.authentication');
+		});
+
 		Route::get('indent-evaluation', function()
 		{
 			return View::make('tradingCenter.seller-center.indent-evaluation');
