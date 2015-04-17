@@ -4,7 +4,6 @@ public/node_modules
 public/.sass-cache
 /bootstrap/compiled.php
 /vendor/*
-!/vendor/cartalyst/
 /app/config/database.php
 /public/dist
 composer.phar
