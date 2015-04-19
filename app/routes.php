@@ -218,7 +218,10 @@ Route::group(array('prefix' => 'trading-center'),function()
 		{
 			return View::make('tradingCenter.seller-center.register');
 		});
-
+		Route::get('wait-check', function()
+		{
+			return View::make('tradingCenter.seller-center.wait-check');
+		});
 		Route::get('my-store', function()
 		{
 			return View::make('tradingCenter.seller-center.my-store');
