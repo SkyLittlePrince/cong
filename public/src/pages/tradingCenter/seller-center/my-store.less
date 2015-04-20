@@ -1,6 +1,7 @@
 @font: "Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
 @right-width: 750px;
 @money-color: #b08511;
+// 编辑按钮的位置
 .edit {
     width: 65px;
     height: 25px;
@@ -10,6 +11,7 @@
     right: 13px;
     bottom: 5px;
 }
+// 头部两块的样式
 .store-header {
     @padding-top: 19px;
     @padding-left: 21px;
@@ -57,7 +59,7 @@
 .main-content {
     width: @right-width;
     float: left;
-    margin-top: 15px;
+    margin-top: 7px;
     overflow: hidden;
     .main-content {
         min-height: 425px;
@@ -75,10 +77,11 @@
     .recommendation {
         width: 461px;
         .recommendation-image {
+            margin-top: 12px;
             margin-left: 20px;
             overflow: hidden;
             .one-image {
-                margin-top: 12px;
+                margin-bottom: 12px;
                 width: 136px;
                 height: 175px;
                 float: left;
