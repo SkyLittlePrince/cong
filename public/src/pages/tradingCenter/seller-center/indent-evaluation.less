@@ -1,0 +1,87 @@
+@import '../../../common/common.less';
+@font:"微软雅黑";
+.button {
+	width: 88px;
+	height: 35px;
+	.border-radius(14px);
+	background-color: #7ecac8;
+	outline: none;
+	border: 0px;
+	color: #fff;
+	font-size:18px;
+}
+#main{
+	.indent-top {
+		margin-top: 17px;
+		height: 65px;
+		background-color: #fff;
+	
+		p {
+			float:left;
+			font-size:18px;
+			color:#6a6646;
+			font-family:@font;
+			padding: 20px 0px 0px 22px;
+		}
+	}
+	.indent-center {
+		margin-top:14px;
+		background-color: #fff;
+		.center-left {
+			margin:22px 24px 78px 16px;
+			float:left;
+			img {
+				width:256px;
+				height:320px;
+			}
+		}
+		.center-right {
+			.point {
+				padding:20px 25px 0px 0px;
+			}
+			.word1	{
+				font-family:@font;
+				font-size:14px;
+			 	color:#a27c31;
+			}
+			.word2	{
+				font-family:@font;
+				font-size:14px;
+			 	color:#787878;
+			}
+			.assess {
+				margin-left:20px;
+			}
+			#appraise {
+				.input(604px,135px);
+				margin-top: 18px;
+			}
+			#confirm {
+				.button;
+				margin: 10px 0px 0px 540px;
+			}
+		}
+		.center-foot {
+			padding: 10px 0px 50px 16px;
+			p {
+				font-family:@font;
+				font-size:14px;
+				color:#a27c32;
+				padding-bottom: 20px;
+			}
+			#reward-enter {
+				.button;
+				background-color:#fff;
+				color:#787878;
+				border: 1px ridge;
+			}
+			.evaluate {
+				margin-left:22px;
+			}
+			#reward {
+				.button;
+				margin-left:27px;
+			}
+		}
+	}
+}

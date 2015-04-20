@@ -41,6 +41,12 @@ class MigrationCartalystSentryInstallUsers extends Migration {
 			$table->timestamp('last_login')->nullable();
 			$table->string('persist_code')->nullable();
 			$table->string('reset_password_code')->nullable();
+<<<<<<< HEAD:vendor/cartalyst/sentry/src/migrations/2012_12_06_225921_migration_cartalyst_sentry_install_users.php
+			$table->string('username',20)->unique();
+			$table->string('mobile',100)->nullable();
+			$table->integer('role_id')->default(1);
+			$table->string('gender',100)->nullable();
+=======
 			$table->string('first_name')->nullable();
 			$table->string('last_name')->nullable();
 
@@ -50,6 +56,7 @@ class MigrationCartalystSentryInstallUsers extends Migration {
 			$table->string('mobile');
 			$table->boolean('gender')->default(0);  // 0=male 1=female
 
+>>>>>>> 2ca0e4cc18c475e1f6087e2837286fe70d4a71c3:app/database/migrations/2012_12_06_225921_migration_cartalyst_sentry_install_users.php
 			$table->timestamps();
 
 			// We'll need to ensure that MySQL uses the InnoDB engine to
