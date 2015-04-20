@@ -27,6 +27,23 @@ class UserController extends \BaseController {
 		return Response::json(array('errCode' => 0,'message' => '验证码正确!'));
 	}
 
+	public function checkEmail()
+	{
+		$email = Input::get('email');
+
+		$reg = "/^[_.0-9a-z-a-z-]+@([0-9a-z][0-9a-z-]+.)+[a-z]{2,4}$/";
+		if(!preg_match($reg, $email))
+			return Response::json(array('errCode' => 1,'messge' => '邮箱格式不正确!'));
+
+		$user = User::where('email',$email)->first();
+
+		if(isset($user))
+			return Response::json(array('errCode' => 2,'message' => '该邮箱已被注册!'));
+
+		return Response::json(array('errCode' => 0,'message' => '该邮箱可用!'));
+
+	}
+
 	public function getCheckRegister()
 	{
 		$login = Input::get('loginname');
