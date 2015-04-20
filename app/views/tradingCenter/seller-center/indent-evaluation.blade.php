@@ -59,7 +59,7 @@
 			</div>
 			<div class="center-foot">
 				<p>提示：如果对此次交易特别满意，还可以给卖家打赏哦！</p>
-				<input type="button" class="reward-enter" id="reward-enter" value="输入赏金">
+				<input type="text" class="reward-enter" id="reward-enter" value="输入赏金">
 				<input type="radio" class="evaluate" name="evaluate"/><span>好评</span>
 				<input type="radio" class="evaluate" name="evaluate"/><span>中评</span>
 				<input type="radio" class="evaluate" name="evaluate"/><span>差评</span>
