@@ -38,8 +38,8 @@ Route::get('/', function()
 // 用户登录
 // 验证码
 // Route::get('captcha', 'SessionsController@captcha');
-Route::get('login', 'SessionsController@login');
-Route::post('login', 'SessionsController@login');
+// Route::get('login', 'SessionsController@login');
+// Route::post('login', 'SessionsController@login');
 
 
 
@@ -58,7 +58,7 @@ Route::group(array('prefix' => 'bounty-hunter'),function()
 	});
 
 	// 悬赏任务
-	Route::get('reward-task', function($step = null) 
+	Route::get('reward-task', function($step = null)
 	{
 		$step = Input::get("step");
 
@@ -70,10 +70,10 @@ Route::group(array('prefix' => 'bounty-hunter'),function()
 	});
 
 	// 倒价竞拍
-	Route::get('auction', function($step = null) 
+	Route::get('auction', function($step = null)
 	{
 		$step = Input::get("step");
-		
+
 		if($step == null) {
 			return View::make('bountyHunter.auctions.step-1');
 		} else {
@@ -113,39 +113,39 @@ Route::group(array('prefix' => 'trading-center'),function()
 	// 买家中心
 	Route::group(array('prefix' => 'buyer'),function()
 	{
-		Route::get('/', function() 
+		Route::get('/', function()
 		{
 			return View::make('tradingCenter.buyer-center.index');
 		});
-		Route::get('trading-list', function() 
+		Route::get('trading-list', function()
 		{
 			return View::make('tradingCenter.buyer-center.trading-manage.trading-list');
 		});
-		Route::get('trading-comment', function() 
+		Route::get('trading-comment', function()
 		{
 			return View::make('tradingCenter.buyer-center.trading-manage.trading-comment');
 		});
-		Route::get('mybook', function() 
+		Route::get('mybook', function()
 		{
 			return View::make('tradingCenter.buyer-center.my-book.my-book');
 		});
-		Route::get('comment-manage', function() 
+		Route::get('comment-manage', function()
 		{
 			return View::make('tradingCenter.buyer-center.comment-manage.comment-manage');
 		});
-		Route::get('report-manage', function() 
+		Route::get('report-manage', function()
 		{
 			return View::make('tradingCenter.buyer-center.report-manage.index');
 		});
-		Route::get('launch-report', function() 
+		Route::get('launch-report', function()
 		{
 			return View::make('tradingCenter.buyer-center.report-manage.launch-report');
 		});
-		Route::get('receive-report', function() 
+		Route::get('receive-report', function()
 		{
 			return View::make('tradingCenter.buyer-center.report-manage.receive-report');
 		});
-		Route::get('invite', function() 
+		Route::get('invite', function()
 		{
 			return View::make('tradingCenter.buyer-center.invite-friends');
 		});
@@ -211,14 +211,17 @@ Route::group(array('prefix' => 'trading-center'),function()
 			return View::make('tradingCenter.account.pay-account');
 		});
 	});
-	
+
 	Route::group(array('prefix' => 'seller'),function()
 	{
 		Route::get('register', function()
 		{
 			return View::make('tradingCenter.seller-center.register');
 		});
-
+		Route::get('wait-check', function()
+		{
+			return View::make('tradingCenter.seller-center.wait-check');
+		});
 		Route::get('my-store', function()
 		{
 			return View::make('tradingCenter.seller-center.my-store');
@@ -242,6 +245,10 @@ Route::group(array('prefix' => 'trading-center'),function()
 });
 
 
+// for admin
 
-
+Route::group(array('prefix' => 'cats'),function()
+{
+	Route::get('index','CatController@index');
+});
 

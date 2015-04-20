@@ -1,0 +1,78 @@
+@font: "Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
+@import './../common/pagination.less';
+
+// 头部样式
+.indent-header {
+	@height: 31px;
+	width: 100%;
+	height: @height;
+	font-size: 14px;
+	font-family: @font;
+	background-color: #fff;
+	p {
+		color: #e79d1a;
+		padding-left: 16px;
+		line-height: @height; 
+	}
+}
+
+// 订单列表样式
+.order-list {
+	width: 750px;
+	margin-top:18px;
+	.one-order {
+		width: 100%;
+		margin-bottom: 11px;
+		height: 93px;
+		background-color: #fff;
+		color: #6a6646;
+		font-family: @font;
+		font-size: 12px;
+		.info {
+			padding-top: 10px;
+			width: 700px;
+			margin: 0 auto;
+			border-bottom: solid 1px #b5b5b5;
+			padding-bottom: 5px;
+			.order-number {
+				display: inline-block;
+				margin-left: 17px;
+			}
+		}
+		@detail-width: 700px;
+		@image-width: 90px;
+		@title-width: 297px;
+		@price-width: 200px;
+		@status-width: 700 - @image-width - @title-width - @price-width;
+		.detail {
+			overflow: hidden;
+			font-size: 12px;
+			.detail-component {
+				float: left;
+			}
+			width: @detail-width;
+			margin: 0 auto;
+			.img {
+				width: @image-width;
+				img {
+					margin-top: 12px;
+				}
+			}
+			.title {
+				padding-top: 29px;
+				width: @title-width;
+			}
+			.price {
+				padding-top: 29px;
+				color: #b08511;
+				font-size: 14px;
+				width: @price-width;
+			}
+			.status {
+				padding-top: 24px;
+				text-align: center;
+				width: @status-width;
+			}
+		}
+	}
+}

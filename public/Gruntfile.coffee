@@ -114,6 +114,7 @@ module.exports = (grunt)->
                     'dist/css/tradingCenter/seller-center/my-indents.css': ['src/pages/tradingCenter/seller-center/my-indents.less']
                     'dist/css/tradingCenter/seller-center/my-store.css': ['src/pages/tradingCenter/seller-center/my-store.less']
                     'dist/css/tradingCenter/seller-center/authentication.css': ['src/pages/tradingCenter/seller-center/authentication.less']
+                    'dist/css/tradingCenter/seller-center/wait-check.css': ['src/pages/tradingCenter/seller-center/wait-check.less']
 
         cssmin:
             compress:

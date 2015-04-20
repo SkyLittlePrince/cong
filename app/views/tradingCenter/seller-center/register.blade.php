@@ -6,6 +6,7 @@
 
 @section('css')
     @parent
+    <link rel="stylesheet" type="text/css" href="/dist/css/checkbox/checkbox.css">
     <link rel="stylesheet" type="text/css" href="/dist/css/tradingCenter/seller-center/register.css">
 @stop
 
