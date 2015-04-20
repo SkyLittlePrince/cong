@@ -1,2 +1,8 @@
-user:
+group:  # from sentry
+
+user:  # from sentry
   username: 用户名
+
+cat:  # 分类 from baum
+
+product:  # 商品

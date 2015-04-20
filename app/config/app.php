@@ -127,6 +127,8 @@ return array(
 		'Barryvdh\Debugbar\ServiceProvider',
 		// for Sentry
 		'Cartalyst\Sentry\SentryServiceProvider',
+		// for Nested Set impl baum
+		'Baum\BaumServiceProvider',
 	),
 
 	/*
