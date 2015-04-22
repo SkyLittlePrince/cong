@@ -241,6 +241,10 @@ Route::group(array('prefix' => 'trading-center'),function()
 		{
 			return View::make('tradingCenter.seller-center.indent-evaluation');
 		});
+		Route::get('seller-store', function()
+		{
+			return View::make('tradingCenter.seller-center.seller-store');
+		});
 	});
 });
 

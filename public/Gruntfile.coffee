@@ -115,6 +115,7 @@ module.exports = (grunt)->
                     'dist/css/tradingCenter/seller-center/my-store.css': ['src/pages/tradingCenter/seller-center/my-store.less']
                     'dist/css/tradingCenter/seller-center/authentication.css': ['src/pages/tradingCenter/seller-center/authentication.less']
                     'dist/css/tradingCenter/seller-center/wait-check.css': ['src/pages/tradingCenter/seller-center/wait-check.less']
+                    'dist/css/tradingCenter/seller-center/seller-store.css': ['src/pages/tradingCenter/seller-center/seller-store.less']
 
         cssmin:
             compress:
