@@ -21,6 +21,7 @@ Route::group(array('prefix' => 'user'),function()
 	Route::post('register','UserController@postRegister');
 	Route::post('login','UserController@postLogin');
 	Route::get('login','UserController@getLogin');
+	Route::post('checkEmail','UserController@checkEmail');
 });
 
 Route::group(array('prefix' => 'user','before' => 'auth.user.isIn'),function()
