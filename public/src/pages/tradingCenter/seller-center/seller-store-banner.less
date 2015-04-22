@@ -1,0 +1,99 @@
+@font: "Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
+@banner-height: 113px;  // 页面横栏高度
+@component-color: #6a6545;  // 横栏主体颜色
+@info-width: 195px;     // 用户信息的宽度
+@info-image-width: 70px;    // 用户信息头像的宽度
+@detail-width: 335px;   // 店铺详细信息的宽度
+@store-info-width: @wrapper-width - @info-width - @detail-width - 10px; //店铺简略信息的宽度
+// 头部横栏样式
+.banner {
+    width: @wrapper-width;
+    font-family: @font;
+    height: @banner-height;
+    background-color: #fff;
+    margin: 0 auto;
+    margin-top: 54px;
+    overflow: hidden;
+    font-size: 14px;
+    color: #6a6545;
+    // 用户信息样式
+    .user-info {
+        width: @info-width;
+        padding-top: 11px;
+        color: @component-color;
+        float: left;
+        .component {
+            float: left;
+        }
+        .avatar {
+            padding: 0 8px 0 14px;  
+            img {
+                width: @info-image-width;
+                height: @info-image-width;
+            }
+        }
+        .info {
+            width: @info-width - @info-image-width - 22;
+            padding-top: 6px;
+            font-size: 12px;
+            line-height: 1.5em;
+            .address-info {
+                color:#bca890;
+            }
+        }
+    }
+    @padding-top: 15px;
+    @padding-left: 21px;
+    // 头部两块的样式
+    .header-component {
+        height: @banner-height - 2 * @padding-top;
+        float: left;
+        padding: @padding-top 0;
+        position: relative;
+        .row-content {
+            overflow: hidden;
+            margin-bottom: 3px;
+            .label  {
+                float: left;
+                width: 70px;
+            }
+            span {
+                display: inline-block;
+            }
+        }
+    }
+    .store-info {
+        width: @store-info-width;
+        .content {
+            width: @store-info-width - 70px;
+        }
+        position: relative;
+        .talk {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            background: url("@{image-path}/user-info-logo.png") no-repeat 0 12px;
+            padding-left: 30px;
+            a {
+                width: 65px;
+                height: 25px;
+                line-height: 25px;
+                font-size: 14px;
+            }
+        }
+        .stastic {
+            position: absolute;
+            line-height: 25px;
+            bottom: 15px;
+            right: 45px;
+        }
+    }
+    .store-detail {
+        width: @detail-width;
+        padding-left: 0;
+        margin-left: 9px;
+        .content {
+            width: @detail-width - 70px - 20px;
+        }
+    }
+}

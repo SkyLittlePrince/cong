@@ -110,100 +110,102 @@
                     <p>月成交<span>4321</span>次</p>
                 </div>
             </div>
-            <div class="content">
-                <div class="task">
-                    <div class="img">
-                        <div class="tag">平面设计类</div>
-                        <img src="/images/rewardtask/1.png" width="172" height="129" />
+            <div class="content-wrapper">
+                <div class="content">
+                    <div class="task">
+                        <div class="img">
+                            <div class="tag">平面设计类</div>
+                            <img src="/images/rewardtask/1.png" width="172" height="129" />
+                        </div>
+                        <div class="text">品牌设计，vi设计，包装设计</div>
+                        <div class="price">RMB：2000</div>
                     </div>
-                    <div class="text">品牌设计，vi设计，包装设计</div>
-                    <div class="price">RMB：2000</div>
-                </div>
-                <div class="task">
-                    <div class="img">
-                        <div class="tag">平面设计类</div>
-                        <img src="/images/rewardtask/1.png" width="172" height="129" />
+                    <div class="task">
+                        <div class="img">
+                            <div class="tag">平面设计类</div>
+                            <img src="/images/rewardtask/1.png" width="172" height="129" />
+                        </div>
+                        <div class="text">品牌设计，vi设计，包装设计</div>
+                        <div class="price">RMB：2000</div>
                     </div>
-                    <div class="text">品牌设计，vi设计，包装设计</div>
-                    <div class="price">RMB：2000</div>
-                </div>
-                <div class="task">
-                    <div class="img">
-                        <div class="tag">平面设计类</div>
-                        <img src="/images/rewardtask/1.png" width="172" height="129" />
+                    <div class="task">
+                        <div class="img">
+                            <div class="tag">平面设计类</div>
+                            <img src="/images/rewardtask/1.png" width="172" height="129" />
+                        </div>
+                        <div class="text">品牌设计，vi设计，包装设计</div>
+                        <div class="price">RMB：2000</div>
                     </div>
-                    <div class="text">品牌设计，vi设计，包装设计</div>
-                    <div class="price">RMB：2000</div>
-                </div>
-                <div class="task">
-                    <div class="img">
-                        <div class="tag">平面设计类</div>
-                        <img src="/images/rewardtask/1.png" width="172" height="129" />
+                    <div class="task">
+                        <div class="img">
+                            <div class="tag">平面设计类</div>
+                            <img src="/images/rewardtask/1.png" width="172" height="129" />
+                        </div>
+                        <div class="text">品牌设计，vi设计，包装设计</div>
+                        <div class="price">RMB：2000</div>
                     </div>
-                    <div class="text">品牌设计，vi设计，包装设计</div>
-                    <div class="price">RMB：2000</div>
-                </div>
-                <div class="task">
-                    <div class="img">
-                        <div class="tag">平面设计类</div>
-                        <img src="/images/rewardtask/1.png" width="172" height="129" />
+                    <div class="task">
+                        <div class="img">
+                            <div class="tag">平面设计类</div>
+                            <img src="/images/rewardtask/1.png" width="172" height="129" />
+                        </div>
+                        <div class="text">品牌设计，vi设计，包装设计</div>
+                        <div class="price">RMB：2000</div>
                     </div>
-                    <div class="text">品牌设计，vi设计，包装设计</div>
-                    <div class="price">RMB：2000</div>
-                </div>
-                <div class="task">
-                    <div class="img">
-                        <div class="tag">平面设计类</div>
-                        <img src="/images/rewardtask/1.png" width="172" height="129" />
+                    <div class="task">
+                        <div class="img">
+                            <div class="tag">平面设计类</div>
+                            <img src="/images/rewardtask/1.png" width="172" height="129" />
+                        </div>
+                        <div class="text">品牌设计，vi设计，包装设计</div>
+                        <div class="price">RMB：2000</div>
                     </div>
-                    <div class="text">品牌设计，vi设计，包装设计</div>
-                    <div class="price">RMB：2000</div>
-                </div>
-                <div class="task">
-                    <div class="img">
-                        <div class="tag">平面设计类</div>
-                        <img src="/images/rewardtask/1.png" width="172" height="129" />
+                    <div class="task">
+                        <div class="img">
+                            <div class="tag">平面设计类</div>
+                            <img src="/images/rewardtask/1.png" width="172" height="129" />
+                        </div>
+                        <div class="text">品牌设计，vi设计，包装设计</div>
+                        <div class="price">RMB：2000</div>
                     </div>
-                    <div class="text">品牌设计，vi设计，包装设计</div>
-                    <div class="price">RMB：2000</div>
-                </div>
-                <div class="task">
-                    <div class="img">
-                        <div class="tag">平面设计类</div>
-                        <img src="/images/rewardtask/1.png" width="172" height="129" />
+                    <div class="task">
+                        <div class="img">
+                            <div class="tag">平面设计类</div>
+                            <img src="/images/rewardtask/1.png" width="172" height="129" />
+                        </div>
+                        <div class="text">品牌设计，vi设计，包装设计</div>
+                        <div class="price">RMB：2000</div>
                     </div>
-                    <div class="text">品牌设计，vi设计，包装设计</div>
-                    <div class="price">RMB：2000</div>
-                </div>
-                <div class="task">
-                    <div class="img">
-                        <div class="tag">平面设计类</div>
-                        <img src="/images/rewardtask/1.png" width="172" height="129" />
+                    <div class="task">
+                        <div class="img">
+                            <div class="tag">平面设计类</div>
+                            <img src="/images/rewardtask/1.png" width="172" height="129" />
+                        </div>
+                        <div class="text">品牌设计，vi设计，包装设计</div>
+                        <div class="price">RMB：2000</div>
                     </div>
-                    <div class="text">品牌设计，vi设计，包装设计</div>
-                    <div class="price">RMB：2000</div>
                 </div>
+                <div class="pagination">
+                    <div class="right to-page">
+                        <p>
+                            共<span class="page-count">3</span>页,到第<input type="text" >页
+                            <input type="button" value="确定">
+                        </p>
+                    </div>
+                    <div class="page-num right">
+                        <a href="#">
+                            <img src="/images/icon/icon-arrow-left.png" alt="icon-left" width="28" height="28" />         
+                        </a>
+                        <span class="num active">1</span>
+                        <span class="num">2</span>
+                        <span class="num">3</span>
+                        <a href="#">
+                            <img src="/images/icon/icon-arrow-right.png" alt="icon-right" width="28" height="28" />
+                        </a>
+                    </div>
+            </div>
             </div>
         </div>
-            <div class="pagination">
-                <div class="right to-page">
-                    <p>
-                        共<span class="page-count">3</span>页,到第<input type="text" >页
-                        <input type="button" value="确定">
-                    </p>
-                </div>
-                <div class="page-num right">
-                    <a href="#">
-                        <img src="/images/icon/icon-arrow-left.png" alt="icon-left" width="28" height="28" />         
-                    </a>
-                    <span class="num active">1</span>
-                    <span class="num">2</span>
-                    <span class="num">3</span>
-                    <a href="#">
-                        <img src="/images/icon/icon-arrow-right.png" alt="icon-right" width="28" height="28" />
-                    </a>
-                </div>
-            </div>
     </div>
 @stop
 

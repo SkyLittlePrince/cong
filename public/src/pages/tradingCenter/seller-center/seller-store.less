@@ -1,106 +1,8 @@
-@font: "Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
-@wrapper-width: 955px;
-@banner-height: 113px;
-@info-width: 195px;
-@detail-width: 335px;
-@store-info-width: @wrapper-width - @info-width - @detail-width - 10px; 
-@info-image-width: 70px;
-@component-color: #6a6545;
+@wrapper-width: 955px;  // 页面主体宽度
+@image-path: './../../../../images/tradingcenter/seller';
 @import '../../../common/common.less';
-@import './../common/pagination.less';
-
-.seller-store-content {
-	width: @wrapper-width;
-	.banner {
-		width: @wrapper-width;
-		font-family: @font;
-		height: @banner-height;
-		background-color: #fff;
-		margin: 0 auto;
-		margin-top: 54px;
-		overflow: hidden;
-		font-size: 14px;
-		width: @wrapper-width;
-		.user-info {
-			width: @info-width;
-			padding-top: 11px;
-			color: @component-color;
-			float: left;
-			.component {
-				float: left;
-			}
-			.avatar {
-				padding: 0 8px 0 14px;  
-				img {
-					width: @info-image-width;
-					height: @info-image-width;
-				}
-			}
-			.info {
-				width: @info-width - @info-image-width - 22;
-				padding-top: 6px;
-				font-size: 12px;
-				line-height: 1.5em;
-				.address-info {
-					color:#bca890;
-				}
-			}
-		}
-		@padding-top: 15px;
-    	@padding-left: 21px;
-		// 头部两块的样式
-		.header-component {
-	        height: @banner-height - 2 * @padding-top;
-	        float: left;
-	        padding: @padding-top 0;
-	        position: relative;
-	        .row-content {
-	            overflow: hidden;
-	            margin-bottom: 3px;
-	            .label  {
-	                float: left;
-	                width: 70px;
-	            }
-	            span {
-	                display: inline-block;
-	            }
-	        }
-	    }
-	    .store-info {
-	        width: @store-info-width;
-	        .content {
-	            width: @store-info-width - 70px;
-	        }
-	        position: relative;
-	        .talk {
-	        	position: absolute;
-	        	bottom: 15px;
-	        	left: 0;
-	        	padding-left: 30px;
-	        	a {
-	        		width: 65px;
-				    height: 25px;
-				    line-height: 25px;
-				    font-size: 14px;
-	        	}
-	        }
-	        .stastic {
-	        	position: absolute;
-	        	line-height: 25px;
-	        	bottom: 15px;
-	        	right: 45px;
-	        }
-	    }
-	    .store-detail {
-	       	width: @detail-width;
-	       	padding-left: 0;
-	        margin-left: 9px;
-	        .content {
-	            width: 230px;
-	        }
-	    }
-	}
-}
+@import './../common/pagination.less';  // 引入分页样式
+@import './seller-store-banner.less';
 
 .store-main {
 	width: @wrapper-width;
@@ -179,16 +81,19 @@
 		font-size: @font-size;
 		font-family: @font;
 	}
-	.content {
-		@margin-left: 10px;
-		@img-width: 210px;
-		@nav-height: 31px;
-		@nav-bg-color: #7ecac8;
-		@nav-color: #a3a3a3;
-		width: @content-width;
+    .content-wrapper {
+        width: @content-width;
 		margin-left: 4px;
-		overflow: hidden;
 		float: left;
+    }
+    .content {
+        @margin-left: 10px;
+        @img-width: 210px;
+        @nav-height: 31px;
+        @nav-bg-color: #7ecac8;
+        @nav-color: #a3a3a3;
+        width: @content-width;
+        overflow: hidden;
 		.task {
 			background-color: #fff;
 			float: left;

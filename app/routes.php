@@ -245,6 +245,10 @@ Route::group(array('prefix' => 'trading-center'),function()
 		{
 			return View::make('tradingCenter.seller-center.seller-store');
 		});
+		Route::get('product-detail', function()
+		{
+			return View::make('tradingCenter.seller-center.seller-product-detail');
+		});
 	});
 });
 
