@@ -46,4 +46,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		'role_id',
 		'qq'
 		);
+
+	public function addresses()
+	{
+		return $this->hasMany('Address');
+	}
 }

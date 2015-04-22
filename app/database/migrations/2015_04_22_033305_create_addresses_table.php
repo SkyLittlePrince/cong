@@ -16,6 +16,21 @@ class CreateAddressesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
+			$table->string('username');
+			$table->integer('user_id')->unsigned()->index('user_id');
+			$table->string('province');
+			$table->string('city');
+			$table->string('region');
+			$table->string('postcode');
+			$table->string('mobile');
+			$table->string('address');
+			$table->boolean('is_default')->default(0);
+
+		   	$table                          
+		                ->foreign('user_id')
+		                ->references('id')->on('users') 
+		                ->onDelete('cascade')
+		                ->onUpdate('cascade');
 		});
 	}
 
