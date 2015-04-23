@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAddressesTable extends Migration {
+class CreateMessagesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,25 +12,17 @@ class CreateAddressesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('addresses', function(Blueprint $table)
+		Schema::create('messages', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->timestamps();
-			$table->string('username');
-			$table->integer('user_id')->unsigned()->index('user_id');
-			$table->string('province');
-			$table->string('city');
-			$table->string('region');
-			$table->string('postcode');
-			$table->string('mobile');
-			$table->string('address');
-			$table->boolean('is_default')->default(0);
+			
 
 		   	$table                          
-		                ->foreign('user_id')
-		                ->references('id')->on('users') 
-		                ->onDelete('cascade')
-		                ->onUpdate('cascade');
+                ->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
 		});
 	}
 
@@ -41,7 +33,7 @@ class CreateAddressesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('addresses');
+		Schema::drop('messages');
 	}
 
 }

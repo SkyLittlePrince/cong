@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAddressesTable extends Migration {
+class CreateTasksTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,25 +12,24 @@ class CreateAddressesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('addresses', function(Blueprint $table)
+		Schema::create('tasks', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->timestamps();
-			$table->string('username');
+			$table->string('title');
 			$table->integer('user_id')->unsigned()->index('user_id');
-			$table->string('province');
-			$table->string('city');
-			$table->string('region');
-			$table->string('postcode');
-			$table->string('mobile');
-			$table->string('address');
-			$table->boolean('is_default')->default(0);
+			$table->boolean('isAuction');
+			$table->integer('auctionPrice');
+			$table->string('auctionDeadline');
+			$table->integer('personNum');
+			$table->text('personNum');
+			$table->text('files');
 
 		   	$table                          
-		                ->foreign('user_id')
-		                ->references('id')->on('users') 
-		                ->onDelete('cascade')
-		                ->onUpdate('cascade');
+                ->foreign('user_id')
+                ->references('id')->on('users') 
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
 		});
 	}
 
@@ -41,7 +40,7 @@ class CreateAddressesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('addresses');
+		Schema::drop('tasks');
 	}
 
 }
