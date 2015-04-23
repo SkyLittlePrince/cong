@@ -6,8 +6,6 @@
                 <a href="javascript:void(0);" class="nav-item nav-a">我的账号</a>
                 <ul class="sub-nav">
                     <li><a href="/trading-center/account/base-info">基本信息</a></li>
-                    <li><a href="/trading-center/account/contact">联系方式</a></li>
-                    <li><a href="/trading-center/account/address">邮寄地址</a></li>
                     <li><a href="/trading-center/account/card">名片</a></li>
                 </ul>
             </li>
@@ -17,7 +15,7 @@
             <li>
                 <a href="javascript:void(0);" class="nav-item nav-a">账户绑定</a>
                 <ul class="sub-nav">
-                    <li><a href="/trading-center/account/bind-phone">手机绑定</a></li>
+                    <!-- <li><a href="/trading-center/account/bind-phone">手机绑定</a></li> -->
                     <li><a href="/trading-center/account/bind-email">邮箱绑定></a></li>
                     <li><a href="/trading-center/account/bind-weibo">微博绑定</a></li>
                 </ul>

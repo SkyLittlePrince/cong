@@ -39,12 +39,6 @@
 				</div>
 			</div>
 			<div class="content-row">
-				<label>店铺名称：</label>
-				<div class="content-input">
-					<input type="text" id="store" name="store" />
-				</div>
-			</div>
-			<div class="content-row">
 				<label>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别&nbsp;&nbsp;:</label>
 				<div class="content-input sex">
                     <input name="sex" type="radio" /> <span style="padding-right: 35px;">男</span>
@@ -60,9 +54,30 @@
                     </div>
 			</div>
 			<div class="content-row">
-				<label>店铺简介：</label>
+				<label for="wechat">微信：</label>
 				<div class="content-input">
-					<input type="text" id="summary" name="summary" />
+					<input type="text" id="wechat" name="wechat" />
+				</div>
+			</div>
+			<div class="content-row">
+				<label for="QQ">QQ：</label>
+				<div class="content-input">
+					<input type="text" id="QQ" name="QQ" />
+				</div>
+			</div>
+			<div class="content-row">
+				<label for="prov">所在地：</label>
+				<div class="content-input">
+					<input type="text" id="prov" name="prov" /> 省 
+					<input type="text" id="city" name="city" /> 市 
+					<input type="text" id="district" name="district" /> 区 
+					<input type="button" value="其他" id="other-region-btn" />
+				</div>
+			</div>
+			<div class="content-row">
+				<label for="address">详细地址：</label>
+				<div class="content-input">
+					<input type="text" id="address" name="address" />
 				</div>
 			</div>
 			<div class="content-row">
