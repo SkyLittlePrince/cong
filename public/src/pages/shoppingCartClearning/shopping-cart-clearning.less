@@ -1,0 +1,109 @@
+@wrapper-width: 750px;
+@font: "Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
+.shopping-cart-content {
+	width: @wrapper-width;
+	margin: 0 auto;
+	margin-top: 45px;
+	.banner {
+		font-family: @font;
+		width: 100%;
+		height: 33px;
+		background-color: #7ecac8;
+		color: #fff;
+		p {
+			line-height: 33px;
+			font-size: 18px;
+			text-indent: 20px;
+		}
+	}
+	.main-content {
+		width: 100%;
+		margin-top: 8px;
+		background-color: #fff;
+		font-family: @font;
+		color: #787878;
+		.order-detail {
+			overflow: hidden;
+			padding-bottom: 8px;
+			border-bottom: solid 1px #c9c9c9;
+		}
+		.order-component {
+			font-size: 14px;
+			float: left;
+			margin-top: 42px;
+			li {
+				margin-bottom: 10px;
+				.money {
+					color: #b08511;
+					font-size: 18px;
+				}
+			}
+		}
+		@left-width: 300px;
+		.order-left {
+			width: 300px;
+			margin-left: 66px;
+			li {
+				.order-number {
+					color: #b08511;
+				}
+			}
+		}
+		.order-right {
+			width: 315px;
+			overflow: hidden;
+			li {
+				width: 100%;
+				float: left;
+				.products {
+					float: left;
+				}
+				.order-list {
+					float: left;
+					p {
+						padding-bottom: 7px;
+					}
+				}
+			}
+		}
+		.payment-way {
+			overflow: hidden;
+			padding-top: 25px;
+			padding-bottom: 15px;
+			.label {
+				display: inline-block;
+				float: left;
+				margin-left: 66px;
+			}
+			.banks {
+				display: inline-block;
+				width: 400px;
+				position: relative;
+				top: 10px;
+			}
+
+			.bank-item {
+				float: left;
+				margin-bottom: 10px;
+				width: 200px;
+
+				input[type="radio"] {
+					position: relative;
+					bottom: 10px;
+					vertical-align: middle;
+					margin-right: 10px;
+				}
+			}
+		}
+	}
+	.operate-btn {
+		text-align: center;
+		margin-top: 22px;
+		.last {
+			  background-color: #bee4e4;
+		}
+		.next {
+			margin-left: 140px;
+		}
+	}
+}

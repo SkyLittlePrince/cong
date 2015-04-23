@@ -1,112 +1,161 @@
 @extends('layouts.master')
 
 @section('title')
-    <title>丛丛网－购物车结算</title>
+    <title>丛丛网－购物车</title>
 @stop
 @section('css')
     @parent
     <link rel="stylesheet" type="text/css" href="/dist/css/shopping-cart.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/checkbox/checkbox.css">
 @stop
 
 @section('body')
     @parent
     <div id="main">
-        <div class="shopping-cart-content">
+        <div class="shopping-cart-content my-self-checkbox">
             <div class="banner">
-                <p>购物车结算</p>
+                <p>我的购物车</p>
             </div>
             <div class="main-content">
-                <div class="order-detail">
-                    <ul class="order-left order-component">
-                        <li>
-                            <label class="label">账户：</label>
-                            <span>Vivine</span>
-                        </li>
-                        <li>
-                            <label class="label">订单编号：</label>
-                            <span class="order-number">CBD542115266</span>
-                        </li>
-                        <li>
-                            <label class="label">下单时间：</label>
-                            <span>2014-12-24<span>09:30</span></span>
-                        </li>
-                        <li>
-                            <label class="label">店铺名称：</label>
-                            <span>店铺名称XXXXX</span>
-                        </li>
-                        <li>
-                            <label class="label">商品总数：</label>
-                            <span>4件</span>
-                        </li>
-                    </ul>
-                    <ul class="order-right order-component">
-                        <li>
-                            <label class="label products">订单详情：</label>
-                            <div class="order-list">
-                                <p>商品名称XXXXXXXXXX</p>
-                                <p>商品名称XXXXXXXXXX</p>
-                                <p>商品名称XXXXXXXXXX</p>
-                                <p>商品名称XXXXXXXXXX</p>
+                <div class="product-list">
+                    <div class="list-banner">
+
+                    </div>
+                    <div class="one-list">
+                        <div class="info">
+                            <label class="my-self-checkbox-label">
+                                <input type="checkbox" name="indent" value="order1" style="display:hidden;">
+                            </label>
+                            <span class="date">2014-12-24</span> 
+                            <span class="product-name-title">商品名称</span>
+                        </div>
+                        <div class="detail">
+                            <div class="img detail-component">
+                                <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
                             </div>
-                        </li>
-                        <li>
-                            <label class="label">应付总计：</label>
-                            <span class="money">￥1520</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="payment-way">
-                    <label class="label">付款渠道：</label>
-                    <div class="banks">
-                        <div class="bank-item">
-                            <input type="radio" id="cb" name="bank">
-                            <label for="cb">
-                                <img src="/images/rewardtask/cb.png" alt="cb" class="bank"/>
-                            </label>
+                            <div class="title detail-component">
+                                <p>此处描述为产品的标题XXXXXXXXXXX</p>
+                            </div>
+                            <div class="price detail-component">
+                                <span class="money">￥<span>380</span></span>
+                            </div>
+                            <div class="counter detail-component">
+                                <label class="counter-btn">-</label>
+                                <input type="text" value="1" class="counter-input">
+                                <label class="counter-btn">+</label>
+                            </div>
+                            <div class="total-price detail-component">
+                                <span class="money">￥<span>380</span></span>
+                            </div>
+                            <div class="status detail-component">
+                                <p class="status-content">交易成功</p>
+                                <p class="delete">删除</p>
+                            </div>
                         </div>
-                        <div class="bank-item">
-                            <input type="radio" id="ccb" name="bank">
-                            <label for="ccb">
-                                <img src="/images/rewardtask/ccb.png" alt="ccb" class="bank"/>
+                    </div>
+                    <div class="one-list">
+                        <div class="info">
+                            <label class="my-self-checkbox-label">
+                                <input type="checkbox" name="indent" value="order1" style="display:hidden;">
                             </label>
+                            <span class="date">2014-12-24</span> 
+                            <span class="product-name-title">商品名称</span>
                         </div>
-                        <div class="bank-item">
-                            <input type="radio" id="cgb" name="bank">
-                            <label for="cgb">
-                                <img src="/images/rewardtask/cgb.png" alt="cgb" class="bank"/>
+                        <div class="detail">
+                            <div class="img detail-component">
+                                <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
+                            </div>
+                            <div class="title detail-component">
+                                <p>此处描述为产品的标题XXXXXXXXXXX</p>
+                            </div>
+                            <div class="price detail-component">
+                                <span class="money">￥<span>380</span></span>
+                            </div>
+                            <div class="counter detail-component">
+                                <label class="counter-btn">-</label>
+                                <input type="text" value="1" class="counter-input">
+                                <label class="counter-btn">+</label>
+                            </div>
+                            <div class="total-price detail-component">
+                                <span class="money">￥<span>380</span></span>
+                            </div>
+                            <div class="status detail-component">
+                                <p class="status-content">交易成功</p>
+                                <p class="delete">删除</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="one-list">
+                        <div class="info">
+                            <label class="my-self-checkbox-label">
+                                <input type="checkbox" name="indent" value="order1" style="display:hidden;">
                             </label>
+                            <span class="date">2014-12-24</span> 
+                            <span class="product-name-title">商品名称</span>
                         </div>
-                        <div class="bank-item">
-                            <input type="radio" id="icbc" name="bank">
-                            <label for="icbc">
-                                <img src="/images/rewardtask/icbc.png" alt="icbc" class="bank"/>
+                        <div class="detail">
+                            <div class="img detail-component">
+                                <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
+                            </div>
+                            <div class="title detail-component">
+                                <p>此处描述为产品的标题XXXXXXXXXXX</p>
+                            </div>
+                            <div class="price detail-component">
+                                <span class="money">￥<span>380</span></span>
+                            </div>
+                            <div class="counter detail-component">
+                                <label class="counter-btn">-</label>
+                                <input type="text" value="1" class="counter-input">
+                                <label class="counter-btn">+</label>
+                            </div>
+                            <div class="total-price detail-component">
+                                <span class="money">￥<span>380</span></span>
+                            </div>
+                            <div class="status detail-component">
+                                <p class="status-content">交易成功</p>
+                                <p class="delete">删除</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="one-list">
+                        <div class="info">
+                            <label class="my-self-checkbox-label">
+                                <input type="checkbox" name="indent" value="order1" style="display:hidden;">
                             </label>
+                            <span class="date">2014-12-24</span> 
+                            <span class="product-name-title">商品名称</span>
                         </div>
-                        <div class="bank-item">
-                            <input type="radio" id="abc" name="bank">
-                            <label for="abc">
-                                <img src="/images/rewardtask/abc.png" alt="abc" class="bank"/>
-                            </label>
+                        <div class="detail">
+                            <div class="img detail-component">
+                                <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
+                            </div>
+                            <div class="title detail-component">
+                                <p>此处描述为产品的标题XXXXXXXXXXX</p>
+                            </div>
+                            <div class="price detail-component">
+                                <span class="money">￥<span>380</span></span>
+                            </div>
+                            <div class="counter detail-component">
+                                <label class="counter-btn">-</label>
+                                <input type="text" value="1" class="counter-input">
+                                <label class="counter-btn">+</label>
+                            </div>
+                            <div class="total-price detail-component">
+                                <span class="money">￥<span>380</span></span>
+                            </div>
+                            <div class="status detail-component">
+                                <p class="status-content">交易成功</p>
+                                <p class="delete">删除</p>
+                            </div>
                         </div>
-                        <div class="bank-item">
-                            <input type="radio" id="sbc" name="bank">
-                            <label for="sbc">
-                                <img src="/images/rewardtask/sbc.png" alt="sbc" class="bank"/>
-                            </label>
-                        </div>
-                        <div class="bank-item">
-                            <input type="radio" id="alipay" name="bank">
-                            <label for="alipay">
-                                <img src="/images/rewardtask/alipay.png" alt="alipay" class="bank"/>
-                            </label>
-                        </div>
-                        <div class="clear"></div>
                     </div>
                 </div>
-            </div>
-            <div class="operate-btn">
-                <a href="" class="btn last">上一步</a>
-                <a href="" class="btn next">下一步</a>
+                <div class="clearning">
+                    <span class="product-number">已选商品 <span class="mark">4</span> 件</span>
+                    <span class="total">共计 <span class="mark">￥1520</span></span>
+                    <a href="" class="btn">立即结算</a>
+                </div>
+
             </div>
         </div>
     </div>
@@ -114,4 +163,5 @@
 
 @section('js')
     @parent
+    <script type="text/javascript" src='/dist/js/pages/shopping-cart.js'></script>
 @stop

@@ -40,7 +40,7 @@
 	    			</div>
 	    		</div>
 	    	</div>
-	    		    	<div class="one-order">
+	    	<div class="one-order">
 	    		<div class="info">
 	    			<label class="my-self-checkbox-label">
 	                    <input type="checkbox" name="indent" value="order1" style="display:hidden;">
@@ -88,7 +88,7 @@
 	    			</div>
 	    		</div>
 	    	</div>
-	    		    	<div class="one-order">
+	    	<div class="one-order">
 	    		<div class="info">
 	    			<label class="my-self-checkbox-label">
 	                    <input type="checkbox" name="indent" value="order1" style="display:hidden;">
@@ -112,7 +112,7 @@
 	    			</div>
 	    		</div>
 	    	</div>
-	    		    	<div class="one-order">
+	    	<div class="one-order">
 	    		<div class="info">
 	    			<label class="my-self-checkbox-label">
 	                    <input type="checkbox" name="indent" value="order1" style="display:hidden;">
