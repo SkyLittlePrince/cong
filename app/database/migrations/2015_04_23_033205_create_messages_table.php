@@ -16,7 +16,7 @@ class CreateMessagesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
-			
+			$table->integer('user_id')->unsigned()->index();
 
 		   	$table                          
                 ->foreign('user_id')

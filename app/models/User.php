@@ -44,7 +44,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		'gender',
 		'mobile',
 		'role_id',
-		'qq'
+		'qq',
+		'wechat',
+		'province',
+		'city',
+		'region',
+		'address'
 		);
 
 	public function addresses()

@@ -43,9 +43,18 @@ class MigrationCartalystSentryInstallUsers extends Migration {
 			$table->string('reset_password_code')->nullable();
 			// Add it on 2015-04-17
 			$table->string('username');
-			$table->string('qq');
-			$table->string('mobile');
+			$table->string('qq')->nullable();
+			$table->string('mobile')->nullable();
 			$table->boolean('gender')->default(0);  // 0=male 1=female
+			$table->string('wechat')->nullable();
+			$table->string('province')->nullable();
+			$table->string('city')->nullable();
+			$table->string('region')->nullable();
+			$table->string('address')->nullable();
+			$table->string('birthday')->nullable();
+			$table->string('head')->nullable();
+
+
 			$table->timestamps();
 
 			// We'll need to ensure that MySQL uses the InnoDB engine to
@@ -58,7 +67,7 @@ class MigrationCartalystSentryInstallUsers extends Migration {
 			//$table->unique('email');
 			$table->unique('username');
 			//$table->unique('mobile');
-			$table->unique('qq');
+			//$table->unique('qq');
 
 			// sentry 2.1.5 table
 			/*

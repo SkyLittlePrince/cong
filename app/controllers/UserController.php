@@ -272,40 +272,47 @@ class UserController extends \BaseController {
 
 	public function postUpdate()
 	{
+		$user = Sentry::getUser();
 		$qq = Input::get('qq');
 		$gender = Input::get('gender');
-		$user = Sentry::getUser();
+		$wechat = Input::get('wechat');
+		$province = Input::get('province');
+		$city = Input::get('city');
+		$region = Input::get('region');
+		$address = Input::get('address');
+		$birthday = Input::get('birthday');
 
-		if(isset($qq))
-		{
-			if(!is_numeric($qq))
-				return Response::json(array('errCode' => 1,'message' => 'qq号格式不正确!'));
-		}
+		if(isset($gender) && $gender != 0)
+			$gender = 1;
 		else
-		{
-			$qq = $user->qq;
-		}
+			$gender = 0;
 
-		if(isset($gender))
-		{
-			if($gender != 1)
-			{
-				$gender = 0;
-			}
-		}
-		else
-		{
-			$gender = $user->gender;
-		}
+		$user = User::find($user->id);
+		$user->qq = $qq;
+		$user->gender = $gender;
+		$user->wechat = $wechat;
+		$user->province = $province;
+		$user->city = $city;
+		$user->region = $region;
+		$user->address = $address;
+		$user->birthday = $birthday;
 
 		if($user->save())
-		{
 			return Response::json(array('errCode' => 0,'message' => '修改成功!'));
-		}
-		else
-		{
-			return Response::json(array('errCode' => 2,'message' => '修改失败,请稍后再试!'));
-		}
+
+		return Response::json(array('errCode' => 1,'message' => '修改失败!'));
+		
+	}
+
+	public function getInformiation()     //查看某个用户资料
+	{
+		$id = Input::get('id');
+		$user = User::find($id);
+
+		if(!isset($user))
+			return Response::json(array('errCode' => 1,'message' => '该用户不存在!'));
+
+		return Response::json(array('errCode' => 0,'user' => $user)); 
 	}
 
 	public function postChangePassword()
