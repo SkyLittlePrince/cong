@@ -22,7 +22,6 @@ class CreateTasksTable extends Migration {
 			$table->integer('auctionPrice');
 			$table->string('auctionDeadline');
 			$table->integer('personNum');
-			$table->text('personNum');
 			$table->text('files');
 
 		   	$table                          
