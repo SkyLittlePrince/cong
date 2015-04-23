@@ -33,7 +33,7 @@
             </a>
         </li>
         <li class="cart">
-            <a href="#">
+            <a href="/shopping-cart">
                 
             </a>
         </li>

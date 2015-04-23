@@ -36,6 +36,11 @@ Route::get('/', function()
 	return View::make('home');
 });
 
+Route::get('/shopping-cart', function()
+{
+	return View::make('shopping-cart');
+});
+
 // 用户登录
 // 验证码
 // Route::get('captcha', 'SessionsController@captcha');
