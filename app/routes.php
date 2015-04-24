@@ -42,6 +42,10 @@ Route::get('/shopping-cart', function()
 	return View::make('shopping-cart');
 });
 
+Route::get('/shopping-cart-clearning', function()
+{
+	return View::make('shopping-cart-clearning');
+});
 // 用户登录
 // 验证码
 // Route::get('captcha', 'SessionsController@captcha');
