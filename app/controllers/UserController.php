@@ -396,4 +396,29 @@ class UserController extends \BaseController {
 			return Response::json(array('errCode' => 1,'message') => '保存失败!')
 		}
 	}
+
+	public function updateWorkExperience()
+	{
+		$id = Input::get('id');
+		$time = Input::get('time');
+		$descrition = Input::get('description');
+		$user = Sentry::getUser();
+
+		$workExperience = WorkExperience::find($id);
+		
+		if(!isset($workExperience))
+			return Response::json(array('errCode' => 1,'message' => '该记录不存在!'));
+
+		if($user->id != $workExperience->user_id)
+			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!');
+
+		$workExperience->time = $time;
+		$workExperience->descrition = $descrition;
+
+		if($workExperience->save())
+			return Response::json(array('errCode' => 0,'message' => '保存成功!'));
+
+		return Response::json(array('errCode' => 3,'message' => '保存失败!'));
+
+	}
 }
