@@ -16,13 +16,13 @@ class CreateMessagesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
-			$table->integer('user_id')->unsigned()->index();
+			$table->integer('user_id')->unsigned()->index('user_id');
 
 		   	$table                          
-                ->foreign('user_id')
-                ->references('id')->on('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+		                ->foreign('user_id')
+		                ->references('id')->on('users')
+		                ->onDelete('cascade')
+		                ->onUpdate('cascade');
 		});
 	}
 

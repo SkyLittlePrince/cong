@@ -315,6 +315,23 @@ class UserController extends \BaseController {
 		return Response::json(array('errCode' => 0,'user' => $user)); 
 	}
 
+	public function editDescription()
+	{
+		$user = Sentry::getUser();
+		$descrition = Input::get('descrition');
+
+		$user->descrition = $descrition;
+
+		if($user->save())
+		{
+			return Response::json(array('errCode' => 0,'message' => '保存成功！')); 
+		}
+		else
+		{
+			return Response::json(array('errCode' => 1,'message' => '保存失败！'));
+		}
+	}
+
 	public function postChangePassword()
 	{
 		$user = Sentry::getUser();

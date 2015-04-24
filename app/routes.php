@@ -30,6 +30,7 @@ Route::group(array('prefix' => 'user','before' => 'auth.user.isIn'),function()
 	Route::post('update','UserController@postUpdate');
 	Route::post('changePassword','UserController@postChangePassword');
 	Route::get('information','UserController@getInformation');
+	Route::post('descrption','UserController@editDescription');
 });
 
 Route::get('/', function()
