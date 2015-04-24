@@ -419,6 +419,50 @@ class UserController extends \BaseController {
 			return Response::json(array('errCode' => 0,'message' => '保存成功!'));
 
 		return Response::json(array('errCode' => 3,'message' => '保存失败!'));
+	}
 
+	public function addEducationExperience()
+	{
+		$user = Sentry::getUser();
+		$time = Input::get('time');
+		$descrition = Input::get('description');
+
+		$educationExperience = new EducationExperience;
+		$educationExperience->user_id = $user->id;
+		$educationExperience->time = $time;
+		$educationExperience->descrition = $descrition;
+
+		if($educationExperience->save())
+		{
+			return Response::json(array('errCode' => 0,'message' => '保存成功!'));
+		}
+		else
+		{
+			return Response::json(array('errCode' => 1,'message') => '保存失败!')
+		}
+	}
+
+	public function updateEducationExperience()
+	{
+		$id = Input::get('id');
+		$time = Input::get('time');
+		$descrition = Input::get('description');
+		$user = Sentry::getUser();
+
+		$educationExperience = EducationExperience::find($id);
+		
+		if(!isset($educationExperience))
+			return Response::json(array('errCode' => 1,'message' => '该记录不存在!'));
+
+		if($user->id != $educationExperience->user_id)
+			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!');
+
+		$educationExperience->time = $time;
+		$educationExperience->descrition = $descrition;
+
+		if($educationExperience->save())
+			return Response::json(array('errCode' => 0,'message' => '保存成功!'));
+
+		return Response::json(array('errCode' => 3,'message' => '保存失败!'));
 	}
 }

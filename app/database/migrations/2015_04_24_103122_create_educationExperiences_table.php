@@ -15,7 +15,16 @@ class CreateEducationExperiencesTable extends Migration {
 		Schema::create('educationExperiences', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('user_id')->unsigned()->index('user_id');
+			$table->string('time');
+			$table->longText('description');
 			$table->timestamps();
+
+			$table                          
+		                ->foreign('user_id')
+		                ->references('id')->on('users') 
+		                ->onDelete('cascade')
+		                ->onUpdate('cascade');
 		});
 	}
 
