@@ -375,4 +375,25 @@ class UserController extends \BaseController {
 		Sentry::logout();
 		return Response::json(array('errCode' => 0,'message' => '退出成功!'));
 	}
+
+	public function addWorkExperience()
+	{
+		$user = Sentry::getUser();
+		$time = Input::get('time');
+		$descrition = Input::get('description');
+
+		$workExperience = new WorkExperience;
+		$workExperience->user_id = $user->id;
+		$workExperience->time = $time;
+		$workExperience->descrition = $descrition;
+
+		if($workExperience->save())
+		{
+			return Response::json(array('errCode' => 0,'message' => '保存成功!'));
+		}
+		else
+		{
+			return Response::json(array('errCode' => 1,'message') => '保存失败!')
+		}
+	}
 }
