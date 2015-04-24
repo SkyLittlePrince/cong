@@ -304,7 +304,7 @@ class UserController extends \BaseController {
 		
 	}
 
-	public function getInformiation()     //查看某个用户资料
+	public function getInformation()     //查看某个用户资料
 	{
 		$id = Input::get('id');
 		$user = User::find($id);

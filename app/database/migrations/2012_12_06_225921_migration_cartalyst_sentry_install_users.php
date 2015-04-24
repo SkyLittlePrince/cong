@@ -53,6 +53,7 @@ class MigrationCartalystSentryInstallUsers extends Migration {
 			$table->string('address')->nullable();
 			$table->string('birthday')->nullable();
 			$table->string('head')->nullable();
+			$table->longText('description')->nullable();
 
 
 			$table->timestamps();

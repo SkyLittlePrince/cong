@@ -29,6 +29,7 @@ Route::group(array('prefix' => 'user','before' => 'auth.user.isIn'),function()
 	Route::get('logout','UserController@getLogout');
 	Route::post('update','UserController@postUpdate');
 	Route::post('changePassword','UserController@postChangePassword');
+	Route::get('information','UserController@getInformation');
 });
 
 Route::get('/', function()
