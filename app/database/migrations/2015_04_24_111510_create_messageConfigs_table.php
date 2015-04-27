@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAwardsTable extends Migration {
+class CreateMessageConfigsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,15 @@ class CreateAwardsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('awards', function(Blueprint $table)
+		Schema::create('messageConfigs', function(Blueprint $table)
 		{
-			$table->increments('id');
 			$table->integer('user_id')->unsigned()->index('user_id');
-			$table->string('time');
-			$table->longText('description');
+			$table->boolean("acceptance")->default(0);
+			$table->boolean("finishConfirmed")->default(0);
+			$table->boolean("addPriceOrDelay")->default(0);
+			$table->boolean("publishSuccess")->default(0);
+			$table->boolean("publishFail")->default(0);
+			$table->boolean("nearDeadline")->default(0);
 			$table->timestamps();
 
 			$table                          
@@ -35,7 +38,7 @@ class CreateAwardsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('awards');
+		Schema::drop('messageConfigs');
 	}
 
 }
