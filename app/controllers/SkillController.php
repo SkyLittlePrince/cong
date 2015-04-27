@@ -2,85 +2,38 @@
 
 class SkillController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /skill
-	 *
-	 * @return Response
-	 */
-	public function index()
+	public function addSkill()
 	{
-		//
+		$name = Input::get('name');
+		$user = User::find(Sentry::getUser()->id);
+		if(!isset($name))
+			return Response::json(array('errCode' => 1,'message' => '技能名不能为空!'));
+
+		$skill = Skill::firstOrCreate(array('name' => $name));
+		if($user->skills()->attach($skill->id))
+		{
+			return Response::json(array('errCode' => 0,'message' => '保存成功!'));
+		}
+		else
+		{
+			return Response::json(array('errCode' => 1,'message' => '该技能已存在!')); 
+		}
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /skill/create
-	 *
-	 * @return Response
-	 */
-	public function create()
+	public function deleteSkill()
 	{
-		//
-	}
+		$id = Input::get('id');
+		$user = User::find(Sentry::getUser()->id);
 
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /skill
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
+		if($user->skills()->detach($id))
+		{
+			return Response::json(array('errCode' => 0,'message' => '删除成功!'));
+		}
+		else
+		{
+			return Response::json(array('errCode' => 1,'message' => '删除失败!'));
+		}
 
-	/**
-	 * Display the specified resource.
-	 * GET /skill/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /skill/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /skill/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /skill/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
 	}
 
 }

@@ -30,6 +30,8 @@ class CreateSkillUserTable extends Migration {
 		                ->references('id')->on('skills') 
 		                ->onDelete('cascade')
 		                ->onUpdate('cascade');
+
+		                $table->unique(array('user_id','skill_id'));
 		});
 	}
 
