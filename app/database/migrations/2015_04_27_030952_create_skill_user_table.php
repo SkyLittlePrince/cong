@@ -18,6 +18,18 @@ class CreateSkillUserTable extends Migration {
 			$table->integer('skill_id')->unsigned()->index('skill_id');
 			$table->integer('user_id')->unsigned()->index('user_id');
 			$table->timestamps();
+
+			$table                          
+		                ->foreign('user_id')
+		                ->references('id')->on('users') 
+		                ->onDelete('cascade')
+		                ->onUpdate('cascade');
+
+		                $table                          
+		                ->foreign('skill_id')
+		                ->references('id')->on('skills') 
+		                ->onDelete('cascade')
+		                ->onUpdate('cascade');
 		});
 	}
 
