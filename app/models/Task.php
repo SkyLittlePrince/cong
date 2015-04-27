@@ -13,8 +13,13 @@ class Task extends BaseModel {
     public $primaryKey = 'id';
 	public $incrementing = true;
 
-	public function Task()
+	public function indent()
     {
         return $this->hasOne('Indent', 'task_id', 'id');
+    }
+
+    public function user()
+    {
+    	return $this->belongsTo("User", "id", 'user_id')
     }
 }

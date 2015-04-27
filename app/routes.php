@@ -122,7 +122,7 @@ Route::group(array('prefix' => 'trading-center'),function()
 		});
 	});
 
-	// 买家中心
+	// 买家中心   
 	Route::group(array('prefix' => 'buyer'),function()
 	{
 		Route::get('/', function()
