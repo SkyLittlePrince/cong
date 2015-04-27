@@ -393,7 +393,7 @@ class UserController extends \BaseController {
 		}
 		else
 		{
-			return Response::json(array('errCode' => 1,'message') => '保存失败!')
+			return Response::json(array('errCode' => 1,'message' => '保存失败!'));
 		}
 	}
 
@@ -410,7 +410,7 @@ class UserController extends \BaseController {
 			return Response::json(array('errCode' => 1,'message' => '该记录不存在!'));
 
 		if($user->id != $workExperience->user_id)
-			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!');
+			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
 
 		$workExperience->time = $time;
 		$workExperience->descrition = $descrition;
@@ -438,7 +438,7 @@ class UserController extends \BaseController {
 		}
 		else
 		{
-			return Response::json(array('errCode' => 1,'message') => '保存失败!')
+			return Response::json(array('errCode' => 1,'message' => '保存失败!'));
 		}
 	}
 
@@ -455,7 +455,7 @@ class UserController extends \BaseController {
 			return Response::json(array('errCode' => 1,'message' => '该记录不存在!'));
 
 		if($user->id != $educationExperience->user_id)
-			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!');
+			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
 
 		$educationExperience->time = $time;
 		$educationExperience->descrition = $descrition;
@@ -483,7 +483,7 @@ class UserController extends \BaseController {
 		}
 		else
 		{
-			return Response::json(array('errCode' => 1,'message') => '保存失败!')
+			return Response::json(array('errCode' => 1,'message' => '保存失败!'));
 		}
 	}
 
@@ -500,7 +500,7 @@ class UserController extends \BaseController {
 			return Response::json(array('errCode' => 1,'message' => '该记录不存在!'));
 
 		if($user->id != $award->user_id)
-			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!');
+			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
 
 		$award->time = $time;
 		$award->descrition = $descrition;
