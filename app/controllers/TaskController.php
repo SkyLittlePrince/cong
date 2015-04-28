@@ -1,7 +1,5 @@
 <?php
 
-
-
 class TaskController extends BaseController {
 
 	public function create() 
@@ -27,7 +25,9 @@ class TaskController extends BaseController {
 			$newTask->auctionDeadline = $auctionDeadline;
 		}
 		$newTask->save();
-	} 
+
+		return Response::json(array('errCode' => 0,'newTaskId' => $newTask->id));
+	}
 
 	public function cancelPublish()
 	{
@@ -36,34 +36,19 @@ class TaskController extends BaseController {
 		Task::destroy($taskId);
 	}
 
-	public function receive()
-	{
-		
-	}
-
-	public function cancelReceive()
-	{
-
-	}
-
 	public function getTaskInfo()
 	{
+		$taskId = Input::get("taskId");
 
-	}
+		$task = Task::find($taskId)->get();
 
-	public function getReceivedTasks()
-	{
-
-	}
-
-	public function getPublishedTasks()
-	{
-
+		return Response::json(array('errCode' => 0,'task' => $task));
 	}
 
 	public function getTasksByUser()
 	{
-
+		$tasks = Task::where("user_id", "=", Sentry::getUser()->id)->get();
+	
+		return Response::json(array('errCode' => 0,'taskList' => $tasks));
 	}
-
 }

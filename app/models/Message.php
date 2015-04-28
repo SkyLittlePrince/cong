@@ -1,6 +1,6 @@
 <?php
 
-class Message extends BaseModel {
+class Message extends \Eloquent {
 
 	/**
 	 * The database table used by the model.

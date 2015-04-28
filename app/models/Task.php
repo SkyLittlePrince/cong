@@ -1,6 +1,6 @@
 <?php
 
-class Task extends BaseModel {
+class Task extends \Eloquent {
 
 	/**
 	 * The database table used by the model.
@@ -20,6 +20,6 @@ class Task extends BaseModel {
 
     public function user()
     {
-    	return $this->belongsTo("User", "id", 'user_id')
+    	return $this->belongsTo("User", "id", 'user_id');
     }
 }

@@ -20,6 +20,8 @@ class MessageController extends BaseController {
 		$message->sender = $user->id;
 
 		$message->save();
+
+		return Response::json(array('errCode' => 0,'newMessageId' => $message->id));
 	}
 
 	public function delete()

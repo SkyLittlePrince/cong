@@ -272,3 +272,8 @@ Route::group(array('prefix' => 'cats'),function()
 	Route::get('index','CatController@index');
 });
 
+Route::get('aaaaa','IndentController@getMyIndents');
+
+
+
+

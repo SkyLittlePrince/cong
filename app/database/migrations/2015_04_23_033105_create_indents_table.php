@@ -17,7 +17,7 @@ class CreateIndentsTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->integer('task_id')->unsigned()->index('task_id');
-			$table->integer("status");
+			$table->integer("status")->default(0);
 
 		   	$table                          
                 ->foreign('task_id')
