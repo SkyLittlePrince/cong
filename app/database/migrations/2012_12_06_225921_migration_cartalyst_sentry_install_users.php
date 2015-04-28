@@ -54,6 +54,7 @@ class MigrationCartalystSentryInstallUsers extends Migration {
 			$table->string('birthday')->nullable();
 			$table->string('head')->nullable();
 			$table->longText('description')->nullable();
+			$table->integer('role_id')->default(1);  //1=buyer 2=seller 3=admin
 
 
 			$table->timestamps();

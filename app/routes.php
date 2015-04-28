@@ -31,6 +31,17 @@ Route::group(array('prefix' => 'user','before' => 'auth.user.isIn'),function()
 	Route::post('changePassword','UserController@postChangePassword');
 	Route::get('information','UserController@getInformation');
 	Route::post('descrption','UserController@editDescription');
+	Route::post('addSkill','SkillController@addSkill');
+	Route::get('deleteSkill','SkillController@deleteSkill');
+	Route::post('addWorkExperience','UserController@addWorkExperience');
+	Route::post('updateWorkExperience','UserController@updateWorkExperience');
+	Route::get('deleteWorkExperience','UserController@deleteWorkExperience');
+	Route::post('addEducationExperience','UserController@addEducationExperience');
+	Route::post('updateEducationExperience','UserController@updateEducationExperience');
+	Route::get('deleteEducationExperience','UserController@deleteEducationExperience');
+	Route::post('addAward','UserController@addAward');
+	Route::post('updateAward','UserController@updateAward');
+	Route::get('deleteAward','UserController@deleteAward');
 });
 
 Route::get('/', function()
