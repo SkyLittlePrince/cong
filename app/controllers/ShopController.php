@@ -8,79 +8,68 @@ class ShopController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function addShop()
 	{
-		//
+		$user = Sentry::getUser();
+		$name = Input::get('name');
+		$description = Input::get('description');
+
+		$shop = Shop::where('usere_id',$user->id)->first();
+		if(isset($shop))
+			return Response::json(array('errCode' => 1,'message' => '你已拥有店铺!'));
+
+		$shop = new Shop;
+		$shop->name = $name;
+		$shop->description = $description;
+		$shop->user_id = $user->id;
+
+		if($shop->save())
+		{
+			$user->role_id = 2;
+			$user->save();
+			return Response::json(array('errCode' =>0,'message' => '创建成功!'));
+		}
+			
+
+		return Response::json(array('errCode' => 2,'message' => '创建失败!'));
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /shop/create
-	 *
-	 * @return Response
-	 */
-	public function create()
+	public function updateShop()
 	{
-		//
+		$user = Sentry::getUser();
+		$name = Input::get('name');
+		$description = Input::get('description');
+		$id = Input::get('id');
+
+		$shop = Shop::find($id);
+		if(!isset($shop))
+			return Response::json(array('errCode' => 1,'message' => '该店铺不存在!'));
+
+		if($user->id != $shop->user_id)
+			return Response::json(array('errCode' => 2,'message' => '你没有权限进行该操作!'));
+
+		$shop->name = $name;
+		$shop->description = $description;
+
+		if($shop->save())
+			return Response::json(array('errCode' =>0,'message' => '修改成功!'));
+
+		return Response::json(array('errCode' => 3,'message' => '修改失败!'));
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /shop
-	 *
-	 * @return Response
-	 */
-	public function store()
+	public function deleteShop()
 	{
-		//
-	}
+		$user = Sentry::getUser();
 
-	/**
-	 * Display the specified resource.
-	 * GET /shop/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
+		$shop = Shop::where('user_id',$user->id)->first();
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /shop/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
+		if(!isset($shop))
+			return Response::json(array('errCode' => 1,'message' => '店铺不存在!'));
 
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /shop/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
+		if($shop->delete())
+			return Response::json(array('errCode' => 0,'message' => '删除成功!'));
 
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /shop/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		return Response::json(array('errCode' => 2,'message' => '删除失败!'));
 	}
 
 }
