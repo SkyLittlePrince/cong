@@ -34,7 +34,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		'activation_code',
 		'persist_code',
 		'reset_password_code',
-		'activated_at'
+		'activated_at',
+		'role_id'
 		);
 
 	protected $fillable = array(
@@ -50,7 +51,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		'city',
 		'region',
 		'address',
-		'description'
+		'description',
+		'role_id'
 		);
 
 	public function addresses()
