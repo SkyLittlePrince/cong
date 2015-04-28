@@ -19,8 +19,8 @@ class CreateTasksTable extends Migration {
 			$table->string('title');
 			$table->integer('user_id')->unsigned()->index('user_id');
 			$table->boolean('isAuction');
-			$table->integer('auctionPrice');
-			$table->string('auctionDeadline');
+			$table->integer('auctionPrice')->nullable();
+			$table->string('auctionDeadline')->nullable();
 			$table->integer('personNum');
 			$table->text('files');
 

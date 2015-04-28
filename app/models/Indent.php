@@ -1,6 +1,6 @@
 <?php
 
-class Indent extends BaseModel {
+class Indent extends \Eloquent {
 
 	/**
 	 * The database table used by the model.
