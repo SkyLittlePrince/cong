@@ -428,15 +428,15 @@ class UserController extends \BaseController {
 		$workExperience = WorkExperience::find($id);
 		
 		if(!isset($workExperience))
-			return Response::json('errCode' => 1,'message' => '该id不存在!');
+			return Response::json(array('errCode' => 1,'message' => '该id不存在!'));
 
 		if($user->id != $workExperience->user_id)
-			return Response::json('errCode' => 2,'message' => '你没有该操作权限!');
+			return Response::json(array('errCode' => 2,'message' => '你没有该操作权限!'));
 
 		if($workExperience->delete())
-			return Response::json('errCode' => 0,'message' => '删除成功!');
+			return Response::json(array('errCode' => 0,'message' => '删除成功!'));
 
-		return Response::json('errCode' => 3,'message' => '删除失败!');
+		return Response::json(array('errCode' => 3,'message' => '删除失败!'));
 	}
 
 	public function addEducationExperience()
@@ -491,15 +491,15 @@ class UserController extends \BaseController {
 		$educationExperience = EducationExperience::find($id);
 
 		if(!isset($educationExperience))
-			return Response::json('errCode' => 1,'message' => '该id不存在!');
+			return Response::json(array('errCode' => 1,'message' => '该id不存在!'));
 
 		if($educationExperience->user_id != $user->id)
-			return Response::json('errCode' => 2,'message' => '你没有该操作权限!');
+			return Response::json(array('errCode' => 2,'message' => '你没有该操作权限!'));
 
 		if($educationExperience->delete())
-			return Response::json('errCode' => 0,'message' => '删除成功!');	
+			return Response::json(array('errCode' => 0,'message' => '删除成功!'));	
 			
-		return Response::json('errCode' => 3,'message' => '删除失败!');	
+		return Response::json(array('errCode' => 3,'message' => '删除失败!'));	
 	}
 
 	public function addAward()
@@ -549,19 +549,19 @@ class UserController extends \BaseController {
 
 	public function deleteAward()
 	{
-		$id = Input:;get('id');
+		$id = Input::get('id');
 		$user = Sentry::getUser();
 		$award = Award::find($id);
 
 		if(!isset($award))
-			return Response::json('errCode' => 1,'message' => '该id不存在!');
+			return Response::json(array('errCode' => 1,'message' => '该id不存在!'));
 
 		if($user->id != $award->user_id)
-			return Response::json('errCode' => 2,'message' => '你没有该操作权限!');
+			return Response::json(array('errCode' => 2,'message' => '你没有该操作权限!'));
 
 		if($award->delete())
-			return Response::json('errCode' => 0,'message' => '删除成功!');	
+			return Response::json(array('errCode' => 0,'message' => '删除成功!'));	
 
-		return Response::json('errCode' => 3,'message' => '删除失败!');
+		return Response::json(array('errCode' => 3,'message' => '删除失败!'));
 	}
 }
