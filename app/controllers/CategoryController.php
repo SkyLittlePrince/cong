@@ -7,15 +7,19 @@ class CategoryController extends \BaseController {
 		$user = Sentry::getUser();
 		$name = Input::get('name');
 		$intro = Input::get('intro');
+		$shop = Shop::where('user_id',$user->id)->first();
 
-		$category = Category::where('name',$name)->where('user_id',$user->id)->first();
+		if(!isset($shop))
+			return Response::json(array('errCode' => 1,'message' => '你还没有店铺!'));
+
+		$category = Category::where('name',$name)->where('shop_id',$shop->id)->first();
 		if(isset($category))
 			return Response::json(array('errCode' => 1,'message' => '该分类已存在!'));
 
 		$category = new Category;
 		$category->name = $name;
 		$category->intro = $intro;
-		$category->user_id = $user->id;
+		$category->shop_id = $shop->id;
 
 		if($category->save())
 			return Response::json(array('errCode' => 0,'message' => '创建成功!'));
@@ -29,12 +33,13 @@ class CategoryController extends \BaseController {
 		$intro = Input::get('intro');
 		$user = Sentry::getUser();
 
+		$shop = Shop::where('user_id',$user->id)->first();
 		$category = Category::find($id);
 		
 		if(!isset($category))
 			return Response::json(array('errCode' => 1,'message' => '该分类不存在!'));
 		
-		if($category->user_id != $user->id)
+		if(!isset($shop) || $category->shop_id != $shop->id)
 			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'))
 
 		$category->intro = $intro;
@@ -50,12 +55,13 @@ class CategoryController extends \BaseController {
 		$id = Input::get('id');
 		$user = Sentry::getUser();
 
+		$shop = Shop::where('user_id',$user->id)->first();
 		$category = Category::find($id);
 
 		if(!isset($category))
 			return Response::json(array('errCode' => 1,'message' => '该分类不存在!'));
 
-		if($category->user_id != $user->id)
+		if(!isset($shop) || $category->shop_id != $shop->id)
 			return Response::json(array('errCode' => 2,'message' => '你美柚操作的权限!'));
 
 		if($category->delete())
