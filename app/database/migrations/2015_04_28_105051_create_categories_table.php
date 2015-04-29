@@ -17,7 +17,14 @@ class CreateCategoriesTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->string('name');
+			$table->integer('shop_id')->unsigned()->index('shop_id');
 			$table->longText('intro');
+
+			$table                          
+		                ->foreign('shop_id')
+		                ->references('id')->on('shops') 
+		                ->onDelete('cascade')
+		                ->onUpdate('cascade');
 		});
 	}
 
