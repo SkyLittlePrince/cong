@@ -13,22 +13,24 @@
 	<div id="main">
 		<div class="register-area">
 			<div class="register-steps">
-				<ul>
+				<ul class="step-title">
 					<li class="active">1.设置登录名</li>
 					<li>2.填写用户信息</li>
 					<li>3.注册成功</li>
 				</ul>
 				<div class="clear"></div>
 			</div>
-			<div class="register-form">
+			<div class="register-form step-1">
 				<h2>注册</h2>
 				<div class="register-body">
 					<div class="register-items">
 						<div class="register-item">
-							<input type="text" id="register-name" placeholder="填写手机号" />
+							<input type="text" id="register-email" placeholder="填写邮箱" />
 						</div>
 						<div class="register-item">
 							<input type="text" id="auth-code" placeholder="输入验证码" />
+							<span class="code-right hidden">ok</span>
+							<span class="code-error hidden">no</span>
 							<img src="{{ $captcha->inline() }}" id="authcode-img"  width="128" height="45" />
 							<div class="clear"></div>
 						</div>
@@ -38,13 +40,14 @@
 							<img src="/images/register/4.jpg" class="disagree-img hidden" width="16" height="16" />
 							<div style="margin-left:25px;">我同意《丛丛网协议》</div>
 						</div>
+						<span class="step1-tips"></span>
 					</div>
 				</div>
 				<div>
 					<input type="button" id="register-btn-1" value="确定" />
 				</div>
 			</div>
-			<div class="register-form hidden">
+			<div class="register-form step-2 hidden">
 				<h2>注册</h2>
 				<div class="register-body">
 					<div class="register-items">
@@ -60,7 +63,7 @@
 					<input type="button" id="register-btn-2" value="确定" />
 				</div>
 			</div>
-			<div class="register-form hidden">
+			<div class="register-form step-3 hidden">
 				<h2>填写用户信息</h2>
 				<div class="register-body">
 					<div class="register-items">
@@ -90,4 +93,5 @@
 
 @section('js')
     @parent
+    <script type="text/javascript" src='/dist/js/pages/register.js'></script>
 @stop

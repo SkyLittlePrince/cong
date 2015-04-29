@@ -14,7 +14,7 @@
 Route::group(array('prefix' => 'user'),function()
 {
 	Route::get('captcha','UserController@captcha');
-	Route::post('checkCapcha','UserController@checkCapcha');
+	Route::post('checkCaptcha','UserController@checkCaptcha');
 	Route::get('getCheckRegister','UserController@getCheckRegister');
 	Route::post('checkRegister','UserController@checkRegister');
 	Route::get('register','UserController@getRegister');
@@ -58,12 +58,12 @@ Route::get('/shopping-cart-clearning', function()
 {
 	return View::make('shopping-cart-clearning');
 });
+
 // 用户登录
 // 验证码
 // Route::get('captcha', 'SessionsController@captcha');
 // Route::get('login', 'SessionsController@login');
 // Route::post('login', 'SessionsController@login');
-
 
 
 // 需要登录验证才能操作的接口
