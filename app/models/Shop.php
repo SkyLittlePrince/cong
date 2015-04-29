@@ -11,8 +11,8 @@ class Shop extends \Eloquent {
 			'updated_at'
 		);
 
-	public function products()
+	public function categories()
 	{
-		return $this->hasMany('Product');
+		return $this->hasMany('Category');
 	}
 }
