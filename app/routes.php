@@ -133,7 +133,7 @@ Route::group(array('prefix' => 'trading-center'),function()
 		});
 	});
 
-	// 买家中心   
+	// 买家中心
 	Route::group(array('prefix' => 'buyer'),function()
 	{
 		Route::get('/', function()
@@ -278,9 +278,9 @@ Route::group(array('prefix' => 'trading-center'),function()
 
 // for admin
 
-Route::group(array('prefix' => 'cats'),function()
+Route::group(array('prefix' => 'categories'),function()
 {
-	Route::get('index','CatController@index');
+	Route::get('all','CategoryController@indexCategory');
 });
 
 Route::get('aaaaa','IndentController@getMyIndents');
