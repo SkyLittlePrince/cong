@@ -18,12 +18,19 @@ class CreateProductsTable extends Migration {
 			$table->timestamps();
 			$table->string('name');
 			$table->double('price');
+			$table->integer('shop_id')->unsigned()->index('shop_id');
 			$table->integer('category_id')->unsigned()->index('category_id');
 			$table->longText('intro');
 
 			$table                          
 		                ->foreign('category_id')
 		                ->references('id')->on('categories') 
+		                ->onDelete('cascade')
+		                ->onUpdate('cascade');
+
+		                $table                          
+		                ->foreign('shop_id')
+		                ->references('id')->on('shops') 
 		                ->onDelete('cascade')
 		                ->onUpdate('cascade');
 		});

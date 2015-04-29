@@ -11,9 +11,8 @@ class Shop extends \Eloquent {
 			'updated_at'
 		);
 
-	$table                          
-	                ->foreign('user_id')
-	                ->references('id')->on('users') 
-	                ->onDelete('cascade')
-	                ->onUpdate('cascade');
+	public function products()
+	{
+		return $this->hasMany('Product');
+	}
 }

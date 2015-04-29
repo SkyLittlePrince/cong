@@ -1,6 +1,13 @@
 <?php
 
 class Category extends \Eloquent {
-	 protected $table = 'categories';
-	protected $fillable = [];
+	protected $table = 'categories';
+	protected $fillable = array(
+			'name',
+			'intro'
+		);
+	protected $hidden = array(
+			'created_at',
+			'updated_at'
+		);
 }
