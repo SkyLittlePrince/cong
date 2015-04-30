@@ -1,68 +1,48 @@
-###
-# 验证验证码是否正确
-# @param {String} code: 字符串格式的验证码
-###
-checkCaptcha = (code, callback)->
-	$.ajax {
-		type: "post"
-		url: '/user/checkCaptcha'
-		data:
-			captcha: code
-		dataType: 'json'
-		success: (data)->
-			callback(data)
-	}
+registerDataBus = require './registerDataBus.coffee'
 
 ###
-# 验证邮箱是否可用
-# @param {String} email: 字符串格式的邮箱
-# @return {undefined}
+# 邮箱DOM操作
+# @param {Number} errCode: 状态码
 ###
-checkEmail = (email, callback)->
-	$.ajax {
-		type: "post"
-		url: '/user/checkEmail'
-		data: 
-			email: email
-		success: (data)->
-			callback(data)
-	}
-
-###
-# 
-###
-getCheckRegister = (callback)->
-	$.ajax {
-		type: "get"
-		url: '/user/getCheckRegister'
-		success: (data)->
-			callback(data)
-	}
 emailAction = (errCode)->
 	$registerEmail.removeClass('input-error').addClass('input-right') if errCode is 0
 	$registerEmail.removeClass('input-right').addClass('input-error') if errCode isnt 0
 
-authCodeAction = (errCode)->
-	$('.code-right').show().siblings('.code-error').hide() if errCode is 0
-	$('.code-right').hide().siblings('.code-error').show() if errCode isnt 0
-
+###
+# 邮箱逻辑处理
+###
 emailHandler = ->
 	email = $(this).val()
 	reg = /^[_.0-9a-z-a-z-]+@([0-9a-z][0-9a-z-]+.)+[a-z]{2,4}$/;
 	if email isnt '' and reg.test(email)
-		checkEmail email, (data)->
+		registerDataBus.checkEmail email, (data)->
 			emailAction data.errCode
 	else
 		emailAction 1
-
+###
+# 验证码DOM操作
+# @param {Number} errCode: 状态码
+###
+authCodeAction = (errCode)->
+	if errCode is 0
+		$('.code-right').show().siblings('.code-error').hide()
+		$authCode.removeClass('input-error').addClass('input-right')
+	if errCode isnt 0
+		$('.code-right').hide().siblings('.code-error').show() 
+		$authCode.removeClass('input-right').addClass('input-error')
+###
+# 验证码逻辑处理
+###
 authCodeHandler = ->
 	code = $(this).val()
 	if code isnt ''
-		checkCaptcha code, (data)->
+		registerDataBus.checkCaptcha code, (data)->
 			authCodeAction data.errCode
 	else
 		authCodeAction 1
-
+###
+# 注册第一步DOM操作
+###
 step1Action = ->
 	if !$registerEmail.hasClass 'input-right'
 		$step1Tips.text('请输入邮箱')
@@ -73,14 +53,37 @@ step1Action = ->
 		$authCode.focus()
 		return false
 	return true
+###
+# 注册第一步逻辑处理
+###
 step1Handler = ->
 	if step1Action()
-		getCheckRegister (data)->
-			if data.errCode isnt 0
-				$step1Tips.text(data.message)
-			else
-				$step1.hide()
-				$step2.show()
+		registerDataBus.getCheckRegister (data)->
+			# if data.errCode isnt 0
+			# 	$step1Tips.text(data.message)
+			# else
+			$step1.hide()
+			$step2.show()
+###
+# 注册第二步DOM操作
+###
+step2Action = ->
+
+###
+# 注册第二步逻辑处理
+###
+step2Handler = ->
+
+###
+# 注册第三步DOM操作
+###
+step3Action = ->
+	
+###
+# 注册第三步逻辑处理
+###
+step3Handler = ->
+
 
 $stepTitle = $('.step-title')
 $step1 = $('.step-1')

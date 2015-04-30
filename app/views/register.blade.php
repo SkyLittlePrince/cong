@@ -51,8 +51,8 @@
 				<h2>注册</h2>
 				<div class="register-body">
 					<div class="register-items">
-						<div class="register-text">请填写验证码，已发送到15902094760，请勿泄露！</div>
-						<div class="register-phone">手机号码：15902094760</div>
+						<div class="register-text">请填写验证码，已发送到 <span class="input-email"></span> ，请勿泄露！</div>
+						<div class="register-phone">邮箱：<span class="input-email"></span> </div>
 						<div class="register-authcode">
 							<input type="text" id="register-authcode" placeholder="请输入验证码" />
 							<div class="register-sec"><span>59</span>秒后可重新操作</div>
