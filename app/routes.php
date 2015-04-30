@@ -12,6 +12,7 @@
 */
 
 /*------------------------<接口路由>------------------------------*/
+// 用户模块
 Route::group(array('prefix' => 'user'),function()
 {
 	Route::get('captcha','UserController@captcha');
@@ -45,6 +46,7 @@ Route::group(array('prefix' => 'user'),function()
 	});
 });
 
+// 消息模块
 Route::group(array('prefix' => 'message'),function()
 {
 	Route::group(array('before' => 'auth.user.isIn'), function() 
@@ -58,6 +60,7 @@ Route::group(array('prefix' => 'message'),function()
 	});
 });
 
+// 订单模块
 Route::group(array('prefix' => 'indent'),function()
 {
 	Route::group(array('before' => 'auth.user.isIn'), function() 
@@ -69,19 +72,20 @@ Route::group(array('prefix' => 'indent'),function()
 	});
 });
 
+// 任务模块
 Route::group(array('prefix' => 'task'),function()
 {
 	Route::group(array('before' => 'auth.user.isIn'), function() 
 	{
 		Route::post('create','TaskController@create');
-		Route::post('cancel-published-task','TaskController@cancelPublish');
-		Route::get('get-info','TaskController@getTaskInfo');
-		Route::get('get-published-tasks','TaskController@getTasksByUser');
+		Route::post('cancel','TaskController@cancelPublish');
 	});
+
+	Route::get('get-published-tasks-by-user','TaskController@getTasksByUser');
+	Route::get('get-info','TaskController@getTaskInfo');
+
 });
 /*------------------------</接口路由>------------------------------*/
-
-
 
 
 // 需要登录验证才能操作的接口

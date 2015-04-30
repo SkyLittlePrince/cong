@@ -17,11 +17,13 @@ class CreateTasksTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->string('title');
+			$table->integer('price');
 			$table->integer('user_id')->unsigned()->index('user_id');
 			$table->boolean('isAuction');
 			$table->integer('auctionPrice')->nullable();
 			$table->string('auctionDeadline')->nullable();
 			$table->integer('personNum');
+			$table->text('description');
 			$table->text('files');
 
 		   	$table                          
