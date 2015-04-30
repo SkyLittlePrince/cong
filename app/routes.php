@@ -11,6 +11,7 @@
 |
 */
 
+/*------------------------<接口路由>------------------------------*/
 Route::group(array('prefix' => 'user'),function()
 {
 	Route::get('captcha','UserController@captcha');
@@ -22,27 +23,75 @@ Route::group(array('prefix' => 'user'),function()
 	Route::post('login','UserController@postLogin');
 	Route::get('login','UserController@getLogin');
 	Route::post('checkEmail','UserController@checkEmail');
+
+	Route::group(array('before' => 'auth.user.isIn'), function() 
+	{
+		Route::get('logout','UserController@getLogout');
+		Route::post('update','UserController@postUpdate');
+		Route::post('changePassword','UserController@postChangePassword');
+		Route::get('information','UserController@getInformation');
+		Route::post('descrption','UserController@editDescription');
+		Route::post('addSkill','SkillController@addSkill');
+		Route::get('deleteSkill','SkillController@deleteSkill');
+		Route::post('addWorkExperience','UserController@addWorkExperience');
+		Route::post('updateWorkExperience','UserController@updateWorkExperience');
+		Route::get('deleteWorkExperience','UserController@deleteWorkExperience');
+		Route::post('addEducationExperience','UserController@addEducationExperience');
+		Route::post('updateEducationExperience','UserController@updateEducationExperience');
+		Route::get('deleteEducationExperience','UserController@deleteEducationExperience');
+		Route::post('addAward','UserController@addAward');
+		Route::post('updateAward','UserController@updateAward');
+		Route::get('deleteAward','UserController@deleteAward');
+	});
 });
 
-Route::group(array('prefix' => 'user','before' => 'auth.user.isIn'),function()
+Route::group(array('prefix' => 'message'),function()
 {
-	Route::get('logout','UserController@getLogout');
-	Route::post('update','UserController@postUpdate');
-	Route::post('changePassword','UserController@postChangePassword');
-	Route::get('information','UserController@getInformation');
-	Route::post('descrption','UserController@editDescription');
-	Route::post('addSkill','SkillController@addSkill');
-	Route::get('deleteSkill','SkillController@deleteSkill');
-	Route::post('addWorkExperience','UserController@addWorkExperience');
-	Route::post('updateWorkExperience','UserController@updateWorkExperience');
-	Route::get('deleteWorkExperience','UserController@deleteWorkExperience');
-	Route::post('addEducationExperience','UserController@addEducationExperience');
-	Route::post('updateEducationExperience','UserController@updateEducationExperience');
-	Route::get('deleteEducationExperience','UserController@deleteEducationExperience');
-	Route::post('addAward','UserController@addAward');
-	Route::post('updateAward','UserController@updateAward');
-	Route::get('deleteAward','UserController@deleteAward');
+	Route::group(array('before' => 'auth.user.isIn'), function() 
+	{
+		Route::post('create','MessageController@create');
+		Route::get('get','MessageController@getMessageContent');
+		Route::post('read','MessageController@read');
+		Route::post('delete','MessageController@delete');
+		Route::post('clear','MessageController@clear');
+		Route::get('get-my-messages','MessageController@getMyMessages');
+	});
 });
+
+Route::group(array('prefix' => 'indent'),function()
+{
+	Route::group(array('before' => 'auth.user.isIn'), function() 
+	{
+		Route::post('create','IndentController@create');
+		Route::post('cancel','IndentController@cancel');
+		Route::get('get','IndentController@get');
+		Route::get('get-my-indents','IndentController@getMyIndents');
+	});
+});
+
+Route::group(array('prefix' => 'task'),function()
+{
+	Route::group(array('before' => 'auth.user.isIn'), function() 
+	{
+		Route::post('create','TaskController@create');
+		Route::post('cancel-published-task','TaskController@cancelPublish');
+		Route::get('get-info','TaskController@getTaskInfo');
+		Route::get('get-published-tasks','TaskController@getTasksByUser');
+	});
+});
+/*------------------------</接口路由>------------------------------*/
+
+
+
+
+// 需要登录验证才能操作的接口
+Route::group(array('before' => 'auth'), function()
+{
+    Route::get('logout', ['as' => 'logout', 'uses' => 'SessionsController@getLogout']);
+});
+
+
+/*--------------------------<页面模版路由>------------------------------*/
 
 Route::get('/', function()
 {
@@ -57,19 +106,6 @@ Route::get('/shopping-cart', function()
 Route::get('/shopping-cart-clearning', function()
 {
 	return View::make('shopping-cart-clearning');
-});
-
-// 用户登录
-// 验证码
-// Route::get('captcha', 'SessionsController@captcha');
-// Route::get('login', 'SessionsController@login');
-// Route::post('login', 'SessionsController@login');
-
-
-// 需要登录验证才能操作的接口
-Route::group(array('before' => 'auth'), function()
-{
-    Route::get('logout', ['as' => 'logout', 'uses' => 'SessionsController@getLogout']);
 });
 
 // 赏金猎人
@@ -275,7 +311,6 @@ Route::group(array('prefix' => 'trading-center'),function()
 	});
 });
 
-
 // for admin
 
 Route::group(array('prefix' => 'categories'),function()
@@ -283,7 +318,7 @@ Route::group(array('prefix' => 'categories'),function()
 	Route::get('all','CategoryController@indexCategory');
 });
 
-Route::get('aaaaa','IndentController@getMyIndents');
+/*--------------------------</页面模版路由>------------------------------*/
 
 
 

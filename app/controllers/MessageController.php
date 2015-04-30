@@ -28,9 +28,16 @@ class MessageController extends BaseController {
 	{
 		$messageId = Input::get("messageId");
 
-		Message::destroy($messageId);
-
-		return Response::json(array('errCode' => 0,'message' => '删除消息成功!'));
+		$message = Message::find($messageId);
+		if($message->receiver == Sentry::getUser()->id) 
+		{
+			$message->delete();
+			return Response::json(array('errCode' => 0,'message' => '删除消息成功!'));
+		} 
+		else 
+		{
+			return Response::json(array('errCode' => 1,'message' => '［权限禁止］只能删除自己收到的消息!'));
+		}
 	}
 
 	public function clear()
@@ -46,13 +53,20 @@ class MessageController extends BaseController {
 		$status = Input::get("status");
 
 		Message::find($messageId)->update(array('status' => $status));
+
+		return Response::json(array('errCode' => 0,'message' => ''));
 	}
 
 	public function getMessageContent()
 	{
 		$messageId = Input::get("messageId");
 
-		$message = Message::find($messageId)->get();
+		$validator = Validator::make(
+		    array('messageId' => $messageId),
+		    array('messageId' => array('required', 'min:5'))
+		);
+
+		$message = Message::find($messageId);
 
 		if($message->receiver == Sentry::getUser()->id) 
 		{

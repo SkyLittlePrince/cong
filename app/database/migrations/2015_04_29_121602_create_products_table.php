@@ -21,11 +21,11 @@ class CreateProductsTable extends Migration {
 			$table->integer('category_id')->unsigned()->index('category_id');
 			$table->longText('intro');
 
-			$table                          
-		                ->foreign('category_id')
-		                ->references('id')->on('categories') 
-		                ->onDelete('cascade')
-		                ->onUpdate('cascade');
+			$table
+				->foreign('category_id')
+				->references('id')->on('categories') 
+				->onDelete('cascade')
+				->onUpdate('cascade');
 		});
 	}
 
@@ -38,5 +38,4 @@ class CreateProductsTable extends Migration {
 	{
 		Schema::drop('products');
 	}
-
 }

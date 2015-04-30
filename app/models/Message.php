@@ -7,11 +7,13 @@ class Message extends \Eloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'indents';
+	protected $table = 'messages';
 
 	public $timestamps = true;
     public $primaryKey = 'id';
 	public $incrementing = true;
+
+	protected $fillable = array('status');
 
 	public function receiver()
     {
