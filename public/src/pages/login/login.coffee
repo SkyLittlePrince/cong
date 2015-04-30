@@ -1,4 +1,4 @@
-loginDataBus = require './loginDataBus'
+loginDataBus = require './loginDataBus.coffee'
 ###
 # 验证码DOM操作
 # @param {Number} errCode: 状态码
