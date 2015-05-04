@@ -15,4 +15,9 @@ class Shop extends \Eloquent {
 	{
 		return $this->hasMany('Category');
 	}
+
+	public function products()
+	{
+		return $this->has
+	}
 }
