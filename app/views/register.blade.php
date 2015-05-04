@@ -20,7 +20,7 @@
 				</ul>
 				<div class="clear"></div>
 			</div>
-			<div class="register-form step-1">
+			<div class="register-form step-1 hidden">
 				<h2>注册</h2>
 				<div class="register-body">
 					<div class="register-items">
@@ -55,7 +55,7 @@
 						<div class="register-phone">邮箱：<span class="input-email"></span> </div>
 						<div class="register-authcode">
 							<input type="text" id="register-authcode" placeholder="请输入验证码" />
-							<div class="register-sec"><span>59</span>秒后可重新操作</div>
+							<div class="register-sec"><span id="register-sec">59</span>秒后可重新操作</div>
 						</div>
 					</div>
 				</div>
@@ -68,17 +68,18 @@
 				<div class="register-body">
 					<div class="register-items">
 						<div class="register-item" style="margin: 10px 0px 10px 10px;">
-							登录名：<span id="loginname">15902094760</span>>
+							登录名：<span id="loginname"></span>
 						</div>
 						<div class="register-item">
-							<input type="text" id="register-name" placeholder="设置登录密码" />
+							<input id="region-1" placeholder="设置登录密码" type="password" />
 						</div>
 						<div class="register-item">
-							<input type="text" id="region" placeholder="再次确认密码" />
+							<input id="region-2" placeholder="再次确认密码" type="password" />
 						</div>
 						<div class="register-item">
-							<input type="text" id="region" placeholder="你的昵称" />
+							<input type="text" id="register-name" placeholder="你的昵称" />
 						</div>
+						<span class="step3-tip"></span>
 					</div>
 				</div>
 				<div>
@@ -94,4 +95,5 @@
 @section('js')
     @parent
     <script type="text/javascript" src='/dist/js/pages/register.js'></script>
+    <script type="text/javascript" src='/dist/js/lib/jquery/jquery.cookie.js'></script>
 @stop

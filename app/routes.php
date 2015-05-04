@@ -12,6 +12,11 @@
 */
 
 /*------------------------<接口路由>------------------------------*/
+Route::get('test',function()
+{
+	return View::make('test');
+});
+Route::post('test','UserController@getCheckRegister');
 // 用户模块
 Route::group(array('prefix' => 'user'),function()
 {
