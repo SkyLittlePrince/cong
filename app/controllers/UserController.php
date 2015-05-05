@@ -222,7 +222,7 @@ class UserController extends \BaseController {
 		$sessionCaptcha = $_SESSION['phrase'];
 
 		if($captcha != $sessionCaptcha)
-			return Redirect::to('user/login')->with('message', '验证码有误!')->withInput();
+			return Response::json(array('errCode' => 4,'messge' => '验证码有误!'));
 
 		$reg = "/^[_.0-9a-z-a-z-]+@([0-9a-z][0-9a-z-]+.)+[a-z]{2,4}$/";
 		$user = null;
