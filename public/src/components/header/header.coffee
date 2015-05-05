@@ -13,3 +13,8 @@ $(document).ready ()->
 	if(index != undefined)
 		nav = $("#header").find(".nav").find("li").removeClass("active");
 		$(nav[index]).addClass("active");
+
+	$("#logout").click ()->
+		$.get "/user/logout", {}, (res)->
+			alert "退出成功！"
+			window.location.href = "/"

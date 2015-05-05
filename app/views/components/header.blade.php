@@ -38,8 +38,26 @@
                     
                 </a>
             </li>
+            <li class="logout">
+                <a href="javascript:void(0);" id="logout">
+
+                </a>
+            </li>
         @else 
-            <p>hello world</p>
+            <li class="person">
+               <a href=""> </a> 
+            </li>
+            <li class="register">
+                <a href="/user/register">注册</a> / 
+            </li>
+            <li class="login">
+                <a href="/user/login">登录</a>
+            </li>
+             <li class="help">
+                <a href="#">
+                    
+                </a>
+            </li>
         @endif
     </ul>
     <!-- 用户未登录 -->
