@@ -10,13 +10,14 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
 /*------------------------<接口路由>------------------------------*/
+//测试模块
 Route::get('test',function()
 {
 	return View::make('test');
 });
 Route::post('test','UserController@getCheckRegister');
+
 // 用户模块
 Route::group(array('prefix' => 'user'),function()
 {
