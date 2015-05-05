@@ -5,7 +5,7 @@ class Product extends \Eloquent {
 			'name',
 			'price',
 			'intro',
-			'category_id'
+			'shop_id'
 		);
 
 	protected $hidden = array(
@@ -13,8 +13,13 @@ class Product extends \Eloquent {
 			'updated_at'
 		);
 
-	public function category()
+	public function shop()
 	{
-		return $this->belongsTo('Category');
+		return $this->belongsTo('Shop');
+	}
+
+	public function pictures()
+	{
+		return $this->hasMany('Picture');
 	}
 }

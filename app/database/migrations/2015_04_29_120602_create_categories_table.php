@@ -17,22 +17,22 @@ class CreateCategoriesTable extends Migration {
       // in the model.
       // Take a look at the model scaffold comments for details.
       // We add indexes on parent_id, lft, rgt columns by default.
-      $table->increments('id');
-      $table->integer('parent_id')->nullable()->index();
-      $table->integer('lft')->nullable()->index();
-      $table->integer('rgt')->nullable()->index();
-      $table->integer('depth')->nullable();
+      // $table->increments('id');
+      // $table->integer('parent_id')->nullable()->index();
+      // $table->integer('lft')->nullable()->index();
+      // $table->integer('rgt')->nullable()->index();
+      // $table->integer('depth')->nullable();
 
-      // Add needed columns here (f.ex: name, slug, path, etc.)
-      $table->string('name', 255);
-      $table->integer('shop_id')->unsigned()->index('shop_id');
-      $table->longText('intro');
+      // // Add needed columns here (f.ex: name, slug, path, etc.)
+      // $table->string('name', 255);
+      // $table->integer('shop_id')->unsigned()->index('shop_id');
+      // $table->longText('intro');
 
-      $table
-            ->foreign('shop_id')
-            ->references('id')->on('shops')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
+      // $table
+      //       ->foreign('shop_id')
+      //       ->references('id')->on('shops')
+      //       ->onDelete('cascade')
+      //       ->onUpdate('cascade');
 
       $table->timestamps();
     });
