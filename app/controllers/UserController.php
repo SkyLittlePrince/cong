@@ -122,12 +122,12 @@ class UserController extends \BaseController {
 		$username = Input::get('username');
 		$password = Input::get('password');
 		$login = Input::get('loginname');
-		$captcha = Input::get('captcha');
+		// $captcha = Input::get('captcha');
 		$sessionCaptcha = Session::get('phrase');
 		$salt = Input::get('registerSalt');
 		$sessionSalt = Session::get('registerSalt');
 
-		if($captcha != $sessionCaptcha || $salt != $sessionSalt)
+		if($salt != $sessionSalt)
 			return Response::json(array('errCode' => 9,'message' => '验证码错误!'));
 
 		if(strlen($username) < 4)

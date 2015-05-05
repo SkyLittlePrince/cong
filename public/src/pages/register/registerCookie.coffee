@@ -3,6 +3,8 @@ cookieConfig =
 	Auth: "Auth"
 	Step: "Step"
 	loginName: "loginName"
+	captcha: "captcha"
+	step2Captcha: "step2Captcha" 
 
 # 和注册过程有关cookie操作
 registerCookie =
@@ -42,5 +44,24 @@ registerCookie =
 	# 移除和登录名相关的cookie
 	removeloginNameCookie: ->
 		$.removeCookie cookieConfig.loginName
+	# 获取第一步验证码的cookie
+	getCaptchaCookie: ->
+		return $.cookie cookieConfig.captcha
+	###
+	# 设置第一步验证码的cookie
+	# @param {String} field: 第一步的验证码
+	###
+	setCaptchaCookie: (field)->
+		$.cookie cookieConfig.captcha, field
+	# 移除第一步验证码的cookie
+	removeCaptchaCookie: ->
+		$.cookie removeCookie cookieConfig.captcha
+
+	getStep2CaptchaCookie: ->
+		return $.cookie cookieConfig.step2Captcha
+	setStep2CaptchaCookie: (field)->
+		$.cookie cookieConfig.step2Captcha, field
+	removeStep2CaptchaCookie: ->
+		$.removeCookie cookieConfig.step2Captcha
 
 module.exports = registerCookie

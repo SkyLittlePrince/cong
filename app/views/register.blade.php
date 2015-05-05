@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    <title>丛丛网－登录</title>
+    <title>丛丛网－注册</title>
 @stop
 @section('css')
     @parent
@@ -24,17 +24,19 @@
 				<h2>注册</h2>
 				<div class="register-body">
 					<div class="register-items">
-						<div class="register-item">
+						<div class="register-item login-name">
 							<input type="text" id="register-email" placeholder="填写邮箱" />
+							<span class="login-name-tips"></span>
 						</div>
-						<div class="register-item">
+						<div class="register-item auth-wrapper">
 							<input type="text" id="auth-code" placeholder="输入验证码" />
 							<span class="code-right hidden">ok</span>
 							<span class="code-error hidden">no</span>
 							<img src="{{ $captcha->inline() }}" id="authcode-img"  width="128" height="45" />
 							<div class="clear"></div>
+							<p class="change-captcha">看不清？<a href="javascript: void(0)">换张图</a></p>
 						</div>
-						<div class="register-item" style="line-height:18px;vertical-align:top;margin-top: 30px;"> 
+						<div class="register-item" style="line-height:18px;vertical-align:top;margin-top: 10px;"> 
 							<input type="checkbox" name="agree" id="agree-box" class="hidden" />
 							<img src="/images/register/3.jpg" class="agree-img" width="16" height="16" />
 							<img src="/images/register/4.jpg" class="disagree-img hidden" width="16" height="16" />
@@ -57,6 +59,7 @@
 							<input type="text" id="register-authcode" placeholder="请输入验证码" />
 							<div class="register-sec"><span id="register-sec">59</span>秒后可重新操作</div>
 						</div>
+						<span class="step2-tips"></span>
 					</div>
 				</div>
 				<div>
