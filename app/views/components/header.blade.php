@@ -16,27 +16,31 @@
     </ul>
     <!-- 用户已经登录 -->
     <ul class="user-info">
-        <li class="info">
-            <a href="#">
-                <img src="/images/common/avatar.png" alt="avatar">
-                <span>Vivine</span>
-            </a>
-        </li>
-        <li class="message">
-            <a href="#">
-                (<span>6</span>)
-            </a>
-        </li>
-        <li class="help">
-            <a href="#">
-                
-            </a>
-        </li>
-        <li class="cart">
-            <a href="/shopping-cart">
-                
-            </a>
-        </li>
+        @if (Sentry::check())
+            <li class="info">
+                <a href="#">
+                    <img src="/images/common/avatar.png" alt="avatar">
+                    <span>Vivine</span>
+                </a>
+            </li>
+            <li class="message">
+                <a href="#">
+                    (<span>6</span>)
+                </a>
+            </li>
+            <li class="help">
+                <a href="#">
+                    
+                </a>
+            </li>
+            <li class="cart">
+                <a href="/shopping-cart">
+                    
+                </a>
+            </li>
+        @else 
+            <p>hello world</p>
+        @endif
     </ul>
     <!-- 用户未登录 -->
 </div>
