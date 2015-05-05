@@ -74,16 +74,15 @@
 
 					.register-item {
 						margin-bottom: 12px;
-
 						input {
 							.inputBox
 						}
-						.input-right {
-							border: 1px solid #cae9e9;
-						}
-						.input-error {
-							border: solid 1px red;
-						}
+						// .input-right {
+						// 	border: 1px solid #cae9e9;
+						// }
+						// .input-error {
+						// 	border: solid 1px red;
+						// }
 						#auth-code {
 							width: 110px;
 							float: left;
@@ -91,12 +90,50 @@
 
 						#authcode-img {
 							float: left;
-							margin-left: 40px;
+							margin-left: 23px;
+						}
+						.change-captcha {
+							text-align: right;
+							padding-right: 20px;
+							padding-top: 3px;
 						}
 
 						.agree-img, .disagree-img {
 							float: left;
 						}
+						#auth-code-status {
+							float: left;
+							display: inline-block;
+							width: 17px;
+							height: 17px;
+							margin: 15px 0 0 3px;
+						}
+						.icon-yes {
+							background: url("../../images/register/auth-icon.gif") no-repeat;
+						}
+						.icon-no {
+							background: url("../../images/register/auth-icon.gif") no-repeat -17px 0;
+						}
+						.red-tip {
+							color: red;
+						}
+						.green-tip {
+							color: green;
+						}
+					}
+					.register-item.login-name {
+						margin-bottom: 4px;
+						.login-name-tips {
+							padding-left: 12px;
+							display: inline-block;
+							min-width: 100px;
+							height: 14px;
+							margin-top: 2px;
+							font-size: 12px;
+						}
+					}
+					.register-item.auth-wrapper {
+						margin-bottom: 0;
 					}
 				}
 
@@ -122,6 +159,7 @@
 					margin: 0 auto;
 					margin-top: 20px;
 					width: 280px;
+					overflow: hidden;
 
 					#register-authcode {
 						.inputBox(110px);
@@ -136,6 +174,14 @@
 						float: left;
 						margin-left: 20px;
 					}
+					.register-sec.click-able {
+						cursor: pointer;
+					}
+				}
+				.step2-tips {
+					display: inline-block;
+					margin-left: 20px;
+					margin-top: 10px;
 				}
 			}
 

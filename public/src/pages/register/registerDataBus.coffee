@@ -30,11 +30,14 @@ registerDataBus =
 		}
 
 	###
-	# 
+	# 发送邮箱验证码
+	# @param {String} loginname: 登录名
 	###
-	getCheckRegister: (callback)->
+	getCheckRegister: (loginname, callback)->
 		$.ajax {
 			type: "get"
+			data:
+				loginname: loginname
 			url: '/user/getCheckRegister'
 			success: (data)->
 				callback(data)
@@ -65,7 +68,11 @@ registerDataBus =
 			success: (data)->
 				callback(data)
 		}
-
+	###
+	# 用户注册
+	# @param {Object} data: 用户注册表单对象
+	# @param {Function} callback: 注册响应后执行的函数
+	###
 	Register: (data, callback)->
 		$.ajax {
 			type: 'post'
