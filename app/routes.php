@@ -73,7 +73,7 @@ Route::group(array('prefix' => 'indent'),function()
 	{
 		Route::post('create','IndentController@create');
 		Route::post('cancel','IndentController@cancel');
-		Route::get('get','IndentController@get');
+		Route::get('get-info','IndentController@getIndent');
 		Route::get('get-my-indents','IndentController@getMyIndents');
 	});
 });
