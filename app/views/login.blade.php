@@ -19,16 +19,19 @@
 				<h2>用户登录</h2>
 				<div class="login-form">
 					<div class="login-item">
-						<input type="text" id="loginname" name="email" placeholder="用户名：手机号／邮箱" />
+						<input type="text" id="loginname" name="email" placeholder="用户名：邮箱" />
 					</div>
 					<div class="login-item">
 						<input type="password" id="password" name="password" placeholder="密码："/>
 					</div>
 					<div class="login-item">
-						<input type="text" id="authcode" name="captcha" placeholder="验证码"/>
+						<input type="text" id="authcode" name="captcha" placeholder="验证码" maxlength="5"/>
+						<span id="auth-code-status"></span>
 						<img src="{{ $captcha->inline() }}" id="authcode-img" width="128" height="46" />
 						<div class="clear"></div>
+						<span class="change-captcha">看不清？<a href="javascript: void(0)">换张图</a></span>
 					</div>
+					<span class="login-tips"></span>
 					<div class="login-link">
 						<a href="/user/register">注册</a>
 						 ／ 
@@ -36,7 +39,7 @@
 					</div>
 				</div>
 
-				<input type="submit" id="login-btn" value="确定" />
+				<input type="button" id="login-btn" value="确定" />
 			{{ Form::close() }}
 		</div>
 		<div class="clear"></div>
@@ -45,4 +48,5 @@
 
 @section('js')
     @parent
+    <script type="text/javascript" src='/dist/js/pages/login.js'></script>
 @stop

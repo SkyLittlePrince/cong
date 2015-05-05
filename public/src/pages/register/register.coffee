@@ -28,11 +28,12 @@ $loginNameTips = $('.login-name-tips')
 $changeCaptchaLink = $('.change-captcha > a')
 $authcodeImg = $('#authcode-img')
 $stepTitle = $('.step-title > li')
+$authCodeStatus = $('#auth-code-status')
 
 # 页面加载完成执行事件处理程序绑定和脚本初始化
 $ ->
 	$registerEmail.bind('blur', emailHandler)
-	$authCode.bind('blur', authCodeHandler)
+	$authCode.bind 'input', -> authCodeHandler($(this)) if $(this).val().length is 5
 	$registerBtn1.bind('click', step1Handler)
 	$registerBtn2.bind('click', step2Handler)
 	$registerBtn3.bind('click', step3Handler)
@@ -65,8 +66,12 @@ renderStepBanner = (step)->
 # @param {Number} errCode: 状态码
 ###
 emailAction = (errCode, message)->
-	$registerEmail.removeClass('input-error').addClass('input-right') if errCode is 0
-	$registerEmail.removeClass('input-right').addClass('input-error') if errCode isnt 0
+	if errCode is 0
+		$registerEmail.removeClass('input-error').addClass('input-right')
+		$loginNameTips.removeClass('red-tip').addClass('green-tip')
+	if errCode isnt 0
+		$registerEmail.removeClass('input-right').addClass('input-error')
+		$loginNameTips.removeClass('green-tip').addClass('red-tip')
 	$loginNameTips.text(message)
 
 ###
@@ -87,22 +92,24 @@ emailHandler = ->
 # @param {Number} errCode: 状态码
 ###
 authCodeAction = (errCode)->
+	if errCode is -1
+		return $authCode.removeClass()
 	if errCode is 0
-		$('.code-right').show().siblings('.code-error').hide()
+		$authCodeStatus.removeClass('icon-no').addClass('icon-yes')
 		$authCode.removeClass('input-error').addClass('input-right')
 	if errCode isnt 0
-		$('.code-right').hide().siblings('.code-error').show() 
+		$authCodeStatus.removeClass('icon-yes').addClass('icon-no')
 		$authCode.removeClass('input-right').addClass('input-error')
 ###
 # 验证码逻辑处理
 ###
-authCodeHandler = ->
-	code = $(this).val()
+authCodeHandler = ($obj)->
+	code = $obj.val()
 	if code isnt ''
 		registerDataBus.checkCaptcha code, (data)->
 			authCodeAction data.errCode
 	else
-		authCodeAction 1
+		authCodeAction -1
 ###
 # 注册第一步DOM操作， 验证输入的信息是否都合法
 ###
