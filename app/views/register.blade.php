@@ -32,6 +32,7 @@
 							<input type="text" id="auth-code" placeholder="输入验证码" />
 							<span class="code-right hidden">ok</span>
 							<span class="code-error hidden">no</span>
+							<span id="auth-code-ok" class="icon-yes"></span>
 							<img src="{{ $captcha->inline() }}" id="authcode-img"  width="128" height="45" />
 							<div class="clear"></div>
 							<p class="change-captcha">看不清？<a href="javascript: void(0)">换张图</a></p>

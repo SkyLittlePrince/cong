@@ -50,9 +50,7 @@ init = ->
 
 # 更换验证码
 changeCaptcha = ->
-	registerDataBus.changeCaptcha (data)->
-		console.log(data)
-		# $authcodeImg.attr 'src', data
+	$authcodeImg.attr('src', ' ').attr('src', '/user/captcha' + '?id=' + Math.random(12))
 
 # 更改注册进度条
 renderStepBanner = (step)->
