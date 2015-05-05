@@ -363,16 +363,16 @@ class UserController extends \BaseController {
 	//更改密码
 	public function postChangePassword()
 	{
-		Session_start();
+		//Session_start();
 		$user = Sentry::getUser();
 		$oldPwd = Input::get('oldPwd');
 		$newPwd = Input::get('newPwd');
-		$captcha = Input::get('captcha');
+		//$captcha = Input::get('captcha');
 		//$sessionCaptcha = Session::get('phrase');
-		$sessionCaptcha = $_SESSION['phrase'];
+		//$sessionCaptcha = $_SESSION['phrase'];
 
-		if($captcha != $sessionCaptcha)
-			return Response::json(array('errCode' => 5,'message' => '验证码错误!'));
+		// if($captcha != $sessionCaptcha)
+		// 	return Response::json(array('errCode' => 5,'message' => '验证码错误!'));
 
 		if(strlen($newPwd) < 6)
 			return Response::json(array('errCode' => 1,'message' => '密码长度不能少于6位!'));
