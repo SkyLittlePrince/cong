@@ -6,10 +6,12 @@ class UserController extends \BaseController {
 
 	public function captcha()
 	{
+		Session_start();
 		$builder = new CaptchaBuilder;
 		$builder->build();
 		$phrase = $builder->getPhrase();
-		Session::put('phrase', $phrase);
+		$_SESSION['phrase'] = $phrase;
+		//Session::put('phrase', $phrase);
 		header("Cache-Control: no-cache, must-revalidate");
 		header('Content-Type: image/jpeg');
 		$builder->output();
@@ -18,8 +20,10 @@ class UserController extends \BaseController {
 
 	public function checkCaptcha()
 	{
+		Session_start();
 		$captcha = Input::get('captcha');
-		$sessionCaptcha = Session::get('phrase');
+		//$sessionCaptcha = Session::get('phrase');
+		$sessionCaptcha = $_SESSION['phrase'];
 
 		if($captcha != $sessionCaptcha)
 			return Response::json(array('errCode' => 1,'message' => '验证码有误!'));
@@ -46,6 +50,7 @@ class UserController extends \BaseController {
 
 	public function getCheckRegister()
 	{
+		Session_start();
 		$login = Input::get('loginname');
 
 		$possible_charactors = "abcdefghijklmnopqrstuvwxyz0123456789"; //产生随机数的字符串
@@ -62,7 +67,8 @@ class UserController extends \BaseController {
 			if(isset($user))
 				return Response::json(array('errCode' => 2,'message' => '邮箱已被注册.'));
 
-			Session::put('registerSalt',$salt);
+			//Session::put('registerSalt',$salt);
+			$_SESSION['registerSalt'] = $salt;
 
 			Mail::send('token',array('token' => $salt),function($message) use ($login)
 			{
@@ -80,7 +86,8 @@ class UserController extends \BaseController {
 				if(isset($user))
 					return Response::json(array('errCode' => 3,'message' => '手机号已被注册.'));
 
-				Session::put('registerSalt',$salt);
+				//Session::put('registerSalt',$salt);
+				$_SESSION['registerSalt'] = $salt;
 
 				return Response::json(array('errCode' => 0,'message' => '验证码已发送到你的手机!'));
 			}
@@ -94,8 +101,10 @@ class UserController extends \BaseController {
 
 	public function checkRegister()
 	{
+		Session_start();
 		$salt = Input::get('registerSalt');
-		$sessionSalt = Session::get('registerSalt');
+		//$sessionSalt = Session::get('registerSalt');
+		$sessionSalt = $_SESSION['registerSalt'];
 
 		if($salt != $sessionSalt)
 		{
@@ -108,24 +117,28 @@ class UserController extends \BaseController {
 
 	public function getRegister()
 	{
+		Session_start();
 		$builder = new CaptchaBuilder;
 		$builder->build();
 
 		$phrase = $builder->getPhrase();
-		Session::put('phrase', $phrase);
+		//Session::put('phrase', $phrase);
+		$_SESSION['phrase'] = $phrase;
 
 		return View::make('register')->with('captcha', $builder);
 	}
 
 	public function postRegister()  //user register
 	{
+		Session_start();
 		$username = Input::get('username');
 		$password = Input::get('password');
 		$login = Input::get('loginname');
-		// $captcha = Input::get('captcha');
-		$sessionCaptcha = Session::get('phrase');
+		//$captcha = Input::get('captcha');
+		//$sessionCaptcha = Session::get('phrase');
 		$salt = Input::get('registerSalt');
-		$sessionSalt = Session::get('registerSalt');
+		//$sessionSalt = Session::get('registerSalt');
+		$sessionSalt = $_SESSION['registerSalt'];
 
 		if($salt != $sessionSalt)
 			return Response::json(array('errCode' => 9,'message' => '验证码错误!'));
@@ -188,24 +201,28 @@ class UserController extends \BaseController {
 
 	public function getLogin()
 	{
+		Session_start();
 		$builder = new CaptchaBuilder;
 		$builder->build();
 
 		$phrase = $builder->getPhrase();
-		Session::put('phrase', $phrase);
+		//Session::put('phrase', $phrase);
+		$_SESSION['phrase'] = $phrase;
 
 		return View::make('login')->with('captcha', $builder);
 	}
 
 	public function postLogin() //user login
 	{
+		Session_start();
 		$login = Input::get('loginname');  //login token
 		$password = Input::get('password');
 		$captcha = Input::get('captcha');
-		$sessionCaptcha = Session::get('phrase');
+		//$sessionCaptcha = Session::get('phrase');
+		$sessionCaptcha = $_SESSION['phrase'];
 
 		if($captcha != $sessionCaptcha)
-			return Redirect::to('user/login')->with('message', '验证码有误!')->withInput();
+			return Response::json(array('errCode' => 4,'messge' => '验证码有误!'));
 
 		$reg = "/^[_.0-9a-z-a-z-]+@([0-9a-z][0-9a-z-]+.)+[a-z]{2,4}$/";
 		$user = null;
@@ -334,11 +351,13 @@ class UserController extends \BaseController {
 
 	public function postChangePassword()
 	{
+		Session_start();
 		$user = Sentry::getUser();
 		$oldPwd = Input::get('oldPwd');
 		$newPwd = Input::get('newPwd');
 		$captcha = Input::get('captcha');
-		$sessionCaptcha = Session::get('phrase');
+		//$sessionCaptcha = Session::get('phrase');
+		$sessionCaptcha = $_SESSION['phrase'];
 
 		if($captcha != $sessionCaptcha)
 			return Response::json(array('errCode' => 5,'message' => '验证码错误!'));
