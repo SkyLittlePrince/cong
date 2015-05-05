@@ -4,6 +4,7 @@ use Gregwar\Captcha\CaptchaBuilder;
 
 class UserController extends \BaseController {
 
+	//生成验证码
 	public function captcha()
 	{
 		Session_start();
@@ -18,6 +19,7 @@ class UserController extends \BaseController {
 		exit;
 	}
 
+	//验证验证码
 	public function checkCaptcha()
 	{
 		Session_start();
@@ -31,6 +33,7 @@ class UserController extends \BaseController {
 		return Response::json(array('errCode' => 0,'message' => '验证码正确!'));
 	}
 
+	//验证邮箱的格式和是否可用
 	public function checkEmail()
 	{
 		$email = Input::get('email');
@@ -45,9 +48,9 @@ class UserController extends \BaseController {
 			return Response::json(array('errCode' => 2,'message' => '该邮箱已被注册!'));
 
 		return Response::json(array('errCode' => 0,'message' => '该邮箱可用!'));
-
 	}
 
+	//获取邮箱或手机号的验证码
 	public function getCheckRegister()
 	{
 		Session_start();
@@ -96,9 +99,9 @@ class UserController extends \BaseController {
 				return Response::json(array('errCode' => 1,'message' => '请填写正确的邮箱或手机号!'));
 			}
 		}
-
 	}
 
+	//验证注册时发到邮箱或手机的验证码是否正确
 	public function checkRegister()
 	{
 		Session_start();
@@ -115,6 +118,7 @@ class UserController extends \BaseController {
 
 	}
 
+	//获取注册页面和生成验证码
 	public function getRegister()
 	{
 		Session_start();
@@ -128,7 +132,8 @@ class UserController extends \BaseController {
 		return View::make('register')->with('captcha', $builder);
 	}
 
-	public function postRegister()  //user register
+	//用户注册
+	public function postRegister()  
 	{
 		Session_start();
 		$username = Input::get('username');
@@ -199,6 +204,7 @@ class UserController extends \BaseController {
 			return Response::json(array('errCode' => 0,'message' => '注册成功!'));
 	}
 
+	//获取登录页面和生成验证码
 	public function getLogin()
 	{
 		Session_start();
@@ -212,6 +218,7 @@ class UserController extends \BaseController {
 		return View::make('login')->with('captcha', $builder);
 	}
 
+	//用户登录
 	public function postLogin() //user login
 	{
 		Session_start();
@@ -271,6 +278,7 @@ class UserController extends \BaseController {
 		}
 	}
 
+	//管理员删除用户
 	public function getDelete()  //admin delete user
 	{
 		$id = Input::get('id');
@@ -287,6 +295,7 @@ class UserController extends \BaseController {
 		return Response::json(array('errCode' => 0,'message' => '删除成功!'));
 	}
 
+	//更新用户基本资料
 	public function postUpdate()
 	{
 		$user = Sentry::getUser();
@@ -321,7 +330,8 @@ class UserController extends \BaseController {
 		
 	}
 
-	public function getInformation()     //查看某个用户资料
+	//查看某个用户的基本资料
+	public function getInformation()     
 	{
 		$id = Input::get('id');
 		$user = User::find($id);
@@ -332,6 +342,7 @@ class UserController extends \BaseController {
 		return Response::json(array('errCode' => 0,'user' => $user)); 
 	}
 
+	//修改用户简介
 	public function editDescription()
 	{
 		$user = Sentry::getUser();
@@ -349,6 +360,7 @@ class UserController extends \BaseController {
 		}
 	}
 
+	//更改密码
 	public function postChangePassword()
 	{
 		Session_start();
@@ -389,12 +401,14 @@ class UserController extends \BaseController {
 
 	}
 
+	//退出登录
 	public function getLogout()
 	{
 		Sentry::logout();
 		return Response::json(array('errCode' => 0,'message' => '退出成功!'));
 	}
 
+	//添加工作经历
 	public function addWorkExperience()
 	{
 		$user = Sentry::getUser();
@@ -416,6 +430,7 @@ class UserController extends \BaseController {
 		}
 	}
 
+	//更新工作经历
 	public function updateWorkExperience()
 	{
 		$id = Input::get('id');
@@ -440,6 +455,7 @@ class UserController extends \BaseController {
 		return Response::json(array('errCode' => 3,'message' => '保存失败!'));
 	}
 
+	//删除工作经历
 	public function deleteWorkExperience()
 	{
 		$id = Input::get('id');
@@ -458,6 +474,7 @@ class UserController extends \BaseController {
 		return Response::json(array('errCode' => 3,'message' => '删除失败!'));
 	}
 
+	//增加教育经历
 	public function addEducationExperience()
 	{
 		$user = Sentry::getUser();
@@ -479,6 +496,7 @@ class UserController extends \BaseController {
 		}
 	}
 
+	//更新教育经历
 	public function updateEducationExperience()
 	{
 		$id = Input::get('id');
@@ -503,6 +521,7 @@ class UserController extends \BaseController {
 		return Response::json(array('errCode' => 3,'message' => '保存失败!'));
 	}
 
+	//删除教育经历
 	public function deleteEducationExperience()
 	{
 		$id = Input::get('id');
@@ -521,6 +540,7 @@ class UserController extends \BaseController {
 		return Response::json(array('errCode' => 3,'message' => '删除失败!'));	
 	}
 
+	//增加个人奖项
 	public function addAward()
 	{
 		$user = Sentry::getUser();
@@ -542,6 +562,7 @@ class UserController extends \BaseController {
 		}
 	}
 
+	//更新个人奖项
 	public function updateAward()
 	{
 		$id = Input::get('id');
@@ -566,6 +587,7 @@ class UserController extends \BaseController {
 		return Response::json(array('errCode' => 3,'message' => '保存失败!'));
 	}
 
+	//删除个人奖项
 	public function deleteAward()
 	{
 		$id = Input::get('id');

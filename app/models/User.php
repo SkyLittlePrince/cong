@@ -93,4 +93,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->hasOne('Shop');
 	}
+
+	public function products()
+	{
+		return $this->hasManyThrough('Product','Shop');
+	}
 }

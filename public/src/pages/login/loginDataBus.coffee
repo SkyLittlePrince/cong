@@ -2,7 +2,7 @@ loginDataBus =
 	login: (data, callback)->
 		$.ajax {
 			type: 'post'
-			url: '/user/register'
+			url: '/user/login'
 			data: 
 				password: data.password
 				loginname: data.loginname

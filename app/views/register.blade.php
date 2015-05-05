@@ -29,7 +29,7 @@
 							<span class="login-name-tips"></span>
 						</div>
 						<div class="register-item auth-wrapper">
-							<input type="text" id="auth-code" placeholder="输入验证码" />
+							<input type="text" id="auth-code" placeholder="输入验证码" maxlength="5" />
 							<span id="auth-code-status"></span>
 							<img src="{{ $captcha->inline() }}" id="authcode-img"  width="128" height="45" />
 							<div class="clear"></div>
