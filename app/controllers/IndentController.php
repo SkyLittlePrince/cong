@@ -6,15 +6,24 @@ class IndentController extends BaseController {
 	{
 		$taskId = Input::get("taskId");
 
+		if(!Sentry::check())
+			return Response::json(array('errCode' => 1,'message' => '请登录!', 'newIndentId' => $indent->id));
+
+		$userId = Sentry::getUser()->id;
+
 		$indent = new Indent();
 		$indent->task_id = $taskId;
-		$indent->save();
+		$indent->user_id = $userId;
+ 		$indent->save();
 
 		return Response::json(array('errCode' => 0,'message' => '创建订单成功!', 'newIndentId' => $indent->id));
 	}
 
 	public function cancel()
 	{
+		if(!Sentry::check())
+			return Response::json(array('errCode' => 1,'message' => '请登录!', 'newIndentId' => $indent->id));
+		
 		$indentId = Input::get("indentId");
 
 		Indent::destroy($indentId);
@@ -24,16 +33,28 @@ class IndentController extends BaseController {
 
 	public function getIndent()
 	{
+		if(!Sentry::check()) {
+			return Response::json(array('errCode' => 1,'message' => '请登录!'));
+		}
+
 		$indentId = Input::get("indentId");
 
-		$indent = Indent::find($indentId)->get();
-
-		return Response::json(array('errCode' => 0,'indent' => $indent));
+		$indent = Indent::find($indentId);
+		if(is_null($indent)) 
+		{
+			return Response::json(array('errCode' => 1,'message' => "订单未找到"));
+		}
+		else 
+		{
+			return Response::json(array('errCode' => 0,'indent' => $indent));
+		}
 	}
 
 	public function getMyIndents()
 	{
-		// $tasks = Task::where("user_id", "=", 1)->get();
+		if(!Sentry::check())
+			return Response::json(array('errCode' => 1,'message' => '请登录!', 'newIndentId' => $indent->id));
+		
 		$tasks = Task::where("user_id", "=", Sentry::getUser()->id)->get();
 		$indents = [];
 

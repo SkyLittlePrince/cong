@@ -4,6 +4,9 @@ class TaskController extends BaseController {
 
 	public function create() 
 	{
+		if(!Sentry::check())
+			return Response::json(array('errCode' => 1,'message' => '请登录!', 'newIndentId' => $indent->id));
+
 		$title = Input::get("title");
 		$price = Input::get("price");
 		$isAuction = Input::get("isAuction", false);
@@ -32,6 +35,9 @@ class TaskController extends BaseController {
 
 	public function cancelPublish()
 	{
+		if(!Sentry::check())
+			return Response::json(array('errCode' => 1,'message' => '请登录!', 'newIndentId' => $indent->id));
+		
 		$taskId = Input::get("taskId");
 
 		Task::destroy($taskId);
@@ -65,7 +71,7 @@ class TaskController extends BaseController {
 		{
 			$user_id = Sentry::getUser()->id;
 		} 
-		else 
+		else
 		{
 			return Response::json(array('errCode' => 1,'message' => "[参数错误]缺少用户id"));
 		}
