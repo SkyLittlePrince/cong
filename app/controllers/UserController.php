@@ -401,6 +401,35 @@ class UserController extends \BaseController {
 
 	}
 
+	//忘记密码
+	public function postForgetPassword()
+	{
+		Session_start();
+		$sessionSalt = $_SESSION['registerSalt'];
+
+		$email = Input::get('email');
+		$salt = Input::get('registerSalt');
+		$password = Input::get('password');
+
+		$user = User::where('email',$email)->first();
+
+		if(!isset($user))
+			return Response::json(array('errCode' => 1,'message' => '该邮箱不存在!'));
+
+		if($sessionSalt != $salt)
+			return Response::json(array('errCode' => 2,'message' => '验证码不正确!'));
+
+		if(strlen($password) < 6)
+			return Response::json(array('errCode' => 3,'messge' => '密码长度不能少于6位!'));
+
+		$user = Sentry::findUserById($user->id);
+		$resetCode = $user->getResetPasswordCode();
+		if($user->attemptResetPassword($resetCode, $password))
+			return Response::json(array('errCode' => 0,'message' => '重置密码成功!'));
+
+		return Response::json(array('errCode' => 4,'message' => '重置密码失败!'));
+	}
+
 	//退出登录
 	public function getLogout()
 	{
