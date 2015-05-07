@@ -18,6 +18,9 @@ class CreateShopsTable extends Migration {
 			$table->integer('user_id')->unsigned()->index('user_id');
 			$table->string('name');
 			$table->string('description');
+			$table->integer("dealNum")->default(0);  // 店铺交易量
+			$table->integer("visitNum")->default(0); // 店铺访问量
+			$table->integer("credit")->default(1);   // 店铺信用度 
 			$table->timestamps();
 
 			$table                          
