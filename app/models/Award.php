@@ -1,6 +1,8 @@
 <?php
 
 class Award extends \Eloquent {
+	protected $table = 'awards';
+	
 	protected $fillable = array(
 		'user_id',
 		'time',

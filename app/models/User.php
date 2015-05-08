@@ -26,7 +26,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		'remember_token',
 		'password',
 		'role_id',
-		'created_at',
 		'updated_at',
 		'last_login',
 		'permissions',
@@ -65,9 +64,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->hasMany('WorkExperience');
 	}
 
-	public function educationExperiences()
+	public function eduExperiences()
 	{
-		return $this->hasMany('EducationExperience');
+		return $this->hasMany('EduExperience');
+	}
+
+	public function about()
+	{
+		return $this->hasOne('About');
 	}
 
 	public function awards()

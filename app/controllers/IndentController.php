@@ -55,12 +55,7 @@ class IndentController extends BaseController {
 		if(!Sentry::check())
 			return Response::json(array('errCode' => 1,'message' => '请登录!', 'newIndentId' => $indent->id));
 		
-		$tasks = Task::where("user_id", "=", Sentry::getUser()->id)->get();
-		$indents = [];
-
-		foreach ($tasks as $key => $task) {
-			array_push($indents, $task->indent);
-		}
+		$indents = Indent::where("user_id", "=", Sentry::getUser()->id)->get();
 
 		return Response::json(array('errCode' => 0,'indents' => $indents));
 	}

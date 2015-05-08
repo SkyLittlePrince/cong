@@ -1,6 +1,8 @@
 <?php
 
-class EducationExperience extends \Eloquent {
+class EduExperience extends \Eloquent {
+	protected $table = 'eduExperiences';
+	
 	protected $fillable = array(
 		'user_id',
 		'time',

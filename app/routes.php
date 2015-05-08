@@ -43,12 +43,14 @@ Route::group(array('prefix' => 'user'),function()
 		Route::post('addWorkExperience','UserController@addWorkExperience');
 		Route::post('updateWorkExperience','UserController@updateWorkExperience');
 		Route::get('deleteWorkExperience','UserController@deleteWorkExperience');
-		Route::post('addEducationExperience','UserController@addEducationExperience');
-		Route::post('updateEducationExperience','UserController@updateEducationExperience');
-		Route::get('deleteEducationExperience','UserController@deleteEducationExperience');
+		Route::post('addEduExperience','UserController@addEduExperience');
+		Route::post('updateEduExperience','UserController@updateEduExperience');
+		Route::get('deleteEduExperience','UserController@deleteEduExperience');
 		Route::post('addAward','UserController@addAward');
 		Route::post('updateAward','UserController@updateAward');
 		Route::get('deleteAward','UserController@deleteAward');
+		Route::post('updateAbout','UserController@updateAbout');
+		Route::post('updateContact','UserController@updateContact');
 	});
 });
 
@@ -243,10 +245,9 @@ Route::group(array('prefix' => 'trading-center'),function()
 		{
 			return View::make('tradingCenter.account.card');
 		});
-		Route::get('user-info', function()
-		{
-			return View::make('tradingCenter.account.user-info');
-		});
+		
+		Route::get('user-info', 'AccountPageController@userInfo');
+
 		Route::get('bind-phone', function()
 		{
 			return View::make('tradingCenter.account.bind-phone');

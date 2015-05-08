@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWorkExperiencesTable extends Migration {
+class CreateAboutsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,14 +12,10 @@ class CreateWorkExperiencesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('workExperiences', function(Blueprint $table)
+		Schema::create('abouts', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->integer('user_id')->unsigned()->index('user_id');
-			$table->string('start_time');
-			$table->string('end_time');
-			$table->longText('description');
-			$table->timestamps();
+			$table->integer('user_id')->unsigned()->index('user_id')->unique();
+			$table->longText('content');
 
 			$table                          
 				->foreign('user_id')
@@ -36,7 +32,6 @@ class CreateWorkExperiencesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('workExperiences');
+		Schema::drop('abouts');
 	}
-
 }

@@ -16,27 +16,49 @@
     </ul>
     <!-- 用户已经登录 -->
     <ul class="user-info">
-        <li class="info">
-            <a href="#">
-                <img src="/images/common/avatar.png" alt="avatar">
-                <span>Vivine</span>
-            </a>
-        </li>
-        <li class="message">
-            <a href="#">
-                (<span>6</span>)
-            </a>
-        </li>
-        <li class="help">
-            <a href="#">
-                
-            </a>
-        </li>
-        <li class="cart">
-            <a href="/shopping-cart">
-                
-            </a>
-        </li>
+        @if (Sentry::check())
+            <li class="info">
+                <a href="#">
+                    <img src="/images/common/avatar.png" alt="avatar">
+                    <span>Vivine</span>
+                </a>
+            </li>
+            <li class="message">
+                <a href="#">
+                    (<span>6</span>)
+                </a>
+            </li>
+            <li class="help">
+                <a href="#">
+                    
+                </a>
+            </li>
+            <li class="cart">
+                <a href="/shopping-cart">
+                    
+                </a>
+            </li>
+            <li class="logout">
+                <a href="javascript:void(0);" id="logout">
+
+                </a>
+            </li>
+        @else 
+            <li class="person">
+               <a href=""> </a> 
+            </li>
+            <li class="register">
+                <a href="/user/register">注册</a> / 
+            </li>
+            <li class="login">
+                <a href="/user/login">登录</a>
+            </li>
+             <li class="help">
+                <a href="#">
+                    
+                </a>
+            </li>
+        @endif
     </ul>
     <!-- 用户未登录 -->
 </div>

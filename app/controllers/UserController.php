@@ -346,9 +346,9 @@ class UserController extends \BaseController {
 	public function editDescription()
 	{
 		$user = Sentry::getUser();
-		$descrition = Input::get('descrition');
+		$description = Input::get('description');
 
-		$user->descrition = $descrition;
+		$user->description = $description;
 
 		if($user->save())
 		{
@@ -437,17 +437,58 @@ class UserController extends \BaseController {
 		return Response::json(array('errCode' => 0,'message' => '退出成功!'));
 	}
 
+	public function updateAbout()
+	{
+		$content = Input::get('content');
+		$user_id = Sentry::getUser()->id;
+
+		$about = About::where("user_id", "=", $user_id);
+		
+		if(!isset($about) || count($about) == 0)
+			return Response::json(array('errCode' => 1,'message' => '该记录不存在!'));
+
+		$about->update(array('content' => $content));
+
+		return Response::json(array('errCode' => 0,'message' => '保存成功!'));
+	}
+	
+	public function updateContact()
+	{
+		$mobile = Input::get('mobile');
+		$qq = Input::get('qq');
+		$email = Input::get('email');
+
+		if(!Sentry::check())
+			return Response::json(array('errCode' => 1,'message' => '请登录!'));
+
+		$user_id = Sentry::getUser()->id;
+
+		$user = User::find($user_id);
+
+		$user->mobile = $mobile;
+		$user->qq = $qq;
+		$user->email = $email;
+
+		if($user->save())
+			return Response::json(array('errCode' => 0,'message' => '保存成功!'));
+
+		return Response::json(array('errCode' => 3,'message' => '保存失败!'));
+	}
+	
+
 	//添加工作经历
 	public function addWorkExperience()
 	{
 		$user = Sentry::getUser();
-		$time = Input::get('time');
-		$descrition = Input::get('description');
+		$start_time = Input::get('start_time');
+		$end_time = Input::get('end_time');
+		$description = Input::get('description');
 
 		$workExperience = new WorkExperience;
 		$workExperience->user_id = $user->id;
-		$workExperience->time = $time;
-		$workExperience->descrition = $descrition;
+		$workExperience->start_time = $start_time;
+		$workExperience->end_time = $end_time;
+		$workExperience->description = $description;
 
 		if($workExperience->save())
 		{
@@ -463,8 +504,9 @@ class UserController extends \BaseController {
 	public function updateWorkExperience()
 	{
 		$id = Input::get('id');
-		$time = Input::get('time');
-		$descrition = Input::get('description');
+		$start_time = Input::get('start_time');
+		$end_time = Input::get('end_time');
+		$description = Input::get('description');
 		$user = Sentry::getUser();
 
 		$workExperience = WorkExperience::find($id);
@@ -475,8 +517,9 @@ class UserController extends \BaseController {
 		if($user->id != $workExperience->user_id)
 			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
 
-		$workExperience->time = $time;
-		$workExperience->descrition = $descrition;
+		$workExperience->start_time = $start_time;
+		$workExperience->end_time = $end_time;
+		$workExperience->description = $description;
 
 		if($workExperience->save())
 			return Response::json(array('errCode' => 0,'message' => '保存成功!'));
@@ -504,16 +547,18 @@ class UserController extends \BaseController {
 	}
 
 	//增加教育经历
-	public function addEducationExperience()
+	public function addEduExperience()
 	{
 		$user = Sentry::getUser();
-		$time = Input::get('time');
-		$descrition = Input::get('description');
+		$start_time = Input::get('start_time');
+		$end_time = Input::get('end_time');
+		$description = Input::get('description');
 
-		$educationExperience = new EducationExperience;
+		$educationExperience = new EduExperience;
 		$educationExperience->user_id = $user->id;
-		$educationExperience->time = $time;
-		$educationExperience->descrition = $descrition;
+		$educationExperience->start_time = $start_time;
+		$educationExperience->end_time = $end_time;
+		$educationExperience->description = $description;
 
 		if($educationExperience->save())
 		{
@@ -526,14 +571,15 @@ class UserController extends \BaseController {
 	}
 
 	//更新教育经历
-	public function updateEducationExperience()
+	public function updateEduExperience()
 	{
 		$id = Input::get('id');
-		$time = Input::get('time');
-		$descrition = Input::get('description');
+		$start_time = Input::get('start_time');
+		$end_time = Input::get('end_time');
+		$description = Input::get('description');
 		$user = Sentry::getUser();
 
-		$educationExperience = EducationExperience::find($id);
+		$educationExperience = EduExperience::find($id);
 		
 		if(!isset($educationExperience))
 			return Response::json(array('errCode' => 1,'message' => '该记录不存在!'));
@@ -541,8 +587,9 @@ class UserController extends \BaseController {
 		if($user->id != $educationExperience->user_id)
 			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
 
-		$educationExperience->time = $time;
-		$educationExperience->descrition = $descrition;
+		$educationExperience->start_time = $start_time;
+		$educationExperience->end_time = $end_time;
+		$educationExperience->description = $description;
 
 		if($educationExperience->save())
 			return Response::json(array('errCode' => 0,'message' => '保存成功!'));
@@ -551,11 +598,11 @@ class UserController extends \BaseController {
 	}
 
 	//删除教育经历
-	public function deleteEducationExperience()
+	public function deleteEduExperience()
 	{
 		$id = Input::get('id');
 		$user = Sentry::getUser();
-		$educationExperience = EducationExperience::find($id);
+		$educationExperience = EduExperience::find($id);
 
 		if(!isset($educationExperience))
 			return Response::json(array('errCode' => 1,'message' => '该id不存在!'));
@@ -574,12 +621,12 @@ class UserController extends \BaseController {
 	{
 		$user = Sentry::getUser();
 		$time = Input::get('time');
-		$descrition = Input::get('description');
+		$description = Input::get('description');
 
 		$award = new Award;
 		$award->user_id = $user->id;
 		$award->time = $time;
-		$award->descrition = $descrition;
+		$award->description = $description;
 
 		if($award->save())
 		{
@@ -596,7 +643,7 @@ class UserController extends \BaseController {
 	{
 		$id = Input::get('id');
 		$time = Input::get('time');
-		$descrition = Input::get('description');
+		$description = Input::get('description');
 		$user = Sentry::getUser();
 
 		$award = Award::find($id);
@@ -608,7 +655,7 @@ class UserController extends \BaseController {
 			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
 
 		$award->time = $time;
-		$award->descrition = $descrition;
+		$award->description = $description;
 
 		if($award->save())
 			return Response::json(array('errCode' => 0,'message' => '保存成功!'));
