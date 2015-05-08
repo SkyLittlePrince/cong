@@ -36,6 +36,7 @@
 				<label>真实姓名：</label>
 				<div class="content-input">
 					<input type="text" id="name" name="name" />
+					<!-- <span class="name-tip red-tip">请填写真实姓名</span> -->
 				</div>
 			</div>
 			<div class="content-row">
@@ -48,9 +49,9 @@
 			<div class="content-row">
 				<label>生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日&nbsp;&nbsp;:</label>
 				<div class="content-input">
-                        <input type="text" name="year" id="year"><span class="text"> 年</span>
-                        <input type="text" name="month" id="month"><span class="text"> 月</span>
-                        <input type="text" name="day" id="day"><span class="text"> 日</span>
+                        <input type="text" name="year" id="year" maxlength="4"><span class="text"> 年</span>
+                        <input type="text" name="month" id="month" maxlength="2"><span class="text"> 月</span>
+                        <input type="text" name="day" id="day"  maxlength="2"><span class="text"> 日</span>
                     </div>
 			</div>
 			<div class="content-row">
@@ -81,7 +82,7 @@
 				</div>
 			</div>
 			<div class="content-row">
-                <a href="" class="btn" id="contact-save-btn">保存</a>
+                <a href="javasctipt: void(0);" class="btn" id="contact-save-btn">保存</a>
 			</div>
 		</div>	
 	</div>
@@ -89,4 +90,5 @@
 
 @section('js')
 	@parent
+	<script type="text/javascript" src='/dist/js/pages/base-info.js'></script>
 @stop

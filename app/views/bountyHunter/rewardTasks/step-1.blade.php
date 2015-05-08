@@ -43,10 +43,10 @@
                     <li class="time">
                         <label class="label">截止时间:</label>
                         <div class="col-right">
-                            <input type="text" name="year"><span class="text"> 年</span>
-                            <input type="text" name="month"><span class="text"> 月</span>
-                            <input type="text" name="day"><span class="text"> 日</span>
-                            <input type="text" name="hour"><span class="text"> 时</span>
+                            <input type="text" name="year" id="year"><span class="text"> 年</span>
+                            <input type="text" name="month" id="month"><span class="text"> 月</span>
+                            <input type="text" name="day" id="day"><span class="text"> 日</span>
+                            <input type="text" name="hour" id="hour"><span class="text"> 时</span>
                         </div>
                         <div class="clear"></div>
                     </li>
@@ -79,7 +79,7 @@
                 </div>
             </form>
             <div class="next-step">
-                <a href="/bounty-hunter/reward-task?step=2" class="btn">下一步</a>
+                <a href="/bounty-hunter/reward-task?step=2" id="step-1-save-btn" class="btn">下一步</a>
             </div>
         </div>
     </div>

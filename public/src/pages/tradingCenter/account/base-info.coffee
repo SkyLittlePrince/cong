@@ -10,6 +10,7 @@ baseInfoDataBus =
 			type: "post"
 			url: "/user/update"
 			data:
+				name: info.name
 				qq: info.qq
 				gender: info.gender
 				wechat: info.wechat
@@ -36,5 +37,38 @@ $district = $('#district')
 $address = $('#address')
 $contactSaveBtn = $('#contact-save-btn')
 
+contactSaveAction = ->
+	name =  $name.val()
+	sex = $sex.val()
+	birthday = $year.val() + '-' + $month.val() + '-' + $day.val()
+	wechat = $wechat.val()
+	QQ = $QQ.val()
+	province = $prov.val()
+	city = $city.val()
+	region = $district.val()
+	address = $address.val()
+
+	return {
+		name: name
+		sex: sex
+		birthday: birthday
+		wechat: wechat
+		QQ: QQ
+		province: province
+		city: city
+		district: region
+		address: address
+	}
+
+contactSaveHandler = ->
+	info = contactSaveAction()
+	console.log( info)
+	if info
+		baseInfoDataBus.changePassword info, (data)->
+			alert(data.message)
+			if data.errCode is 0
+				location.reload()
+
+
 $ ->
-	
+	$contactSaveBtn.bind 'click', contactSaveHandler
