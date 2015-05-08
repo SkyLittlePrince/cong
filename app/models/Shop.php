@@ -1,13 +1,27 @@
 <?php
 
 class Shop extends \Eloquent {
+	protected $fillable = array(
+			'user_id',
+			'name',
+			'dscription',
+			'dealNum',
+			'visitNum',
+			'credit'
+		);
 
-	protected $table = 'shops';
-	public $primaryKey = 'id';
-	public $incrementing = true;
+	protected $hidden = array(
+			'created_at',
+			'updated_at'
+		);
+
+	public function products()
+	{
+		return $this->hasMany('Product');
+	}
 
 	public function tags()
 	{
-		return $this->belongsToMany('Tag', 'shopAndTags', "shop_id", "tag_id");
+		return $this->belongsToMany('Tag');
 	}
 }

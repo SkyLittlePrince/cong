@@ -54,6 +54,12 @@ Route::group(array('prefix' => 'user'),function()
 	});
 });
 
+//店铺模块
+Route::group(array('prefix' => 'shop','before' => 'auth.user.isIn'),function()
+{
+	Route::post('addShop','ShopController@addShop');
+});
+
 // 消息模块
 Route::group(array('prefix' => 'message'),function()
 {
@@ -243,7 +249,18 @@ Route::group(array('prefix' => 'trading-center'),function()
 		});
 		Route::get('card', function()
 		{
-			return View::make('tradingCenter.account.card');
+			if(!Input::has("user_id")) {
+				if(Sentry::check()) {
+					$user_id = Sentry::getUser()->id;
+				} else {
+					App::abort(404);
+				}
+			} else {
+				$user_id = Input::get("user_id");
+			}
+			$user = User::find($user_id);
+			$user["description"] = $user->description;
+			return View::make('tradingCenter.account.card', $user);
 		});
 		
 		Route::get('user-info', 'AccountPageController@userInfo');

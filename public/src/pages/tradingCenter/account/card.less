@@ -7,6 +7,27 @@
 	h3 {
 		font-family:@font;
 		margin-bottom: 15px;
+		@bg-color: #7ecec8;
+		.operation {
+			float: right;
+			text-align: center;
+			color: #fff;
+			font-size: 12px;
+
+			div {
+				background-color: @bg-color;
+				height: 23px;
+				width: 40px;
+				line-height: 23px;
+				margin-top: 5px;
+				.border-radius(10px);
+				margin-left: 10px;
+				float: right;
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
 	}
 
 	hr {
@@ -28,6 +49,13 @@
 		.word-info{
 			margin-left: 120px;
 			padding-top: 8px;
+			.about-description {
+				margin-top: 10px;
+				.input(400px, 60px);
+				font-size: 14px;
+				line-height: 1.5em;
+				padding-top: 10px;
+			}
 			.work1{
 				font-family:@font;
 				font-size:24px;

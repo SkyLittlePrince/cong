@@ -1,8 +1,9 @@
 <?php
 
-class Tag extends \Eloquent {
+class Shop_tag extends \Eloquent {
 	protected $fillable = array(
-			'name'
+			'shop_id',
+			'tag_id'
 		);
 
 	protected $hidden = array(

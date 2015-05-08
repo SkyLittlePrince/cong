@@ -1,10 +1,12 @@
 <?php
 
-class Tag extends \Eloquent {
+class Comment extends \Eloquent {
 	protected $fillable = array(
-			'name'
+			'product_id',
+			'title',
+			'content',
+			'user_id'
 		);
-
 	protected $hidden = array(
 			'created_at',
 			'updated_at'

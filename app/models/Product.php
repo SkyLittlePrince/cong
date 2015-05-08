@@ -1,6 +1,7 @@
 <?php
 
 class Product extends \Eloquent {
+	protected $table = 'products';
 	protected $fillable = array(
 			'name',
 			'price',
@@ -21,5 +22,10 @@ class Product extends \Eloquent {
 	public function pictures()
 	{
 		return $this->hasMany('Picture');
+	}
+
+	public function comments()
+	{
+		return $this->hasMany('Comment');
 	}
 }
