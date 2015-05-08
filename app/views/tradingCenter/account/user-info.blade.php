@@ -16,16 +16,17 @@
     		<div class="avatar">
     			<img src="/images/tradingcenter/icon/13.png" width="252" height="252" />
     		</div>
+            @if (Sentry::check() && Sentry::getUser()->id == $id)
             <div class="operation">
                 <div class="edit-btn">编辑</div>
                 <div class="hidden save-btn">保存</div>
                 <div class="hidden cancel-btn">取消</div>
             </div>
+            @endif
     		<div class="info">
     			<div class="name">
     				Vivine <br />
     				注册时间： {{{ $created_at }}}
-                    {{{ $workExperiences[0]["time"] }}}
     			</div>
     			<div class="region-wrapper">
                     @if (!isset($region) || !isset($city) || !isset($province))
@@ -41,9 +42,11 @@
                     <div class="text">
                         <div>丛丛店铺：{{{ $shop["name"] }}}</div>
                         <div>店铺标签：
-                            @foreach ($shop["tags"] as $tag)
-                                {{{$tag["name"]}}}
-                            @endforeach
+                            @if (isset($shop["tags"]))
+                                @foreach ($shop["tags"] as $tag)
+                                    {{{$tag["name"]}}}
+                                @endforeach
+                            @endif
                         </div>
                         <div>
                             <input type="hidden" value="{{{ $shop['credit'] }}}" />
@@ -77,11 +80,13 @@
     			<img src="/images/tradingcenter/icon/4.png" width="20" height="20" />
     			<span>关于我</span>
     		</div>
+            @if (Sentry::check() && Sentry::getUser()->id == $id)
             <div class="operation">
                 <div class="edit-btn">编辑</div>
                 <div class="hidden save-btn">保存</div>
                 <div class="hidden cancel-btn">取消</div>
             </div>
+            @endif
             <p>{{{ $about["content"] }}}</p>
     		<textarea class="hidden about-textarea"></textarea>
     	</div>
@@ -90,11 +95,13 @@
     			<img src="/images/tradingcenter/icon/5.png" width="20" height="20" />
     			<span>我的技能</span>
     		</div>
+            @if (Sentry::check() && Sentry::getUser()->id == $id)
             <div class="operation">
                 <div class="edit-btn">编辑</div>
                 <div class="hidden save-btn">保存</div>
                 <div class="hidden cancel-btn">取消</div>
             </div>
+            @endif
             <div class="skill-items">
                 <div class="skill-item"><span>HTML</span></div>
                 <div class="skill-item">CSS</div>
@@ -128,11 +135,14 @@
                         <span class="description">{{{ $workExperience["description"] }}}</span>
                     </div>
                     <div class="work-icon"></div>
+                    @if (Sentry::check() && Sentry::getUser()->id == $id)
                     <div class="operation">
                         <div class="edit-btn">编辑</div>
+                        <div class="del-btn">删除</div>
                         <div class="hidden save-btn">保存</div>
                         <div class="hidden cancel-btn">取消</div>
                     </div>
+                    @endif
                     <div class="clear"></div>
                 </div>
                 @endforeach
@@ -155,11 +165,14 @@
                     <div class="edu-content">
                         <span class="description">{{{ $eduExperience["description"] }}}</span>
                     </div>
+                    @if (Sentry::check() && Sentry::getUser()->id == $id)
                     <div class="operation">
                         <div class="edit-btn">编辑</div>
+                        <div class="del-btn">删除</div>
                         <div class="hidden save-btn">保存</div>
                         <div class="hidden cancel-btn">取消</div>
                     </div>
+                    @endif
                     <div class="clear"></div>
                 </div>
                 @endforeach
@@ -180,25 +193,48 @@
                     <div class="award-content">
                         <span class="description">{{{ $award["description"] }}}</span> 
                     </div>
+                    @if (Sentry::check() && Sentry::getUser()->id == $id)
                     <div class="operation">
                         <div class="edit-btn">编辑</div>
+                        <div class="del-btn">删除</div>
+                        <div class="hidden save-btn">保存</div>
+                        <div class="hidden cancel-btn">取消</div>
+                    </div>
+                    @endif
+                    <div class="clear"></div>
+                </div>
+                @endforeach
+                <div class="award-item">
+                    <div class="award-time">
+                        <span class="time">
+                            <input type="text" class="hidden" placeholder="获奖时间" />
+                        </span>        
+                    </div>
+                    <div class="award-content">
+                        <span class="description">
+                            <input type="text" class="hidden" placeholder="获奖描述" />
+                        </span> 
+                    </div>
+                    <div class="operation">
+                        <div class="add-btn">+新增</div>
                         <div class="hidden save-btn">保存</div>
                         <div class="hidden cancel-btn">取消</div>
                     </div>
                     <div class="clear"></div>
                 </div>
-                @endforeach
             </div>
     	</div>
     	<div class="contact block">
     		<div class="contact-avatar">
     			<img src="/images/tradingcenter/icon/13.png" width="150" height="150" />
     		</div>
+            @if (Sentry::check() && Sentry::getUser()->id == $id)
             <div class="operation">
                 <div class="edit-btn">编辑</div>
                 <div class="hidden save-btn">保存</div>
                 <div class="hidden cancel-btn">取消</div>
             </div>
+            @endif
     		<div class="contact-text">
     			<div>
 	    			<img src="/images/tradingcenter/icon/14.png"/>

@@ -30,6 +30,77 @@ $ ->
     $('.awards .save-btn').bind 'click', saveAwards
     $('.contact .save-btn').bind 'click', saveContact
 
+    $('.skill .del-btn').bind 'click', delSkill
+    $('.work-experience .del-btn').bind 'click', delWorkExperience
+    $('.edu-experience .del-btn').bind 'click', delEduExperience
+    $('.awards .del-btn').bind 'click', delAwards
+
+    $('.skill .add-btn').bind 'click', addSkill
+    $('.work-experience .add-btn').bind 'click', addWorkExperience
+    $('.edu-experience .add-btn').bind 'click', addEduExperience
+    $('.awards .add-btn').bind 'click', addAwards
+
+addSkill = (e)->
+
+addWorkExperience = (e)->
+
+addEduExperience = (e)->
+
+addAwards = (e)->	
+	$target = $(e.currentTarget)
+	$parent = $target.parent().parent()
+	$parent.find("input").removeClass("hidden")
+	$target.addClass("hidden").siblings().removeClass("hidden")
+
+
+delSkill = (e)->
+	console.log ""
+
+delWorkExperience = (e)->
+	$target = $(e.currentTarget)
+	$parent = $target.parent().parent()
+	
+	data = 
+		id: $parent.find(".id").html().trim()
+	
+	deleteItem "WorkExperience", data, (res)->
+		if res.errCode == 0
+			alert "删除成功"
+			$parent.fadeOut()
+		else
+			alert res.message
+
+
+delEduExperience = (e)->
+	$target = $(e.currentTarget)
+	$parent = $target.parent().parent()
+	
+	data = 
+		id: $parent.find(".id").html().trim()
+	
+	deleteItem "EduExperience", data, (res)->
+		console.log res.errCode
+		if res.errCode == 0
+			alert "删除成功"
+			$parent.fadeOut()
+		else
+			alert res.message
+
+delAwards = (e)->
+	$target = $(e.currentTarget)
+	$parent = $target.parent().parent()
+	
+	data = 
+		id: $parent.find(".id").html().trim()
+	
+	deleteItem "Award", data, (res)->
+		if res.errCode == 0
+			alert "删除成功"
+			$parent.fadeOut()
+		else
+			alert res.message
+
+
 ###
 # 点击编辑按钮事件
 ###
@@ -54,6 +125,7 @@ editWorkExperience = (e)->
 	replaceConentByInput $parent.find(".end-time")
 	replaceConentByInput $parent.find(".description")
 	$target.addClass("hidden").siblings().removeClass("hidden")
+	$parent.find(".del-btn").addClass("hidden")
 
 editEduExperience = (e)->
 	$target = $(e.currentTarget)
@@ -62,6 +134,7 @@ editEduExperience = (e)->
 	replaceConentByInput $parent.find(".end-time")
 	replaceConentByInput $parent.find(".description")
 	$target.addClass("hidden").siblings().removeClass("hidden")
+	$parent.find(".del-btn").addClass("hidden")
 
 editAwards = (e)->
 	$target = $(e.currentTarget)
@@ -69,6 +142,7 @@ editAwards = (e)->
 	replaceConentByInput $parent.find(".time")
 	replaceConentByInput $parent.find(".description")
 	$target.addClass("hidden").siblings().removeClass("hidden")
+	$parent.find(".del-btn").addClass("hidden")
 
 editContact = (e)->
 	$target = $(e.currentTarget)
@@ -103,6 +177,7 @@ cancelWorkExperience = (e)->
 		$elem = $(elem)
 		replaceInputByContent $elem, $.data($elem.parent()[0], "oldData")
 	$parent.find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
+	$parent.find(".del-btn").removeClass("hidden")
 
 cancelEduExperience = (e)->
 	$target = $(e.currentTarget)
@@ -111,6 +186,7 @@ cancelEduExperience = (e)->
 		$elem = $(elem)
 		replaceInputByContent $elem, $.data($elem.parent()[0], "oldData")
 	$parent.find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
+	$parent.find(".del-btn").removeClass("hidden")
 
 cancelAwards = (e)->
 	$target = $(e.currentTarget)
@@ -119,6 +195,7 @@ cancelAwards = (e)->
 		$elem = $(elem)
 		replaceInputByContent $elem, $.data($elem.parent()[0], "oldData")
 	$parent.find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
+	$parent.find(".del-btn").removeClass("hidden")
 
 cancelContact = (e)->
 	$target = $(e.currentTarget)
@@ -256,4 +333,12 @@ saveChanges = (name, data, callback)->
 			callback(data)
 	}
 
+deleteItem = (name, data, callback)->
+	$.ajax {
+		type: "post"
+		url: '/user/delete' + name
+		data: data
+		success: (data)->
+			callback(data)
+	}
 

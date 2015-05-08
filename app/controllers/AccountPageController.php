@@ -19,8 +19,10 @@ class AccountPageController extends BaseController {
 		$user["eduExperiences"] = $user->eduExperiences;
 		$user["awards"] = $user->awards;
 		$user["shop"] = $user->shop;
-		$user["shop"]["tags"] = $user->shop->tags;
 		$user["about"] = $user->about;
+
+		if(isset($user->shop) && count($user->shop->tags))
+			$user["shop"]["tags"] = $user->shop->tags;
 
 		return View::make('tradingCenter.account.user-info', $user);
 	}
