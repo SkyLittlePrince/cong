@@ -40,6 +40,7 @@ class ShopController extends \BaseController {
 		return Response::json(array('errCode' => 2,'message' => '创建失败!'));
 	}
 
+
 	public function updateShop()
 	{
 		$user = Sentry::getUser();
