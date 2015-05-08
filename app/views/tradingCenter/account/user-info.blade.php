@@ -134,7 +134,6 @@
                     <div class="work-content">
                         <span class="description">{{{ $workExperience["description"] }}}</span>
                     </div>
-                    <div class="work-icon"></div>
                     @if (Sentry::check() && Sentry::getUser()->id == $id)
                     <div class="operation">
                         <div class="edit-btn">编辑</div>
@@ -146,6 +145,50 @@
                     <div class="clear"></div>
                 </div>
                 @endforeach
+                <script type="text-template" id="workExperienceTemplate">
+                    <div class="work-item">
+                        <span class="hidden id"><%= newWorkExperienceId %></span>
+                        <div class="work-time">
+                            <span class="start-time"><%= startTime %></span> 
+                             至 
+                            <span class="end-time"><%= endTime %></span>
+                        </div>
+                        <div class="work-content">
+                            <span class="description"><%= description %></span>
+                        </div>
+                        <div class="operation">
+                            <div class="edit-btn">编辑</div>
+                            <div class="del-btn">删除</div>
+                            <div class="hidden save-btn">保存</div>
+                            <div class="hidden cancel-btn">取消</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </script>
+                <div class="work-item">
+                    <div class="work-time hidden">
+                        <span class="start-time">
+                            <input type="text" placeholder="起始时间" />
+                        </span> 
+                         至 
+                        <span class="end-time">
+                            <input type="text" placeholder="截止时间" />
+                        </span>
+                    </div>
+                    <div class="work-content hidden">
+                        <span class="description">
+                            <input type="text" placeholder="详细描述" />
+                        </span>
+                    </div>
+                    @if (Sentry::check() && Sentry::getUser()->id == $id)
+                    <div class="operation">
+                        <div class="add-btn">+新增</div>
+                        <div class="hidden add-save-btn">保存</div>
+                        <div class="hidden add-cancel-btn">取消</div>
+                    </div>
+                    @endif
+                    <div class="clear"></div>
+                </div>
             </div>
     	</div>
     	<div class="block edu-experience">
@@ -176,6 +219,53 @@
                     <div class="clear"></div>
                 </div>
                 @endforeach
+                <script type="text-template" id="eduExperienceTemplate">
+                    <div class="edu-item">
+                        <span class="hidden id"><%= newEduExperienceId %></span>
+                        <div class="edu-time">
+                            <span class="start-time"><%= startTime %></span> 
+                             至 
+                            <span class="end-time"><%= endTime %></span>
+                        </div>
+                        <div class="edu-content">
+                            <span class="description"><%= description %></span>
+                        </div>
+                        <div class="operation">
+                            <div class="edit-btn">编辑</div>
+                            <div class="del-btn">删除</div>
+                            <div class="hidden save-btn">保存</div>
+                            <div class="hidden cancel-btn">取消</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </script>
+                <div class="edu-item">
+                    <span class="hidden id">
+                        
+                    </span>
+                    <div class="edu-time hidden">
+                        <span class="start-time">
+                            <input type="text" placeholder="起始时间" />
+                        </span> 
+                         至 
+                        <span class="end-time">
+                            <input type="text" placeholder="截止时间" />
+                        </span>
+                    </div>
+                    <div class="edu-content hidden">
+                        <span class="description">
+                            <input type="text" placeholder="详细描述" />
+                        </span>
+                    </div>
+                    @if (Sentry::check() && Sentry::getUser()->id == $id)
+                    <div class="operation">
+                        <div class="add-btn">+新增</div>
+                        <div class="hidden add-save-btn">保存</div>
+                        <div class="hidden add-cancel-btn">取消</div>
+                    </div>
+                    @endif
+                    <div class="clear"></div>
+                </div>
             </div>
     	</div>
     	<div class="block awards">
@@ -204,6 +294,24 @@
                     <div class="clear"></div>
                 </div>
                 @endforeach
+                <script type="text-template" id="awardTemplate">
+                    <div class="award-item">
+                        <span class="hidden id"><%= newAwardId %></span>
+                        <div class="award-time">
+                            <span class="time"><%= time %></span>        
+                        </div>
+                        <div class="award-content">
+                            <span class="description"><%= description %></span> 
+                        </div>
+                        <div class="operation">
+                            <div class="edit-btn">编辑</div>
+                            <div class="del-btn">删除</div>
+                            <div class="hidden save-btn">保存</div>
+                            <div class="hidden cancel-btn">取消</div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </script>
                 <div class="award-item">
                     <div class="award-time">
                         <span class="time">
@@ -215,11 +323,13 @@
                             <input type="text" class="hidden" placeholder="获奖描述" />
                         </span> 
                     </div>
+                    @if (Sentry::check() && Sentry::getUser()->id == $id)
                     <div class="operation">
                         <div class="add-btn">+新增</div>
-                        <div class="hidden save-btn">保存</div>
-                        <div class="hidden cancel-btn">取消</div>
+                        <div class="hidden add-save-btn">保存</div>
+                        <div class="hidden add-cancel-btn">取消</div>
                     </div>
+                    @endif
                     <div class="clear"></div>
                 </div>
             </div>
@@ -253,5 +363,6 @@
 
 @section('js')
 	@parent
+    <script type="text/javascript" src="/lib/js/lodash/lodash.js"></script>
 	<script type="text/javascript" src="/dist/js/pages/user-info.js"></script>
 @stop

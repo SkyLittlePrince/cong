@@ -492,7 +492,7 @@ class UserController extends \BaseController {
 
 		if($workExperience->save())
 		{
-			return Response::json(array('errCode' => 0,'message' => '保存成功!'));
+			return Response::json(array('errCode' => 0,'message' => '保存成功!', 'newWorkExperienceId' => $workExperience->id));
 		}
 		else
 		{
@@ -562,7 +562,7 @@ class UserController extends \BaseController {
 
 		if($educationExperience->save())
 		{
-			return Response::json(array('errCode' => 0,'message' => '保存成功!'));
+			return Response::json(array('errCode' => 0,'message' => '保存成功!', "newEduExperienceId" => $educationExperience->id));
 		}
 		else
 		{
@@ -630,11 +630,11 @@ class UserController extends \BaseController {
 
 		if($award->save())
 		{
-			return Response::json(array('errCode' => 0,'message' => '保存成功!'));
+			return Response::json(array('errCode' => 0, 'message' => '保存成功!', 'newAwardId' => $award->id));
 		}
 		else
 		{
-			return Response::json(array('errCode' => 1,'message' => '保存失败!'));
+			return Response::json(array('errCode' => 1, 'message' => '保存失败!'));
 		}
 	}
 

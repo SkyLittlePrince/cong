@@ -3,58 +3,176 @@ $aboutText = $(".about p")
 $aboutTextarea = $(".about textarea")
 
 ###
-# 页面加载完成执行的操作
+# 页面加载完成执行的操作，绑定事件
 ###
 $ ->
     $('.base-info .edit-btn').bind 'click', editBaseInfo
     $('.about .edit-btn').bind 'click', editAbout
-    $('.skill .edit-btn').bind 'click', editSkill
-    $('.work-experience .edit-btn').bind 'click', editWorkExperience
-    $('.edu-experience .edit-btn').bind 'click', editEduExperience
-    $('.awards .edit-btn').bind 'click', editAwards
+    $(document).on 'click', '.skill .edit-btn', editSkill
+    $(document).on 'click', '.work-experience .edit-btn', editWorkExperience
+    $(document).on 'click', '.edu-experience .edit-btn', editEduExperience
+    $(document).on 'click', '.awards .edit-btn', editAwards
     $('.contact .edit-btn').bind 'click', editContact
 
     $('.base-info .cancel-btn').bind 'click', cancelBaseInfo
     $('.about .cancel-btn').bind 'click', cancelAbout
-    $('.skill .cancel-btn').bind 'click', cancelSkill
-    $('.work-experience .cancel-btn').bind 'click', cancelWorkExperience
-    $('.edu-experience .cancel-btn').bind 'click', cancelEduExperience
-    $('.awards .cancel-btn').bind 'click', cancelAwards
+    $(document).on 'click', '.skill .cancel-btn', cancelSkill
+    $(document).on 'click', '.work-experience .cancel-btn', cancelWorkExperience
+    $(document).on 'click', '.edu-experience .cancel-btn', cancelEduExperience
+    $(document).on 'click', '.awards .cancel-btn', cancelAwards
     $('.contact .cancel-btn').bind 'click', cancelContact
 
     $('.base-info .save-btn').bind 'click', saveBaseInfo
     $('.about .save-btn').bind 'click', saveAbout
-    $('.skill .save-btn').bind 'click', saveSkill
-    $('.work-experience .save-btn').bind 'click', saveWorkExperience
-    $('.edu-experience .save-btn').bind 'click', saveEduExperience
-    $('.awards .save-btn').bind 'click', saveAwards
+    $(document).on 'click', '.skill .save-btn', saveSkill
+    $(document).on 'click', '.work-experience .save-btn', saveWorkExperience
+    $(document).on 'click', '.edu-experience .save-btn', saveEduExperience
+    $(document).on 'click', '.awards .save-btn', saveAwards
     $('.contact .save-btn').bind 'click', saveContact
 
-    $('.skill .del-btn').bind 'click', delSkill
-    $('.work-experience .del-btn').bind 'click', delWorkExperience
-    $('.edu-experience .del-btn').bind 'click', delEduExperience
-    $('.awards .del-btn').bind 'click', delAwards
+    $(document).on 'click', '.skill .del-btn', delSkill
+    $(document).on 'click', '.work-experience .del-btn', delWorkExperience
+    $(document).on 'click', '.edu-experience .del-btn', delEduExperience
+    $(document).on 'click', '.awards .del-btn', delAwards
 
-    $('.skill .add-btn').bind 'click', addSkill
-    $('.work-experience .add-btn').bind 'click', addWorkExperience
-    $('.edu-experience .add-btn').bind 'click', addEduExperience
-    $('.awards .add-btn').bind 'click', addAwards
+    $(document).on 'click', '.skill .add-btn', addSkill
+    $(document).on 'click', '.work-experience .add-btn', addWorkExperience
+    $(document).on 'click', '.edu-experience .add-btn', addEduExperience
+    $(document).on 'click', '.awards .add-btn', addAward
 
+    $('.skill .add-save-btn').bind 'click', addSaveSkill
+    $('.work-experience .add-save-btn').bind 'click', addSaveWorkExperience
+    $('.edu-experience .add-save-btn').bind 'click', addSaveEduExperience
+    $('.awards .add-save-btn').bind 'click', addSaveAwards
+
+    $('.skill .add-cancel-btn').bind 'click', addCancelSkill
+    $('.work-experience .add-cancel-btn').bind 'click', addCancelWorkExperience
+    $('.edu-experience .add-cancel-btn').bind 'click', addCancelEduExperience
+    $('.awards .add-cancel-btn').bind 'click', addCancelAward
+
+###
+# 点击新增按钮事件
+###
 addSkill = (e)->
 
 addWorkExperience = (e)->
+	$target = $(e.currentTarget)
+	$parent = $target.parent().parent()
+	$parent.find(".work-time").removeClass("hidden")
+	$parent.find(".work-content").removeClass("hidden")
+	$target.addClass("hidden").siblings().removeClass("hidden")
 
 addEduExperience = (e)->
+	$target = $(e.currentTarget)
+	$parent = $target.parent().parent()
+	$parent.find(".edu-time").removeClass("hidden")
+	$parent.find(".edu-content").removeClass("hidden")
+	$target.addClass("hidden").siblings().removeClass("hidden")
 
-addAwards = (e)->	
+addAward = (e)->	
 	$target = $(e.currentTarget)
 	$parent = $target.parent().parent()
 	$parent.find("input").removeClass("hidden")
 	$target.addClass("hidden").siblings().removeClass("hidden")
 
+###
+# 点击保存取消按钮事件
+###
+addCancelSkill = (e)->
+	# need to continue...
 
+addCancelWorkExperience = (e)->
+	$target = $(e.currentTarget)
+	$parent = $target.parent().parent()
+	$parent.find(".work-time").addClass("hidden")
+	$parent.find(".work-content").addClass("hidden")
+	$parent.find(".add-btn").removeClass("hidden").siblings().addClass("hidden")
+
+addCancelEduExperience = (e)->
+	$target = $(e.currentTarget)
+	$parent = $target.parent().parent()
+	$parent.find(".edu-time").addClass("hidden")
+	$parent.find(".edu-content").addClass("hidden")
+	$parent.find(".add-btn").removeClass("hidden").siblings().addClass("hidden")
+
+addCancelAward = (e)->
+	$target = $(e.currentTarget)
+	$parent = $target.parent().parent()
+	$parent.find("input").addClass("hidden")
+	$parent.find(".add-btn").removeClass("hidden").siblings().addClass("hidden")
+
+###
+# 点击保存新增按钮事件
+###
+addSaveSkill = (e)->
+	# need to continue...
+
+addSaveWorkExperience = (e)->
+	$target = $(e.currentTarget)
+	$parent = $target.parent().parent()
+	data = 
+		start_time: $parent.find(".start-time input").val()
+		end_time: $parent.find(".end-time input").val()
+		description: $parent.find(".description input").val()
+
+	compiled = _.template $("#workExperienceTemplate").html()
+
+	addItem "WorkExperience", data, (res)->
+		if res.errCode == 0
+			alert "新增成功"
+			str = compiled {"newWorkExperienceId": res.newWorkExperienceId, startTime: data.start_time, endTime: data.end_time, description: data.description}
+			$(str).insertBefore $parent
+			$parent.find(".work-time").addClass("hidden")
+			$parent.find(".work-content").addClass("hidden")
+			$parent.find(".add-btn").removeClass("hidden").siblings().addClass("hidden")
+		else
+			alert res.message
+
+addSaveEduExperience = (e)->
+	$target = $(e.currentTarget)
+	$parent = $target.parent().parent()
+	data = 
+		start_time: $parent.find(".start-time input").val()
+		end_time: $parent.find(".end-time input").val()
+		description: $parent.find(".description input").val()
+
+	compiled = _.template $("#eduExperienceTemplate").html()
+
+	addItem "EduExperience", data, (res)->
+		if res.errCode == 0
+			alert "新增成功"
+			str = compiled {"newEduExperienceId": res.newEduExperienceId, startTime: data.start_time, endTime: data.end_time, description: data.description}
+			$(str).insertBefore $parent
+			$parent.find(".edu-time").addClass("hidden")
+			$parent.find(".edu-content").addClass("hidden")
+			$parent.find(".add-btn").removeClass("hidden").siblings().addClass("hidden")
+		else
+			alert res.message
+
+addSaveAwards = (e)->
+	$target = $(e.currentTarget)
+	$parent = $target.parent().parent()
+	data = 
+		time: $parent.find(".time input").val()
+		description: $parent.find(".description input").val()
+
+	compiled = _.template $("#awardTemplate").html()
+
+	addItem "Award", data, (res)->
+		if res.errCode == 0
+			alert "新增成功"
+			str = compiled {"newAwardId": res.newAwardId, time: data.time, description: data.description}
+			$(str).insertBefore $parent
+			$parent.find("input").addClass("hidden")
+			$parent.find(".add-btn").removeClass("hidden").siblings().addClass("hidden")
+		else
+			alert res.message
+
+###
+# 点击删除按钮事件
+###
 delSkill = (e)->
-	console.log ""
+	# need to continue...
 
 delWorkExperience = (e)->
 	$target = $(e.currentTarget)
@@ -115,8 +233,7 @@ editAbout = (e)->
 	$target.addClass("hidden").siblings().removeClass("hidden")
 
 editSkill = (e)->
-	$target = $(e.currentTarget)
-	$target.addClass("hidden").siblings().removeClass("hidden")
+	# need to continue...
 
 editWorkExperience = (e)->
 	$target = $(e.currentTarget)
@@ -167,8 +284,7 @@ cancelAbout = (e)->
 	$target.parent().find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
 
 cancelSkill = (e)->
-	$target = $(e.currentTarget)
-	$parent = $target.parent().parent()
+	# need to continue...
 
 cancelWorkExperience = (e)->
 	$target = $(e.currentTarget)
@@ -229,8 +345,7 @@ saveAbout = (e)->
 		$aboutTextarea.addClass("hidden")
 
 saveSkill = (e)->
-	$target = $(e.currentTarget)
-	$parent = $target.parent().parent()
+	# need to continue...
 
 saveWorkExperience = (e)->
 	$target = $(e.currentTarget)
@@ -328,6 +443,15 @@ saveChanges = (name, data, callback)->
 	$.ajax {
 		type: "post"
 		url: '/user/update' + name
+		data: data
+		success: (data)->
+			callback(data)
+	}
+
+addItem = (name, data, callback)->
+	$.ajax {
+		type: "post"
+		url: '/user/add' + name
 		data: data
 		success: (data)->
 			callback(data)
