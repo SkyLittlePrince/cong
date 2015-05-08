@@ -8,7 +8,7 @@ class AccountPageController extends BaseController {
 			if(Sentry::check()) {
 				$user_id = Sentry::getUser()->id;
 			} else {
-				App::abort(404);
+				return Redirect::to('user/login');
 			}
 		} else {
 			$user_id = Input::get("user_id");

@@ -17,23 +17,22 @@ class CreateIndentsTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->integer('user_id')->unsigned()->index('user_id');
-			$table->integer('task_id')->unsigned()->index('task_id');
+			// $table->integer('task_id')->unsigned()->index('task_id');
 			$table->integer('product_id')->unsigned()->index('product_id');
 			$table->integer("status")->default(0);
 
 		   	$table                          
-			              ->foreign('task_id')
-			              ->references('id')->on('tasks') 
-			              ->onDelete('cascade')
-			              ->onUpdate('cascade');
+				->foreign('product_id')
+				->references('id')->on('products') 
+				->onDelete('cascade')
+				->onUpdate('cascade');
 
-		              $table                          
-			              ->foreign('user_id')
-			              ->references('id')->on('users') 
-			              ->onDelete('cascade')
-			              ->onUpdate('cascade');
-	              });
-				
+			$table                          
+				->foreign('user_id')
+				->references('id')->on('users') 
+				->onDelete('cascade')
+				->onUpdate('cascade');
+	   	});
 	}
 
 	/**

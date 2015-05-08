@@ -1,14 +1,14 @@
 <?php
 
-class ShopAndTag extends \Eloquent {
+class ShopTag extends \Eloquent {
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'shopAndTags';
-   	public $timestamps = false;
+	public $timestamps = false;
+	protected $table = 'shop_tag';
+	
+	protected $fillable = array(
+		'shop_id',
+		'tag_id'
+	);
 
 	public function tag()
     {

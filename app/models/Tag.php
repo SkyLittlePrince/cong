@@ -1,12 +1,15 @@
 <?php
 
 class Tag extends \Eloquent {
-	protected $fillable = array(
-			'name'
-		);
 
-	protected $hidden = array(
-			'created_at',
-			'updated_at'
-		);
+	/**
+	 * The database table used by the model.
+	 *
+	 * @var string
+	 */
+	protected $table = 'tags';
+
+    public $primaryKey = 'id';
+	public $incrementing = true;
+   	public $timestamps = false;
 }

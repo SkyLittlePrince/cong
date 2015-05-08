@@ -31,7 +31,7 @@ class ShopController extends \BaseController {
 
 			foreach ($tags as $tag) {
 				$Tag = Tag::firstOrCreate(array('name' => $tag));
-				$shop_tag = Shop_tag::Create(array('shop_id' => $shop->id,'tag_id' => $Tag->id));
+				$shop_tag = ShopTag::Create(array('shop_id' => $shop->id,'tag_id' => $Tag->id));
 			}
 
 			return Response::json(array('errCode' =>0,'message' => '创建成功!'));

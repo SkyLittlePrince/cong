@@ -14,8 +14,6 @@ class CreateShopTagTable extends Migration {
 	{
 		Schema::create('shop_tag', function(Blueprint $table)
 		{
-			$table->increments('id');
-			$table->timestamps();
 			$table->integer('shop_id')->unsigned()->index('shop_id');
 			$table->integer('tag_id')->unsigned()->index('tag_id');
 

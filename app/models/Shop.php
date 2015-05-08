@@ -2,18 +2,18 @@
 
 class Shop extends \Eloquent {
 	protected $fillable = array(
-			'user_id',
-			'name',
-			'dscription',
-			'dealNum',
-			'visitNum',
-			'credit'
-		);
+		'user_id',
+		'name',
+		'dscription',
+		'dealNum',
+		'visitNum',
+		'credit'
+	);
 
 	protected $hidden = array(
-			'created_at',
-			'updated_at'
-		);
+		'created_at',
+		'updated_at'
+	);
 
 	public function products()
 	{
