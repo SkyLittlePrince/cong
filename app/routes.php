@@ -65,6 +65,14 @@ Route::group(array('prefix' => 'shop','before' => 'auth.user.isIn'),function()
 	
 });
 
+//产品模块
+Route::group(array('prefix' => 'product','before' => 'auth.user.isIn'),function()
+{
+	Route::post('addProduct','ProductController@addProduct');
+	Route::post('updateProduct','ProductController@updateProduct');
+	Route::get('deleteProduct','ProductController@deleteProduct');
+});
+
 // 消息模块
 Route::group(array('prefix' => 'message'),function()
 {
