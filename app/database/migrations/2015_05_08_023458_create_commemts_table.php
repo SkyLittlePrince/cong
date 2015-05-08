@@ -17,7 +17,6 @@ class CreateCommemtsTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
 			$table->integer('product_id')->unsigned()->index('product_id');
-			$table->string('title');
 			$table->longText('content');
 			$table->integer('user_id')->unsigned()->index('user_id');
 

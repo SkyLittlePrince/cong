@@ -6,7 +6,6 @@ class CommentController extends \BaseController {
 	{
 		$user = Sentry::getUser();
 		$product_id = Input::get('product_id');
-		$title = Input::get('title');
 		$content = Input::get('content');
 
 		$product = Product::find($product_id);
@@ -32,7 +31,6 @@ class CommentController extends \BaseController {
 		$comment = Comment::create(array(
 				'user_id' => $user->id,
 				'product_id' => $product_id,
-				'title' => $title,
 				'content' => $content
 			));
 
