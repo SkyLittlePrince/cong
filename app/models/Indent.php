@@ -23,10 +23,10 @@ class Indent extends \Eloquent {
 
 	public function task()
 	{
-	        return $this->belongsTo('Task', 'task_id', 'id');
+	        return $this->belongsTo('Task');
 	}
 
-	public function Product()
+	public function product()
 	{
 		return $this->belongsTo('Product');
 	}
