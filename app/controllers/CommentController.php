@@ -42,4 +42,24 @@ class CommentController extends \BaseController {
 		return Response::json(array('errCode' => 0,'message' => '评论成功!'));
 	}
 
+	public function deleteComment()
+	{
+		$user = Sentry::getUser();
+		$id = Input::get('id');
+
+		$comment = Comment::find($id);
+
+		if($user->role_id != 3)
+			return Response::json(array('errCode' => 1,'message' => '你没有管理员权限!'));
+
+		if(!isset($comment))
+			return Response::json(array('errCode' => 2,'message' => '该评论不存在!'));
+
+		if($comment->delete())
+			return Response::json(array('errCode' => 0,'message' => '删除成功!'));
+		else
+			return Response::json(array('errCode' => 3,'message' => '删除失败!'));
+
+	}
+
 }

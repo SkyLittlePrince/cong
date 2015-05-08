@@ -13,6 +13,7 @@ class ShopController extends \BaseController {
 		$user = Sentry::getUser();
 		$name = Input::get('name');
 		$description = Input::get('description');
+		$tags = Input::get('tags');
 
 		$shop = Shop::where('usere_id',$user->id)->first();
 		if(isset($shop))
@@ -27,10 +28,15 @@ class ShopController extends \BaseController {
 		{
 			$user->role_id = 2;
 			$user->save();
+
+			foreach ($tags as $tag) {
+				$tag = Tag::firstOrCreate(array('name' => $tag));
+				$shop_tag = Shop_tag::Create(array('shop_id' => $shop->id,'tag_id' => $tag->id));
+			}
+
 			return Response::json(array('errCode' =>0,'message' => '创建成功!'));
 		}
 			
-
 		return Response::json(array('errCode' => 2,'message' => '创建失败!'));
 	}
 

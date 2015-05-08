@@ -54,6 +54,12 @@ Route::group(array('prefix' => 'user'),function()
 	});
 });
 
+//店铺模块
+Route::group(array('prefix' => 'shop','before' => 'auth.user.isIn'),function()
+{
+	Route::post('addShop','ShopController@addShop');
+});
+
 // 消息模块
 Route::group(array('prefix' => 'message'),function()
 {

@@ -22,35 +22,35 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	protected $hidden = array(
-		'password',
-		'remember_token',
-		'password',
-		'role_id',
-		'updated_at',
-		'last_login',
-		'permissions',
-		'activated',
-		'activation_code',
-		'persist_code',
-		'reset_password_code',
-		'activated_at',
-		'role_id'
+			'password',
+			'remember_token',
+			'password',
+			'role_id',
+			'updated_at',
+			'last_login',
+			'permissions',
+			'activated',
+			'activation_code',
+			'persist_code',
+			'reset_password_code',
+			'activated_at',
+			'role_id'
 		);
 
 	protected $fillable = array(
-		'username',
-		'email',
-		'password',
-		'gender',
-		'mobile',
-		'role_id',
-		'qq',
-		'wechat',
-		'province',
-		'city',
-		'region',
-		'address',
-		'role_id'
+			'username',
+			'email',
+			'password',
+			'gender',
+			'mobile',
+			'role_id',
+			'qq',
+			'wechat',
+			'province',
+			'city',
+			'region',
+			'address',
+			'role_id'
 		);
 	public function description()
 	{
