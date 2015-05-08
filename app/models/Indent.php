@@ -9,12 +9,25 @@ class Indent extends \Eloquent {
 	 */
 	protected $table = 'indents';
 
-	public $timestamps = true;
-    public $primaryKey = 'id';
-	public $incrementing = true;
+	protected $fillable = array(
+			'user_id',
+			'product_id',
+			'task_id',
+			'status'
+		);
+
+	protected $hidden = array(
+			'created_at',
+			'updated_at'
+		);
 
 	public function task()
-    {
-        return $this->belongsTo('Task', 'task_id', 'id');
-    }
+	{
+	        return $this->belongsTo('Task', 'task_id', 'id');
+	}
+
+	public function Product()
+	{
+		return $this->belongsTo('Product');
+	}
 }

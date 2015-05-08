@@ -5,7 +5,8 @@ class EduExperience extends \Eloquent {
 	
 	protected $fillable = array(
 		'user_id',
-		'time',
+		'start_time',
+		'end_time',
 		'description'
 		);
 

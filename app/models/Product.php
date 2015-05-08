@@ -22,4 +22,9 @@ class Product extends \Eloquent {
 	{
 		return $this->hasMany('Picture');
 	}
+
+	public function comments()
+	{
+		return $this->hasMany('Comment');
+	}
 }

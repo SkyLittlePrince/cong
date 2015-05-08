@@ -16,7 +16,8 @@ class CreateAwardsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('user_id')->unsigned()->index('user_id');
-			$table->string('time');
+			$table->string('start_time');
+			$table->string('end_time');
 			$table->longText('description');
 			$table->timestamps();
 
