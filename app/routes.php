@@ -58,6 +58,11 @@ Route::group(array('prefix' => 'user'),function()
 Route::group(array('prefix' => 'shop','before' => 'auth.user.isIn'),function()
 {
 	Route::post('addShop','ShopController@addShop');
+	Route::post('updateShop','ShopController@updateShop');
+	Route::post('addTag','ShopController@addTag');
+	Route::post('deleteTag','ShopController@deleteShop');
+	Route::get('deleteShop','ShopController@deleteShop');
+	
 });
 
 // 消息模块
