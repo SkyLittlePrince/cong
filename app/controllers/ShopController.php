@@ -14,7 +14,7 @@ class ShopController extends \BaseController {
 		$name = Input::get('name');
 		$description = Input::get('description');
 		$tags = Input::get('tags');
-		$shop = Shop::where('usere_id',$user->id)->first();
+		$shop = Shop::where('user_id',$user->id)->first();
 		if(isset($shop))
 			return Response::json(array('errCode' => 1,'message' => '你已拥有店铺!'));
 
