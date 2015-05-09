@@ -62,7 +62,7 @@
 					<div class="clear"></div>
 				</div>
 				<div class="content-row">
-					<label class="label" for="skill">技能范围：</label>
+					<label class="label" for="skill">店铺标签：</label>
 					<div class="content-input">
 						<input type="text" id="skill" name="skill" />
 					</div>
@@ -70,9 +70,12 @@
 				</div>
 				<div class="content-row">
 					<label class="label" for="captcha">&nbsp</label>
-					<div class="content-input">
-						<input type="text" id="captcha" name="captcha" placeholder="输入验证码" />
-						<!-- <img src="aaa" width="115" height="35" /> -->
+					<div class="content-input" id="captcha-wrapper">
+						<!-- <input type="text" id="captcha" name="captcha" placeholder="输入验证码" />
+						<span id="auth-code-status"></span>
+						<img src="{{ $captcha->inline() }}" id="authcode-img" width="128" height="46" />
+						<div class="clear"></div>
+						<span class="change-captcha">看不清？<a href="javascript: void(0)">换张图</a></span> -->
 					</div>
 					<div class="clear"></div>
 				</div>

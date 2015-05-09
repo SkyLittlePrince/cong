@@ -305,10 +305,8 @@ Route::group(array('prefix' => 'trading-center'),function()
 	{
 		Route::group(array('before' => 'auth.user.isIn'), function() 
 		{
-			Route::get('register', function()
-			{
-				return View::make('tradingCenter.seller-center.register');
-			});
+			Route::get('register', 'SellerPageController@register');
+			
 			Route::get('wait-check', function()
 			{
 				return View::make('tradingCenter.seller-center.wait-check');

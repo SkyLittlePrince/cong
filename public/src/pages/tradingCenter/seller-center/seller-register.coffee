@@ -1,4 +1,5 @@
 Checkbox = require('../../../common/checkbox/checkbox.coffee');
+Captcha = require('../../../common/captcha/captcha.coffee')
 
 $store = $('#store')
 $storeDesc = $('#store-desc')
@@ -44,3 +45,5 @@ registerConfirmHandler = ->
 $ ->
 	checkbox = (new Checkbox({selector: '.my-indents-content'})).init();
 	$registerConfirm.bind 'click', registerConfirmHandler
+
+	captcha = new Captcha {selector: "#captcha-wrapper"}

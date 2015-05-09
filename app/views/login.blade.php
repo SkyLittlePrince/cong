@@ -24,7 +24,7 @@
 					<div class="login-item">
 						<input type="password" id="password" name="password" placeholder="密码："/>
 					</div>
-					<div class="login-item">
+					<div class="login-item" id="captcha-wrapper">
 						<input type="text" id="authcode" name="captcha" placeholder="验证码" maxlength="5"/>
 						<span id="auth-code-status"></span>
 						<img src="{{ $captcha->inline() }}" id="authcode-img" width="128" height="46" />

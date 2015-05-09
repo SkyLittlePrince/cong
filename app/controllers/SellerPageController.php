@@ -1,4 +1,5 @@
 <?php
+use Gregwar\Captcha\CaptchaBuilder;
 
 class SellerPageController extends BaseController {
 
@@ -26,5 +27,16 @@ class SellerPageController extends BaseController {
 		$shop["products"] = $myshop->products;
 
 		return View::make('tradingCenter.seller-center.my-store', $shop);
+	}
+
+	public function register()
+	{
+		$builder = new CaptchaBuilder;
+		$builder->build();
+
+		$phrase = $builder->getPhrase();
+		$_SESSION['phrase'] = $phrase;
+
+		return View::make('tradingCenter.seller-center.register')->with('captcha', $builder);
 	}
 }
