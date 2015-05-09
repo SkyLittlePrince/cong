@@ -71,6 +71,8 @@ Route::group(array('prefix' => 'product','before' => 'auth.user.isIn'),function(
 	Route::post('addProduct','ProductController@addProduct');
 	Route::post('updateProduct','ProductController@updateProduct');
 	Route::get('deleteProduct','ProductController@deleteProduct');
+	Route::get('getSortedProductsBySellNum','ProductController@sortProductBySellNum');
+	Route::get('getSortedProductsByFavorNum','ProductController@sortProductByFavorNum');
 });
 
 // 消息模块
@@ -260,21 +262,8 @@ Route::group(array('prefix' => 'trading-center'),function()
 		{
 			return View::make('tradingCenter.account.address');
 		});
-		Route::get('card', function()
-		{
-			if(!Input::has("user_id")) {
-				if(Sentry::check()) {
-					$user_id = Sentry::getUser()->id;
-				} else {
-					App::abort(404);
-				}
-			} else {
-				$user_id = Input::get("user_id");
-			}
-			$user = User::find($user_id);
-			$user["description"] = $user->description;
-			return View::make('tradingCenter.account.card', $user);
-		});
+
+		Route::get('card', 'AccountPageController@card');
 		
 		Route::get('user-info', 'AccountPageController@userInfo');
 
@@ -314,40 +303,41 @@ Route::group(array('prefix' => 'trading-center'),function()
 
 	Route::group(array('prefix' => 'seller'),function()
 	{
-		Route::get('register', function()
+		Route::group(array('before' => 'auth.user.isIn'), function() 
 		{
-			return View::make('tradingCenter.seller-center.register');
-		});
-		Route::get('wait-check', function()
-		{
-			return View::make('tradingCenter.seller-center.wait-check');
-		});
-		Route::get('my-store', function()
-		{
-			return View::make('tradingCenter.seller-center.my-store');
-		});
+			Route::get('register', function()
+			{
+				return View::make('tradingCenter.seller-center.register');
+			});
+			Route::get('wait-check', function()
+			{
+				return View::make('tradingCenter.seller-center.wait-check');
+			});
 
-		Route::get('my-indents', function()
-		{
-			return View::make('tradingCenter.seller-center.my-indents');
-		});
+			Route::get('my-store', 'SellerPageController@myStore');
 
-		Route::get('authentication', function()
-		{
-			return View::make('tradingCenter.seller-center.authentication');
-		});
+			Route::get('my-indents', function()
+			{
+				return View::make('tradingCenter.seller-center.my-indents');
+			});
 
-		Route::get('indent-evaluation', function()
-		{
-			return View::make('tradingCenter.seller-center.indent-evaluation');
-		});
-		Route::get('seller-store', function()
-		{
-			return View::make('tradingCenter.seller-center.seller-store');
-		});
-		Route::get('product-detail', function()
-		{
-			return View::make('tradingCenter.seller-center.seller-product-detail');
+			Route::get('authentication', function()
+			{
+				return View::make('tradingCenter.seller-center.authentication');
+			});
+
+			Route::get('indent-evaluation', function()
+			{
+				return View::make('tradingCenter.seller-center.indent-evaluation');
+			});
+			Route::get('seller-store', function()
+			{
+				return View::make('tradingCenter.seller-center.seller-store');
+			});
+			Route::get('product-detail', function()
+			{
+				return View::make('tradingCenter.seller-center.seller-product-detail');
+			});
 		});
 	});
 });

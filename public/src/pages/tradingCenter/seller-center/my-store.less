@@ -46,14 +46,15 @@
     font-family: @font;
     font-size: 14px;
     .header-component {
-        height: 105 - 2 * @padding-top;
+        min-height: 105 - 2 * @padding-top;
         background-color: #fff;
         float: left;
         padding: @padding-top @padding-left;
         position: relative;
+        padding-bottom: 30px;
         .row-content {
             overflow: hidden;
-            margin-bottom: 3px;
+            margin-bottom: 6px;
             overflow: hidden;
             .label  {
                 float: left;
@@ -164,22 +165,17 @@
                     height: 28px;
                     line-height: 28px;
                     border: solid #a6a6a6 1px;
-                    border-top: none;
+                    border-bottom: none;
+                    border-left: none;
+                    border-right: none;
                 }
                 .active {
                     border-bottom: none;
-                    border-top: solid #8db7b6 1px;
                     background-color: #b3dfe0;
-                }
-                .one.active {
-                    border-left: none;
+                    border-top: none;
+                    border-bottom: solid #8db7b6 1px;
                     border-right: solid #8db7b6 1px;
-                }
-                .second {
-                    border-left: none;
-                }
-                .second.active {
-                    border-right: none;
+                    border-left: solid #8db7b6 1px;
                 }
             }
         }

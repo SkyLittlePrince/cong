@@ -77,10 +77,14 @@ loginBtnHandler = ->
     loginInfo = loginBtnAction()
     if loginInfo
         loginDataBus.login loginInfo, (data)->
+            console.log data
             if data.errCode isnt 0
                 $loginTips.removeClass('green-tip').addClass('red-tip').text(data.message)
             if data.errCode is 0
                 $loginTips.removeClass('red-tip').addClass('green-tip').text('登录成功')
                 setTimeout ->
-                    location.href = '/'
+                    if data.intendedUrl
+                        location.href = data.intendedUrl
+                    else 
+                        location.href = '/'
                 , 1000

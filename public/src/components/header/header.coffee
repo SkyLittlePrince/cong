@@ -16,5 +16,6 @@ $(document).ready ()->
 
 	$("#logout").click ()->
 		$.get "/user/logout", {}, (res)->
-			alert "退出成功！"
-			window.location.href = "/"
+			if res.errCode == 0
+				alert "退出成功！"
+				window.location.href = "/"

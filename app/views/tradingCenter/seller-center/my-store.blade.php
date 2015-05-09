@@ -12,15 +12,16 @@
 @section('seller-content')
     <div class="my-store-content seller-content">
         <div class="store-header">
+            <input type="hidden" id="shop-id" value="{{{ $id }}}" />
             <div class="info header-component">
                 <div class="row-content">
                     <span class="label">店铺名称: </span>
-                    <span class="content store-name">Vivine的小店</span>
+                    <span class="content store-name">{{{ $name }}}</span>
                     <input type="text" class="hidden about-store-name info-edit"></input>
                 </div>
                 <div class="row-content">
                     <span class="label">店铺简介: </span>
-                    <span class="content brief-introduction">此处描述店铺的经营范围和粗略介绍产品的种类。</span>
+                    <span class="content brief-introduction">{{{ $description }}}</span>
                      <input type="text" class="hidden about-brief-introduction info-edit"></input>
                 </div>
                 <div class="operation">
@@ -31,15 +32,16 @@
             </div>
             <div class="detail header-component">
                 <div class="row-content">
-                    <span class="label">丛丛店铺: </span>
-                    <span class="content">平面设计、日文家教、动画3D</span>
-                </div>
-                <div class="row-content">
-                    <span class="label">教育情况: </span>
-                    <span class="content">上海负担大学动画出传媒专业硕士</span>
+                    <span class="label">店铺标签: </span>
+                    <span class="content">
+                        @foreach ($tags as $tag)
+                            {{{$tag["name"]}}}
+                        @endforeach
+                    </span>
                 </div>
                 <div class="row-content">
                     <span class="label">买家信用: </span>
+                    <input type="hidden" id="credit" value="{{{ $credit }}}" />
                     <span class="content">
                         <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
                         <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
@@ -48,43 +50,19 @@
                         <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
                     </span>
                 </div>
-                <div class="operation">
-                    <div class="edit-btn">编辑</div>
-                    <div class="hidden save-btn">保存</div>
-                    <div class="hidden cancel-btn">取消</div>
-                </div>
-                <!-- <a href="#" class="btn edit">编辑</a> -->
             </div>
         </div>
         <div class="main-content">
             <div class="recommendation main-content">
-                <h3>宝贝推荐</h3>
+                <h3>我的商品</h3>
                 <div class="recommendation-image">
-                    <div class="one-image">
-                        <img src="/images/tradingcenter/seller/test.png" alt="recommend" width="136" height="136" />
-                        <span class="name">此处描述产品标题</span>
-                        <span class="price">￥350</span>
-                    </div>
-                    <div class="one-image">
-                        <img src="/images/tradingcenter/seller/test.png" alt="recommend" width="136" height="136" />
-                        <span class="name">此处描述产品标题</span>
-                        <span class="price">￥350</span>
-                    </div>
-                    <div class="one-image">
-                        <img src="/images/tradingcenter/seller/test.png" alt="recommend" width="136" height="136" />
-                        <span class="name">此处描述产品标题</span>
-                        <span class="price">￥350</span>
-                    </div>
-                    <div class="one-image">
-                        <img src="/images/tradingcenter/seller/test.png" alt="recommend" width="136" height="136" />
-                        <span class="name">此处描述产品标题</span>
-                        <span class="price">￥350</span>
-                    </div>
-                    <div class="one-image">
-                        <img src="/images/tradingcenter/seller/test.png" alt="recommend" width="136" height="136" />
-                        <span class="name">此处描述产品标题</span>
-                        <span class="price">￥350</span>
-                    </div>
+                    @foreach ($products as $product)
+                        <div class="one-image">
+                            <img src="/images/tradingcenter/seller/test.png" alt="recommend" width="136" height="136" />
+                            <div class="name">{{{ $product["name"] }}}</div>
+                            <span class="price">¥{{{ $product["price"] }}}</span>
+                        </div>
+                    @endforeach
                 </div>
                 <a href="#" class="btn edit">编辑</a>
             </div>
@@ -93,38 +71,30 @@
                 <div class="nav-wrapper">
                     <div class="line"></div>   
                     <div class="nav">
-                        <div class="one">销售量</div>
-                        <div class="active second">收藏数</div>
+                        <div class="sellRank active">销售量</div>
+                        <div class="favorRank ">收藏数</div>
                     </div>
                     <div class="line"></div>
                 </div>
+                <script type="text/template" id="sellTemplate">
+                    <div class="one-list">
+                        <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
+                        <p class="title"><%= name %></p>
+                        <span class="price">￥<%= price %></span>
+                        <span class="counter">成交<%= sellNum %>次</span>
+                    </div>
+                </script>
+                <script type="text/template" id="favorTemplate">
+                    <div class="one-list">
+                        <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
+                        <p class="title"><%= name %></p>
+                        <span class="price">￥<%= price %></span>
+                        <span class="counter">被收藏<%= favorNum %>次</span>
+                    </div>
+                </script>
                 <div class="rank-list">
-                    <div class="one-list">
-                        <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
-                        <p class="title">此处为描述产品的标题</p>
-                        <span class="price">￥380</span>
-                        <span class="counter">成交58次</span>
-                    </div>
-                    <div class="one-list">
-                        <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
-                        <p class="title">此处为描述产品的标题</p>
-                        <span class="price">￥380</span>
-                        <span class="counter">成交58次</span>
-                    </div>
-                    <div class="one-list">
-                        <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
-                        <p class="title">此处为描述产品的标题</p>
-                        <span class="price">￥380</span>
-                        <span class="counter">成交58次</span>
-                    </div>
-                    <div class="one-list">
-                        <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
-                        <p class="title">此处为描述产品的标题</p>
-                        <span class="price">￥380</span>
-                        <span class="counter">成交58次</span>
-                    </div>
+                    加载中...
                 </div>
-                <a href="#" class="btn edit">编辑</a>
             </div>
         </div>
 
@@ -133,6 +103,7 @@
 
 @section('js')
     @parent
+    <script type="text/javascript" src="/lib/js/lodash/lodash.js"></script>
     <script type="text/javascript" src="/dist/js/pages/my-store.js"></script>
 @stop
 

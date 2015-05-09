@@ -4,13 +4,18 @@ class AccountPageController extends BaseController {
 
 	public function userInfo()
 	{
-		if(!Input::has("user_id")) {
-			if(Sentry::check()) {
+		if(!Input::has("user_id")) 
+		{
+			if(Sentry::check()) 
+			{
 				$user_id = Sentry::getUser()->id;
-			} else {
+			} 
+			else 
+			{
 				return Redirect::to('user/login');
 			}
-		} else {
+		} else 
+		{
 			$user_id = Input::get("user_id");
 		}
 
@@ -25,5 +30,29 @@ class AccountPageController extends BaseController {
 			$user["shop"]["tags"] = $user->shop->tags;
 
 		return View::make('tradingCenter.account.user-info', $user);
+	}
+
+	public function card()
+	{
+		if(!Input::has("user_id")) 
+		{
+			if(Sentry::check()) 
+			{
+				$user_id = Sentry::getUser()->id;
+			} 
+			else 
+			{
+				App::abort(404);
+			}
+		} 
+		else 
+		{
+			$user_id = Input::get("user_id");
+		}
+
+		$user = User::find($user_id);
+		$user["description"] = $user->description;
+		
+		return View::make('tradingCenter.account.card', $user);
 	}
 }

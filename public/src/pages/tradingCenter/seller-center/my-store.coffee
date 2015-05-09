@@ -2,6 +2,10 @@ $storeName = $('.store-name')
 $aboutStoreName = $('.about-store-name')
 $BriefIntroduction = $('.brief-introduction')
 $aboutBriefIntroduction = $('.about-brief-introduction')
+$shopIdInput = $("#shop-id")
+$sellTemplate = $("#sellTemplate")
+$favorTemplate = $("#favorTemplate")
+$rankList = $(".rank-list")
 
 # 编辑店铺简略信息
 editStoreInfo = (e)->
@@ -11,15 +15,28 @@ editStoreInfo = (e)->
 	$storeName.addClass("hidden")
 	$BriefIntroduction.addClass("hidden")
 	$target.addClass("hidden").siblings().removeClass("hidden")
+
 # 保存店铺简介信息
 saveStoreInfo = (e)->
 	$target = $(e.currentTarget)
 	$parent = $target.parent().parent()
 
+	name = $aboutStoreName.val()
+	description = $aboutBriefIntroduction.val()
+
+	if name.length > 19
+		alert("请输入不超过19个字的店铺名称")
+		return false
+
+	if description.length > 38
+		alert("请输入不超过38个字的店铺简介")
+		return false
+
 	storeInfo = 
-		id: '3'		# TODO
-		name: $aboutStoreName.val()
-		description: $aboutBriefIntroduction.val()
+		id: $shopIdInput.val()
+		name: name
+		description: description 
+
 	shopDataBus.updateShop storeInfo, (data)->
 		if data.errCode is 0
 			alert "修改成功"
@@ -27,9 +44,12 @@ saveStoreInfo = (e)->
 			$BriefIntroduction.html $aboutBriefIntroduction.val()
 
 			$storeName.removeClass("hidden")
-			$BriefIntroduction.addClass("hidden")
+			$BriefIntroduction.removeClass("hidden")
+			$(".info-edit").addClass("hidden")
+			$(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
 		else
 			alert data.message
+
 # 取消编辑店铺信息
 cancelStoreInfo = (e)->
 	$target = $(e.currentTarget)
@@ -40,25 +60,62 @@ cancelStoreInfo = (e)->
 	$aboutBriefIntroduction.addClass('hidden')
 	$target.parent().find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
 
-editStoreDetail = (e)->
+showSellRank = (e)->
+	$elem = $(e.currentTarget)
+	$elem.addClass("active").siblings().removeClass("active")
 
-saveStoreDetail = (e)->
+	data = 
+		shop_id: $shopIdInput.val()
 
-cancelStoreDetail = (e)->
+	compiled = _.template $sellTemplate.html()
+	$rankList.html("")
+
+	shopDataBus.getProductRank "SellNum", data, (res)->
+		if res.errCode == 0
+			products = res.products;
+			for i in [0...res.products.length]
+				product = products[i]
+				str = compiled {name: product.name, price: product.price, sellNum: product.sellNum}
+				$(str).appendTo $rankList
+		else
+			alert res.message
+
+showFavorRank = (e)->
+	$elem = $(e.currentTarget)
+	$elem.addClass("active").siblings().removeClass("active")
+
+	data = 
+		shop_id: $shopIdInput.val()
+
+	compiled = _.template $favorTemplate.html()
+	$rankList.html("")
+
+	shopDataBus.getProductRank "FavorNum", data, (res)->
+		if res.errCode == 0
+			products = res.products;
+			for i in [0...res.products.length]
+				product = products[i]
+				str = compiled {name: product.name, price: product.price, favorNum: product.favorNum}
+				$(str).appendTo $rankList
+		else
+			alert res.message
 
 $ ->
 	$('.info .edit-btn').bind 'click', editStoreInfo
 	$('.info .save-btn').bind 'click', saveStoreInfo
 	$('.info .cancel-btn').bind 'click', cancelStoreInfo
-	$('.detail .edit-btn').bind 'click', editStoreDetail
-	$('.detail .save-btn').bind 'click', saveStoreDetail
-	$('.detail .cancel-btn').bind 'click', cancelStoreDetail
+
+	$('.sellRank').bind 'click', showSellRank
+	$('.favorRank').bind 'click', showFavorRank
+
+	$('.sellRank').click()
 
 shopDataBus =
 	updateShop: (storeInfo, callback)->
-		$.ajax {
-			type: 'post'
-			url: '/shop/updateShop'
-			success: (data)->
-				callback data
-		}
+		$.post '/shop/updateShop', storeInfo, (data)->
+			callback data
+
+	getProductRank: (name, data, callback)->
+		$.get '/product/getSortedProductsBy' + name, data, (data)->
+			callback data
+

@@ -1,6 +1,6 @@
 <div id="trading-center-header">
     <div class="nav">
-    	<a href="/trading-center/buyer">雇主主页</a>
+    	<a href="/trading-center/buyer">个人中心</a>
     </div>
     <div class="nav">
     	<a href="/trading-center/account">账号设置</a>

@@ -9,5 +9,11 @@ class ShopsTableSeeder extends Seeder {
 			'user_id' => 1,
 			'description' => '家天下廣州分店'
 		]);
+
+		Shop::create([
+			'name' => '100教育',
+			'user_id' => 3,
+			'description' => '100教育广州分公司'
+		]);
   	}
 }

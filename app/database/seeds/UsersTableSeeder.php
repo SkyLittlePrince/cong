@@ -21,6 +21,15 @@ class UsersTableSeeder extends Seeder {
         	'mobile'   => '13560474456',
         	'activated' => 1
 		));
+
+		Sentry::register(array(
+			'username' => 'cyrilzhao',
+		    'email'    => 'cyrilzhao@congcong.com',
+		    'password' => '12345678',
+        	'gender'   => 1,
+        	'mobile'   => '12434931123',
+        	'activated' => 1
+		));
 	}
 
 }

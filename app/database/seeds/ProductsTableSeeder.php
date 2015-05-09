@@ -5,24 +5,30 @@ class ProductsTableSeeder extends Seeder {
 	public function run()
 	{
 		Product::create([
-			"name" => "aaa",
+			"name" => "商品名称一",
 			"price" => 15.04,
 			"shop_id" => 1,
-			"intro" => "aaaa_1"
+			"sellNum" => 5,
+			"favorNum" => 1,
+			"intro" => "商品一介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍"
 		]);
 
 		Product::create([
-			"name" => "bbb",
+			"name" => "商品名称二",
 			"price" => 18.04,
 			"shop_id" => 1,
-			"intro" => "aaaa_2"
+			"sellNum" => 3,
+			"favorNum" => 2,
+			"intro" => "商品二介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍"
 		]);
 
 		Product::create([
-			"name" => "ccc",
+			"name" => "商品名称三",
 			"price" => 20.04,
 			"shop_id" => 1,
-			"intro" => "aaaa_3"
+			"sellNum" => 2,
+			"favorNum" => 6,
+			"intro" => "商品三介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍"
 		]);
 	}
 }

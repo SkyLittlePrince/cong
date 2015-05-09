@@ -256,16 +256,16 @@ class UserController extends \BaseController {
 		}
 
 		$cred = array(
-				'username' => $user->username,
-				'password' => $password
-			);
+			'username' => $user->username,
+			'password' => $password
+		);
 
 		try
 		{
 			$user = Sentry::authenticate($cred,false);
 			if(isset($user))
 			{
-				return Response::json(array('errCode' => 0,'message' => '登陆成功!'));
+				return Response::json(array('errCode' => 0,'message' => '登陆成功!', 'intendedUrl' => Session::pull('url.intended', "/")));
 			}
 			else
 			{
@@ -433,8 +433,15 @@ class UserController extends \BaseController {
 	//退出登录
 	public function getLogout()
 	{
-		Sentry::logout();
-		return Response::json(array('errCode' => 0,'message' => '退出成功!'));
+		if(Sentry::check())
+		{
+			Sentry::logout();
+			return Response::json(array('errCode' => 0,'message' => '退出成功!'));
+		} 
+		else 
+		{
+			return Response::json(array('errCode' => 1,'message' => '用户未登录'));
+		}
 	}
 
 	public function updateAbout()

@@ -13,10 +13,14 @@ class ProductController extends \BaseController {
 		$shop = Shop::where('shop_id',$shop_id)->first();
 
 		if(!isset($shop))
+		{
 			return Response::json(array('errCode' => 1,'message' => '该店铺不存在!'));
+		}
 
 		if($user->id != $shop->user_id)
-			return Response::json(array('errCode' => 2.'message' => '你没有操作权限!'));
+		{
+			return Response::json(array('errCode' => 2, 'message' => '你没有操作权限!'));
+		}
 
 		$product = new Product;
 		$product->name = $name;
@@ -78,4 +82,39 @@ class ProductController extends \BaseController {
 		return Response::json(array('errCode' => 3,'message' => '删除失败!'));
 	}
 
+	public function sortProductBySellNum()
+	{
+		if(!Sentry::check())
+			return Response::json(array('errCode' => 1,'message' => '请先登录!'));
+
+		if(!Input::has("shop_id"))
+			return Response::json(array('errCode' => 2,'message' => '缺少参数'));
+
+		$shop_id = Input::get("shop_id");
+
+		$products = DB::table('products')->where("shop_id", "=", $shop_id)->orderBy('sellNum', 'desc')->take(5)->get();
+
+		return Response::json(array('errCode' => 0, 'products' => $products));
+	}
+
+	public function sortProductByFavorNum()
+	{
+		if(!Sentry::check())
+			return Response::json(array('errCode' => 1,'message' => '请先登录!'));
+
+		if(!Input::has("shop_id"))
+			return Response::json(array('errCode' => 2,'message' => '缺少参数'));
+
+		$shop_id = Input::get("shop_id");
+
+		$products = DB::table('products')->where("shop_id", "=", $shop_id)->orderBy('favorNum', 'desc')->take(5)->get();
+
+		return Response::json(array('errCode' => 0, 'products' => $products));
+	}
 }
+
+
+
+
+
+
