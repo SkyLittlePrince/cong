@@ -1,3 +1,4 @@
+@import '../../../common/common.less';
 @font: "Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
 @right-width: 750px;
 @money-color: #b08511;
@@ -10,6 +11,28 @@
     position: absolute;
     right: 13px;
     bottom: 5px;
+}
+
+@bg-color: #7ecec8;
+.operation {
+    position: absolute;
+    right: 13px;
+    text-align: center;
+    color: #fff;
+    font-size: 13px;
+    bottom: 5px;
+    div {
+        background-color: @bg-color;
+        height: 23px;
+        width: 40px;
+        line-height: 23px;
+        .border-radius(10px);
+        margin-left: 10px;
+        float: right;
+        &:hover {
+            cursor: pointer;
+        }
+    }
 }
 // 头部两块的样式
 .store-header {
@@ -39,12 +62,18 @@
             span {
                 display: inline-block;
             }
+            .hidden {
+                display: none;
+            }
         }
     }
     .info {
         width: 393 - 2*@padding-left;
         .content {
             width: 275px;
+        }
+        .info-edit {
+            .input(240px, 25px);
         }
     }
     .detail {

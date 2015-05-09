@@ -72,7 +72,7 @@
 					<label class="label" for="captcha">&nbsp</label>
 					<div class="content-input">
 						<input type="text" id="captcha" name="captcha" placeholder="输入验证码" />
-						<img src="aaa" width="115" height="35" />
+						<!-- <img src="aaa" width="115" height="35" /> -->
 					</div>
 					<div class="clear"></div>
 				</div>

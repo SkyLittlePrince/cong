@@ -15,13 +15,19 @@
             <div class="info header-component">
                 <div class="row-content">
                     <span class="label">店铺名称: </span>
-                    <span class="content">Vivine的小店</span>
+                    <span class="content store-name">Vivine的小店</span>
+                    <input type="text" class="hidden about-store-name info-edit"></input>
                 </div>
                 <div class="row-content">
                     <span class="label">店铺简介: </span>
-                    <span class="content">此处描述店铺的经营范围和粗略介绍产品的种类。</span>
+                    <span class="content brief-introduction">此处描述店铺的经营范围和粗略介绍产品的种类。</span>
+                     <input type="text" class="hidden about-brief-introduction info-edit"></input>
                 </div>
-                <a href="#" class="btn edit">编辑</a>
+                <div class="operation">
+                    <div class="edit-btn">编辑</div>
+                    <div class="hidden save-btn">保存</div>
+                    <div class="hidden cancel-btn">取消</div>
+                </div>
             </div>
             <div class="detail header-component">
                 <div class="row-content">
@@ -42,7 +48,12 @@
                         <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
                     </span>
                 </div>
-                <a href="#" class="btn edit">编辑</a>
+                <div class="operation">
+                    <div class="edit-btn">编辑</div>
+                    <div class="hidden save-btn">保存</div>
+                    <div class="hidden cancel-btn">取消</div>
+                </div>
+                <!-- <a href="#" class="btn edit">编辑</a> -->
             </div>
         </div>
         <div class="main-content">
@@ -118,5 +129,10 @@
         </div>
 
     </div>
+@stop
+
+@section('js')
+    @parent
+    <script type="text/javascript" src="/dist/js/pages/my-store.js"></script>
 @stop
 
