@@ -4,6 +4,17 @@
 @import './../common/pagination.less';  // 引入分页样式
 @import './seller-store-banner.less';
 
+.add-to-cart {
+    width: 105px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 14px;
+    position: absolute;
+    right: 13px;
+    bottom: 5px;
+    cursor: pointer;
+}
+
 .product-detail-main {
 	width: @wrapper-width;
 	overflow: hidden;
@@ -17,6 +28,7 @@
 	.info {
 		background-color: #fff;
 		width: @left-content-width;
+		position: relative;
 		height: 162px;
 		.img-comonent {
 			float: left;

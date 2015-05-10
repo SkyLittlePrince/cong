@@ -24,6 +24,7 @@
 	</div>
 	@section('js')
 	<script type="text/javascript" src='/dist/js/lib/jquery/jquery-1.11.2.min.js'></script>
+	<script type="text/javascript" src='/dist/js/lib/jquery/jquery.cookie.js'></script>
 	<script type="text/javascript" src='/dist/js/lib/jquery/unslider.js'></script>
 	<script type="text/javascript" src='/dist/js/components.js'></script>
 	<script type="text/javascript" src='/dist/js/common.js'></script>
