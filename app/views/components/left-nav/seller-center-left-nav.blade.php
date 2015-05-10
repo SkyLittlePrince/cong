@@ -12,7 +12,7 @@
 				<a href="/trading-center/seller/my-store" class="nav-item">我的店铺</a>
 			</li>
 			<li>
-				<a href="/trading-center/seller/my-indents" class="nav-item">我的订单</a>
+				<a href="/trading-center/seller/my-indents" class="nav-item">店铺订单</a>
 			</li>
 		</ul>
 	</div>

@@ -67,7 +67,7 @@
         </div>
         <div class="product-detail-main">
             <div class="info components">
-                <img src="/images/tradingcenter/seller/product-detail.gif" class="img-comonent" width="130" height="136" alt="product-detail-img" />
+                <img src="/images/tradingcenter/seller/product-detail.gif" class="img-comonent product-img" width="130" height="136" alt="product-detail-img" />
                 <div href="#" class="video">
                     <img src="/images/tradingcenter/seller/product-detail-video.gif" width="130" height="136" alt="product-detail-img" />
                     <img src="/images/tradingcenter/seller/video-btn.gif" width="130" height="136" alt="video-btn" />
@@ -75,6 +75,7 @@
                 <div class="message">
                     <p>此处讲解服务介绍对象此处讲解服务介绍对象此处讲解服务介绍对象此处讲解服务介绍对象此处讲解服务介绍对象此处讲解服务介绍对象</p>
                 </div>
+                <div class="add-to-cart btn" data-productid="1">添加到购物车</div>
             </div>
             <div class="similar-businesses components">
                 <h3>提供类似服务的商家</h3>
@@ -192,4 +193,5 @@
 
 @section('js')
     @parent
+    <script type="text/javascript" src='/dist/js/pages/seller-product-detail.js'></script>
 @stop
