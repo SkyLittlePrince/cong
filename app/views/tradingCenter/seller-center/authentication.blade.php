@@ -10,6 +10,9 @@
 @stop
 
 @section('seller-content')
+    <div id="bbb">
+        <a href="javascript:void(0);" id="aaa">aaaa</a>
+    </div>
 	<div class="seller-register-content seller-content">
 		<div class="content-header">
             <p class="title">身份认证</p>
@@ -17,39 +20,100 @@
             <p class="content">每张身份证仅限认证一次</p>
         </div>
 		<div class="content-main">
+            @if ($isExist == true)
+            <input type="hidden" id="id" value="{{{ $id }}}}" />
+            <input type="hidden" id="isExist" value="1" />
+            <div class="status">
+                @if ($status == 0)
+                <img src="/images/icon/1.png" height="16" width="16" />
+                <span style="vertical-align:top;">待审核</span>
+                @elseif ($status == -1)
+                <img src="/images/icon/5.gif" height="16" width="16" />
+                <span style="vertical-align:top;">审核未通过</span>
+                @else
+                <img src="/images/icon/4.png" height="16" width="16" />
+                <span style="vertical-align:top;">认证通过</span>
+                @endif
+            </div>
+            @else
+            <input type="hidden" id="isExist" value="0" />
+            @endif
             <div class="content-row">
                 <label class="label" for="realname">真实姓名：</label>
                 <div class="content-input"> 
-                    <input type="text" id="realname" name="realname"  required="required"/><span class="require-star">*</span>
+                    @if ($isExist == true && ($status == 1 || $status == 0))
+                    <div class="content-text">{{{ $name }}}</div>
+                    @else
+                    <input type="text" id="realname" name="realname"  required="required" value="{{{ $name }}}" /><span class="require-star">*</span>
+                    @endif
                 </div>
             </div>
             <div class="content-row">
                 <label class="label" for="idnumber">身份证号码：</label>
                 <div class="content-input">
-                    <input type="text" id="idnumber" name="idnumber"  required="required"/><span class="require-star">*</span>
+                    @if ($isExist == true && ($status == 1 || $status == 0))
+                    <div class="content-text">{{{ $credit_id }}}</div>
+                    @else
+                    <input type="text" id="idnumber" name="idnumber" required="required" value="{{{ $credit_id }}}" /><span class="require-star">*</span>
+                    @endif
                 </div>
             </div>
             <div class="content-row">
                 <label class="label" for="male">性别：</label>
                 <div class="content-input">
-                    <input type="radio" id="male" name="male" value="male"  required="required"/> 男 
-                    <input type="radio" id="female" name="male" value="female"  required="required"/> 女<span class="require-star">*</span>
+                    @if ($isExist == true && ($status == 1 || $status == 0))
+                        @if ($gender == 1)
+                        <div class="content-text">男</div>
+                        @else
+                        <div class="content-text">女</div>
+                        @endif
+                    @else
+                        @if ($gender == 1)
+                        <input type="radio" id="male" name="gender" value="male"  required="required" checked="checked" /> 男 
+                        <input type="radio" id="female" name="gender" value="female"  required="required"/> 女<span class="require-star">*</span>
+                        @else
+                        <input type="radio" id="male" name="gender" value="male"  required="required"/> 男 
+                        <input type="radio" id="female" name="gender" value="female"  required="required" checked="checked" /> 女<span class="require-star">*</span>
+                        @endif
+                    @endif
                 </div>
             </div>
             <div class="content-row">
                 <label class="label" for="id-img">身份证正面：</label>
                 <div class="content-input">
-                    <div class="positive img-box">
+                    <div class="positive img-box" id="positive-wrapper">
+                        <input type="hidden" id="front-url" />
                         <label for="positive-file" class="file-label">正面</label>
+                        @if ($isExist == true && ($status == 1 || $status == 0))
+                        <div class="content-img">
+                            <img src="{{{ $credit_front }}}" alt="front" width="105" height="66" />
+                        </div>
+                        <div class="img-border hidden"></div>
+                        @else
+                        <div class="content-img hidden">
+                            <img src="{{{ $credit_front }}}" alt="front" width="105" height="66" />
+                        </div>
+                        <div class="img-border"></div>
+                        @endif
                         <a href="javascript:;" class="a-upload">
                             <input type="file" name="positive-file" id="positive-file">单击上传
                         </a>
+                        <div class="clear"></div>
                     </div>
-                    <div class="negative img-box">
+                    <div class="negative img-box" id="negative-wrapper">
+                        <input type="hidden" id="behind-url" />
                         <label for="negative-file" class="file-label">反面</label>
+                        @if ($isExist == true && ($status == 1 || $status == 0))
+                        <div class="content-img">
+                            <img src="{{{ $credit_behind }}}" alt="behind" width="105" height="66" />
+                        </div>
+                        @else
+                        <div class="img-border"></div>
+                        @endif
                         <a href="javascript:;" class="a-upload">
                             <input type="file" name="negative-file" id="negative-file">单击上传
                         </a>
+                        <div class="clear"></div>
                     </div>
                     <span class="require-star img-star">*</span>
                     <div class="clear"></div>
@@ -65,19 +129,40 @@
             <div class="content-row">
                 <label class="label" for="address" >地址：</label>
                 <div class="content-input">
-                    <input type="text" id="address" name="address"  required="required" /><span class="require-star">*</span>
+                    @if ($isExist == true && ($status == 1 || $status == 0))
+                    <div class="content-text">{{{ $address }}}</div>
+                    @else
+                    <input type="text" id="address" name="address"  required="required" value="{{{ $address }}}" /><span class="require-star">*</span>
+                    @endif
                 </div>
             </div>
             <div class="content-row">
                 <label class="label" for="phone">联系电话：</label>
                 <div class="content-input">
-                    <input type="text" id="phone" name="phone"  required="required"/><span class="require-star">*</span>
+                    @if ($isExist == true && ($status == 1 || $status == 0))
+                    <div class="content-text">{{{ $phone }}}</div>
+                    @else
+                    <input type="text" id="phone" name="phone"  required="required" value="{{{ $phone }}}" /><span class="require-star">*</span>
+                    @endif
                 </div>
             </div>
             <div class="operate-btn">
-                <a href="#" class="btn">提交审核</a>
+                @if ($isExist == true)
+                    @if ($status == -1)
+                    <a href="javascript::void(0);" class="btn" id="edit-btn">提交审核</a>
+                    @endif
+                @else
+                    <a href="javascript::void(0);" class="btn" id="create-btn">提交审核</a>
+                @endif
             </div>
         </div>
 	</div>
+@stop
+
+@section('js')
+    @parent
+    <script type="text/javascript" src="/lib/js/qiniu/qiniu.min.js"></script>
+    <script type="text/javascript" src="/lib/js/plupload/plupload.full.min.js"></script>
+    <script type="text/javascript" src="/dist/js/pages/seller-authentication.js"></script>
 @stop
 

@@ -3,6 +3,37 @@ use Gregwar\Captcha\CaptchaBuilder;
 
 class SellerPageController extends BaseController {
 
+	public function authentication()
+	{
+		if(Sentry::check()) 
+		{
+			$user_id = Sentry::getUser()->id;
+		} 
+		else
+		{
+			return Redirect::guest('user/login');
+		}
+
+		$authentication = SellerAuthentication::where("user_id", "=", $user_id)->get();
+
+		if(count($authentication) == 0)
+		{
+			$authentication = ["isExist" => false];
+			$authentication["name"] = "";
+			$authentication["credit_id"] = "";
+			$authentication["gender"] = 1;
+			$authentication["address"] = "";
+			$authentication["phone"] = "";
+		}
+		else
+		{
+			$authentication = $authentication[0];
+			$authentication["isExist"] = true;
+		}
+
+		return View::make('tradingCenter.seller-center.authentication', $authentication);
+	}
+
 	public function myStore()
 	{
 		if(Sentry::check()) 

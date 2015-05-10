@@ -114,6 +114,25 @@ Route::group(array('prefix' => 'task'),function()
 	Route::get('get-info','TaskController@getTaskInfo');
 
 });
+
+Route::group(array('prefix' => 'seller-authentication'),function()
+{
+	Route::group(array('before' => 'auth.user.isIn'), function() 
+	{
+		Route::post('create','SellerAuthenticationController@create');
+		Route::post('fail','SellerAuthenticationController@fail');
+		Route::post('update','SellerAuthenticationController@update');
+		Route::post('pass','SellerAuthenticationController@pass');
+	});
+});
+
+Route::group(array('prefix' => 'qiniu'),function()
+{
+	// Route::group(array('before' => 'auth.user.isIn'), function() 
+	// {
+		Route::get('getUpToken','UploadController@getUpToken');
+	// });
+});
 /*------------------------</接口路由>------------------------------*/
 
 
@@ -319,10 +338,7 @@ Route::group(array('prefix' => 'trading-center'),function()
 				return View::make('tradingCenter.seller-center.my-indents');
 			});
 
-			Route::get('authentication', function()
-			{
-				return View::make('tradingCenter.seller-center.authentication');
-			});
+			Route::get('authentication', 'SellerPageController@authentication');
 
 			Route::get('indent-evaluation', function()
 			{

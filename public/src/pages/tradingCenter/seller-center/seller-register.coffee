@@ -46,4 +46,3 @@ $ ->
 	checkbox = (new Checkbox({selector: '.my-indents-content'})).init();
 	$registerConfirm.bind 'click', registerConfirmHandler
 
-	captcha = new Captcha {selector: "#captcha-wrapper"}

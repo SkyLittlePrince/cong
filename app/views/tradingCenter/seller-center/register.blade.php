@@ -69,17 +69,6 @@
 					<div class="clear"></div>
 				</div>
 				<div class="content-row">
-					<label class="label" for="captcha">&nbsp</label>
-					<div class="content-input" id="captcha-wrapper">
-						<!-- <input type="text" id="captcha" name="captcha" placeholder="输入验证码" />
-						<span id="auth-code-status"></span>
-						<img src="{{ $captcha->inline() }}" id="authcode-img" width="128" height="46" />
-						<div class="clear"></div>
-						<span class="change-captcha">看不清？<a href="javascript: void(0)">换张图</a></span> -->
-					</div>
-					<div class="clear"></div>
-				</div>
-				<div class="content-row">
 					<label class="label" for="prov">&nbsp</label>
 					<div class="content-input agree-wrapper">
 						<input type="checkbox" name="agree" value="agree" style="display:none;">

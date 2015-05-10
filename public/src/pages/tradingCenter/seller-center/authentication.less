@@ -32,6 +32,14 @@
     background-color: #fff;
     color: @page-color;
     padding-bottom: 20px;
+    position: relative;
+
+    .status {
+        position: absolute;
+        right: 50px;
+        top: 20px;
+    }
+
     .content-row {
         @line-height: 35px;
         width: 100%;
@@ -51,7 +59,7 @@
             display: inline-block;
             margin-left: 12px;
             &.img-star {
-                line-height: 83px; 
+                line-height: 160px; 
             }
         }
         .content-input {
@@ -66,9 +74,28 @@
                 vertical-align: middle;
             }
 
+            .content-text {
+                line-height: 35px;
+                vertical-align: middle;
+            }
+
+            .content-img {
+                width: 105px;
+                margin: 0 auto;
+                margin-top: 10px;
+            }
+
+            .img-border {
+                height: 66px;
+                width: 105px;
+                margin: 0 auto;
+                margin-top: 10px;
+                border: 1px solid #d8d8d8;
+            }
+
             .img-box {
                 width: 128px;
-                height: 83px;
+                height: 160px;
                 border: solid 1px #d8d8d8;
                 float: left;
                 .border-radius(10px);

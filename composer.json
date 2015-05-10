@@ -9,7 +9,8 @@
 		"gregwar/captcha": "dev-master",
 		"barryvdh/laravel-debugbar": "~1.8",
 		"cartalyst/sentry": "2.1.*",
-		"baum/baum": "~1.0"
+		"baum/baum": "~1.0",
+		"qiniu/php-sdk": "7.*"
 	},
 	"require-dev": {
 		"way/generators": "~2.0",
