@@ -32,6 +32,7 @@
                                     <span class="product-name-title">商品名称</span>
                                 </div>
                                 <div class="detail">
+                                    <input type="hidden" value="<%= id %>" class="id">
                                     <div class="img detail-component">
                                         <img src="<%= imgSrc %>" alt="rank" width="44" height="44" />
                                     </div>
