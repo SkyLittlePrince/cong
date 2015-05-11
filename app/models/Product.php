@@ -28,4 +28,9 @@ class Product extends \Eloquent {
 	{
 		return $this->hasMany('Comment');
 	}
+
+	public function scores()
+	{
+		return $this->hasMany('Score');
+	}
 }

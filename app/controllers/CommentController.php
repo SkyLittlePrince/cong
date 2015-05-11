@@ -9,7 +9,7 @@ class CommentController extends \BaseController {
 		$content = Input::get('content');
 
 		$product = Product::find($product_id);
-		if(!$product)
+		if(!isset($product))
 			return Response::json(array('errCode' => 1,'message' => '该产品不存在!'));
 
 		if($product->user_id == $user->id)
@@ -19,7 +19,7 @@ class CommentController extends \BaseController {
 			->where('product_id',$product_id)
 			->first();
 
-		if(!$indent)
+		if(!isset($indent))
 			return Response::json(array('errCode' => 3,'message' => '你还没对此产品下单!'));
 
 		if(!isset($title))

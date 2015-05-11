@@ -27,7 +27,6 @@ $ ->
 ### 
 loadShoppingCart = ->
 	cartCookie = shopping.getShoppingCartCookie()
-	console.log cartCookie
 	if not cartCookie.setNum
 		$noProductContent.show()
 	else
@@ -52,8 +51,10 @@ loadProductToPage = (productInfo)->
 ###
 changeProductNumber = ->
 	$counterInput = $(this).siblings('.counter-input')
+	$this = $(this)
 	value = parseInt $counterInput.val()
 	if value >= 1
+		return if $this.hasClass('minus') and value is 1
 		newValue = if $(this).hasClass 'minus' then value - 1 else value + 1
 		$counterInput.val newValue
 		$totalPrice = $(this).parent().siblings('.total-price').find('.total-price-value')
