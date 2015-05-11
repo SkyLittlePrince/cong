@@ -17,21 +17,20 @@ getOneProductFromCookie = (productid)->
 # param {Object} info: 包含一个商品详细信息的对象
 ###
 addOneProductToCookie = (info)->
-	if not getOneProductFromCookie(info.productId)
-		productCookieKey = cookieConfig.productIdCookieBegin + info.productId
-		productCookieValue =  info.productId  + '&' + info.productName   + '&' + info.productPrice  + '&' + info.productNumber + '&' + info.productImgUrl
-		$.cookie productCookieKey, productCookieValue, { path: '/' }
+	productCookieKey = cookieConfig.productIdCookieBegin + info.productId
+	productCookieValue =  info.productId  + '&' + info.productName   + '&' + info.productPrice  + '&' + info.productNumber + '&' + info.productImgUrl
+	$.cookie productCookieKey, productCookieValue, { path: '/' }
 ###
 # 更新与购物车有关cookie
 # @param {String} price: 商品的单价
 ###
 addToCartCookieHandler = (price)->
 	cartCookie = shopping.getShoppingCartCookie()
-	setNum = if cartCookie.setNum then cartCookie.cartNum else 0
+	setNum = if cartCookie.setNum then cartCookie.setNum else 0
 	setTotal = if cartCookie.setTotal then cartCookie.setTotal else 0
 	# TODO 计算精度问题
 	newSetTotal = parseInt(setTotal) + parseInt(price)
-	shopping.updateShoppingCartCookie setNum + 1, newSetTotal
+	shopping.updateShoppingCartCookie (parseInt(setNum) + 1), newSetTotal
 
 ###
 # 获得一个产品的详情
@@ -50,8 +49,9 @@ getProduceInfo = ($btn)->
 ###
 addToCartHandler = ->
 	info = getProduceInfo($(this))
-	addOneProductToCookie info
-	addToCartCookieHandler info.productPrice
+	if not getOneProductFromCookie(info.productId)
+		addOneProductToCookie info
+		addToCartCookieHandler info.productPrice
 
 $ ->
 	$addToCart.bind 'click', addToCartHandler
