@@ -19,7 +19,7 @@ getOneProductFromCookie = (productid)->
 addOneProductToCookie = (info)->
 	productCookieKey = cookieConfig.productIdCookieBegin + info.productId
 	productCookieValue =  info.productId  + '&' + info.productName   + '&' + info.productPrice  + '&' + info.productNumber + '&' + info.productImgUrl
-	$.cookie productCookieKey, productCookieValue, { path: '/' }
+	$.cookie productCookieKey, productCookieValue, { expires: 7, path: '/' }
 ###
 # 更新与购物车有关cookie
 # @param {String} price: 商品的单价
@@ -30,7 +30,7 @@ addToCartCookieHandler = (price)->
 	setTotal = if cartCookie.setTotal then cartCookie.setTotal else 0
 	# TODO 计算精度问题
 	newSetTotal = parseInt(setTotal) + parseInt(price)
-	shopping.updateShoppingCartCookie (parseInt(setNum) + 1), newSetTotal
+	shopping.setShoppingCartCookie (parseInt(setNum) + 1), newSetTotal
 
 ###
 # 获得一个产品的详情
