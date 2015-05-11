@@ -1,5 +1,6 @@
 # 引入所需模块
 cookieConfig = require './../../../common/shopping/cookieConfig.coffee'
+shopping = require './../../../common/shopping/shopping.coffee'
 
 # 缓存DOM节点
 $addToCart = $('.add-to-cart')
@@ -21,6 +22,18 @@ addOneProductToCookie = (info)->
 		productCookieValue =  info.productId  + '&' + info.productName   + '&' + info.productPrice  + '&' + info.productNumber + '&' + info.productImgUrl
 		$.cookie productCookieKey, productCookieValue, { path: '/' }
 ###
+# 更新与购物车有关cookie
+# @param {String} price: 商品的单价
+###
+addToCartCookieHandler = (price)->
+	cartCookie = shopping.getShoppingCartCookie()
+	setNum = if cartCookie.setNum then cartCookie.cartNum else 0
+	setTotal = if cartCookie.setTotal then cartCookie.setTotal else 0
+	# TODO 计算精度问题
+	newSetTotal = parseInt(setTotal) + parseInt(price)
+	shopping.updateShoppingCartCookie setNum + 1, newSetTotal
+
+###
 # 获得一个产品的详情
 # @param {jQuery Object} $btn: 添加到购物车按钮
 ###
@@ -37,8 +50,8 @@ getProduceInfo = ($btn)->
 ###
 addToCartHandler = ->
 	info = getProduceInfo($(this))
-	console.log info
 	addOneProductToCookie info
+	addToCartCookieHandler info.productPrice
 
 $ ->
 	$addToCart.bind 'click', addToCartHandler

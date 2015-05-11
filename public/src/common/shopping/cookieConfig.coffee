@@ -7,5 +7,7 @@ cookieConfig =
 	productImgUrl: "productImgUrl"
 	productDate: "productDate"
 	productIdCookieBegin: 'cookie-product-'
+	cartNum: "cartNum"
+	cartTotal: "cartTotal"
 
 module.exports = cookieConfig

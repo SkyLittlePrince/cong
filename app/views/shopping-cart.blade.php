@@ -38,15 +38,15 @@
                                     <p><%= name %></p>
                                 </div>
                                 <div class="price detail-component">
-                                    <span class="money">￥<span><%= price %></span></span>
+                                    <span class="money">￥<span class="price-value"><%= price %></span></span>
                                 </div>
                                 <div class="counter detail-component">
-                                    <label class="counter-btn">-</label>
+                                    <label class="counter-btn minus">-</label>
                                     <input type="text" value="<%= number %>" class="counter-input">
-                                    <label class="counter-btn">+</label>
+                                    <label class="counter-btn plus">+</label>
                                 </div>
                                 <div class="total-price detail-component">
-                                    <span class="money">￥<span><%= totalPrice %></span></span>
+                                    <span class="money">￥<span class="total-price-value"><%= totalPrice %></span></span>
                                 </div>
                                 <div class="status detail-component">
                                     <p class="status-content">交易成功</p>
