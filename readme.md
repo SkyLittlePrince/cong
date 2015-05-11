@@ -18,7 +18,7 @@ cp app/config/database.php.example app/config/database.php
 DROP DATABASE congcong;
 CREATE DATABASE `congcong` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-php artisan migrate:refresh
+php artisan migrate
 php artisan db:seed
 ```
 
@@ -58,7 +58,7 @@ www.congcong.com 		127.0.0.1
 ```
 
 #### 运行项目
-启动apache服务器，在浏览器中输入http://www.congcong.com即可访问到部署在本地的丛丛网项目
+启动apache服务器，在浏览器中输入http://www.congcong.com，即可访问到部署在本地的丛丛网项目
 
 自动化测试
 =======
