@@ -366,6 +366,7 @@ saveWorkExperience = (e)->
 		else
 		 	alert data.message
 		$parent.find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
+		$parent.find(".del-btn").removeClass("hidden")
 
 
 saveEduExperience = (e)->
@@ -387,6 +388,7 @@ saveEduExperience = (e)->
 		else
 		 	alert data.message
 		$parent.find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
+		$parent.find(".del-btn").removeClass("hidden")
 
 saveAwards = (e)->
 	$target = $(e.currentTarget)
@@ -406,6 +408,7 @@ saveAwards = (e)->
 		else
 		 	alert data.message
 		$parent.find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
+		$parent.find(".del-btn").removeClass("hidden")
 
 saveContact = (e)->
 	$target = $(e.currentTarget)
