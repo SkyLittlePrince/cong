@@ -25,5 +25,23 @@ shoppingCartCookie =
 			# TODO 计算精度问题
 			totalPrice: cookieArray[2] * cookieArray[3]
 		}
+	###
+	# 更新一个商品的cookie
+	# @param {String} productId: 一个商品的id
+	# @param {Number} changeNumber: 变更的数量
+	###
+	updateOneProductInCookie: (productId, changeNumber)->
+		cookieKey = cookieConfig.productIdCookieBegin + productId
+		productCookie = $.cookie cookieKey
+		newCookie = productCookie.split('&')
+		newCookie[3] = parseInt(newCookie[3]) + changeNumber
+		$.cookie cookieKey, newCookie.join('&')
+
+	###
+	# 删除一件商品的cookie
+	# @param {String}: produxtId: 一个商品的id
+	###
+	deleteOneProductInCookie: (productId)->
+		$.removeCookie cookieConfig.productIdCookieBegin + productId, {path :'/'}
 
 module.exports = shoppingCartCookie

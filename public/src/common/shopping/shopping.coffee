@@ -1,8 +1,19 @@
 cookieConfig = require './cookieConfig.coffee'
 
 shopping =
-	# updateShoppingCart: (number)->
-	# 	console.log 1231
+	###
+	# 更新与购物车有关的cookie
+	# @param {Number} numberChange: 一件商品变更的数量
+	# @param {Number} price: 盖产品的价格
+	###
+	updateShoppingCartCookie: (numberChange, price)->
+		cartCookie = shopping.getShoppingCartCookie()
+		newCartNumber = parseInt(cartCookie.setNum) + numberChange
+		console.log numberChange, price
+		console.log (numberChange * price)
+		newCartTotal = parseInt(cartCookie.setTotal) + (numberChange * price)
+		shopping.setShoppingCartCookie(newCartNumber, newCartTotal)
+
 	###
 	# 更新与购物车有关cookie
 	###
