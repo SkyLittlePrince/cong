@@ -60,9 +60,33 @@ Include <apache_dir>/extra/httpd-vhosts.conf
 找到本地系统下的hosts文件，并在文件末尾添加如下内容。
 windows系统下的hosts文件路径为：c:\windows\system32\drivers\etc
 OS X和Linux系统下的hosts文件路径为：/etc/hosts
-
 ``` php
 www.congcong.com 		127.0.0.1
+```
+
+#### 安装composer管理的PHP依赖包
+laravel的依赖包采用composer进行管理，在项目跟目录下运行以下命令来安装依赖包
+``` php
+composer install
+```
+
+#### 编译生成前端代码
+首先需要保证本地已经安装了nodejs的运行环境和nodejs使用的包管理工具npm，可以通过运行以下命令来查看是否已经安装了它们：
+``` php
+node -v
+npm -v 
+```
+安装好npm之后，通过npm来安装前端项目管理工具grunt
+``` php
+npm install -g grunt-cli
+```
+同时安装前端grunt运行时需要用到的依赖包，在public目录下运行以下命令来安装
+``` php
+npm install
+```
+上述步骤都执行完后，在public目录下运行grunt命令，即可得到编译生成的前端js和css代码
+``` php
+grunt
 ```
 
 #### 运行项目
