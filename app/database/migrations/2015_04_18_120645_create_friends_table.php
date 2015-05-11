@@ -12,20 +12,22 @@ class CreateFriendsTable extends Migration {
    */
     public function up() {
         Schema::create('friends', function(Blueprint $table) {
-            $table->integer('friend_id')->unsigned()->index('friend_id');
             $table->integer('user_id')->unsigned()->index('user_id');
-     
-            $table                          
-                ->foreign('friend_id')
-                ->references('id')->on('users') 
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+            $table->integer('friend_id')->unsigned()->index('friend_id');
 
             $table                          
                 ->foreign('user_id')
                 ->references('id')->on('users') 
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+
+            $table                          
+                ->foreign('friend_id')
+                ->references('id')->on('users') 
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->primary( array('user_id', 'friend_id') );
         });
     }
 

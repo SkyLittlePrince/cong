@@ -52,7 +52,7 @@ class MigrationCartalystSentryInstallUsers extends Migration {
 			$table->string('region')->nullable();
 			$table->string('address')->nullable();
 			$table->string('birthday')->nullable();
-			$table->string('head')->nullable();
+			$table->string('head')->default("http://7xj0sp.com1.z0.glb.clouddn.com/avatar.png");
 			$table->longText('description')->nullable();
 			$table->integer('role_id')->default(1);  //1=buyer 2=seller 3=admin
 

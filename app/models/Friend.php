@@ -1,15 +1,18 @@
 <?php
 
-class Tag extends \Eloquent {
+class Friend extends \Eloquent {
 
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'tags';
+	protected $table = 'friends';
 
-    public $primaryKey = 'id';
-	public $incrementing = true;
    	public $timestamps = false;
+
+   	public function info()
+    {
+        return $this->belongsTo('User', 'friend_id', 'id');
+    }
 }

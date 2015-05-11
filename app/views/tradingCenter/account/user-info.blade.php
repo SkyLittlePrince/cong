@@ -12,6 +12,7 @@
 @section('body')
     @parent
     <div id="main">
+        <input type="hidden" id="user_id" value="{{{ $id }}}" />
     	<div class="base-info block">
     		<div class="avatar">
     			<img src="/images/tradingcenter/icon/13.png" width="252" height="252" />
@@ -64,13 +65,18 @@
                     <div class="data">
                         <span>累计交易：{{{$shop["dealNum"]}}}</span>
                         <span style="margin-left: 20px;">访问量：{{{$shop["visitNum"]}}}</span>
+                        <span style="margin-left: 20px;">
+                            <a target="_blank" href="/trading-center/seller/seller-store?shop_id={{{ $shop['id'] }}}">进入店铺</a>
+                        </span>
                     </div>
                 </div>
                 @endif
     			
     			<div class="talk">
     				<span><img src="/images/tradingcenter/icon/9.png" height="23" width="25"></span>
-    				<input type="button" id="talk-btn" value="谈一谈" class="btn" />
+                    <input type="button" id="talk-btn" value="谈一谈" class="btn" />
+                    <input type="button" id="add-friend-btn" value="加为好友" class="btn hidden" />
+    				<input type="button" id="delete-friend-btn" value="删除好友" class="btn hidden" />
     			</div>
     		</div>
     		<div class="clear"></div>
@@ -330,6 +336,20 @@
                 </div>
             </div>
     	</div>
+        <div class="friends block">
+            @foreach ($friends as $friend)
+                <div class="friend">
+                    <div class="friend-avatar">
+                        <img src="{{{ $friend['head'] }}}" width="50" height="50" />
+                    </div>  
+                    <div class="friend-name">
+                        <a href="/trading-center/account/user-info?user_id={{{$friend['id']}}}">{{{$friend["username"]}}}</a>
+                    </div>               
+                </div>
+            @endforeach
+            <div class="clear">{{ $friend_links->links() }}</div>
+            <div class="clear"></div>
+        </div>
     	<div class="contact block">
     		<div class="contact-avatar">
     			<img src="/images/tradingcenter/icon/13.png" width="150" height="150" />

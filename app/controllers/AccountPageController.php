@@ -19,12 +19,20 @@ class AccountPageController extends BaseController {
 			$user_id = Input::get("user_id");
 		}
 
+		$friends = Friend::where("user_id", "=", $user_id)->paginate(10);;
+		$friendsArray = [];
+		foreach ($friends as $friend) {
+			$friendsArray[] = $friend->info;
+		}
+
 		$user = User::find($user_id);
 		$user["workExperiences"] = $user->workExperiences;
 		$user["eduExperiences"] = $user->eduExperiences;
 		$user["awards"] = $user->awards;
 		$user["shop"] = $user->shop;
 		$user["about"] = $user->about;
+		$user["friends"] = $friendsArray;
+		$user["friend_links"] = $friends;
 
 		if(isset($user->shop) && count($user->shop->tags))
 			$user["shop"]["tags"] = $user->shop->tags;
