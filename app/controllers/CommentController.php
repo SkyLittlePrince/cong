@@ -60,4 +60,17 @@ class CommentController extends \BaseController {
 
 	}
 
+	public function getComment()
+	{
+		$product_id = Input::get('product_id');
+		$pageNum = Input::get('pageNum');
+
+		$comments = Comment::where('product_id',$product_id)
+				->orderBy('created_at','desc')
+				->paginate($pageNum);
+
+		return View::make('')->with('comments',$comments);
+
+	}
+
 }

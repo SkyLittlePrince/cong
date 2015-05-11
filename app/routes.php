@@ -54,6 +54,14 @@ Route::group(array('prefix' => 'user'),function()
 	});
 });
 
+//评论模块
+Route::group(array('prefix' => 'comment','before' => 'auth.user.isIn'),function()
+{
+	Route::post('addComment','CommentController@addComment');
+	Route::get('deleteComment','CommentController@deleteComment');
+	Route::get('getComment','CommentController@getComment');
+});
+
 //店铺模块
 Route::group(array('prefix' => 'shop','before' => 'auth.user.isIn'),function()
 {
