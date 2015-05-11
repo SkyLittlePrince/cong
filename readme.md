@@ -90,7 +90,11 @@ grunt
 ```
 
 #### 运行项目
-启动apache服务器，在浏览器中输入http://www.congcong.com，即可访问到部署在本地的丛丛网项目
+启动apache服务器，在浏览器中输入
+``` php
+http://www.congcong.com
+```
+即可访问到部署在本地的丛丛网项目
 
 自动化测试
 =======
