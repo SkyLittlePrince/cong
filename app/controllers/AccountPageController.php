@@ -12,7 +12,7 @@ class AccountPageController extends BaseController {
 			} 
 			else 
 			{
-				return Redirect::to('user/login');
+				return Redirect::guest('user/login');
 			}
 		} else 
 		{
@@ -34,20 +34,13 @@ class AccountPageController extends BaseController {
 
 	public function card()
 	{
-		if(!Input::has("user_id")) 
+		if(Sentry::check()) 
 		{
-			if(Sentry::check()) 
-			{
-				$user_id = Sentry::getUser()->id;
-			} 
-			else 
-			{
-				App::abort(404);
-			}
+			$user_id = Sentry::getUser()->id;
 		} 
 		else 
 		{
-			$user_id = Input::get("user_id");
+			return Redirect::guest('user/login');
 		}
 
 		$user = User::find($user_id);

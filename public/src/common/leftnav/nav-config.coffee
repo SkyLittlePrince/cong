@@ -36,17 +36,15 @@ navConfig = {
 		subNavIndexes: {
 			"base-info": 0,
 			"card": 1,
-			"bind-email": 2,
-			"bind-weibo": 3,
-			"change-password": 4,
-			"protect-login": 5,
-			"protect-password": 6
+			"bind-weibo": 2,
+			"change-password": 3,
+			"protect-login": 4,
+			"protect-password": 5
 		},
 		navIndexes: {
 			"base-info": 0,
 			"card": 0,
 			"user-info": 1,
-			"bind-email": 2,
 			"bind-weibo": 2,
 			"authentication": 3,
 			"change-password": 4,

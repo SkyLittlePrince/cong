@@ -96,11 +96,7 @@
     			<span>我的技能</span>
     		</div>
             @if (Sentry::check() && Sentry::getUser()->id == $id)
-            <div class="operation">
-                <div class="edit-btn">编辑</div>
-                <div class="hidden save-btn">保存</div>
-                <div class="hidden cancel-btn">取消</div>
-            </div>
+          
             @endif
             <div class="skill-items">
                 <div class="skill-item"><span>HTML</span></div>
