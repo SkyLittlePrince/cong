@@ -89,7 +89,8 @@ npm install
 grunt
 ```
 
-#### 运行项目
+运行项目
+=======
 启动apache服务器，在浏览器中输入
 
 http://www.congcong.com
@@ -98,7 +99,7 @@ http://www.congcong.com
 
 自动化测试
 =======
-#### 通过在根目录下运行phpunit进行自动化测试
+通过在根目录下运行phpunit进行自动化测试
 
 `phpunit`
 
