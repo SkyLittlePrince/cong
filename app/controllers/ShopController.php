@@ -13,7 +13,7 @@ class ShopController extends \BaseController {
 		$user = Sentry::getUser();
 		$name = Input::get('name');
 		$description = Input::get('description');
-		$url = Input::get('url');
+		$url = Input::get('avatar');
 		$tags = Input::get('tags');
 		$shop = Shop::where('user_id',$user->id)->first();
 		if(isset($shop))
@@ -122,4 +122,8 @@ class ShopController extends \BaseController {
 		return Response::json(array('errCode' => 2,'message' => '删除失败!'));
 	}
 
+	public function searchShopByTag()
+	{
+		$name = Input::get('name');
+	}
 }

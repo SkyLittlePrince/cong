@@ -5,7 +5,7 @@ class Shop extends \Eloquent {
 		'user_id',
 		'name',
 		'dscription',
-		'url',
+		'avatar',
 		'dealNum',
 		'visitNum',
 		'credit'
