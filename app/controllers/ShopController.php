@@ -23,7 +23,7 @@ class ShopController extends \BaseController {
 		$shop->name = $name;
 		$shop->description = $description;
 		$shop->user_id = $user->id;
-		$shop->url = $url;
+		$shop->avatar = $avatar;
 
 		if($shop->save())
 		{
@@ -46,6 +46,7 @@ class ShopController extends \BaseController {
 	{
 		$user = Sentry::getUser();
 		$name = Input::get('name');
+		$avatar = Input::get('avatar');
 		$description = Input::get('description');
 		$id = Input::get('id');
 
@@ -58,6 +59,7 @@ class ShopController extends \BaseController {
 
 		$shop->name = $name;
 		$shop->description = $description;
+		$shop->avatar = $avatar;
 
 		if($shop->save())
 			return Response::json(array('errCode' =>0,'message' => '修改成功!'));
