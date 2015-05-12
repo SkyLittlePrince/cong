@@ -26,28 +26,30 @@
 			<div class="content-left">
 				<div class="content-row">
 					<label class="label" for="avatar">当前头像：</label>
-					<div class="content-input">
+					<div class="content-input" id="avatar-wrapper">
 						<img class="avatar-img" src="/images/tradingcenter/icon/avatar.png" width="80" height="80" />
-						<input type="button" id="avatar-btn" value="上传头像" class="btn" />
-						<input type="file" id="avatar" name="avatar" class="hidden" />
+						<input type="hidden" id="avatar-url" name="avatar" class="hidden" value="" />
+						<a href="javascript:;" class="a-upload">
+                            <input type="file" name="avatar-file" id="avatar-file">单击上传
+                        </a>
 					</div>
 					<div class="clear"></div>
 				</div>
 				<div class="content-row">
 					<label class="label" for="store">店铺名称：</label>
 					<div class="content-input">
-						<input type="text" id="store" name="store" />
+						<input type="text" id="store" name="store"  placeholder="输入您的店铺名称" />
 					</div>
 					<div class="clear"></div>
 				</div>
-				<div class="content-row">
+				<!-- <div class="content-row">
 					<label class="label" for="phone">手机号码：</label>
 					<div class="content-input">
 						<input type="text" id="phone" name="phone" />
 					</div>
 					<div class="clear"></div>
-				</div>
-				<div class="content-row">
+				</div> -->
+				<!-- <div class="content-row">
 					<label class="label" for="age">年龄：</label>
 					<div class="content-input">
 						<input type="text" id="age" name="age" />
@@ -60,11 +62,11 @@
 						<input type="text" id="job" name="job" />
 					</div>
 					<div class="clear"></div>
-				</div>
+				</div> -->
 				<div class="content-row">
 					<label class="label" for="skill">店铺标签：</label>
 					<div class="content-input">
-						<input type="text" id="skill" name="skill" />
+						<input type="text" id="skill" name="skill" placeholder="用中文逗号分隔" />
 					</div>
 					<div class="clear"></div>
 				</div>
@@ -79,10 +81,10 @@
 			</div>
 
 			<div class="content-right">
-				<div class="content-row">
+				<!-- <div class="content-row">
 					<label class="label" for="work-experience">工作经历：</label>
 					<textarea id="work-experience"></textarea>
-				</div>
+				</div> -->
 				<div class="content-row">
 					<label class="label" for="store-desc">店铺简介：</label>
 					<textarea id="store-desc" placeholder="简单介绍一下自己的店铺吧！"></textarea>
@@ -98,5 +100,7 @@
 
 @section('js')
 	@parent
+	<script type="text/javascript" src="/lib/js/qiniu/qiniu.min.js"></script> 
+	<script type="text/javascript" src="/lib/js/plupload/plupload.full.min.js"></script>
 	<script type="text/javascript" src="/dist/js/pages/seller-register.js"></script>
 @stop

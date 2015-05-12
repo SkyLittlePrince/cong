@@ -12,16 +12,17 @@
 @section('body')
     @parent
     <div id="main">
+        <input type="hidden" id="user_id" value="{{{ $id }}}" />
     	<div class="base-info block">
     		<div class="avatar">
     			<img src="/images/tradingcenter/icon/13.png" width="252" height="252" />
     		</div>
             @if (Sentry::check() && Sentry::getUser()->id == $id)
-            <div class="operation">
+          <!--   <div class="operation">
                 <div class="edit-btn">编辑</div>
                 <div class="hidden save-btn">保存</div>
                 <div class="hidden cancel-btn">取消</div>
-            </div>
+            </div> -->
             @endif
     		<div class="info">
     			<div class="name">
@@ -64,13 +65,18 @@
                     <div class="data">
                         <span>累计交易：{{{$shop["dealNum"]}}}</span>
                         <span style="margin-left: 20px;">访问量：{{{$shop["visitNum"]}}}</span>
+                        <span style="margin-left: 20px;">
+                            <a target="_blank" href="/trading-center/seller/seller-store?shop_id={{{ $shop['id'] }}}">进入店铺</a>
+                        </span>
                     </div>
                 </div>
                 @endif
     			
     			<div class="talk">
     				<span><img src="/images/tradingcenter/icon/9.png" height="23" width="25"></span>
-    				<input type="button" id="talk-btn" value="谈一谈" class="btn" />
+                    <input type="button" id="talk-btn" value="谈一谈" class="btn" />
+                    <input type="button" id="add-friend-btn" value="加为好友" class="btn hidden" />
+    				<input type="button" id="delete-friend-btn" value="删除好友" class="btn hidden" />
     			</div>
     		</div>
     		<div class="clear"></div>
@@ -99,24 +105,16 @@
                
             @endif
             <div class="skill-items">
-                <div class="skill-item">HTML<span class="del-btn">&nbsp</span></div>
-                <div class="skill-item">CSS<span class="del-btn">&nbsp</span></div>
-                <div class="skill-item">Javascript<span class="del-btn">&nbsp</span></div>
-                <div class="skill-item">PHP<span class="del-btn">&nbsp</span></div>
-                <div class="skill-item">Ruby<span class="del-btn">&nbsp</span></div>
-                <div class="skill-item">Python<span class="del-btn">&nbsp</span></div>
-                <div class="skill-item">Go<span class="del-btn">&nbsp</span></div>
-                <div class="skill-item">Perl<span class="del-btn">&nbsp</span></div>
-                <div class="skill-item">Photoshop<span class="del-btn">&nbsp</span></div>
-                <div class="skill-item">Ai<span class="del-btn">&nbsp</span></div>
-                <div class="skill-item">Axure<span class="del-btn">&nbsp</span></div>
-                <div class="skill-add"><img class="add-btn" src="/images/tradingcenter/icon/add.png" /></div>
-                <div class="bg hidden"></div>
-                <div class="show hidden">
-                    <input type="text" class="show-input" />
-                    <div class="save-btn">保存</div>
-                    <div class="cancel-btn">取消</div>
+                <div class="skill-item">
+                    <span>{{{ $skill["name"] }}}</span>
                 </div>
+                @foreach ($skills as $skill)
+                <div class="skill-item">
+                    <input type="hidden" class="skill-id" value="{{{ $skill['id'] }}}">
+                    <span>{{{ $skill["name"] }}}</span>
+                </div>
+                @endforeach
+                <div class="clear"></div>
             </div>
             <div class="clear"></div>
     	</div>
@@ -337,6 +335,20 @@
                 </div>
             </div>
     	</div>
+        <div class="friends block">
+            @foreach ($friends as $friend)
+                <div class="friend">
+                    <div class="friend-avatar">
+                        <img src="{{{ $friend['head'] }}}" width="50" height="50" />
+                    </div>  
+                    <div class="friend-name">
+                        <a href="/trading-center/account/user-info?user_id={{{$friend['id']}}}">{{{$friend["username"]}}}</a>
+                    </div>               
+                </div>
+            @endforeach
+            <div class="clear">{{ $friend_links->links() }}</div>
+            <div class="clear"></div>
+        </div>
     	<div class="contact block">
     		<div class="contact-avatar">
     			<img src="/images/tradingcenter/icon/13.png" width="150" height="150" />

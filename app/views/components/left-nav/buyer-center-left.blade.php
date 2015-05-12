@@ -6,13 +6,7 @@
 				<a href="/trading-center/buyer/trading-list" class="nav-item">交易管理</a>
 			</li>
 			<li>
-				<a href="/trading-center/buyer/mybook" class="nav-item">我的账本</a>
-			</li>
-			<li>
 				<a href="/trading-center/buyer/comment-manage" class="nav-item">评价管理</a>
-			</li>
-			<li>
-				<a href="/trading-center/buyer/report-manage/" class="nav-item">举报管理</a>
 			</li>
 			<li>
 				<a href="/trading-center/buyer/invite" class="nav-item">邀请站外好友</a>

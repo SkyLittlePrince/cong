@@ -28,6 +28,8 @@ class CreateShopTagTable extends Migration {
 				->references('id')->on('tags') 
 				->onDelete('cascade')
 				->onUpdate('cascade');
+
+			$table->primary(array('shop_id','tag_id'));
 		});
 	}
 

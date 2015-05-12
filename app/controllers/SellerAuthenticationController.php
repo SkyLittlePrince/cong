@@ -16,7 +16,7 @@ class SellerAuthenticationController extends \BaseController {
 		$address = Input::get('address');
 		$phone = Input::get('phone');
 
-		$sellerAuthentication = new SellerAuthentication();
+		$sellerAuthentication = new Authentication();
 		$sellerAuthentication->user_id = $user_id;
 		$sellerAuthentication->name = $name;
 		$sellerAuthentication->credit_id = $credit_id;
@@ -36,7 +36,7 @@ class SellerAuthenticationController extends \BaseController {
 	{
 		$id = Input::get("id");
 
-		$sellerAuthentication = SellerAuthentication::find($id);
+		$sellerAuthentication = Authentication::find($id);
 
 		if($sellerAuthentication->status != -1)
 		{
@@ -74,7 +74,7 @@ class SellerAuthenticationController extends \BaseController {
 
 		$id = Input::get("id");
 
-		$sellerAuthentication = SellerAuthentication::find($id);
+		$sellerAuthentication = Authentication::find($id);
 
 		$sellerAuthentication->status = 1;
 
@@ -92,7 +92,7 @@ class SellerAuthenticationController extends \BaseController {
 		$id = Input::get("id");
 		$fail_reason = Input::get("fail_reason");
 
-		$sellerAuthentication = SellerAuthentication::find($id);
+		$sellerAuthentication = Authentication::find($id);
 
 		$sellerAuthentication->status = -1;
 		$sellerAuthentication->fail_reason = $fail_reason;

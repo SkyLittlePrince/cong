@@ -1,6 +1,5 @@
 @import '../../../common/common.less';
 
-
 #main {
 	width: 953px;
 	@bg-color: #7ecec8;
@@ -96,13 +95,21 @@
 					margin-right: 10px;
 				}
 
-				#talk-btn {
+				.btn {
 					margin-top: 0px;
 					border: 0px;
 					height: 23px;
 					line-height: 23px;
-					width: 62px;
 					font-size: 12px;
+				}
+
+				#add-friend-btn, #delete-friend-btn {
+					width: 75px;
+					margin-left: 20px;
+				}
+
+				#talk-btn {
+					width: 62px;
 				}
 			}
 		}
@@ -293,6 +300,40 @@
 					.input (300px);
 					font-size: 14px;
 				}
+			}
+		}
+	}
+
+	.friends {
+		.friend {
+			float: left;
+			margin: 0px 0px 20px 20px;
+			width: 80px;
+
+			.friend-name {
+				text-align: center;
+				margin-top: 10px;
+				a {
+					display: block;
+					width: 80px;
+					word-wrap: break-word;
+				}
+			}
+
+			.friend-avatar {
+				img {
+					.border-radius(25px);
+					margin: 0 auto;
+					display: block;
+				}
+			}
+		}
+
+		.pagination {
+			float: right;
+			li {
+				float: left;
+				margin-left: 5px;
 			}
 		}
 	}

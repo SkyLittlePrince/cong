@@ -3,6 +3,14 @@
 有关laravel框架的详细部署及使用要求请参照其官方文档：
 http://www.golaravel.com/laravel/docs/4.2/
 
+Laravel 框架对系统环境有如下要求：
+
+* PHP >= 5.4
+* MCrypt PHP 扩展
+* 需要为 app/storage 目录下的文件设置写权限。
+* 从 PHP 5.5 版本开始，针对某些操作系统的安装包需要你自己手工安装 PHP 的 JSON 扩展模块。如果你使用的是 Ubuntu，可以通过,  apt-get install php5-json 命令直接安装。
+* Laravel框架通过设置 public/.htaccess 文件去除链接中的index.php。 如果你你的服务器使用的是 Apache，请确保开启 mod_rewrite 模块。
+
 项目部署
 =======
 #### 修改配置文件
@@ -52,17 +60,46 @@ Include <apache_dir>/extra/httpd-vhosts.conf
 找到本地系统下的hosts文件，并在文件末尾添加如下内容。
 windows系统下的hosts文件路径为：c:\windows\system32\drivers\etc
 OS X和Linux系统下的hosts文件路径为：/etc/hosts
-
 ``` php
 www.congcong.com 		127.0.0.1
 ```
 
-#### 运行项目
-启动apache服务器，在浏览器中输入http://www.congcong.com，即可访问到部署在本地的丛丛网项目
+#### 安装composer管理的PHP依赖包
+laravel的依赖包采用composer进行管理，在项目跟目录下运行以下命令来安装依赖包
+``` php
+composer install
+```
+
+#### 编译生成前端代码
+首先需要保证本地已经安装了nodejs的运行环境和nodejs使用的包管理工具npm，可以通过运行以下命令来查看是否已经安装了它们：
+``` php
+node -v
+npm -v 
+```
+安装好npm之后，通过npm来安装前端项目管理工具grunt
+``` php
+npm install -g grunt-cli
+```
+同时安装前端grunt运行时需要用到的依赖包，在public目录下运行以下命令来安装
+``` php
+npm install
+```
+上述步骤都执行完后，在public目录下运行grunt命令，即可得到编译生成的前端js和css代码
+``` php
+grunt
+```
+
+运行项目
+=======
+启动apache服务器，在浏览器中输入
+
+http://www.congcong.com
+
+即可访问到部署在本地的丛丛网项目
 
 自动化测试
 =======
-#### 通过运行phpunit进行自动化测试
+通过在根目录下运行phpunit进行自动化测试
 
 `phpunit`
 

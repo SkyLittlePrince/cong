@@ -15,7 +15,7 @@
 
 @section('tradingCenter-content')
 	<div class="index-content tradingCenter-content">
-		<h3>昵称: Vivian</h3>
+		<h3>昵称: {{{ $username }}}</h3>
 		<hr />		
 		<div class="content-main">
 			<div class="content-left">
@@ -45,7 +45,7 @@
 					<!-- <div class="title">手机绑定</div> -->
 					<!-- <div class="text">已绑定手机号码：139****1650</div> -->
 					<div class="title">邮箱绑定</div>
-					<div class="text">已绑定邮箱12345678@qq.com</div>
+					<div class="text">已绑定邮箱：{{{ $email }}}</div>
 					<!-- <div class="text">你在丛丛网还是黑户哦，作为一个有身份的人，没有身份认证怎么行！</div> -->
 					<!-- <div class="bind-btn">马上绑定</div> -->
 				</div>
