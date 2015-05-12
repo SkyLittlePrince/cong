@@ -7,6 +7,13 @@ $storeDesc = $('#store-desc')
 $skill = $('#skill')
 $registerConfirm = $('#register-confirm')
 
+$.fn.pVal = ->
+	$this = $(this)
+	val = $this.eq(0).val()
+	if(val == $this.attr('placeholder'))
+		return ''
+	else
+		return val
 ###
 # 验证邮箱是否可用
 # @param {Object} storeInfo: 包含新增店铺信息的对象
@@ -27,18 +34,33 @@ AjaxAddStore = (storeInfo, callback)->
 
 # 开通店铺DOM操作
 registerConfirmAction = ->
+	if not $store.pVal() or not $storeDesc.pVal() or not $skill.pVal()
+		alert('请填写完整信息')
+		return false
+	skills = $skill.val().trim()
+	if skills.indexOf(',') > -1
+		alert('技能标签请用中文逗号分隔')
+		$skill.focus()
+		return false
+	reg = /，\s*，/
+	if reg.test skills
+		alert('不能连续出现两个逗号')
+		$skill.focus()
+		return false
 	return {
 		name: $store.val()
 		description: $storeDesc.val()
-		tags: ['1']#$skill.val()
+		tags: skills.split('，')
 		avatar: $("#avatar-url").val()
 	}
 # 开通点铺逻辑
 registerConfirmHandler = ->
 	storeInfo = registerConfirmAction()
+	console.log storeInfo
 	if storeInfo
 		AjaxAddStore storeInfo, (data)->
 			if data.errCode is 0
+				alert '店铺创建成功'
 				location.href= '/trading-center/seller/my-store'
 			else
 				alert data.message

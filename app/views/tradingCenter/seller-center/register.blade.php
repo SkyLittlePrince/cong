@@ -38,7 +38,7 @@
 				<div class="content-row">
 					<label class="label" for="store">店铺名称：</label>
 					<div class="content-input">
-						<input type="text" id="store" name="store" />
+						<input type="text" id="store" name="store"  placeholder="输入您的店铺名称" />
 					</div>
 					<div class="clear"></div>
 				</div>
@@ -66,7 +66,7 @@
 				<div class="content-row">
 					<label class="label" for="skill">店铺标签：</label>
 					<div class="content-input">
-						<input type="text" id="skill" name="skill" />
+						<input type="text" id="skill" name="skill" placeholder="用中文逗号分隔" />
 					</div>
 					<div class="clear"></div>
 				</div>
