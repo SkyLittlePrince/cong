@@ -23,7 +23,7 @@ class ShopController extends \BaseController {
 		$shop->name = $name;
 		$shop->description = $description;
 		$shop->user_id = $user->id;
-		$shop->url = $url;
+		$shop->avatar = $avatar;
 
 		if($shop->save())
 		{
