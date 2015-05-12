@@ -450,13 +450,25 @@ class UserController extends \BaseController {
 		$user_id = Sentry::getUser()->id;
 
 		$about = About::where("user_id", "=", $user_id);
+
+		if(count($about->get()) == 0)
+		{
+			$about = new About();
+			$about->user_id = $user_id;
+			$about->content = $content;
+
+			if(!$about->save()) 
+			{
+				return Response::json(array('errCode' => 1,'message' => '保存失败!', "about" => $about));
+			}
+		} 
+		else 
+		{
+			$about->update(array('content' => $content));
+		}
 		
-		if(!isset($about) || count($about) == 0)
-			return Response::json(array('errCode' => 1,'message' => '该记录不存在!'));
 
-		$about->update(array('content' => $content));
-
-		return Response::json(array('errCode' => 0,'message' => '保存成功!'));
+		return Response::json(array('errCode' => 0,'message' => '保存成功!', "about" => $about));
 	}
 	
 	public function updateContact()
