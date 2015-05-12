@@ -96,22 +96,29 @@
     			<span>我的技能</span>
     		</div>
             @if (Sentry::check() && Sentry::getUser()->id == $id)
-          
+               
             @endif
             <div class="skill-items">
-                <div class="skill-item"><span>HTML</span></div>
-                <div class="skill-item">CSS</div>
-                <div class="skill-item">Javascript</div>
-                <div class="skill-item">PHP</div>
-                <div class="skill-item">Ruby</div>
-                <div class="skill-item">Python</div>
-                <div class="skill-item">Go</div>
-                <div class="skill-item">Perl</div>
-                <div class="skill-item">Photoshop</div>
-                <div class="skill-item">Ai</div>
-                <div class="skill-item">Axure</div>
-                <div class="clear"></div>
+                <div class="skill-item">HTML<span class="del-btn">&nbsp</span></div>
+                <div class="skill-item">CSS<span class="del-btn">&nbsp</span></div>
+                <div class="skill-item">Javascript<span class="del-btn">&nbsp</span></div>
+                <div class="skill-item">PHP<span class="del-btn">&nbsp</span></div>
+                <div class="skill-item">Ruby<span class="del-btn">&nbsp</span></div>
+                <div class="skill-item">Python<span class="del-btn">&nbsp</span></div>
+                <div class="skill-item">Go<span class="del-btn">&nbsp</span></div>
+                <div class="skill-item">Perl<span class="del-btn">&nbsp</span></div>
+                <div class="skill-item">Photoshop<span class="del-btn">&nbsp</span></div>
+                <div class="skill-item">Ai<span class="del-btn">&nbsp</span></div>
+                <div class="skill-item">Axure<span class="del-btn">&nbsp</span></div>
+                <div class="skill-add"><img class="add-btn" src="/images/tradingcenter/icon/add.png" /></div>
+                <div class="bg hidden"></div>
+                <div class="show hidden">
+                    <input type="text" class="show-input" />
+                    <div class="save-btn">保存</div>
+                    <div class="cancel-btn">取消</div>
+                </div>
             </div>
+            <div class="clear"></div>
     	</div>
     	<div class="block work-experience">
     		<div class="tag">

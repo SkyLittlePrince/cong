@@ -54,7 +54,10 @@ $ ->
 # 点击新增按钮事件
 ###
 addSkill = (e)->
-
+	$target = $(e.currentTarget)
+	$parent = $target.parent().parent()
+	$parent.find(".show").removeClass("hidden")
+	$parent.find(".bg").removeClass("hidden")
 addWorkExperience = (e)->
 	$target = $(e.currentTarget)
 	$parent = $target.parent().parent()
@@ -80,7 +83,7 @@ addAward = (e)->
 ###
 addCancelSkill = (e)->
 	# need to continue...
-
+	
 addCancelWorkExperience = (e)->
 	$target = $(e.currentTarget)
 	$parent = $target.parent().parent()
@@ -105,7 +108,6 @@ addCancelAward = (e)->
 # 点击保存新增按钮事件
 ###
 addSaveSkill = (e)->
-	# need to continue...
 
 addSaveWorkExperience = (e)->
 	$target = $(e.currentTarget)
@@ -173,7 +175,10 @@ addSaveAwards = (e)->
 ###
 delSkill = (e)->
 	# need to continue...
-
+	$target = $(e.currentTarget)
+	$parent = $target.parent()
+	$parent.fadeOut()
+	
 delWorkExperience = (e)->
 	$target = $(e.currentTarget)
 	$parent = $target.parent().parent()
@@ -234,7 +239,7 @@ editAbout = (e)->
 
 editSkill = (e)->
 	# need to continue...
-
+	
 editWorkExperience = (e)->
 	$target = $(e.currentTarget)
 	$parent = $target.parent().parent()
@@ -285,7 +290,11 @@ cancelAbout = (e)->
 
 cancelSkill = (e)->
 	# need to continue...
-
+	# need to continue...
+	$target = $(e.currentTarget)
+	$parent = $target.parent().parent()
+	$parent.find(".show").addClass("hidden")
+	$parent.find(".bg").addClass("hidden")
 cancelWorkExperience = (e)->
 	$target = $(e.currentTarget)
 	$parent = $target.parent().parent()
@@ -346,7 +355,11 @@ saveAbout = (e)->
 
 saveSkill = (e)->
 	# need to continue...
-
+	# need to continue...
+	$target = $(e.currentTarget)
+	$parent = $target.parent().parent()
+	$parent.find(".show").addClass("hidden")
+	$parent.find(".bg").addClass("hidden")
 saveWorkExperience = (e)->
 	$target = $(e.currentTarget)
 	$parent = $target.parent().parent()

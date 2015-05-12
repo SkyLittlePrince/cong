@@ -1,6 +1,8 @@
 <?php
 
 class Skill_user extends \Eloquent {
+	protected $table = 'skill_user';
+	
 	protected $fillable = array(
 			'skill_id',
 			'user_id'
@@ -10,4 +12,8 @@ class Skill_user extends \Eloquent {
 			'created_at',
 			'updated_at'
 		);
+	public function skills()
+	{
+		return $this->hasMany('Skill');
+	}
 }
