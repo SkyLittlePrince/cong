@@ -392,6 +392,7 @@ saveAbout = (e)->
 			alert res.message
 		$aboutText.removeClass("hidden")
 		$aboutTextarea.addClass("hidden")
+		$parent.find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
 
 saveSkill = (e)->
 	# need to continue...
@@ -481,17 +482,21 @@ saveContact = (e)->
 ###
 # 工具函数
 ###
+
+replaceConentByInput = ($elem)->
+	content = $elem.html().trim()
+	$.data($elem[0], "oldData", content)
+	$input = $("<input type='text' value='" + content + "' />")
+	$elem.html $input
+
+replaceInputByContent = ($input, content)->
+	$parent = $input.parent()
+	$parent.html content
+
+###
+# 工具函数
+###
 dataBus = 
-	replaceConentByInput: ($elem)->
-		content = $elem.html().trim()
-		$.data($elem[0], "oldData", content)
-		$input = $("<input type='text' value='" + content + "' />")
-		$elem.html $input
-
-	replaceInputByContent:  ($input, content)->
-		$parent = $input.parent()
-		$parent.html content
-
 	saveChanges: (name, data, callback)->
 		$.post '/user/update' + name, data, (data)->
 			callback(data)

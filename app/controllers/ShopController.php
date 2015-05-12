@@ -13,6 +13,7 @@ class ShopController extends \BaseController {
 		$user = Sentry::getUser();
 		$name = Input::get('name');
 		$description = Input::get('description');
+		$url = Input::get('avatar');
 		$tags = Input::get('tags');
 		$shop = Shop::where('user_id',$user->id)->first();
 		if(isset($shop))
@@ -22,6 +23,7 @@ class ShopController extends \BaseController {
 		$shop->name = $name;
 		$shop->description = $description;
 		$shop->user_id = $user->id;
+		$shop->avatar = $avatar;
 
 		if($shop->save())
 		{
@@ -44,6 +46,7 @@ class ShopController extends \BaseController {
 	{
 		$user = Sentry::getUser();
 		$name = Input::get('name');
+		$avatar = Input::get('avatar');
 		$description = Input::get('description');
 		$id = Input::get('id');
 
@@ -56,6 +59,7 @@ class ShopController extends \BaseController {
 
 		$shop->name = $name;
 		$shop->description = $description;
+		$shop->avatar = $avatar;
 
 		if($shop->save())
 			return Response::json(array('errCode' =>0,'message' => '修改成功!'));
@@ -120,4 +124,8 @@ class ShopController extends \BaseController {
 		return Response::json(array('errCode' => 2,'message' => '删除失败!'));
 	}
 
+	public function searchShopByTag()
+	{
+		$name = Input::get('name');
+	}
 }
