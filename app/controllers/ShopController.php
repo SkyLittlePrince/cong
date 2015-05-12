@@ -124,8 +124,9 @@ class ShopController extends \BaseController {
 
 	public function searchShopByTag()
 	{
-		$name = Input::get('name');
+		// $name = Input::get('name');
 
-		$shop = Tag::where('name','like','%'.$name.'%')->shops()
+		// DB::table('shops')
+		// 	->join('shop_tag',)
 	}
 }
