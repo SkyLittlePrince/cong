@@ -90,12 +90,58 @@ class MessageController extends BaseController {
 		$messageConfig = MessageConfig::where("user_id", "=", Sentry::getUser()->id)->get();
 
 		return Response::json(array('errCode' => 0,'messageConfig' => $messageConfig));
-	}	
+	}
 
 	public function changeMessageConfig()
 	{
+		if(Sentry::check()) 
+		{
+			$user_id = Sentry::getUser()->id;
+		} 
+		else 
+		{
+			return Response::json(array('errCode' => 1, 'message' => '请先登录'));
+		}
+
 		$messageConfig = input::get("messageConfig");
 
-		Message::where("user_id", "=", Sentry::getUser()->id)->update($messageConfig);
+		$config = MessageConfig::where("user_id", "=", Sentry::getUser()->id);
+		if(count($config->get()) == 0) 
+		{
+			$config = new MessageConfig();
+			$config->acceptance = $messageConfig["acceptance"];
+			$config->finishConfirmed = $messageConfig["finishConfirmed"];
+			$config->addPriceOrDelay = $messageConfig["addPriceOrDelay"];
+			$config->publishSuccess = $messageConfig["publishSuccess"];
+			$config->publishFail = $messageConfig["publishFail"];
+			$config->nearDeadline = $messageConfig["nearDeadline"];
+
+			if(!$config->save())
+			{
+				return Response::json(array('errCode' => 2, 'message' => '修改失败'));
+			}
+		}
+		else 
+		{
+			$config->update($messageConfig);
+		}
+
+		return Response::json(array('errCode' => 0));
+	}
+
+	public function getNumOfUnreadMessages()
+	{
+		if(Sentry::check())
+		{
+			$user_id = Sentry::getUser()->id;
+		} 
+		else 
+		{
+			return Response::json(array('errCode' => 1, 'message' => '请先登录'));
+		}
+
+		$NumOfUnreadMessages = DB::table('messages')->where('receiver', '=', $user_id)->where("status", "=", 0)->count();
+
+		return Response::json(array("num" => $NumOfUnreadMessages));
 	}
 }
