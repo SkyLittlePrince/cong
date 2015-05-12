@@ -39,6 +39,7 @@ registerConfirmHandler = ->
 	if storeInfo
 		AjaxAddStore storeInfo, (data)->
 			if data.errCode is 0
+				alert '店铺创建成功'
 				location.href= '/trading-center/seller/my-store'
 			else
 				alert data.message
