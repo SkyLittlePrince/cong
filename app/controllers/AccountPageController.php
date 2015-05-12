@@ -2,6 +2,51 @@
 
 class AccountPageController extends BaseController {
 
+	public function index()
+	{
+		if(Sentry::check()) 
+		{
+			$user = Sentry::getUser();
+		} 
+		else 
+		{
+			return Redirect::guest('user/login');
+		}
+
+		return View::make('tradingCenter.account.index', $user);
+	}
+
+	public function authentication()
+	{
+		if(Sentry::check()) 
+		{
+			$user_id = Sentry::getUser()->id;
+		} 
+		else
+		{
+			return Redirect::guest('user/login');
+		}
+
+		$authentication = Authentication::where("user_id", "=", $user_id)->get();
+
+		if(count($authentication) == 0)
+		{
+			$authentication = ["isExist" => false];
+			$authentication["name"] = "";
+			$authentication["credit_id"] = "";
+			$authentication["gender"] = 1;
+			$authentication["address"] = "";
+			$authentication["phone"] = "";
+		}
+		else
+		{
+			$authentication = $authentication[0];
+			$authentication["isExist"] = true;
+		}
+
+		return View::make('tradingCenter.account.authentication', $authentication);
+	}
+
 	public function userInfo()
 	{
 		if(!Input::has("user_id")) 

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSellerAuthenticationsTable extends Migration {
+class CreateAuthenticationsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateSellerAuthenticationsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('seller_authentications', function(Blueprint $table)
+		Schema::create('authentications', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('name');
@@ -43,7 +43,6 @@ class CreateSellerAuthenticationsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('seller_authentications');
+		Schema::drop('authentications');
 	}
-
 }
