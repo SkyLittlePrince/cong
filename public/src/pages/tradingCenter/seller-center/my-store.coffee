@@ -100,10 +100,99 @@ showFavorRank = (e)->
 		else
 			alert res.message
 
+
+
+$allTag = $('.detail .tags')
+$disabledTagTemplate = $('#disabledTagTemplate')
+$tagEdit = $('.tag-edit')
+$tagDisplay = $('.tag-display')
+# 已有标签模板
+disabledTagcompiled = _.template $disabledTagTemplate.html()
+
+
+# 获取当前所有的标签
+getAllTags = ->
+	tagArray = []
+	$allOneTag = $allTag.find('.one-tag')
+	$allOneTag.each ->
+		tagArray.push $(this).text().trim()
+	return tagArray
+
+primaryTag = getAllTags()
+
+loadTagsToEditState = (tagArray)->
+	$addTagInput = $('.edit-tag-list .add-tag-input')
+	for tag in tagArray
+		$addTagInput.before (disabledTagcompiled {tagValue: tag})
+
+# 编辑店铺标签
+editDetailStoreInfo = (e)->
+	$target = $(e.currentTarget)
+	tagArray = getAllTags()
+	# 进入编辑模式
+	$allTag.children().remove()
+	$tagDisplay.hide()
+	$tagEdit.show()
+	
+	# 加载现有标签
+	loadTagsToEditState(tagArray)
+	$target.addClass("hidden").siblings().removeClass("hidden")
+
+# 添加一个新的标签处理逻辑
+addNewTag = ->
+	tag = $(this).siblings('input[type="text"]').val().trim()
+	if not tag.length
+		alert('标签不能为空')
+		return false
+	if tag.length > 10
+		alert('标签的长度不能超过10个字')
+		return false
+	$allEditTag = $('.edit-tag-list input[disabled="disabled"]')
+	$allEditTag.each ->
+		if $(this).val() == tag
+			alert('标签不能重复')
+			return false
+	$addTagInput = $('.edit-tag-list .add-tag-input')
+	$addTagInput.before((disabledTagcompiled {tagValue: tag})).find('input').val('')
+
+deleteOldTag = ->
+	tag = $(this).siblings('input[type="text"]').val().trim()
+	if confirm('确定删除该标签？')
+		$(this).parent().remove()
+
+# 保存店铺简介信息
+saveDetailStoreInfo = (e)->
+	$target = $(e.currentTarget)
+	$parent = $target.parent().parent()
+
+getCurrentEditTag = ->
+	$allEditTag = $('.edit-tag-list input[disabled="disabled"]')
+	$allEditTag.each ->
+		tagArray.push $(this).val().trim()
+	return tagArray 
+
+# 取消编辑店铺信息
+cancelDetailStoreInfo = (e)->
+	$target = $(e.currentTarget)
+	$parent = $target.parent().parent()
+	$tagDisplay.show()
+	$('.display-tag').remove()
+	$tagEdit.hide()
+	$('.detail .tags').append($('<span class="one-tag">' + tag + '&nbsp&nbsp</span>')) for tag in primaryTag
+
+	$target.parent().find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
+
 $ ->
 	$('.info .edit-btn').bind 'click', editStoreInfo
 	$('.info .save-btn').bind 'click', saveStoreInfo
 	$('.info .cancel-btn').bind 'click', cancelStoreInfo
+
+	$('.detail .edit-btn').bind 'click', editDetailStoreInfo
+	$('.detail .save-btn').bind 'click', saveDetailStoreInfo
+	$('.detail .cancel-btn').bind 'click', cancelDetailStoreInfo
+
+	$("body").delegate '#add-tag-btn', 'click', addNewTag
+	$("body").delegate '.delete-tag-btn', 'click', deleteOldTag
 
 	$('.sellRank').bind 'click', showSellRank
 	$('.favorRank').bind 'click', showFavorRank
@@ -118,4 +207,3 @@ shopDataBus =
 	getProductRank: (name, data, callback)->
 		$.get '/product/getSortedProductsBy' + name, data, (data)->
 			callback data
-
