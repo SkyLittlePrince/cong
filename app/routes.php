@@ -219,10 +219,6 @@ Route::group(array('prefix' => 'trading-center'),function()
 	// 我的消息
 	Route::group(array('prefix' => 'mynews'),function()
 	{
-		Route::get('/', function()
-		{
-			return View::make('tradingCenter.mynews.notification');
-		});
 		Route::get('notification', function()
 		{
 			return View::make('tradingCenter.mynews.notification');
@@ -285,18 +281,32 @@ Route::group(array('prefix' => 'trading-center'),function()
 	// 账号设置
 	Route::group(array('prefix' => 'account'),function()
 	{
-		Route::get('/', function()
+		Route::group(array('before' => 'auth.user.isIn'), function() 
 		{
-			return View::make('tradingCenter.account.index');
+			Route::get('/', 'AccountPageController@index');
+			Route::get('authentication', 'AccountPageController@authentication');
+		
+			Route::get('bind-weibo', function()
+			{
+				return View::make('tradingCenter.account.bind-weibo');
+			});
+
+			Route::get('change-password', function()
+			{
+				return View::make('tradingCenter.account.change-password');
+			});
+			
+			Route::get('pay-account', function()
+			{
+				return View::make('tradingCenter.account.pay-account');
+			});
 		});
+
 		Route::get('base-info', function()
 		{
 			return View::make('tradingCenter.account.base-info');
 		});
-		Route::get('contact', function()
-		{
-			return View::make('tradingCenter.account.contact');
-		});
+
 		Route::get('address', function()
 		{
 			return View::make('tradingCenter.account.address');
@@ -305,39 +315,6 @@ Route::group(array('prefix' => 'trading-center'),function()
 		Route::get('card', 'AccountPageController@card');
 		
 		Route::get('user-info', 'AccountPageController@userInfo');
-
-		Route::get('bind-phone', function()
-		{
-			return View::make('tradingCenter.account.bind-phone');
-		});
-		Route::get('bind-email', function()
-		{
-			return View::make('tradingCenter.account.bind-email');
-		});
-		Route::get('bind-weibo', function()
-		{
-			return View::make('tradingCenter.account.bind-weibo');
-		});
-		Route::get('authentication', function()
-		{
-			return View::make('tradingCenter.account.authentication');
-		});
-		Route::get('change-password', function()
-		{
-			return View::make('tradingCenter.account.change-password');
-		});
-		Route::get('protect-login', function()
-		{
-			return View::make('tradingCenter.account.protect-login');
-		});
-		Route::get('protect-password', function()
-		{
-			return View::make('tradingCenter.account.protect-password');
-		});
-		Route::get('pay-account', function()
-		{
-			return View::make('tradingCenter.account.pay-account');
-		});
 	});
 
 	Route::group(array('prefix' => 'seller'),function()
@@ -357,8 +334,6 @@ Route::group(array('prefix' => 'trading-center'),function()
 			{
 				return View::make('tradingCenter.seller-center.my-indents');
 			});
-
-			Route::get('authentication', 'SellerPageController@authentication');
 
 			Route::get('indent-evaluation', function()
 			{

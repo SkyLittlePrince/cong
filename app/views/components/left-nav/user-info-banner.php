@@ -2,11 +2,10 @@
 <div id="user-info-banner">
 	<div class="user-info">
 		<div class="avatar component">
-			<img src="/images/common/avatar.png" alt="avatar">
+			<img id="user-info-banner-username" src="/images/common/avatar.png" alt="avatar" width="50" height="50" />
 		</div>
 		<div class="info component">
-			<p>Vivine</p>
-	        <p>学号 FC634085</p>
+			<p id="user-info-banner-username">Vivine</p>
 		</div>
 	</div>
 	<div class="address-info">
