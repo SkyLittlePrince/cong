@@ -219,10 +219,6 @@ Route::group(array('prefix' => 'trading-center'),function()
 	// 我的消息
 	Route::group(array('prefix' => 'mynews'),function()
 	{
-		Route::get('/', function()
-		{
-			return View::make('tradingCenter.mynews.notification');
-		});
 		Route::get('notification', function()
 		{
 			return View::make('tradingCenter.mynews.notification');

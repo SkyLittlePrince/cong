@@ -78,6 +78,7 @@ class AccountPageController extends BaseController {
 		$user["about"] = $user->about;
 		$user["friends"] = $friendsArray;
 		$user["friend_links"] = $friends;
+		$user["skills"] = $user->skills;
 
 		if(isset($user->shop) && count($user->shop->tags))
 			$user["shop"]["tags"] = $user->shop->tags;
