@@ -12,7 +12,7 @@ class Friend extends \Eloquent {
    	public $timestamps = false;
 
    	public function info()
-    {
-        return $this->belongsTo('User', 'friend_id', 'id');
-    }
+    	{
+        		return $this->belongsTo('User', 'friend_id', 'id');
+   	 }
 }

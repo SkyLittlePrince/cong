@@ -15,8 +15,8 @@ class ShopController extends \BaseController {
 		$description = Input::get('description');
 		$avatar = Input::get('avatar');
 		$tags = Input::get('tags');
-		$shop = Shop::where('user_id',$user->id)->first();
-		if(isset($shop))
+
+		if($user->role_id == 2)
 			return Response::json(array('errCode' => 1,'message' => '你已拥有店铺!'));
 
 		$shop = new Shop;
@@ -25,6 +25,7 @@ class ShopController extends \BaseController {
 		$shop->user_id = $user->id;
 		$shop->avatar = $avatar;
 
+
 		if($shop->save())
 		{
 			$user->role_id = 2;
@@ -32,7 +33,7 @@ class ShopController extends \BaseController {
 
 			foreach ($tags as $tag) {
 				$Tag = Tag::firstOrCreate(array('name' => $tag));
-				$shop_tag = ShopTag::Create(array('shop_id' => $shop->id,'tag_id' => $Tag->id));
+				$shop_tag = ShopTag::firstOrCreate(array('shop_id' => $shop->id,'tag_id' => $Tag->id));
 			}
 
 			return Response::json(array('errCode' =>0,'message' => '创建成功!'));
@@ -117,16 +118,29 @@ class ShopController extends \BaseController {
 			return Response::json(array('errCode' => 1,'message' => '店铺不存在!'));
 
 		if($shop->delete())
+		{
+			$user->role_id = 1;
+			$user->save();
 			return Response::json(array('errCode' => 0,'message' => '删除成功!'));
+		}
 
 		return Response::json(array('errCode' => 2,'message' => '删除失败!'));
 	}
 
 	public function searchShopByTag()
 	{
-		// $name = Input::get('name');
+		$name = Input::get('name');
 
-		// DB::table('shops')
-		// 	->join('shop_tag',)
+		$shop = DB::table('shops')
+			->join('shop_tag','shops.id','=','shop_tag.user_id')
+			->join('tags','tags.id','=','shop_tag.tag_id')
+			->join('scores','shops.id','=','scores.shop_id')
+			->select('shops.id','shops.name','shops.description','shops.avatar')
+			->where('tags.name','like','%'.$name.'%')
+			->groupBy('shops.id')
+			->orderBy(DB::raw('avg(scores.score)'))
+			->get();
+
+		return Response::json(array('errCode' => 0,'shop' => $shop));
 	}
 }

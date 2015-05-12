@@ -14,17 +14,14 @@ class SellerPageController extends BaseController {
 			return Redirect::guest('user/login');
 		}
 
-		$myShop = Shop::where("user_id", "=", $user_id)->get();
+		$myShop = Shop::where("user_id", "=", $user_id)->with('tags','products')->first();
 
-		if(!isset($myShop) || count($myShop) == 0)
+		if(!isset($myShop))
 		{
 			return View::make('errors.haveNoStore');
 		}
 
-		$shop = $myShop[0];
-		$myshop = Shop::find($shop->id);
-		$shop["tags"] = $myshop->tags;
-		$shop["products"] = $myshop->products;
+		$shop = $myShop->toArray();
 
 		return View::make('tradingCenter.seller-center.my-store', $shop);
 	}

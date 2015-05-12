@@ -18,7 +18,6 @@ class CreatePicturesTable extends Migration {
 			$table->timestamps();
 			$table->integer('product_id')->unsigned()->index('product_id');
 			$table->string('image');
-			$table->string('key');
 
 			$table
 				->foreign('product_id')
