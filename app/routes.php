@@ -81,6 +81,8 @@ Route::group(array('prefix' => 'product','before' => 'auth.user.isIn'),function(
 	Route::get('deleteProduct','ProductController@deleteProduct');
 	Route::get('getSortedProductsBySellNum','ProductController@sortProductBySellNum');
 	Route::get('getSortedProductsByFavorNum','ProductController@sortProductByFavorNum');
+	Route::post('addPicture','PictureController@addPicture');
+	Route::get('deletePicture','PictureController@deletePicture');
 });
 
 // 消息模块

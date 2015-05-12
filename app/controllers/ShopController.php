@@ -29,11 +29,11 @@ class ShopController extends \BaseController {
 		if($shop->save())
 		{
 			$user->role_id = 2;
-			//$user->save();
+			$user->save();
 
 			foreach ($tags as $tag) {
 				$Tag = Tag::firstOrCreate(array('name' => $tag));
-				$shop_tag = ShopTag::Create(array('shop_id' => $shop->id,'tag_id' => $Tag->id));
+				$shop_tag = ShopTag::firstOrCreate(array('shop_id' => $shop->id,'tag_id' => $Tag->id));
 			}
 
 			return Response::json(array('errCode' =>0,'message' => '创建成功!'));

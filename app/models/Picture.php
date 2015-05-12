@@ -3,8 +3,7 @@
 class Picture extends \Eloquent {
 	protected $fillable = array(
 			'product_id',
-			'image',
-			'key'
+			'image'
 		);
 
 	protected $hidden = array(
