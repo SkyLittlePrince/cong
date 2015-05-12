@@ -13,6 +13,7 @@ class ShopController extends \BaseController {
 		$user = Sentry::getUser();
 		$name = Input::get('name');
 		$description = Input::get('description');
+		$url = Input::get('url');
 		$tags = Input::get('tags');
 		$shop = Shop::where('user_id',$user->id)->first();
 		if(isset($shop))
@@ -22,6 +23,7 @@ class ShopController extends \BaseController {
 		$shop->name = $name;
 		$shop->description = $description;
 		$shop->user_id = $user->id;
+		$shop->url = $url;
 
 		if($shop->save())
 		{
