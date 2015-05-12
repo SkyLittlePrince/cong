@@ -28,7 +28,7 @@
                         <a href="" class="btn" id="copy-link1">复制链接</a>
                     </div>
                 </div>
-                <div class="one-way">
+        <!--         <div class="one-way">
                     <p class="way-title">方式二: 短信邀请</p>
                     <p class="tips">直接输入好友手机号码, 邀请Ta们开通匆匆网</p>
                     <p class="input-label">手机号:</p>
@@ -36,9 +36,9 @@
                         <input type="text" id="phone" name="phone" />
                         <a href="" class="btn" id="send-message">发送信息</a>
                     </div>
-                </div>
+                </div> -->
                 <div class="one-way">
-                    <p class="way-title">方式三: 邮件邀请</p>
+                    <p class="way-title">方式二: 邮件邀请</p>
                     <p class="tips">给你的好友发送电子邮件,邀请成功后,  Ta们会自动关注你哦!</p>
                     <p class="input-label">邮件地址:</p>
                     <div class="input-row">

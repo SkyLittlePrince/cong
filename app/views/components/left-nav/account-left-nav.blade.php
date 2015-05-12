@@ -16,7 +16,7 @@
                 <a href="javascript:void(0);" class="nav-item nav-a">账户绑定</a>
                 <ul class="sub-nav">
                     <!-- <li><a href="/trading-center/account/bind-phone">手机绑定</a></li> -->
-                    <li><a href="/trading-center/account/bind-email">邮箱绑定></a></li>
+                    <!-- <li><a href="/trading-center/account/bind-email">邮箱绑定></a></li> -->
                     <li><a href="/trading-center/account/bind-weibo">微博绑定</a></li>
                 </ul>
             </li>
@@ -27,8 +27,8 @@
                 <a href="javascript:void(0);" class="nav-item nav-a">账号安全</a>
                 <ul class="sub-nav">
                     <li><a href="/trading-center/account/change-password">修改登录密码</a></li>
-                    <li><a href="/trading-center/account/protect-login">账号登录保护</a></li>
-                    <li><a href="/trading-center/account/protect-password">账号密码保护</a></li>
+                    <!-- <li><a href="/trading-center/account/protect-login">账号登录保护</a></li> -->
+                    <!-- <li><a href="/trading-center/account/protect-password">账号密码保护</a></li> -->
                 </ul>
             </li>
             <li>

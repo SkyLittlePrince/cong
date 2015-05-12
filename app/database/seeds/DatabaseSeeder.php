@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('ShopTagsTableSeeder');
 		$this->call('DescriptionTableSeeder');
 		$this->call('SellerAuthenticationTableSeeder');
+		$this->call('FriendsTableSeeder');
 	}
 
 }

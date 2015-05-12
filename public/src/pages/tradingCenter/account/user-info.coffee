@@ -1,6 +1,9 @@
 # 缓存DOM节点变量
 $aboutText = $(".about p")
 $aboutTextarea = $(".about textarea")
+$userId = $("#user_id");
+$addFriendBtn = $("#add-friend-btn");
+$deleteFriendBtn = $("#delete-friend-btn");
 
 ###
 # 页面加载完成执行的操作，绑定事件
@@ -49,6 +52,52 @@ $ ->
     $('.work-experience .add-cancel-btn').bind 'click', addCancelWorkExperience
     $('.edu-experience .add-cancel-btn').bind 'click', addCancelEduExperience
     $('.awards .add-cancel-btn').bind 'click', addCancelAward
+
+    $("#add-friend-btn").bind 'click', addFriend
+    $("#delete-friend-btn").bind 'click', deleteFriend
+
+    checkIsFriend()
+
+checkIsFriend = ()->
+	data = 
+		friend_id: $userId.val()
+
+	dataBus.checkIsFriend data, (res)->
+		if res.isFriend == 1
+			$deleteFriendBtn.removeClass("hidden")
+		else if res.isFriend == 0
+			$addFriendBtn.removeClass("hidden")
+
+###
+# 点击添加及删除好友按钮事件
+###
+addFriend = (e)->
+	friend_id = $userId.val()
+
+	data = 
+		friend_id: friend_id
+
+	dataBus.addFriend data, (res)->
+		if res.errCode == 0
+			alert "添加好友成功"
+			$addFriendBtn.addClass("hidden")
+			$deleteFriendBtn.removeClass("hidden")
+		else
+			alert res.message
+
+deleteFriend = (e)->
+	friend_id = $userId.val()
+
+	data = 
+		friend_id: friend_id
+
+	dataBus.deleteFriend data, (res)->
+		if res.errCode == 0
+			alert "删除好友成功"
+			$deleteFriendBtn.addClass("hidden")
+			$addFriendBtn.removeClass("hidden")
+		else
+			alert res.message
 
 ###
 # 点击新增按钮事件
@@ -117,7 +166,7 @@ addSaveWorkExperience = (e)->
 
 	compiled = _.template $("#workExperienceTemplate").html()
 
-	addItem "WorkExperience", data, (res)->
+	dataBus.addItem "WorkExperience", data, (res)->
 		if res.errCode == 0
 			alert "新增成功"
 			str = compiled {"newWorkExperienceId": res.newWorkExperienceId, startTime: data.start_time, endTime: data.end_time, description: data.description}
@@ -138,7 +187,7 @@ addSaveEduExperience = (e)->
 
 	compiled = _.template $("#eduExperienceTemplate").html()
 
-	addItem "EduExperience", data, (res)->
+	dataBus.addItem "EduExperience", data, (res)->
 		if res.errCode == 0
 			alert "新增成功"
 			str = compiled {"newEduExperienceId": res.newEduExperienceId, startTime: data.start_time, endTime: data.end_time, description: data.description}
@@ -158,7 +207,7 @@ addSaveAwards = (e)->
 
 	compiled = _.template $("#awardTemplate").html()
 
-	addItem "Award", data, (res)->
+	dataBus.addItem "Award", data, (res)->
 		if res.errCode == 0
 			alert "新增成功"
 			str = compiled {"newAwardId": res.newAwardId, time: data.time, description: data.description}
@@ -181,7 +230,7 @@ delWorkExperience = (e)->
 	data = 
 		id: $parent.find(".id").html().trim()
 	
-	deleteItem "WorkExperience", data, (res)->
+	dataBus.deleteItem "WorkExperience", data, (res)->
 		if res.errCode == 0
 			alert "删除成功"
 			$parent.fadeOut()
@@ -196,7 +245,7 @@ delEduExperience = (e)->
 	data = 
 		id: $parent.find(".id").html().trim()
 	
-	deleteItem "EduExperience", data, (res)->
+	dataBus.deleteItem "EduExperience", data, (res)->
 		console.log res.errCode
 		if res.errCode == 0
 			alert "删除成功"
@@ -211,7 +260,7 @@ delAwards = (e)->
 	data = 
 		id: $parent.find(".id").html().trim()
 	
-	deleteItem "Award", data, (res)->
+	dataBus.deleteItem "Award", data, (res)->
 		if res.errCode == 0
 			alert "删除成功"
 			$parent.fadeOut()
@@ -335,7 +384,7 @@ saveAbout = (e)->
 	data = 
 		content: $aboutTextarea.val()
 
-	saveChanges "About", data, (res)->
+	dataBus.saveChanges "About", data, (res)->
 		if res.errCode == 0
 			alert "修改成功"
 			$aboutText.html data.content
@@ -357,7 +406,7 @@ saveWorkExperience = (e)->
 		end_time: $parent.find(".end-time input").val().trim()
 		description: $parent.find(".description input").val().trim()
 
-	saveChanges "WorkExperience", data, (data)->
+	dataBus.saveChanges "WorkExperience", data, (data)->
 		if data.errCode == 0
 			alert "修改成功"
 			$parent.find("input").each (index, elem)->
@@ -366,6 +415,7 @@ saveWorkExperience = (e)->
 		else
 		 	alert data.message
 		$parent.find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
+		$parent.find(".del-btn").removeClass("hidden")
 
 
 saveEduExperience = (e)->
@@ -378,7 +428,7 @@ saveEduExperience = (e)->
 		end_time: $parent.find(".end-time input").val().trim()
 		description: $parent.find(".description input").val().trim()
 
-	saveChanges "EduExperience", data, (data)->
+	dataBus.saveChanges "EduExperience", data, (data)->
 		if data.errCode == 0
 			alert "修改成功"
 			$parent.find("input").each (index, elem)->
@@ -387,6 +437,7 @@ saveEduExperience = (e)->
 		else
 		 	alert data.message
 		$parent.find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
+		$parent.find(".del-btn").removeClass("hidden")
 
 saveAwards = (e)->
 	$target = $(e.currentTarget)
@@ -397,7 +448,7 @@ saveAwards = (e)->
 		time: $parent.find(".time input").val().trim()
 		description: $parent.find(".description input").val().trim()
 
-	saveChanges "Award", data, (data)->
+	dataBus.saveChanges "Award", data, (data)->
 		if data.errCode == 0
 			alert "修改成功"
 			$parent.find("input").each (index, elem)->
@@ -406,6 +457,7 @@ saveAwards = (e)->
 		else
 		 	alert data.message
 		$parent.find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
+		$parent.find(".del-btn").removeClass("hidden")
 
 saveContact = (e)->
 	$target = $(e.currentTarget)
@@ -416,7 +468,7 @@ saveContact = (e)->
 		qq: $parent.find(".qq input").val().trim()
 		email: $parent.find(".email input").val().trim()
 
-	saveChanges "Contact", data, (data)->
+	dataBus.saveChanges "Contact", data, (data)->
 		if data.errCode == 0
 			alert "修改成功"
 			$parent.find("input").each (index, elem)->
@@ -429,40 +481,38 @@ saveContact = (e)->
 ###
 # 工具函数
 ###
-replaceConentByInput = ($elem)->
-	content = $elem.html().trim()
-	$.data($elem[0], "oldData", content)
-	$input = $("<input type='text' value='" + content + "' />")
-	$elem.html $input
+dataBus = 
+	replaceConentByInput: ($elem)->
+		content = $elem.html().trim()
+		$.data($elem[0], "oldData", content)
+		$input = $("<input type='text' value='" + content + "' />")
+		$elem.html $input
 
-replaceInputByContent = ($input, content)->
-	$parent = $input.parent()
-	$parent.html content
+	replaceInputByContent:  ($input, content)->
+		$parent = $input.parent()
+		$parent.html content
 
-saveChanges = (name, data, callback)->
-	$.ajax {
-		type: "post"
-		url: '/user/update' + name
-		data: data
-		success: (data)->
+	saveChanges: (name, data, callback)->
+		$.post '/user/update' + name, data, (data)->
 			callback(data)
-	}
 
-addItem = (name, data, callback)->
-	$.ajax {
-		type: "post"
-		url: '/user/add' + name
-		data: data
-		success: (data)->
+	addItem: (name, data, callback)->
+		$.post '/user/add' + name, data, (data)->
 			callback(data)
-	}
 
-deleteItem = (name, data, callback)->
-	$.ajax {
-		type: "post"
-		url: '/user/delete' + name
-		data: data
-		success: (data)->
+	deleteItem: (name, data, callback)->
+		$.post '/user/delete' + name, data, (data)->
 			callback(data)
-	}
+
+	addFriend: (data, callback)->
+		$.post '/friend/add', data, (data)->
+			callback(data)
+
+	deleteFriend: (data, callback)->
+		$.post '/friend/delete', data, (data)->
+			callback(data)
+
+	checkIsFriend: (data, callback)->
+		$.get "/friend/checkIsFriend", data, (data)->
+			callback(data)
 

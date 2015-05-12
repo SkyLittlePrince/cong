@@ -12,11 +12,17 @@ class AccountPageController extends BaseController {
 			} 
 			else 
 			{
-				return Redirect::to('user/login');
+				return Redirect::guest('user/login');
 			}
 		} else 
 		{
 			$user_id = Input::get("user_id");
+		}
+
+		$friends = Friend::where("user_id", "=", $user_id)->paginate(10);;
+		$friendsArray = [];
+		foreach ($friends as $friend) {
+			$friendsArray[] = $friend->info;
 		}
 
 		$user = User::find($user_id);
@@ -25,6 +31,8 @@ class AccountPageController extends BaseController {
 		$user["awards"] = $user->awards;
 		$user["shop"] = $user->shop;
 		$user["about"] = $user->about;
+		$user["friends"] = $friendsArray;
+		$user["friend_links"] = $friends;
 
 		if(isset($user->shop) && count($user->shop->tags))
 			$user["shop"]["tags"] = $user->shop->tags;
@@ -34,20 +42,13 @@ class AccountPageController extends BaseController {
 
 	public function card()
 	{
-		if(!Input::has("user_id")) 
+		if(Sentry::check()) 
 		{
-			if(Sentry::check()) 
-			{
-				$user_id = Sentry::getUser()->id;
-			} 
-			else 
-			{
-				App::abort(404);
-			}
+			$user_id = Sentry::getUser()->id;
 		} 
 		else 
 		{
-			$user_id = Input::get("user_id");
+			return Redirect::guest('user/login');
 		}
 
 		$user = User::find($user_id);

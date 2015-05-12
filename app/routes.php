@@ -134,12 +134,23 @@ Route::group(array('prefix' => 'seller-authentication'),function()
 	});
 });
 
+Route::group(array('prefix' => 'friend'),function()
+{
+	Route::group(array('before' => 'auth.user.isIn'), function() 
+	{
+		Route::post('add','FriendController@add');
+		Route::post('delete','FriendController@delete');
+		Route::get('getMyFriends','FriendController@getMyFriends');
+		Route::get('checkIsFriend','FriendController@checkIsFriend');
+	});
+});
+
 Route::group(array('prefix' => 'qiniu'),function()
 {
-	// Route::group(array('before' => 'auth.user.isIn'), function() 
-	// {
+	Route::group(array('before' => 'auth.user.isIn'), function() 
+	{
 		Route::get('getUpToken','UploadController@getUpToken');
-	// });
+	});
 });
 /*------------------------</接口路由>------------------------------*/
 
