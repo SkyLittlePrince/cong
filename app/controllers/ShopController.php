@@ -13,7 +13,7 @@ class ShopController extends \BaseController {
 		$user = Sentry::getUser();
 		$name = Input::get('name');
 		$description = Input::get('description');
-		$url = Input::get('avatar');
+		$avatar = Input::get('avatar');
 		$tags = Input::get('tags');
 		$shop = Shop::where('user_id',$user->id)->first();
 		if(isset($shop))
@@ -126,6 +126,9 @@ class ShopController extends \BaseController {
 
 	public function searchShopByTag()
 	{
-		$name = Input::get('name');
+		// $name = Input::get('name');
+
+		// DB::table('shops')
+		// 	->join('shop_tag',)
 	}
 }
