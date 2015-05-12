@@ -14,6 +14,9 @@ $(document).ready ()->
 		nav = $("#header").find(".nav").find("li").removeClass("active");
 		$(nav[index]).addClass("active");
 
+	$.get "/message/get-num-of-unread-messages", {}, (res)->
+		$("#header .unread-message").html res.num
+
 	$("#logout").click ()->
 		$.get "/user/logout", {}, (res)->
 			if res.errCode == 0

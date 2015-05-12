@@ -1,5 +1,6 @@
 Checkbox = require('../../../common/checkbox/checkbox.coffee');
 Captcha = require('../../../common/captcha/captcha.coffee')
+Uploader = require "../../../common/uploader/index.coffee"
 
 $store = $('#store')
 $storeDesc = $('#store-desc')
@@ -19,6 +20,7 @@ AjaxAddStore = (storeInfo, callback)->
 			name: storeInfo.name
 			description: storeInfo.description
 			tags: storeInfo.tags
+			avatar: storeInfo.avatar
 		success: (data)->
 			callback(data)
 	}
@@ -28,7 +30,8 @@ registerConfirmAction = ->
 	return {
 		name: $store.val()
 		description: $storeDesc.val()
-		tags: $skill.val()
+		tags: ['1']#$skill.val()
+		avatar: $("#avatar-url").val()
 	}
 # 开通点铺逻辑
 registerConfirmHandler = ->
@@ -40,9 +43,25 @@ registerConfirmHandler = ->
 			else
 				alert data.message
 
+setUploadedPhoto = (name)->
+	uploader = new Uploader {
+		domain: "http://7xj0sp.com1.z0.glb.clouddn.com/"	# bucket 域名，下载资源时用到，**必需**
+		browse_button: name + '-file',       # 上传选择的点选按钮，**必需**
+		container: name + '-wrapper',       # 上传选择的点选按钮，**必需**
+	}, {
+		FileUploaded: (up, file, info)->
+			info = $.parseJSON info
+			domain = up.getOption('domain')
+			url = domain + info.key
+
+			# 显示上传之后的图片
+			$("#" + name + "-wrapper").find(".avatar-img").attr("src", url)
+			$("#avatar-url").val(url)
+	}
 
 # 文档加载完成执行的操作
 $ ->
 	checkbox = (new Checkbox({selector: '.my-indents-content'})).init();
 	$registerConfirm.bind 'click', registerConfirmHandler
+	avatarUploader = setUploadedPhoto "avatar"
 

@@ -94,6 +94,7 @@ Route::group(array('prefix' => 'message'),function()
 		Route::post('delete','MessageController@delete');
 		Route::post('clear','MessageController@clear');
 		Route::get('get-my-messages','MessageController@getMyMessages');
+		Route::get('get-num-of-unread-messages', 'MessageController@getNumOfUnreadMessages');
 	});
 });
 
