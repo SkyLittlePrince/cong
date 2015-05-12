@@ -15,8 +15,8 @@ class ShopController extends \BaseController {
 		$description = Input::get('description');
 		$avatar = Input::get('avatar');
 		$tags = Input::get('tags');
-		$shop = Shop::where('user_id',$user->id)->first();
-		if(isset($shop))
+
+		if($user->role_id == 2)
 			return Response::json(array('errCode' => 1,'message' => '你已拥有店铺!'));
 
 		$shop = new Shop;
@@ -25,10 +25,11 @@ class ShopController extends \BaseController {
 		$shop->user_id = $user->id;
 		$shop->avatar = $avatar;
 
+
 		if($shop->save())
 		{
 			$user->role_id = 2;
-			$user->save();
+			//$user->save();
 
 			foreach ($tags as $tag) {
 				$Tag = Tag::firstOrCreate(array('name' => $tag));
@@ -117,7 +118,11 @@ class ShopController extends \BaseController {
 			return Response::json(array('errCode' => 1,'message' => '店铺不存在!'));
 
 		if($shop->delete())
+		{
+			$user->role_id = 1;
+			$user->save();
 			return Response::json(array('errCode' => 0,'message' => '删除成功!'));
+		}
 
 		return Response::json(array('errCode' => 2,'message' => '删除失败!'));
 	}
