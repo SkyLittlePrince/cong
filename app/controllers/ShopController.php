@@ -126,9 +126,18 @@ class ShopController extends \BaseController {
 
 	public function searchShopByTag()
 	{
-		// $name = Input::get('name');
+		$name = Input::get('name');
 
-		// DB::table('shops')
-		// 	->join('shop_tag',)
+		$shop = DB::table('shops')
+			->join('shop_tag','shops.id','=','shop_tag.user_id')
+			->join('tags','tags.id','=','shop_tag.tag_id')
+			->join('scores','shops.id','=','scores.shop_id')
+			->select('shops.id','shops.name','shops.description','shops.avatar')
+			->where('tags.name','like','%'.$name.'%')
+			->groupBy('shops.id')
+			->orderBy(DB::raw('avg(scores.score)'))
+			->get();
+
+		return Response::json(array('errCode' => 0,'shop' => $shop));
 	}
 }
