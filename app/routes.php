@@ -12,10 +12,11 @@
 */
 /*------------------------<接口路由>------------------------------*/
 //测试模块
-Route::get('test',function()
-{
-	return View::make('test');
-});
+// Route::get('test',function()
+// {
+// 	return View::make('test');
+// });
+Route::get('test','TestController@getAscore');
 Route::post('test','UserController@getCheckRegister');
 
 // 用户模块
