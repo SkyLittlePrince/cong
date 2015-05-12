@@ -25,7 +25,6 @@ class SkillController extends \BaseController {
 		$id = Input::get('id');
 		$user = User::find(Sentry::getUser()->id);
 
-		$id = intval($id);
 		if($user->skills()->detach($id))
 		{
 			return Response::json(array('errCode' => 0,'message' => '删除成功!'));
