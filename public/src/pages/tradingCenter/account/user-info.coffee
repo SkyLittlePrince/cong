@@ -33,12 +33,14 @@ $ ->
     $(document).on 'click', '.awards .save-btn', saveAwards
     $('.contact .save-btn').bind 'click', saveContact
 
-    $(document).on 'click', '.skill .del-btn', delSkill
+    $(document).on 'mouseover', '.skill-item', addDel
+    $(document).on 'mouseout', '.skill-item', removeDel
+    $(document).on 'click', '.skill .del-btn-skill', delSkill
     $(document).on 'click', '.work-experience .del-btn', delWorkExperience
     $(document).on 'click', '.edu-experience .del-btn', delEduExperience
     $(document).on 'click', '.awards .del-btn', delAwards
 
-    $(document).on 'click', '.skill .add-btn', addSkill
+    $(document).on 'click', '.skill .add-btn-img', addSkill
     $(document).on 'click', '.work-experience .add-btn', addWorkExperience
     $(document).on 'click', '.edu-experience .add-btn', addEduExperience
     $(document).on 'click', '.awards .add-btn', addAward
@@ -132,7 +134,10 @@ addAward = (e)->
 ###
 addCancelSkill = (e)->
 	# need to continue...
-	
+	$target = $(e.currentTarget)
+	$parent = $target.parent().parent()
+	$parent.find(".show").addClass("hidden")
+	$parent.find(".bg").addClass("hidden")
 addCancelWorkExperience = (e)->
 	$target = $(e.currentTarget)
 	$parent = $target.parent().parent()
@@ -157,6 +162,22 @@ addCancelAward = (e)->
 # 点击保存新增按钮事件
 ###
 addSaveSkill = (e)->
+	$target = $(e.currentTarget)
+	$parent = $target.parent().parent()
+	data = 
+		name: $parent.find(".skill-name input").val()
+
+	compiled = _.template $("#skillTemplate").html()
+
+	dataBus.addItem "Skill", data, (res)->
+		if res.errCode == 0
+			alert "新增成功"
+			str = compiled {"newSkillId": res.newSkillId, name: data.name}
+			$(str).insertBefore $parent
+			$parent.find(".show").addClass("hidden")
+			$parent.find(".bg").addClass("hidden")
+		else
+			alert res.message
 
 addSaveWorkExperience = (e)->
 	$target = $(e.currentTarget)
@@ -222,11 +243,29 @@ addSaveAwards = (e)->
 ###
 # 点击删除按钮事件
 ###
+addDel = (e)->
+	$target = $(e.currentTarget)
+	$parent = $target.parent().parent()
+	$parent.find(".del-btn-skill").removeClass("hidden")
+	$parent.find(".del-btn-skill").addClass("block-img")
+removeDel = (e)->
+	$target = $(e.currentTarget)
+	$parent = $target.parent().parent()
+	$parent.find(".del-btn-skill").addClass("hidden")
+	$parent.find(".del-btn-skill").removeClass("block-img")
 delSkill = (e)->
 	# need to continue...
 	$target = $(e.currentTarget)
 	$parent = $target.parent()
-	$parent.fadeOut()
+	data = 
+		id: $parent.find(".skill-id").html().trim()
+	
+	dataBus.deleteItem "Skill", data, (res)->
+		if res.errCode == 0
+			alert "删除成功"
+			$parent.fadeOut()
+		else
+			alert res.message
 	
 delWorkExperience = (e)->
 	$target = $(e.currentTarget)
@@ -340,10 +379,7 @@ cancelAbout = (e)->
 cancelSkill = (e)->
 	# need to continue...
 	# need to continue...
-	$target = $(e.currentTarget)
-	$parent = $target.parent().parent()
-	$parent.find(".show").addClass("hidden")
-	$parent.find(".bg").addClass("hidden")
+	
 cancelWorkExperience = (e)->
 	$target = $(e.currentTarget)
 	$parent = $target.parent().parent()
@@ -406,10 +442,7 @@ saveAbout = (e)->
 saveSkill = (e)->
 	# need to continue...
 	# need to continue...
-	$target = $(e.currentTarget)
-	$parent = $target.parent().parent()
-	$parent.find(".show").addClass("hidden")
-	$parent.find(".bg").addClass("hidden")
+	
 saveWorkExperience = (e)->
 	$target = $(e.currentTarget)
 	$parent = $target.parent().parent()

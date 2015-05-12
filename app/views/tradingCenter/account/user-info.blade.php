@@ -104,17 +104,30 @@
             @if (Sentry::check() && Sentry::getUser()->id == $id)
                
             @endif
-            <div class="skill-items">
-                <div class="skill-item">
-                    <span>{{{ $skill["name"] }}}</span>
+            @foreach ($skills as $skill)
+            <div class="skill-item">
+                <input type="hidden" class="skill-id" value="{{{ $skill['id'] }}}" />
+                <span class="skill-name">{{{ $skill["name"] }}}</span>
+                <img src="/images/tradingcenter/icon/delete.png" class="hidden del-btn-skill" />
+            </div>
+            @endforeach
+            <div class="skill-add">
+                <img class="add-btn-img" src="/images/tradingcenter/icon/add.png" />
+            </div>
+            <div class="bg hidden"></div>
+            <script type="text-template" id="skillTemplate">
+                <div class="show">
+                    <span class="hidden id"><%= newSkillId %></span>
+                    <span class="skill-name"><%= name %></span>
+                    <div class="add-save-btn">添加</div>
+                    <div class="add-cancel-btn">取消</div>
+                    <div class="clear"></div>
                 </div>
-                @foreach ($skills as $skill)
-                <div class="skill-item">
-                    <input type="hidden" class="skill-id" value="{{{ $skill['id'] }}}">
-                    <span>{{{ $skill["name"] }}}</span>
-                </div>
-                @endforeach
-                <div class="clear"></div>
+            </script>
+            <div class="show hidden">
+                <input type="text" class="skill-name" placeholder="技能"/>
+                <div class="add-save-btn">添加</div>
+                <div class="add-cancel-btn">取消</div>
             </div>
             <div class="clear"></div>
     	</div>

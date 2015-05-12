@@ -493,7 +493,6 @@ class UserController extends \BaseController {
 
 		return Response::json(array('errCode' => 3,'message' => '保存失败!'));
 	}
-	
 
 	//添加工作经历
 	public function addWorkExperience()
