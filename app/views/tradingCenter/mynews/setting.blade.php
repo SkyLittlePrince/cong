@@ -28,16 +28,14 @@
                         </div>
                     </li>
                     <li class="one-message">
-                        <label class="my-self-checkbox-label">
-                            <input type="checkbox" name="message" value="message1" style="display:hidden;">
-                        </label>             
+                        <label class="my-checkbox-item"></label>             
                         <div class="col-right">
                             当买家验收完稿时,请通知我
                         </div>
                     </li>
                     <li class="one-message">
                         <label class="my-self-checkbox-label">
-                            <input type="checkbox" name="message" value="message1" style="display:hidden;">
+                            <input type="checkbox" name="finishConfirmed" value="finishConfirmed" style="display:none;">
                         </label>             
                         <div class="col-right">
                             当买家确认完成工作时,请通知我
@@ -45,7 +43,7 @@
                     </li>
                     <li class="one-message">
                         <label class="my-self-checkbox-label">
-                            <input type="checkbox" name="message" value="message1">
+                            <input type="checkbox" name="addPriceOrDelay" value="addPriceOrDelay" style="display:none;">
                         </label>             
                         <div class="col-right">
                             当我参与的需求加价或者延期时,请通知我!
@@ -53,7 +51,7 @@
                     </li>
                     <li class="one-message">
                         <label class="my-self-checkbox-label">
-                            <input type="checkbox" name="message" value="message1">
+                            <input type="checkbox" name="publishSuccess" value="publishSuccess" style="display:none;">
                         </label>             
                         <div class="col-right">
                             当我的需求发布成功时,请通知我!
@@ -61,7 +59,7 @@
                     </li>
                     <li class="one-message">
                         <label class="my-self-checkbox-label">
-                            <input type="checkbox" name="message" value="message1">
+                            <input type="checkbox" name="publishFail" value="publishFail" style="display:none;">
                         </label>             
                         <div class="col-right">
                             当我的需求发布失败时,请通知我!
@@ -69,7 +67,7 @@
                     </li>
                     <li class="one-message">
                         <label class="my-self-checkbox-label">
-                            <input type="checkbox" name="message" value="message1">
+                            <input type="checkbox" name="nearDeadline" value="nearDeadline" style="display:none;">
                         </label>             
                         <div class="col-right">
                             当我的需求交稿期即将结束时时,请通知我!

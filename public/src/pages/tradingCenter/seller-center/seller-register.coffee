@@ -83,7 +83,7 @@ setUploadedPhoto = (name)->
 
 # 文档加载完成执行的操作
 $ ->
-	checkbox = (new Checkbox({selector: '.my-indents-content'})).init();
+	checkbox = (new Checkbox({selector: '.my-indents-content'}));
 	$registerConfirm.bind 'click', registerConfirmHandler
 	avatarUploader = setUploadedPhoto "avatar"
 

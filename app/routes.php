@@ -219,22 +219,11 @@ Route::group(array('prefix' => 'trading-center'),function()
 	// 我的消息
 	Route::group(array('prefix' => 'mynews'),function()
 	{
-		Route::get('notification', function()
-		{
-			return View::make('tradingCenter.mynews.notification');
-		});
-		Route::get('setting', function()
-		{
-			return View::make('tradingCenter.mynews.setting');
-		});
-		Route::get('history', function()
-		{
-			return View::make('tradingCenter.mynews.history');
-		});
-		Route::get('trading-reminder', function()
-		{
-			return View::make('tradingCenter.mynews.trading-reminder');
-		});
+		Route::get('notification', 'MessagePageController@notification');
+
+		Route::get('setting', 'MessagePageController@setting');
+
+		Route::get('trading-reminder', 'MessagePageController@tradingReminder');
 	});
 
 	// 买家中心

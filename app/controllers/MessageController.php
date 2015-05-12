@@ -140,7 +140,15 @@ class MessageController extends BaseController {
 			return Response::json(array('errCode' => 1, 'message' => '请先登录'));
 		}
 
-		$NumOfUnreadMessages = DB::table('messages')->where('receiver', '=', $user_id)->where("status", "=", 0)->count();
+		$messages = DB::table('messages')->where('receiver', '=', $user_id)->where("status", "=", 0);
+
+		if(Input::has("type"))
+		{
+			$type = Input::get("type");
+			$messages = $messages->where("type", "=", $type);
+		}
+
+		$NumOfUnreadMessages = $messages->count();
 
 		return Response::json(array("num" => $NumOfUnreadMessages));
 	}
