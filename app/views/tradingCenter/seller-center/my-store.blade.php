@@ -49,6 +49,9 @@
                                 <a class="input-group-addon" id="add-tag-btn" href="javascript:void(0);">+</a>
                             </div>
                         </span>
+                        <script type="text/template" id="oneTagTemplat">
+                            <span class="one-tag" data-tagid="<%= tagId%>"><%= tagValue%>&nbsp&nbsp</span>
+                        </script>
                         <script type="text/template" id="disabledTagTemplate">
                             <div class="input-group display-tag">
                                 <input type="text" class="tagText form-control input-sm" value="<%= tagValue %>" title="<%= tagValue %>" style="text-transform: lowercase;" disabled="disabled">

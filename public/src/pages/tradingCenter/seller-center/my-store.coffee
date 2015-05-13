@@ -104,11 +104,12 @@ showFavorRank = (e)->
 
 $allTag = $('.detail .tags')
 $disabledTagTemplate = $('#disabledTagTemplate')
+$oneTagTemplat = $('#oneTagTemplat')
 $tagEdit = $('.tag-edit')
 $tagDisplay = $('.tag-display')
 # 已有标签模板
 disabledTagcompiled = _.template $disabledTagTemplate.html()
-
+oneTagCompiled = _.template $oneTagTemplat.html()
 
 # 获取当前所有的标签
 getAllTags = ->
@@ -163,7 +164,7 @@ addNewTag = ->
 	
 	shopDataBus.addShopTag $shopIdInput.val(), tag, (data)->
 		if data.errCode is 0
-			$addTagInput.before((disabledTagcompiled {tagValue: tag})).find('input').val('')
+			$addTagInput.before((disabledTagcompiled {tagValue: tag, tagId: data.tag_id})).find('input').val('')
 		else
 			alert(data.message)
 # 删除旧的标签
@@ -181,11 +182,25 @@ deleteOldTag = ->
 saveDetailStoreInfo = (e)->
 	$target = $(e.currentTarget)
 	$parent = $target.parent().parent()
+	currentEditTag = getCurrentEditTag()
+	# 退出编辑模式
+	$tagDisplay.show()
+	$('.display-tag').remove()
+	$tagEdit.hide()
+	for tag in currentEditTag
+		str = oneTagCompiled {tagValue: tag.tagValue, tagId: tag.tagId}
+		$('.detail .tags').append $(str)
+
+	$target.parent().find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
 
 getCurrentEditTag = ->
 	$allEditTag = $('.edit-tag-list input[disabled="disabled"]')
+	tagArray = []
 	$allEditTag.each ->
-		tagArray.push $(this).val().trim()
+		tag = 
+			tagId: $(this).siblings('a').data('tagid')
+			tagValue: $(this).val().trim()
+		tagArray.push tag
 	return tagArray 
 
 # 取消编辑店铺信息
