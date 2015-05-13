@@ -55,6 +55,12 @@ Route::group(array('prefix' => 'user'),function()
 	});
 });
 
+//邀请好友模块
+Route::group(array('prefix' => 'invitation','before' => 'auth.user.isIn'),function()
+{
+	Route::post('sendEmail','InvitationController@sendInvitationCode');
+});
+
 //评论模块
 Route::group(array('prefix' => 'comment','before' => 'auth.user.isIn'),function()
 {
