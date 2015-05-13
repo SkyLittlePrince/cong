@@ -69,7 +69,7 @@ Route::group(array('prefix' => 'shop','before' => 'auth.user.isIn'),function()
 	Route::post('addShop','ShopController@addShop');
 	Route::post('updateShop','ShopController@updateShop');
 	Route::post('addTag','ShopController@addTag');
-	Route::post('deleteTag','ShopController@deleteShop');
+	Route::post('deleteTag','ShopController@deleteTag');
 	Route::get('deleteShop','ShopController@deleteShop');
 	
 });
