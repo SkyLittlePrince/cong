@@ -168,14 +168,13 @@ addSaveSkill = (e)->
 		name: $parent.find(".skill-name input").val()
 
 	compiled = _.template $("#skillTemplate").html()
-	
 	dataBus.addItem "Skill", data, (res)->
 		if res.errCode == 1
 			alert "新增成功"
 			str = compiled {"newSkillId": res.newSkillId, name: data.name}
-			$(str).insertBefore $target.parent()
-			$parent.find(".show").addClass("hidden")
+			$(str).insertBefore $(".skill-add")
 			$parent.find(".bg").addClass("hidden")
+			$parent.find(".show").addClass("hidden")
 		else
 			alert res.message
 
