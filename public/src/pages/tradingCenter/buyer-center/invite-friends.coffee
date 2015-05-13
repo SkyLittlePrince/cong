@@ -6,7 +6,7 @@ $ ->
 		data = 
 			email: $email.val()
 
-		dataBus.sendEmail data (res)->
+		dataBus.sendEmail data, (res)->
 			console.log res
 			if res.errCode == 0
 				alert "邀请发送成功"
