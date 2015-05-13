@@ -115,7 +115,10 @@ getAllTags = ->
 	tagArray = []
 	$allOneTag = $allTag.find('.one-tag')
 	$allOneTag.each ->
-		tagArray.push $(this).text().trim()
+		tag =
+			tagValue: $(this).text().trim()
+			tagId: $(this).data('tagid')
+		tagArray.push tag
 	return tagArray
 
 primaryTag = getAllTags()
@@ -123,7 +126,8 @@ primaryTag = getAllTags()
 loadTagsToEditState = (tagArray)->
 	$addTagInput = $('.edit-tag-list .add-tag-input')
 	for tag in tagArray
-		$addTagInput.before (disabledTagcompiled {tagValue: tag})
+		console.log tag
+		$addTagInput.before (disabledTagcompiled {tagValue: tag.tagValue, tagId: tag.tagId})
 
 # 编辑店铺标签
 editDetailStoreInfo = (e)->
@@ -147,18 +151,31 @@ addNewTag = ->
 	if tag.length > 10
 		alert('标签的长度不能超过10个字')
 		return false
-	$allEditTag = $('.edit-tag-list input[disabled="disabled"]')
-	$allEditTag.each ->
-		if $(this).val() == tag
-			alert('标签不能重复')
-			return false
-	$addTagInput = $('.edit-tag-list .add-tag-input')
-	$addTagInput.before((disabledTagcompiled {tagValue: tag})).find('input').val('')
 
+	$allEditTag = $('.edit-tag-list input[disabled="disabled"]')
+	flag = true
+	$allEditTag.each -> flag = false if $(this).val() == tag
+	if flag is false
+		alert('标签不能重复')
+		return false
+
+	$addTagInput = $('.edit-tag-list .add-tag-input')
+	
+	shopDataBus.addShopTag $shopIdInput.val(), tag, (data)->
+		if data.errCode is 0
+			$addTagInput.before((disabledTagcompiled {tagValue: tag})).find('input').val('')
+		else
+			alert(data.message)
+# 删除旧的标签
 deleteOldTag = ->
-	tag = $(this).siblings('input[type="text"]').val().trim()
+	$this = $(this)
+	tagId = $(this).data('tagid')
 	if confirm('确定删除该标签？')
-		$(this).parent().remove()
+		shopDataBus.deleteShopTag $shopIdInput.val(), tagId, (data)->
+			if data.errCode is 0
+				$this.parent().remove()
+			else
+				alert(data.message)
 
 # 保存店铺简介信息
 saveDetailStoreInfo = (e)->
@@ -179,8 +196,16 @@ cancelDetailStoreInfo = (e)->
 	$('.display-tag').remove()
 	$tagEdit.hide()
 	$('.detail .tags').append($('<span class="one-tag">' + tag + '&nbsp&nbsp</span>')) for tag in primaryTag
-
 	$target.parent().find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
+
+# 删除店铺
+deleteStore = ->
+	if (confirm('确定删除店铺？'))
+		storeId = $shopIdInput.val()
+		shopDataBus.deleteStore storeId, (data)->
+			if data.errCode is 0
+				alert("店铺删除成功")
+				location.reload()
 
 $ ->
 	$('.info .edit-btn').bind 'click', editStoreInfo
@@ -189,7 +214,7 @@ $ ->
 
 	$('.detail .edit-btn').bind 'click', editDetailStoreInfo
 	$('.detail .save-btn').bind 'click', saveDetailStoreInfo
-	$('.detail .cancel-btn').bind 'click', cancelDetailStoreInfo
+	# $('.detail .cancel-btn').bind 'click', cancelDetailStoreInfo
 
 	$("body").delegate '#add-tag-btn', 'click', addNewTag
 	$("body").delegate '.delete-tag-btn', 'click', deleteOldTag
@@ -199,6 +224,8 @@ $ ->
 
 	$('.sellRank').click()
 
+	$('.delete-store').bind 'click', deleteStore
+
 shopDataBus =
 	updateShop: (storeInfo, callback)->
 		$.post '/shop/updateShop', storeInfo, (data)->
@@ -207,3 +234,13 @@ shopDataBus =
 	getProductRank: (name, data, callback)->
 		$.get '/product/getSortedProductsBy' + name, data, (data)->
 			callback data
+	# 删除店铺
+	deleteStore: (storeId, callback) ->
+		$.get '/shop/deleteShop', storeId, (data)->
+			callback data
+	# 新增店铺标签
+	addShopTag: (storeId, tagName, callback)->
+		$.post '/shop/addTag', {shop_id: storeId, name: tagName}, (data)->callback(data)
+	# 删除店铺标签
+	deleteShopTag: (storeId, tag_id, callback)->
+		$.post '/shop/deleteTag', {shop_id: storeId, tag_id: tag_id}, (data)->callback(data)
