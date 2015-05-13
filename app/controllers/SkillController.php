@@ -6,15 +6,16 @@ class SkillController extends \BaseController {
 	{
 		$name = Input::get('name');
 		$user = User::find(Sentry::getUser()->id);
-		if(!isset($name))
+		if(!isset($name) || $name == "")
 			return Response::json(array('errCode' => 1,'message' => '技能名不能为空!'));
 
 		$skill = Skill::firstOrCreate(array('name' => $name));
-		if($user->skills()->attach($skill->id))
+		try
 		{
+			$user->skills()->save($skill);
 			return Response::json(array('errCode' => 0,'skill_id' => $skill->id));
 		}
-		else
+		catch(Exception $e)
 		{
 			return Response::json(array('errCode' => 1,'message' => '该技能已存在!')); 
 		}
