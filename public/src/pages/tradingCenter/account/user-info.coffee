@@ -169,7 +169,7 @@ addSaveSkill = (e)->
 
 	compiled = _.template $("#skillTemplate").html()
 	dataBus.addItem "Skill", data, (res)->
-		if res.errCode == 1
+		if res.errCode == 0
 			alert "新增成功"
 			str = compiled {"newSkillId": res.newSkillId, name: data.name}
 			$(str).insertBefore $(".skill-add")
