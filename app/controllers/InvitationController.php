@@ -16,9 +16,9 @@ class InvitationController extends \BaseController {
 
 		try
 		{
-			Mail::send('invitation',array('token' => $url),function($message) use ($email,$user)
+			Mail::send('invitation',array('token' => $url),function($message) use ($email)
 			{
-				$message->to($email,'')->subject('你的好友' . $user->name . '邀请你丛丛网!');
+				$message->to($email,'')->subject('邀请你加入丛丛网!');
 			});
 
 			return Response::json(array('errCode' => 0,'message' => '邀请链接发送成功!'));
