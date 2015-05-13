@@ -7,7 +7,6 @@ class PictureController extends \BaseController {
 		$user = Sentry::getUser();
 		$product_id = Input::get('product_id');
 		$image = Input::get('image');
-		$key = Input::get('key');
 
 		$product = Product::find($product_id);
 
@@ -19,7 +18,6 @@ class PictureController extends \BaseController {
 
 		$pictrue = new Picture;
 		$pictrue->image = $image;
-		$pictrue->key = $key;
 		$pictrue->product_id = $product_id;
 
 		if($pictrue->save())

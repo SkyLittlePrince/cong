@@ -32,12 +32,30 @@
             </div>
             <div class="detail header-component">
                 <div class="row-content">
-                    <span class="label">店铺标签: </span>
-                    <span class="content">
-                        @foreach ($tags as $tag)
-                            {{{$tag["name"]}}}
-                        @endforeach
-                    </span>
+                    <div class="tag-display">
+                        <span class="label">店铺标签: </span>
+                        <span class="content tags">
+                            @foreach ($tags as $tag)
+                                <span class="one-tag">{{{$tag["name"]}}}&nbsp&nbsp</span>
+                            @endforeach
+                        </span>
+                    </div>
+                    <div class="tag-edit hidden">
+                        <span class="label">标签编辑: </span>
+                        <br>
+                        <span class="edit-tag-list">
+                            <div class="input-group add-tag-input">
+                                <input type="text" class="tagText empty form-control input-sm" placeholder="新标签" style="text-transform: lowercase;">
+                                <a class="input-group-addon" id="add-tag-btn" href="javascript:void(0);">+</a>
+                            </div>
+                        </span>
+                        <script type="text/template" id="disabledTagTemplate">
+                            <div class="input-group display-tag">
+                                <input type="text" class="tagText form-control input-sm" value="<%= tagValue %>" title="<%= tagValue %>" style="text-transform: lowercase;" disabled="disabled">
+                                <a class="input-group-addon tagClose delete-tag-btn" href="javascript:void(0);">×</a>            
+                            </div>
+                        </script>
+                    </div>
                 </div>
                 <div class="row-content">
                     <span class="label">买家信用: </span>
@@ -49,6 +67,11 @@
                         <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
                         <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
                     </span>
+                </div>
+                <div class="operation">
+                    <div class="edit-btn">编辑</div>
+                    <div class="hidden save-btn">保存</div>
+                    <div class="hidden cancel-btn">取消</div>
                 </div>
             </div>
         </div>
