@@ -2,24 +2,21 @@
 
 @bg-pic-path: "./../../../images/icon";
 
-.my-self-checkbox {
+.my-checkbox-item {
+    width: 17px;
+    height: 17px;
+    background: url("@{bg-pic-path}/icon-self-checkbox-2.png");
+    display: inline-block;
+    cursor: pointer;
 
-    .my-checkbox-item {
-        width: 17px;
-        height: 17px;
-        background: url("@{bg-pic-path}/icon-self-checkbox-2.png");
-        display: inline-block;
+    input[type="checkbox"] {
         cursor: pointer;
-
-        input[type="checkbox"] {
-            cursor: pointer;
-            width: 100%;
-            height: 100%;
-            .opacity(0);
-        }
-        
-        &.oncheck {
-            background-position: 0 17px;
-        }
+        width: 100%;
+        height: 100%;
+        .opacity(0);
+    }
+    
+    &.oncheck {
+        background-position: 0 17px;
     }
 }

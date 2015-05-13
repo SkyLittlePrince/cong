@@ -97,6 +97,8 @@ Route::group(array('prefix' => 'message'),function()
 		Route::post('clear','MessageController@clear');
 		Route::get('get-my-messages','MessageController@getMyMessages');
 		Route::get('get-num-of-unread-messages', 'MessageController@getNumOfUnreadMessages');
+		Route::post('set-config','MessageController@changeMessageConfig');
+		Route::get('get-config','MessageController@getMessageConfig');
 	});
 });
 
@@ -123,7 +125,6 @@ Route::group(array('prefix' => 'task'),function()
 
 	Route::get('get-published-tasks-by-user','TaskController@getTasksByUser');
 	Route::get('get-info','TaskController@getTaskInfo');
-
 });
 
 Route::group(array('prefix' => 'seller-authentication'),function()

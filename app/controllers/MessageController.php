@@ -85,50 +85,6 @@ class MessageController extends BaseController {
 		return Response::json(array('errCode' => 0,'messagesList' => $messages));
 	}	
 
-	public function getMessageConfig()
-	{
-		$messageConfig = MessageConfig::where("user_id", "=", Sentry::getUser()->id)->get();
-
-		return Response::json(array('errCode' => 0,'messageConfig' => $messageConfig));
-	}
-
-	public function changeMessageConfig()
-	{
-		if(Sentry::check()) 
-		{
-			$user_id = Sentry::getUser()->id;
-		} 
-		else 
-		{
-			return Response::json(array('errCode' => 1, 'message' => '请先登录'));
-		}
-
-		$messageConfig = input::get("messageConfig");
-
-		$config = MessageConfig::where("user_id", "=", Sentry::getUser()->id);
-		if(count($config->get()) == 0) 
-		{
-			$config = new MessageConfig();
-			$config->acceptance = $messageConfig["acceptance"];
-			$config->finishConfirmed = $messageConfig["finishConfirmed"];
-			$config->addPriceOrDelay = $messageConfig["addPriceOrDelay"];
-			$config->publishSuccess = $messageConfig["publishSuccess"];
-			$config->publishFail = $messageConfig["publishFail"];
-			$config->nearDeadline = $messageConfig["nearDeadline"];
-
-			if(!$config->save())
-			{
-				return Response::json(array('errCode' => 2, 'message' => '修改失败'));
-			}
-		}
-		else 
-		{
-			$config->update($messageConfig);
-		}
-
-		return Response::json(array('errCode' => 0));
-	}
-
 	public function getNumOfUnreadMessages()
 	{
 		if(Sentry::check())
@@ -151,5 +107,94 @@ class MessageController extends BaseController {
 		$NumOfUnreadMessages = $messages->count();
 
 		return Response::json(array("num" => $NumOfUnreadMessages));
+	}
+
+	public function getMessageConfig()
+	{
+		if(Sentry::check()) 
+		{
+			$user_id = Sentry::getUser()->id;
+		} 
+		else 
+		{
+			return Response::json(array('errCode' => 1, 'message' => '请先登录'));
+		}
+
+		$messageConfig = MessageConfig::where("user_id", "=", Sentry::getUser()->id)->get();
+
+		if(count($messageConfig) == 0)
+		{
+			$messageConfig = array(
+				"acceptance" => 0,
+				"finishConfirmed" => 0,
+				"addPriceOrDelay" => 0,
+				"publishSuccess" => 0,
+				"publishFail" => 0,
+				"nearDeadline" => 0
+			);
+		}
+		else 
+		{
+			$messageConfig = array(
+				"acceptance" => $messageConfig[0]->acceptance,
+				"finishConfirmed" => $messageConfig[0]->finishConfirmed,
+				"addPriceOrDelay" => $messageConfig[0]->addPriceOrDelay,
+				"publishSuccess" => $messageConfig[0]->publishSuccess,
+				"publishFail" => $messageConfig[0]->publishFail,
+				"nearDeadline" => $messageConfig[0]->nearDeadline
+			);
+		}
+
+		return Response::json(array('errCode' => 0,'messageConfig' => $messageConfig));
+	}
+
+	public function changeMessageConfig()
+	{
+		if(Sentry::check()) 
+		{
+			$user_id = Sentry::getUser()->id;
+		} 
+		else 
+		{
+			return Response::json(array('errCode' => 1, 'message' => '请先登录'));
+		}
+
+		$acceptance = Input::get("acceptance");
+		$finishConfirmed = Input::get("finishConfirmed");
+		$addPriceOrDelay = Input::get("addPriceOrDelay");
+		$publishSuccess = Input::get("publishSuccess");
+		$publishFail = Input::get("publishFail");
+		$nearDeadline = Input::get("nearDeadline");
+
+		$config = MessageConfig::where("user_id", "=", Sentry::getUser()->id);
+		if(count($config->get()) == 0) 
+		{
+			$config = new MessageConfig();
+			$config->user_id = $user_id;
+			$config->acceptance = $acceptance;
+			$config->finishConfirmed = $finishConfirmed;
+			$config->addPriceOrDelay = $addPriceOrDelay;
+			$config->publishSuccess = $publishSuccess;
+			$config->publishFail = $publishFail;
+			$config->nearDeadline = $nearDeadline;
+
+			if(!$config->save())
+			{
+				return Response::json(array('errCode' => 2, 'message' => '修改失败'));
+			}
+		}
+		else 
+		{
+			$config->update(array(
+				"acceptance" => $acceptance,
+				"finishConfirmed" => $finishConfirmed,
+				"addPriceOrDelay" => $addPriceOrDelay,
+				"publishSuccess" => $publishSuccess,
+				"publishFail" => $publishFail,
+				"nearDeadline" => $nearDeadline
+			));
+		}
+
+		return Response::json(array('errCode' => 0));
 	}
 }
