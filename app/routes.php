@@ -16,8 +16,8 @@
 // {
 // 	return View::make('test');
 // });
-Route::get('test','TestController@getAscore');
-Route::post('test','UserController@getCheckRegister');
+//Route::get('test','TestController@getAscore');
+//Route::post('test','UserController@getCheckRegister');
 
 // 用户模块
 Route::group(array('prefix' => 'user'),function()
