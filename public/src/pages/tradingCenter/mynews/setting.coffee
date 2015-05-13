@@ -44,6 +44,20 @@ getMessageConfig = (checkbox)->
 $ ->
 	$("#confirm-btn").click setMessageConfig
 	$("#reset-btn").click (e)->
+		data = 
+			acceptance: 0,
+			finishConfirmed: 0,
+			addPriceOrDelay: 0, 
+			publishSuccess: 0,
+			publishFail: 0,
+			nearDeadline: 0
+
+		dataBus.setMessageConfig data, (res)->
+			if res.errCode == 0
+				alert "修改成功"
+				checkbox.resetAllItems()
+			else
+				alert res.message
 
 	getMessageConfig(checkbox)
 
@@ -57,4 +71,3 @@ dataBus =
 			callback data
 
 
-			

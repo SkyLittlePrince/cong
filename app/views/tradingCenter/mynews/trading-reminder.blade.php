@@ -24,9 +24,7 @@
                 <ul>
                     @foreach ($messages as $message)
                     <li class="one-message">
-                        <label class="my-self-checkbox-label">
-                            <input type="checkbox" name="message" value="message1" style="display:hidden;">
-                        </label>
+                        <div class="checkbox-wrapper"></div>         
                         <div class="col-right">
                             <input type="hidden" class="message-id" value="{{{ $message->id }}}" />
                             <input type="hidden" class="message-content" value="{{{ $message->content }}}" />

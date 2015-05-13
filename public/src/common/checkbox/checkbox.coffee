@@ -1,4 +1,14 @@
 
+##
+# 调用方式 
+# checkbox = (new Checkbox({
+#    selector: '.checkbox-wrapper'
+#    data: ["acceptance", "finishConfirmed", "addPriceOrDelay", "publishSuccess", "publishFail", "nearDeadline"]
+# }))
+# 
+#
+#
+
 _defaultConfig = {
     selector: "",
     className: "my-checkbox",
