@@ -206,13 +206,16 @@ class UserController extends \BaseController {
 
 		if(isset($user))
 		{
-			$friend = User::find($token);
-			if(isset($friend))
+			try
 			{
 				$friendship = new Friend;
 				$friendship->friend_id = $user->id;
-				$friendship->user_id = $friend->id;
+				$friendship->user_id = $token;
 				$friendship->save();
+			}
+			catch(Exception $e)
+			{
+
 			}
 			return Response::json(array('errCode' => 0,'message' => '注册成功!'));
 		}

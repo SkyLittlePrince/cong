@@ -2,7 +2,7 @@
 
 class InvitationController extends \BaseController {
 
-	public function sendInvitationCode()
+	public function sendEmail()
 	{
 		$email = Input::get('email');
 		$user = Sentry::getUser();
