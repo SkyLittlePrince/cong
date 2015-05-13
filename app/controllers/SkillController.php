@@ -13,12 +13,14 @@ class SkillController extends \BaseController {
 
 		try
 		{
-			$user->skills()->save($skill);
-			return Response::json(array('errCode' => 0,'skill_id' => $skill->id));
+			if($user->skills()->save($skill))
+				return Response::json(array('errCode' => 0,'skill_id' => $skill->id));
+
+			return Response::json(array('errCode' => 3,'message' => '保存失败!'));
 		}
 		catch(Exception $e)
 		{
-			return Response::json(array('errCode' => 1,'message' => '该技能已存在!')); 
+			return Response::json(array('errCode' => 2,'message' => '该技能已存在!')); 
 		}
 	}
 

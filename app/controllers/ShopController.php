@@ -102,10 +102,17 @@ class ShopController extends \BaseController {
 
 		$tag = Tag::firstOrCreate(array('name' => $name));
 
-		if($shop->tags()->save($tag))
-			return Response::json(array('errCode' => 0,'tag_id' => $tag->id));
+		try
+		{
+			if($shop->tags()->save($tag))
+				return Response::json(array('errCode' => 0,'tag_id' => $tag->id));
 
-		return Response::json(array('errCode' => 3,'message' => '保存失败!'));
+			return Response::json(array('errCode' => 4,'message' => '保存失败!'));
+		}
+		catch(Exception $e)
+		{
+			return Response::json(array('errCode' => 3,'message' => '标签已存在!'));
+		}
 	}
 
 	public function deleteShop()
