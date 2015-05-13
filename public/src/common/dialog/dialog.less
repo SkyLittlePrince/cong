@@ -1,0 +1,59 @@
+// 弹出框
+@font: "Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
+.gray-bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: black;
+	opacity: .7;
+	filter: Alpha(Opacity=70);
+}
+.dialog {
+	width: 400px;
+	min-height: 150px;
+	position: absolute;
+	left: 50%;
+	margin-left: -200px;
+	top: 50%;
+	margin-top: -100px;
+	background-color: #fff;
+	.dialog-banner {
+		background-color: #7ecac8;
+		height: 34px;
+		line-height: 33px;
+		text-align: center;
+		.ui-dialog-title {
+			color: #fff;
+			font-family: @font;
+		}
+		.close-button {
+			float: right;
+			color: #fff;
+			display: inline-block;
+			margin-top: 5px;
+			margin-right: 5px;
+			cursor: pointer;
+		}
+	}
+	.dialog-content {
+		padding: 10px;
+	}
+	.dialog-footer {
+		width: 100%;
+		position: absolute;
+		bottom: 18px;
+		.buttonset {
+			.dialog-btn {
+				height: 27px;
+				line-height: 27px;
+				font-size: 16px;
+				width: 70px;
+				cursor: pointer;
+				margin-right: 10px;
+			}
+			text-align: center;			
+		}
+	}
+}
