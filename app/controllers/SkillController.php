@@ -12,7 +12,7 @@ class SkillController extends \BaseController {
 		$skill = Skill::firstOrCreate(array('name' => $name));
 		if($user->skills()->attach($skill->id))
 		{
-			return Response::json(array('errCode' => 0,'message' => '保存成功!'));
+			return Response::json(array('errCode' => 0,'skill_id' => $skill->id));
 		}
 		else
 		{
