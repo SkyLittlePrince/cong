@@ -18,17 +18,19 @@
     <div class="mynews-component trading-reminder my-self-checkbox">
         <div class="message-wrapper">
             <div class="banner">
-                <span class="title">交易提醒(<span>0</span>)</span>
+                <span class="title">交易提醒(<span class="unread-message">0</span>)</span>
             </div>
             <div class="messages">
                 <ul>
+                    @foreach ($messages as $message)
                     <li class="one-message">
-                        <label class="no-message">
-                            
-                        </label>             
+                        <div class="checkbox-wrapper"></div>         
                         <div class="col-right">
-                            暂无新消息!
+                            <input type="hidden" class="message-id" value="{{{ $message->id }}}" />
+                            <input type="hidden" class="message-content" value="{{{ $message->content }}}" />
+                            <span class="message-title">{{{ $message->title }}}</span>
                         </div>
+                    @endforeach
                     </li>
                 </ul>
             </div>
@@ -38,4 +40,5 @@
 
 @section('js')
     @parent
+    <script type="text/javascript" src="/dist/js/pages/trading-reminder.js"></script>
 @stop

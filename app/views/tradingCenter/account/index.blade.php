@@ -19,7 +19,7 @@
 		<hr />		
 		<div class="content-main">
 			<div class="content-left">
-				<div class="content-row">
+				<!-- <div class="content-row">
 					<div class="title">
 						我的账号安全级别：
 					</div>
@@ -27,7 +27,7 @@
 						为了更好的保护您的交易安全，建议您通过以下方式提高安全级别：<br />
 						<a href="" class="protect-btn">开通账号登录保护</a> <a href="" class="protect-btn">开通密码修改保护</a>
 					</div>
-				</div>
+				</div> -->
 				<div class="content-row">
 					<div class="title">
 						<span class="balance">账户余额：¥100元</span>
@@ -61,14 +61,14 @@
 					<div class="clear"></div>
 				</div>				
 			</div>
-			<div class="content-right">
+			<!-- <div class="content-right">
 				<div class="avatar">
 					<img src="/images/tradingcenter/icon/avatar.png" width="107" height="107" />
 				</div>
 				<div class="avatar">
 					<img src="/images/tradingcenter/icon/avatar.png" width="107" height="107" />
 				</div>
-			</div>
+			</div> -->
 			<div class="clear"></div>
 		</div>
 	</div>

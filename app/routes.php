@@ -55,6 +55,12 @@ Route::group(array('prefix' => 'user'),function()
 	});
 });
 
+//邀请好友模块
+Route::group(array('prefix' => 'invitation','before' => 'auth.user.isIn'),function()
+{
+	Route::post('sendEmail','InvitationController@sendInvitationCode');
+});
+
 //评论模块
 Route::group(array('prefix' => 'comment','before' => 'auth.user.isIn'),function()
 {
@@ -97,6 +103,8 @@ Route::group(array('prefix' => 'message'),function()
 		Route::post('clear','MessageController@clear');
 		Route::get('get-my-messages','MessageController@getMyMessages');
 		Route::get('get-num-of-unread-messages', 'MessageController@getNumOfUnreadMessages');
+		Route::post('set-config','MessageController@changeMessageConfig');
+		Route::get('get-config','MessageController@getMessageConfig');
 	});
 });
 
@@ -123,7 +131,6 @@ Route::group(array('prefix' => 'task'),function()
 
 	Route::get('get-published-tasks-by-user','TaskController@getTasksByUser');
 	Route::get('get-info','TaskController@getTaskInfo');
-
 });
 
 Route::group(array('prefix' => 'seller-authentication'),function()
@@ -221,22 +228,11 @@ Route::group(array('prefix' => 'trading-center'),function()
 	// 我的消息
 	Route::group(array('prefix' => 'mynews'),function()
 	{
-		Route::get('notification', function()
-		{
-			return View::make('tradingCenter.mynews.notification');
-		});
-		Route::get('setting', function()
-		{
-			return View::make('tradingCenter.mynews.setting');
-		});
-		Route::get('history', function()
-		{
-			return View::make('tradingCenter.mynews.history');
-		});
-		Route::get('trading-reminder', function()
-		{
-			return View::make('tradingCenter.mynews.trading-reminder');
-		});
+		Route::get('notification', 'MessagePageController@notification');
+
+		Route::get('setting', 'MessagePageController@setting');
+
+		Route::get('trading-reminder', 'MessagePageController@tradingReminder');
 	});
 
 	// 买家中心

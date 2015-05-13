@@ -43,7 +43,7 @@
                     <p class="input-label">邮件地址:</p>
                     <div class="input-row">
                         <input type="text" id="email" name="email" />
-                        <a href="" class="btn" id="send-email">发送邀请</a>
+                        <a href="javascript:void(0)" class="btn" id="send-email">发送邀请</a>
                     </div>
                 </div>
             </div>
@@ -53,4 +53,5 @@
 
 @section('js')
     @parent
+    <script type="text/javascript" src="/dist/js/pages/invite-friends.js"></script>
 @stop

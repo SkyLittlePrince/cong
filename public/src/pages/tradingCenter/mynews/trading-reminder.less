@@ -3,6 +3,9 @@
 
 .trading-reminder {
 	min-height: 411px;
+	.unread-message {
+		color: red;
+	}
 	.no-message {
 		width: 21px;
 		height: 21px;
@@ -12,9 +15,13 @@
 	.messages {
 		color: #c5b496;
 		padding-bottom: 17px;
-		ul li {
+		.one-message {
 			overflow: hidden;
 			margin-top: 22px;
+
+			.message-title {
+				cursor: pointer;
+			}
 		}
 	}
 }

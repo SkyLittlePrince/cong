@@ -129,6 +129,9 @@ class UserController extends \BaseController {
 		//Session::put('phrase', $phrase);
 		$_SESSION['phrase'] = $phrase;
 
+		$token = Input::get('token');
+		$_SESSION['token'] = $token;
+
 		return View::make('register')->with('captcha', $builder);
 	}
 
@@ -144,6 +147,7 @@ class UserController extends \BaseController {
 		$salt = Input::get('registerSalt');
 		//$sessionSalt = Session::get('registerSalt');
 		$sessionSalt = $_SESSION['registerSalt'];
+		$token = $_SESSION['token'];
 
 		if($salt != $sessionSalt)
 			return Response::json(array('errCode' => 9,'message' => '验证码错误!'));
@@ -201,7 +205,19 @@ class UserController extends \BaseController {
 			));
 
 		if(isset($user))
+		{
+			$friend = User::find($token);
+			if(isset($friend))
+			{
+				$friendship = new Friend;
+				$friendship->friend_id = $user->id;
+				$friendship->user_id = $friend->id;
+				$friendship->save();
+			}
 			return Response::json(array('errCode' => 0,'message' => '注册成功!'));
+		}
+		
+		return Response::json(array('errCode' => 10,'message' => '注册失败!'));	
 	}
 
 	//获取登录页面和生成验证码

@@ -4,4 +4,4 @@ $(document).ready ()->
 
 	checkbox = (new Checkbox({
 	  selector: '.my-indents-content'
-	})).init();
+	}));

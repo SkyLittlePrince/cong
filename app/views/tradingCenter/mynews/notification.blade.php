@@ -18,77 +18,28 @@
    	<div class="mynews-component message-notification my-self-checkbox">
    		<div class="message-wrapper">
 	   		<div class="banner">
-	   			<span class="title">广告/活动(<span>2</span>)</span>
-	   			<span class="status">未读/全部(<span>3</span>)</span>
+	   			<span class="title">广告/活动(<span class="unread-message"></span>)</span>
 	   		</div>
 	   		<div class="operate">
-                <label class="my-self-checkbox-label">
-                    <input type="checkbox" name="message" value="all" class="select-all">
-                </label>
+                <div class="checkbox-wrapper-all"></div>         
                 <div class="col-right">
-    	   			<input type="button" value="标记所有为已读" class="mark-all" style="margin-left: 0;">
-                    <input type="button" value="删除所有" class="delete-all">
-                    <input type="button" value="清空所有" class="clear-all">
+    	   			<input type="button" value="标记为已读" class="mark-all" style="margin-left: 0;">
+                    <input type="button" value="删除" class="delete-all">
+                    <input type="button" value="清空所有消息" class="clear-all">
                 </div>
 	   		</div>
 	   		<div class="messages">
 	   			<ul>
+                    @foreach ($messages as $message)
 	   				<li class="one-message">
-                        <label class="my-self-checkbox-label">
-                            <input type="checkbox" name="message" value="message1" style="display:hidden;">
-                        </label>             
+                        <div class="checkbox-wrapper"></div>         
                         <div class="col-right">
-                            你秀才艺我给钱,现在正式接收报名!
+                            <input type="hidden" class="message-id" value="{{{ $message->id }}}" />
+                            <input type="hidden" class="message-content" value="{{{ $message->content }}}" />
+                            <span class="message-title">{{{ $message->title }}}</span>
                         </div>
                     </li>
-                    <li class="one-message">
-                        <label class="my-self-checkbox-label">
-                            <input type="checkbox" name="message" value="message1" style="display:hidden;">
-                        </label>             
-                        <div class="col-right">
-                            你秀才艺我给钱,现在正式接收报名!
-                        </div>
-                    </li>
-                    <li class="one-message">
-                        <label class="my-self-checkbox-label">
-                            <input type="checkbox" name="message" value="message1">
-                        </label>             
-                        <div class="col-right">
-                            你秀才艺我给钱,现在正式接收报名!
-                        </div>
-                    </li>
-                    <li class="one-message">
-                        <label class="my-self-checkbox-label">
-                            <input type="checkbox" name="message" value="message1">
-                        </label>             
-                        <div class="col-right">
-                            你秀才艺我给钱,现在正式接收报名!
-                        </div>
-                    </li>
-                    <li class="one-message">
-                        <label class="my-self-checkbox-label">
-                            <input type="checkbox" name="message" value="message1">
-                        </label>             
-                        <div class="col-right">
-                            你秀才艺我给钱,现在正式接收报名!
-                        </div>
-                    </li>
-                    <li class="one-message">
-                        <label class="my-self-checkbox-label">
-                            <input type="checkbox" name="message" value="message1">
-                        </label>             
-                        <div class="col-right">
-                            你秀才艺我给钱,现在正式接收报名!
-                        </div>
-                    </li>
-                    <li class="one-message">
-                        <label class="my-self-checkbox-label">
-                            <input type="checkbox" name="message" value="message1">
-                        </label>             
-                        <div class="col-right">
-                            你秀才艺我给钱,现在正式接收报名!
-                        </div>
-                    </li>
+                    @endforeach
 	   			</ul>
 	   		</div>
 	   		<div class="pagination">
