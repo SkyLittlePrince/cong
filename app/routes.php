@@ -12,11 +12,12 @@
 */
 /*------------------------<接口路由>------------------------------*/
 //测试模块
-Route::get('test',function()
-{
-	return View::make('test');
-});
-Route::post('test','UserController@getCheckRegister');
+// Route::get('test',function()
+// {
+// 	return View::make('test');
+// });
+//Route::get('test','TestController@getAscore');
+//Route::post('test','UserController@getCheckRegister');
 
 // 用户模块
 Route::group(array('prefix' => 'user'),function()
@@ -68,9 +69,8 @@ Route::group(array('prefix' => 'shop','before' => 'auth.user.isIn'),function()
 	Route::post('addShop','ShopController@addShop');
 	Route::post('updateShop','ShopController@updateShop');
 	Route::post('addTag','ShopController@addTag');
-	Route::post('deleteTag','ShopController@deleteShop');
-	Route::get('deleteShop','ShopController@deleteShop');
-	
+	Route::post('deleteTag','ShopController@deleteTag');
+	Route::get('deleteShop','ShopController@deleteShop');	
 });
 
 //产品模块

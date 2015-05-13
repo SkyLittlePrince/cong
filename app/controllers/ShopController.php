@@ -31,6 +31,10 @@ class ShopController extends \BaseController {
 			$user->role_id = 2;
 			$user->save();
 
+			$length = count($tags);
+			if($length > 5)
+				return Response::json(array('errCode' => 3,'message' => '创建店铺的标签不能多余5个!'));
+
 			foreach ($tags as $tag) {
 				$Tag = Tag::firstOrCreate(array('name' => $tag));
 				$shop_tag = ShopTag::firstOrCreate(array('shop_id' => $shop->id,'tag_id' => $Tag->id));
@@ -102,10 +106,17 @@ class ShopController extends \BaseController {
 
 		$tag = Tag::firstOrCreate(array('name' => $name));
 
-		if($shop->tags()->save($tag))
-			return Response::json(array('errCode' => 0,'message' => '保存成功!'));
+		try
+		{
+			if($shop->tags()->save($tag))
+				return Response::json(array('errCode' => 0,'tag_id' => $tag->id));
 
-		return Response::json(array('errCode' => 3,'message' => '保存失败!'));
+			return Response::json(array('errCode' => 4,'message' => '保存失败!'));
+		}
+		catch(Exception $e)
+		{
+			return Response::json(array('errCode' => 3,'message' => '标签已存在!'));
+		}
 	}
 
 	public function deleteShop()
