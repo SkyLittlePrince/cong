@@ -66,6 +66,7 @@ www.congcong.com 		127.0.0.1
 
 #### 安装composer管理的PHP依赖包
 laravel的依赖包采用composer进行管理，在项目跟目录下运行以下命令来安装依赖包
+注意：composer install 之前要先删除项目根目录下的composer.lock文件，否则会导致命令运行失败 
 ``` php
 composer install
 ```

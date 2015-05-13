@@ -21,7 +21,6 @@ class CreateMessageConfigsTable extends Migration {
 			$table->boolean("publishSuccess")->default(0);		// 当我的需求发布成功时,请通知我
 			$table->boolean("publishFail")->default(0);			// 当我的需求发布失败时,请通知我
 			$table->boolean("nearDeadline")->default(0);		// 当我的需求交稿期即将结束时时,请通知我
-			$table->timestamps();
 
 			$table                          
 				->foreign('user_id')
