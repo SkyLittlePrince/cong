@@ -1,5 +1,5 @@
 
-$email = $("#send-email")
+$email = $("#email")
 
 $ ->
 	$("#send-email").bind "click", (e)->	
