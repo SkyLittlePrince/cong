@@ -31,6 +31,10 @@ class ShopController extends \BaseController {
 			$user->role_id = 2;
 			$user->save();
 
+			$length = count($tags);
+			if($length > 5)
+				return Response::json(array('errCode' => 3,'message' => '创建店铺的标签不能多余5个!'));
+
 			foreach ($tags as $tag) {
 				$Tag = Tag::firstOrCreate(array('name' => $tag));
 				$shop_tag = ShopTag::firstOrCreate(array('shop_id' => $shop->id,'tag_id' => $Tag->id));
