@@ -122,7 +122,7 @@
                 <div class="clear"></div>
                 <script type="text-template" id="skillTemplate">
                     <div class="skill-item">
-                        <span class="skill-id hidden"><%= newSkillId %></span>
+                        <span class="skill-id hidden"><%= skill_id %></span>
                         <span class="skill-name"><%= name %></span>
                         <img src="/images/tradingcenter/icon/delete.png" class="hidden del-btn-skill" />
                     </div>

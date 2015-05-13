@@ -103,7 +103,7 @@ class ShopController extends \BaseController {
 		$tag = Tag::firstOrCreate(array('name' => $name));
 
 		if($shop->tags()->save($tag))
-			return Response::json(array('errCode' => 0,'message' => '保存成功!'));
+			return Response::json(array('errCode' => 0,'tag_id' => $tag->id));
 
 		return Response::json(array('errCode' => 3,'message' => '保存失败!'));
 	}

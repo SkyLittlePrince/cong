@@ -171,7 +171,7 @@ addSaveSkill = (e)->
 	dataBus.addItem "Skill", data, (res)->
 		if res.errCode == 0
 			alert "新增成功"
-			str = compiled {"newSkillId": res.newSkillId, name: data.name}
+			str = compiled {"skill_id": res.skill_id, name: data.name}
 			$(str).insertBefore $(".skill-add")
 			$parent.find(".bg").addClass("hidden")
 			$parent.find(".show").addClass("hidden")

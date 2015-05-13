@@ -21,9 +21,7 @@ class SkillController extends \BaseController {
 
 		try
 		{
-			$user->skills()->save($skill);
-
-			return Response::json(array('errCode' => 0,'message' => '保存成功!'));
+			return Response::json(array('errCode' => 0,'skill_id' => $skill->id));
 		}
 		catch(Exception $e)
 		{

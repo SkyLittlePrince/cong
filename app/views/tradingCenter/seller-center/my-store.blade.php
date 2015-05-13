@@ -36,7 +36,7 @@
                         <span class="label">店铺标签: </span>
                         <span class="content tags">
                             @foreach ($tags as $tag)
-                                <span class="one-tag">{{{$tag["name"]}}}&nbsp&nbsp</span>
+                                <span class="one-tag" data-tagid="{{{$tag["id"]}}}">{{{$tag["name"]}}}&nbsp&nbsp</span>
                             @endforeach
                         </span>
                     </div>
@@ -49,10 +49,13 @@
                                 <a class="input-group-addon" id="add-tag-btn" href="javascript:void(0);">+</a>
                             </div>
                         </span>
+                        <script type="text/template" id="oneTagTemplat">
+                            <span class="one-tag" data-tagid="<%= tagId%>"><%= tagValue%>&nbsp&nbsp</span>
+                        </script>
                         <script type="text/template" id="disabledTagTemplate">
                             <div class="input-group display-tag">
                                 <input type="text" class="tagText form-control input-sm" value="<%= tagValue %>" title="<%= tagValue %>" style="text-transform: lowercase;" disabled="disabled">
-                                <a class="input-group-addon tagClose delete-tag-btn" href="javascript:void(0);">×</a>            
+                                <a class="input-group-addon tagClose delete-tag-btn" href="javascript:void(0);" data-tagid="<%= tagId %>">×</a>            
                             </div>
                         </script>
                     </div>
@@ -71,13 +74,15 @@
                 <div class="operation">
                     <div class="edit-btn">编辑</div>
                     <div class="hidden save-btn">保存</div>
-                    <div class="hidden cancel-btn">取消</div>
+                    <!-- <div class="hidden cancel-btn">取消</div> -->
                 </div>
             </div>
         </div>
         <div class="main-content">
             <div class="recommendation main-content">
-                <h3>我的商品</h3>
+                <h3>我的商品
+                    <a href="javascript:void(0)" class="btn delete-store">删除店铺</a>
+                </h3>
                 <div class="recommendation-image">
                     @foreach ($products as $product)
                         <div class="one-image">

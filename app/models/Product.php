@@ -33,9 +33,4 @@ class Product extends \Eloquent {
 	{
 		return $this->hasMany('Score');
 	}
-
-	public function aScore()
-	{
-		return $this->hasMany('Score')->avg('score');
-	}
 }
