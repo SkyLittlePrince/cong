@@ -12,11 +12,11 @@ class InvitationController extends \BaseController {
 		if(!preg_match($reg, $email))
 			return Response::json(array('errCode' => 1,'message' => '邮箱格式不正确!'));
 
-		$url = 'cong.laravel.com/user/register?token=' . $user->id;
+		$url = 'cong.laravel.com/user/register?invitationCode=' . $user->id;
 
 		try
 		{
-			Mail::send('invitation',array('token' => $url),function($message) use ($email)
+			Mail::send('invitation',array('url' => $url),function($message) use ($email)
 			{
 				$message->to($email,'')->subject('邀请你加入丛丛网!');
 			});
