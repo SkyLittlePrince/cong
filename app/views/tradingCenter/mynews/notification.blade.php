@@ -67,5 +67,6 @@
 
 @section('js')
     @parent
+    <script type="text/javascript" src="/lib/js/lodash/lodash.js"></script>
     <script type="text/javascript" src='/dist/js/pages/index.js'></script>
 @stop
