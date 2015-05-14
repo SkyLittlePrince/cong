@@ -3,7 +3,7 @@
 @one-order-height: 79px;
 @page-color: #666633; 
 .order-p {
-    padding-top: @order-component-padding-top;
+    padding: 0px;
 }
 .line-two {
     margin-top: 5px;
@@ -17,11 +17,15 @@
         text-align: center;
 }
 .my-order {
+    @padding-top: 30px;
     @num-width: 113px;
     @date-width: 145px;
-    @pic-width: 112px;
-    @title-width: 241px;
-    @status-width: 750px - @num-width - @date-width - @pic-width - @title-width;
+    @pic-width: 40px;
+    @title-width: 150px;
+    @pic-margin-left: 80px;
+    @title-margin-right: 60px;
+    @title-padding-left: 10px;
+    @status-width: 750px - @num-width - @date-width - @pic-width - @title-width - @pic-margin-left - @title-margin-right - @title-padding-left;
     .order-banner {
         .banner(100%, 29px, #fff);
     }
@@ -36,6 +40,7 @@
             li {
                 float: left;
                 line-height: 33px;
+                text-align: center;
             }
             .info {
                 width: @num-width;
@@ -43,15 +48,13 @@
             }
             .date {
                 width: @date-width;
-                text-indent: 100px;
             }
             .name {
-                width: @pic-width + @title-width;
-                text-indent: 200px;
+                width: @pic-width + @title-width + @pic-margin-left + @title-padding-left;
+                margin-right: @title-margin-right;
             }
             .status {
                 width: @status-width;
-                text-indent: 67px;
             }
         }
     }
@@ -67,6 +70,8 @@
             float: left;
             height: 100%;
             overflow: hidden;
+            text-align: center;
+            display: table-cell;
         }
         .order-child(@width, @padding-left: 0px) {
             font-size: 12px;
@@ -76,12 +81,14 @@
             }
         }
         .order-num {
-            .order-child(@num-width, 19px);
+            padding-top: @padding-top;
+            .order-child(@num-width);
             p {
                 word-break:break-all;   //单词强制换行
             }
         }
         .order-date {
+            padding-top: @padding-top;
             width: @date-width;
             font-weight: bold;
             p {
@@ -94,6 +101,7 @@
             overflow: hidden;
             //实现图片的垂直居中
             display: table;
+            margin-left: @pic-margin-left;
             span {
                 display: table-cell;
                 vertical-align: middle;
@@ -105,7 +113,11 @@
             }
         }
         .order-title {
-            .order-child(@title-width, 20px);
+            text-align: left;
+            padding-top: 18px;
+            padding-left: @title-padding-left;
+            margin-right: @title-margin-right;
+            .order-child(@title-width);
             .price {
                 font-size: 16px;
                 color: #b08511;
@@ -113,7 +125,20 @@
         }
         .order-status {
             font-weight: bold;
-            .order-child(@status-width, 60px);
+            padding-top: @padding-top;
+            .order-child(@status-width);
+
+            .pay-btn, .cancel-btn {
+                width: 60px;
+                height: 20px;
+                font-size: 12px;
+                line-height: 20px;
+                margin-top: 5px;
+            }
+
+            .cancel-btn {
+                background-color: #d8d8d8;
+            }
         }
     }
 }
