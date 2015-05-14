@@ -46,7 +46,12 @@ $('#nameclick').on('click', function() {
   };
 
   ws.onclose = function(){
-    alert('bye bye bye bye bye...');
+    var who = name;
+    var data = {
+      who: who,
+      dowhat: 'logout'
+    };
+    ws.send(JSON.stringify(data));
   };
 
   $('#chat-form').on('submit', function(event){
