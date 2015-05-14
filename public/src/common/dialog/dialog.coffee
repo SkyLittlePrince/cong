@@ -6,7 +6,7 @@ dialogCompiled = _.template dialogTpl
 # title = "我的消息"
 # dialog = new Dialog({
 #     title: title
-#     content: content
+#     content: content       
 # })
 # dialog.loadDialogToPage()
 
@@ -20,7 +20,7 @@ _defaultConfig = {
     buttons: [
         {text: "确定", className: "dialog-ok close-button"}    
     ],
-    title: "" 
+    title: ""                       # 弹出框的标题
 }
 # 页面弹出框组件
 # 组件提供下列功能

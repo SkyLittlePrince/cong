@@ -16,7 +16,7 @@ compiled = _.template $oneProductTemplate.html()
 
 # 文档加载完成执行的操作
 $ ->
-	checkbox = (new Checkbox({selector: '.shopping-cart-content'}))
+	# checkbox = (new Checkbox({selector: '.shopping-cart-content'}))
 	loadShoppingCart()
 	$('body').delegate '.counter-btn', 'click', changeProductNumber
 	$('body').delegate '.delete', 'click', deleteOneProductHandler

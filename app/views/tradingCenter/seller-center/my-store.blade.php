@@ -79,10 +79,13 @@
             </div>
         </div>
         <div class="main-content">
-            <div class="recommendation main-content">
-                <h3>我的商品
-                    <a href="javascript:void(0)" class="btn delete-store">删除店铺</a>
-                </h3>
+            <div class="recommendation main-content-component store-product-list">
+                <h3>我的商品</h3>
+                <div class="operation product-operation">
+                    <div class="delete-product hidden product-btn">删除商品</div>
+                    <div class="add-product hidden product-btn">增加商品</div>
+                    <div class="delete-store">删除店铺</div>
+                </div>
                 <div class="recommendation-image">
                     @foreach ($products as $product)
                         <div class="one-image">
@@ -92,9 +95,44 @@
                         </div>
                     @endforeach
                 </div>
-                <a href="#" class="btn edit">编辑</a>
+                <div class="operation">
+                    <div class="edit-btn" id="edit-store-product">编辑</div>
+                    <div class="hidden save-btn" id="save-store-product">保存</div>
+                </div>
+                <script type="text/template" id="addProductTemplate">
+                    <div class="content-main">
+                    <div class="content-row">
+                        <label class="label" for="avatar">商品图片：</label>
+                        <div class="content-input" id="avatar-wrapper">
+                            <img class="avatar-img" src="/images/tradingcenter/icon/avatar.png" width="80" height="80" />
+                            <input type="hidden" id="avatar-url" name="avatar" class="hidden" value="" />
+                            <a href="javascript:;" class="a-upload">
+                                <input type="file" name="avatar-file" id="avatar-file">单击上传
+                            </a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="content-row">
+                        <label class="label">商品名称：</label>
+                        <div class="content-input">
+                            <input type="text" />
+                        </div>
+                    </div>
+                    <div class="content-row">
+                        <label class="label">商品金额：</label>
+                        <div class="content-input">
+                            <input type="text" /><span> 元</span>
+                        </div>
+                    </div>
+                    <div class="content-row">
+                        <label class="label">商品描述：</label>
+                        <div class="content-input">
+                            <textarea></textarea>
+                        </div>
+                    </div>
+                </script>
             </div>
-            <div class="ranking main-content">
+            <div class="ranking main-content-component store-product-ranking">
                 <h3>宝贝排行榜</h3>
                 <div class="nav-wrapper">
                     <div class="line"></div>   
@@ -125,10 +163,8 @@
                 </div>
             </div>
         </div>
-
     </div>
 @stop
-
 @section('js')
     @parent
     <script type="text/javascript" src="/lib/js/lodash/lodash.js"></script>
