@@ -18,8 +18,7 @@ _defaultConfig = {
     # 弹出框中按钮数组
     # 每一个按钮为一个对象，其中text为按钮的内容，className为改按钮的class，方便自行绑定事件处理程序
     buttons: [
-        {text: "确定", className: "dialog-ok"},
-        {text: "取消", className: "dialog-cancel close-button"}
+        {text: "确定", className: "dialog-ok close-button"}    
     ],
     title: "" 
 }
