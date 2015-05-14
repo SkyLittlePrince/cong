@@ -12,7 +12,8 @@ module.exports = (grunt)->
         copy:
             dev:
                 files: [
-                    {expand: true, flatten: true, src: ["lib/js/jquery/*"], dest: 'dist/js/lib/jquery/'}
+                    {expand: true, flatten: true, src: ["lib/js/jquery/*"], dest: 'dist/js/lib/jquery/'},
+                    {expand: true, flatten: true, src: ["lib/js/lodash/*"], dest: 'dist/js/lib/lodash/'}
                 ]
 
         clean:

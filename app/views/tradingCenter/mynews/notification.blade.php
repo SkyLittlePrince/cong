@@ -42,7 +42,10 @@
                     @endforeach
 	   			</ul>
 	   		</div>
-	   		<div class="pagination">
+            @if (count($messages) < $numOfTotalItems)
+                {{ $indents->links() }}
+            @endif
+	   		<!-- <div class="pagination">
                 <div class="right to-page">
                     <p>
                         共<span class="page-count">3</span>页,到第<input type="text" >页
@@ -60,7 +63,7 @@
                         <img src="/images/icon/icon-arrow-right.png" alt="icon-right" width="28" height="28" />
                     </a>
                 </div>
-	   		</div>
+	   		</div> -->
    		</div>
     </div>
 @stop

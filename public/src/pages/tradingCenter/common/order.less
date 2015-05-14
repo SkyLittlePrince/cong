@@ -18,12 +18,12 @@
 }
 .my-order {
     @padding-top: 30px;
-    @num-width: 113px;
+    @num-width: 150px;
     @date-width: 145px;
     @pic-width: 40px;
     @title-width: 150px;
     @pic-margin-left: 80px;
-    @title-margin-right: 60px;
+    @title-margin-right: 23px;
     @title-padding-left: 10px;
     @status-width: 750px - @num-width - @date-width - @pic-width - @title-width - @pic-margin-left - @title-margin-right - @title-padding-left;
     .order-banner {
@@ -117,6 +117,9 @@
             padding-top: 18px;
             padding-left: @title-padding-left;
             margin-right: @title-margin-right;
+            a {
+                color: @page-color;
+            }
             .order-child(@title-width);
             .price {
                 font-size: 16px;

@@ -28,7 +28,7 @@
             @foreach ($indents as $indent)
 	    	<div class="one-order">
 	    		<div class="order-num order-component">
-	    			{{{ $indent->id }}}
+	    			<span class="id">{{{ $indent->id }}}</span>
 	    		</div>
 				<div class="order-date order-component">
 					{{{ $indent->created_at }}}
@@ -39,7 +39,8 @@
 					</span>
 				</div>
 				<div class="order-title order-component">
-					<p class="order-p">{{{ $indent["product"]["name"] }}}</p>
+					<p class="order-p">
+                        <a href="{{{ $indent['product']['id'] }}}" target="_blank">{{{ $indent["product"]["name"] }}}</a></p>
 					<p class="price line-two">￥<span>{{{ $indent["product"]["price"] }}}</span></p>
 				</div>
 				<div class="order-status order-component">
@@ -56,30 +57,14 @@
 	    	</div>
 	    	@endforeach
 	    </div>
-	    <div class="pagination">
-                <div class="right to-page">
-                    <p>
-                        共<span class="page-count">3</span>页,到第<input type="text" >页
-                        <input type="button" value="确定">
-                    </p>
-                </div>
-	   			<div class="page-num right">
-                    <a href="#">
-                        <img src="/images/icon/icon-arrow-left.png" alt="icon-left" width="28" height="28" />         
-                    </a>
-                    <span class="num active">1</span>
-                    <span class="num">2</span>
-                    <span class="num">3</span>
-                    <a href="#">
-                        <img src="/images/icon/icon-arrow-right.png" alt="icon-right" width="28" height="28" />
-                    </a>
-                </div>
-	   		</div>
+	    @if (count($indents) < $numOfTotalItems)
+        	{{ $indents->links() }}
+        @endif
 	</div>
 @stop
 
 @section('js')
 	@parent
-    <script type="text/javascript" src='/dist/js/pages/trading-list.css'></script>
+    <script type="text/javascript" src='/dist/js/pages/trading-list.js'></script>
 @stop
 	
