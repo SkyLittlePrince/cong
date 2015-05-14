@@ -25,9 +25,8 @@ navConfig = {
 		},
 		navIndexes: {
 			"register": 0,
-			"authentication": 1,
-			"my-store": 2,
-			"my-indents": 3
+			"my-store": 1,
+			"my-indents": 2
 		}
 	}
 	account: {

@@ -238,14 +238,10 @@ Route::group(array('prefix' => 'trading-center'),function()
 	// 买家中心
 	Route::group(array('prefix' => 'buyer'),function()
 	{
-		Route::get('/', function()
-		{
-			return View::make('tradingCenter.buyer-center.index');
-		});
-		Route::get('trading-list', function()
-		{
-			return View::make('tradingCenter.buyer-center.trading-manage.trading-list');
-		});
+		Route::get('/', 'BuyerPageController@index');
+
+		Route::get('trading-list', 'BuyerPageController@tradingList');
+
 		Route::get('trading-comment', function()
 		{
 			return View::make('tradingCenter.buyer-center.trading-manage.trading-comment');
@@ -328,10 +324,7 @@ Route::group(array('prefix' => 'trading-center'),function()
 
 			Route::get('my-store', 'SellerPageController@myStore');
 
-			Route::get('my-indents', function()
-			{
-				return View::make('tradingCenter.seller-center.my-indents');
-			});
+			Route::get('my-indents', 'SellerPageController@myIndents');
 
 			Route::get('indent-evaluation', function()
 			{
