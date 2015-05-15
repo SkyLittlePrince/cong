@@ -9,6 +9,7 @@ class ProductController extends \BaseController {
 		$name = Input::get('name');
 		$intro = Input::get('intro');
 		$price = Input::get('price');
+		$avatar = Input::get('avatar');
 
 		$shop = Shop::where('shop_id',$shop_id)->first();
 
@@ -27,6 +28,7 @@ class ProductController extends \BaseController {
 		$product->intro = $intro;
 		$product->price = $price;
 		$product->shop_id = $shop_id;
+		$product->avatar = $avatar;
 
 		if($product->save())
 			return Response::json(array('errCode' => 0,'message' => '创建成功!'));
@@ -40,6 +42,7 @@ class ProductController extends \BaseController {
 		$name = Input::get('name');
 		$intro = Input::get('intro');
 		$price = Input::get('price');
+		$avatar = Input::get('avatar');
 
 		$product = Product::find($id);
 
@@ -54,6 +57,7 @@ class ProductController extends \BaseController {
 		$product->name = $name;
 		$product->intro = $intro;
 		$product->price = $price;
+		$product->avatar = $avatar;
 
 		if($product->save())
 			return Response::json(array('errCode' => 0,'message' => '保存成功!'));
