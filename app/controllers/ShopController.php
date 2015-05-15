@@ -123,7 +123,7 @@ class ShopController extends \BaseController {
 	{
 		$user = Sentry::getUser();
 
-		$shop = Shop::where('user_id',$user->id)->first();
+		$shop = Shop::where('user_id',$user->id)->with('products.indents')->first();
 
 		if(!isset($shop))
 			return Response::json(array('errCode' => 1,'message' => '店铺不存在!'));
