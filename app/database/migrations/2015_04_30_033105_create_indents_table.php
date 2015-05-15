@@ -18,12 +18,7 @@ class CreateIndentsTable extends Migration {
 			$table->timestamps();
 			$table->integer('user_id')->unsigned()->index('user_id');
 			// $table->integer('task_id')->unsigned()->index('task_id');
-			$table->integer('product_id')->unsigned()->index('product_id');
 			$table->integer("status")->default(0);
-
-		   	$table                          
-				->foreign('product_id')
-				->references('id')->on('products');
 
 			$table                          
 				->foreign('user_id')

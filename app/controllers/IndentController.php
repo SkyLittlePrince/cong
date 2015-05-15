@@ -15,10 +15,10 @@ class IndentController extends BaseController {
 			return Response::json(array('errCode' => 2,'message' => '不能给自己的商品下单!'));
 
 		$indent = new Indent();
-		$indent->product_id = $product_id;
 		$indent->user_id = $user->id;
+		$indent->save();
  		
-		if($indent->save())
+		if($product->indents()->save($indent))
 		{
 			$content = '用户' . $user->name . '对你的' . $product->name . '商品下了订单!';
 			$message = Message::create(array(
@@ -39,7 +39,7 @@ class IndentController extends BaseController {
 		$indentId = Input::get("indentId");
 		$user = Sentry::getUser();
 
-		$indent = Indent::with('product.shop')->find($indentId);
+		$indent = Indent::with('products.shop')->find($indentId);
 		if(!isset($indent))
 			return Response::json(array('errCode' => 1,'message' => '该订单不存在!'));
 
@@ -49,10 +49,10 @@ class IndentController extends BaseController {
 		if($indent->status > 0)
 			return Response::json(array('errCode' => 3,'message' => '你已付款不能再取消订单!'));
 
-		if(isset($indent->product))
+		if(isset($indent->products))
 		{
-			$content = '用户' . $user->name . '取消了你的' . $indent->product->name . '商品的订单!';
-			$receiver = $indent->product->shop->user_id;
+			$content = '用户' . $user->name . '取消了你的' . $indent->products[0]->name . '商品的订单!';
+			$receiver = $indent->products[0]->shop->user_id;
 
 			$message = Message::create(array(
 						'title' => '取消订单消息',
