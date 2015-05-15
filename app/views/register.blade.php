@@ -14,8 +14,8 @@
 		<div class="register-area">
 			<div class="register-steps">
 				<ul class="step-title">
-					<li class="active">1.设置登录名</li>
-					<li>2.验证邮箱</li>
+					<li class="active">1.邮箱验证</li>
+					<li>2.输入验证码</li>
 					<li>3.填写用户信息</li>
 				</ul>
 				<div class="clear"></div>
