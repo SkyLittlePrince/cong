@@ -318,6 +318,8 @@ class UserController extends \BaseController {
 	public function postUpdate()
 	{
 		$user = Sentry::getUser();
+		$realname = Input::get("realname");
+		$avatar = Input::get("avatar");
 		$qq = Input::get('qq');
 		$gender = Input::get('gender');
 		$wechat = Input::get('wechat');
@@ -333,6 +335,8 @@ class UserController extends \BaseController {
 			$gender = 0;
 
 		$user = User::find($user->id);
+		$user->realname = $realname;
+		$user->avatar = $avatar;
 		$user->qq = $qq;
 		$user->gender = $gender;
 		$user->wechat = $wechat;
