@@ -120,6 +120,10 @@ module.exports = (grunt)->
                     'dist/css/tradingCenter/seller-center/wait-check.css': ['src/pages/tradingCenter/seller-center/wait-check.less']
                     'dist/css/tradingCenter/seller-center/seller-store.css': ['src/pages/tradingCenter/seller-center/seller-store.less']
                     'dist/css/tradingCenter/seller-center/seller-product-detail.css': ['src/pages/tradingCenter/seller-center/seller-product-detail.less']
+                    'dist/css/admin/user-manager.css': ['src/pages/admin/user-manager.less']
+                    'dist/css/admin/product-manager.css': ['src/pages/admin/product-manager.less']
+                    'dist/css/admin/indent-manager.css': ['src/pages/admin/indent-manager.less']
+                    'dist/css/admin/product-report.css': ['src/pages/admin/product-report.less']
 
         cssmin:
             compress:
