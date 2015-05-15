@@ -10,16 +10,16 @@ class Task extends \Eloquent {
 	protected $table = 'tasks';
 
 	public $timestamps = true;
-    public $primaryKey = 'id';
+    	public $primaryKey = 'id';
 	public $incrementing = true;
 
 	public function indent()
-    {
-        return $this->hasOne('Indent', 'task_id', 'id');
-    }
+	{
+              	return $this->hasOne('Indent', 'task_id', 'id');
+	}
 
-    public function user()
-    {
-    	return $this->belongsTo("User", "id", 'user_id');
-    }
+	public function user()
+	{
+    		return $this->belongsTo("User", "id", 'user_id');
+	}
 }

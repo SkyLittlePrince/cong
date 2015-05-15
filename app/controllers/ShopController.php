@@ -123,10 +123,24 @@ class ShopController extends \BaseController {
 	{
 		$user = Sentry::getUser();
 
+		//$shop = Shop::where('user_id',$user->id)->with('products.indents')->first();
 		$shop = Shop::where('user_id',$user->id)->first();
 
 		if(!isset($shop))
 			return Response::json(array('errCode' => 1,'message' => '店铺不存在!'));
+
+		// $args = array();
+		// foreach ($shop->products as $product) {
+		// 	$content = '你对' . $product->name . '商品下的订单已被取消!';
+		// 	foreach ($product->indents as $indent) {
+		// 		$arg = array();
+		// 		$arg['title'] = '取消订单消息';
+		// 		$arg['content'] = $content;
+		// 		$arg['sender'] = 8;
+		// 		$arg['receiver'] = $indent->user_id;
+		// 		$arg['type'] = 1;
+		// 	}
+		// }
 
 		if($shop->delete())
 		{

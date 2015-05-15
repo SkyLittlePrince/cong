@@ -34,4 +34,9 @@ class Product extends \Eloquent {
 	{
 		return $this->hasMany('Score');
 	}
+
+	public function indents()
+	{
+		return $this->hasMany('Indent');
+	}
 }

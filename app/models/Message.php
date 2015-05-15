@@ -13,7 +13,19 @@ class Message extends \Eloquent {
     	public $primaryKey = 'id';
 	public $incrementing = true;
 
-	protected $fillable = array('status');
+	protected $fillable = array(
+			'sender',
+			'receiver',
+			'title',
+			'content',
+			'type',
+			'status'
+		);
+
+	protected $hidden = array(
+			'created_at',
+			'updated_at'
+		);
 
 	public function receiver()
 	{

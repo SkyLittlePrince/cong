@@ -8,11 +8,11 @@ class CommentController extends \BaseController {
 		$product_id = Input::get('product_id');
 		$content = Input::get('content');
 
-		$product = Product::find($product_id);
+		$product = Product::with('shop')->find($product_id);
 		if(!isset($product))
 			return Response::json(array('errCode' => 1,'message' => '该产品不存在!'));
 
-		if($product->user_id == $user->id)
+		if($product->shop->user_id == $user->id)
 			return Response::json(array('errCode' => 2,'message' => '不能评论自己的产品!'));
 
 		$indent = Indent::where('user_id',$user->id)
