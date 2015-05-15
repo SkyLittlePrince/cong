@@ -230,7 +230,7 @@ Route::group(array('prefix' => 'trading-center'),function()
 	{
 		Route::get('notification', 'MessagePageController@notification');
 
-		Route::get('setting', 'MessagePageController@setting');
+		// Route::get('setting', 'MessagePageController@setting');
 
 		Route::get('trading-reminder', 'MessagePageController@tradingReminder');
 	});
@@ -275,6 +275,7 @@ Route::group(array('prefix' => 'trading-center'),function()
 		Route::group(array('before' => 'auth.user.isIn'), function() 
 		{
 			Route::get('/', 'AccountPageController@index');
+
 			Route::get('authentication', 'AccountPageController@authentication');
 		
 			Route::get('bind-weibo', function()
@@ -291,19 +292,11 @@ Route::group(array('prefix' => 'trading-center'),function()
 			{
 				return View::make('tradingCenter.account.pay-account');
 			});
-		});
 
-		Route::get('base-info', function()
-		{
-			return View::make('tradingCenter.account.base-info');
-		});
+			Route::get('base-info', 'AccountPageController@baseInfo');
 
-		Route::get('address', function()
-		{
-			return View::make('tradingCenter.account.address');
+			Route::get('card', 'AccountPageController@card');
 		});
-
-		Route::get('card', 'AccountPageController@card');
 		
 		Route::get('user-info', 'AccountPageController@userInfo');
 	});
