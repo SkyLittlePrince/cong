@@ -665,8 +665,8 @@ class UserController extends \BaseController {
 				'description' => $description
 			),
 			array(
-				'start_time' => 'required|date_format:Y-m-d',
-				'end_time' => 'required|date_format:Y-m-d',
+				'start_time' => 'required|date_format:Y-m',
+				'end_time' => 'required|date_format:Y-m',
 				'description' => 'required|between:2,40'
 			)
 		);
@@ -719,8 +719,8 @@ class UserController extends \BaseController {
 				'description' => $description
 			),
 			array(
-				'start_time' => 'required|date_format:Y-m-d',
-				'end_time' => 'required|date_format:Y-m-d',
+				'start_time' => 'required|date_format:Y-m',
+				'end_time' => 'required|date_format:Y-m',
 				'description' => 'required|between:2,40'
 			)
 		);
@@ -777,8 +777,8 @@ class UserController extends \BaseController {
 				'description' => $description
 			),
 			array(
-				'start_time' => 'required|date_format:Y-m-d',
-				'end_time' => 'required|date_format:Y-m-d',
+				'start_time' => 'required|date_format:Y-m',
+				'end_time' => 'required|date_format:Y-m',
 				'description' => 'required|between:2,40'
 			)
 		);
@@ -831,8 +831,8 @@ class UserController extends \BaseController {
 				'description' => $description
 			),
 			array(
-				'start_time' => 'required|date_format:Y-m-d',
-				'end_time' => 'required|date_format:Y-m-d',
+				'start_time' => 'required|date_format:Y-m',
+				'end_time' => 'required|date_format:Y-m',
 				'description' => 'required|between:2,40'
 			)
 		);
