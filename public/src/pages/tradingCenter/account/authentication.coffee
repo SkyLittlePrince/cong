@@ -63,7 +63,7 @@ editAuthentication = (e)->
 	dataBus.updateAuthenticatoin data, (res)->
 		if res.errCode == 0
 			alert "提交审核成功"
-			window.location.href = "/trading-center/seller/authentication"
+			window.location.href = "/trading-center/account/authentication"
 		else
 			alert res.message
 

@@ -1,104 +1,159 @@
 @import '../../../common/common.less';
+@content-header-width: 750px;
+@content-header-height: 105px;
+@page-color: #787878;
+@font:"微软雅黑";
 
 .authentication-content {
-	.content-main {
-		margin-top: 20px;
+    position: relative;
+    float: left;
+    .content-header {
+        height: @content-header-height;
+        background-color: #fff;
+        .title {
+            padding-left: 35px;
+            padding-top: 15px; 
+            color: @page-color;
+        }
+        .content {
+            color: #bca890;
+            padding-left: 89px;
+        }
+        .line-one {
+            padding-top: 14px;
+        }
+    }
 
-		.content-row {
-			@line-height: 35px;
+    .content-main {
+        width: 100%;
+        float: left;
+        margin-left: 30px;
+        background-color: #fff;
+        color: @page-color;
+        padding-bottom: 20px;
 
-			width: 100%;
-			float: left;
-			margin-bottom: 15px;
+        .status {
+            position: absolute;
+            right: 50px;
+            top: 20px;
+        }
 
-			img {
-				float: left;
-			}
+        .content-row {
+            @line-height: 35px;
+            width: 100%;
+            float: left;
+            overflow: hidden;
+            margin-top: 10px;
+            label.label {
+                float: left;
+                line-height: @line-height;
+                vertical-align: middle;
+                width: 122px;
+                text-align: right;
+                font-family:@font;
+            }
+            .require-star {
+                color: #fe170f;
+                display: inline-block;
+                margin-left: 12px;
+                &.img-star {
+                    line-height: 160px; 
+                }
+            }
+            .content-input {
+                float: left;
+                overflow: hidden;
+                margin-left: 11px;
+                input[type="text"] {
+                    .input(264px, @line-height);
+                }
+                input[type="radio"] {
+                    height: @line-height;
+                    vertical-align: middle;
+                }
 
-			.star {
-				color: red;
-				line-height: 45px;
-				vertical-align: middle;
-				float: left;
-				display: block;
-				margin-left: 5px;
-			}
+                .content-text {
+                    line-height: 35px;
+                    vertical-align: middle;
+                }
 
-			.warning {
-				color: #c5b498;
-				line-height: 22px;
-				vertical-align: middle;
-				float: left;
-				margin-left: 12px; 
-				font-size: 12px;
-				width: 650px;
-			}
+                .content-img {
+                    width: 105px;
+                    margin: 0 auto;
+                    margin-top: 10px;
+                }
 
-			.label {
-				float: left;
-				line-height: @line-height;
-				vertical-align: middle;
-				width: 100px;
-			}
+                .img-border {
+                    height: 66px;
+                    width: 105px;
+                    margin: 0 auto;
+                    margin-top: 10px;
+                    border: 1px solid #d8d8d8;
+                }
 
-			.content-input {
-				float: left;
+                .img-box {
+                    width: 128px;
+                    padding-bottom: 20px;
+                    border: solid 1px #d8d8d8;
+                    float: left;
+                    .border-radius(10px);
+                    text-align: center;
+                    label.file-label {
+                        width: 100%;
+                        color: #c1af97;
+                        display: inline-block;
+                        margin-top: 15px; 
+                    }
+                }
+                .negative {
+                        margin-left: 26px;
+                    }
+                .tips {
+                    margin-top: 10px;
+                    float: left;
+                    color: #c1af97;
+                    font-size: 12px;
+                }
+            }
+        }
+        .operate-btn {
+            text-align: center;
+            .btn {
+                margin-top: 29px;
+            }
+        }
 
-				input[type="text"] {
-					.input(264px, 35px);
-				}
+        // 文件上传自定义按钮
+        .a-upload {
+            .border-radius(16px);
+            padding: 3px 5px;
+            width: 68px;
+            height: 20px;
+            line-height: 20px;
+            position: relative;
+            left: 0px;
+            top: 0px;
+            cursor: pointer;
+            color: #fff;
+            background: #7ecac9;
+            border: none;
+            overflow: hidden;
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            margin-top: 10px;
+            font-size: 14px;
+            font-family: @font;
+        }
 
-				.identity-photo {
-					height: 83px;
-					width: 131px;
-					float: left;
-					border: 1px solid #d8d8d8;
-					margin-right: 20px;
-					font-size: 12px;
-					.border-radius(10px);
-
-					span {
-						display: block;
-						text-align: center;
-						line-height: 45px;
-						vertical-align: middle;
-					}
-
-					.identity-card-btn {
-						border: 0px;
-						height: 27px;
-						width: 74px;
-						font-size: 12px;
-						margin: 0 auto;
-						margin-top: 0px;
-						display: block;
-						line-height: 27px;
-					}
-
-					.identity-card-file {
-						display: none;
-					}
-				}
-
-				.text {
-					clear: both;
-					font-size: 12px;
-				 	color: #c5b498;
-				 	margin-right: 10px;
-				 	line-height: 1.8em;
-				 	margin-top: 5px;
-				 	width: 340px;
-				 	float: left;
-				}
-			}
-
-			#authentication-save-btn {
-				margin: 0 auto;
-				margin-top: 20px;
-				display: block;
-				font-size: 14px;
-				font-family: "微软雅黑";
-			}
-		}
-	}
+        .a-upload  input {
+            position: absolute;
+            font-size: 100px;
+            right: 0;
+            top: 0;
+            cursor: pointer;
+            width: 78px;
+            height: 26px;
+        }
+    }
 }

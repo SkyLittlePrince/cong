@@ -31,14 +31,11 @@ navConfig = {
 	}
 	account: {
 		subNavIndexes: {
-			"base-info": 0,
-			"card": 1,
-			"bind-weibo": 2,
-			"change-password": 3
+			"bind-weibo": 0,
+			"change-password": 1
 		},
 		navIndexes: {
 			"base-info": 0,
-			"card": 0,
 			"user-info": 1,
 			"bind-weibo": 2,
 			"authentication": 3,
