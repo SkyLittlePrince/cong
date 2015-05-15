@@ -175,6 +175,7 @@ addSaveWorkExperience = (e)->
 			$parent.find(".work-content").addClass("hidden")
 			$parent.find(".add-btn").removeClass("hidden").siblings().addClass("hidden")
 		else
+			console.log res
 			alert res.message
 
 addSaveEduExperience = (e)->

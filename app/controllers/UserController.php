@@ -513,7 +513,6 @@ class UserController extends \BaseController {
 		return Response::json(array('errCode' => 3,'message' => '保存失败!'));
 	}
 	
-
 	//添加工作经历
 	public function addWorkExperience()
 	{
@@ -521,6 +520,27 @@ class UserController extends \BaseController {
 		$start_time = Input::get('start_time');
 		$end_time = Input::get('end_time');
 		$description = Input::get('description');
+
+		if($start_time > $end_time) {
+			return Response::json(array('errCode' => 4, "message" => "起始时间不得小于终止时间"));
+		}
+
+		$validator = Validator::make(
+			array(
+				'start_time' => $start_time,
+				'end_time' => $end_time,
+				'description' => $description
+			),
+			array(
+				'start_time' => 'required|date_format:Y-m-d',
+				'end_time' => 'required|date_format:Y-m-d',
+				'description' => 'required|size:50'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode' => 4, "message" => "参数格式错误", "validateMes" => $validator->messages()));
+		}
 
 		$workExperience = new WorkExperience;
 		$workExperience->user_id = $user->id;

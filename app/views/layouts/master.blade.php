@@ -28,7 +28,6 @@
 	<script type="text/javascript" src='/dist/js/lib/jquery/unslider.js'></script>
 	<script type="text/javascript" src='/dist/js/lib/lodash/lodash.min.js'></script>
 	<script type="text/javascript" src='/dist/js/components.js'></script>
-	<script type="text/javascript" src='/dist/js/common.js'></script>
 	@show
 </body>
 <html>
