@@ -14,9 +14,11 @@ class MessagePageController extends BaseController {
 			return Redirect::guest('user/login');
 		}
 
-		$messages = DB::table('messages')->where("receiver", "=", $user_id)->where("type", "=", 2)->get();
+		$numOfItemsPerPage = 10;
+		$messages = DB::table('messages')->where("receiver", "=", $user_id)->where("type", "=", 2)->paginate($numOfItemsPerPage);
+		$numOfTotalItems = DB::table('messages')->where("receiver", "=", $user_id)->where("type", "=", 2)->count();
 
-		return View::make('tradingCenter.mynews.notification', array("messages" => $messages));
+		return View::make('tradingCenter.mynews.notification', array("messages" => $messages, "numOfTotalItems" => $numOfTotalItems));
 	}
 
 	public function setting()

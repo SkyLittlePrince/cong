@@ -6,7 +6,7 @@
 
 @section('css')
     @parent
-    <link rel="stylesheet" type="text/css" href="/dist/css/tradingCenter/mynews/index.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/tradingCenter/mynews/notification.css">
     <link rel="stylesheet" type="text/css" href="/dist/css/checkbox/checkbox.css">
 @stop
 
@@ -43,27 +43,10 @@
                     @endforeach
 	   			</ul>
 	   		</div>
-	   		<div class="pagination">
-                <div class="right to-page">
-                    <p>
-                        共<span class="page-count">3</span>页,到第<input type="text" >页
-                        <input type="button" value="确定">
-                    </p>
-                </div>
-	   			<div class="page-num right">
-                    <a href="#">
-                        <img src="/images/icon/icon-arrow-left.png" alt="icon-left" width="28" height="28" />         
-                    </a>
-                    <span class="num active">1</span>
-                    <span class="num">2</span>
-                    <span class="num">3</span>
-                    <a href="#">
-                        <img src="/images/icon/icon-arrow-right.png" alt="icon-right" width="28" height="28" />
-                    </a>
-                </div>
-	   		</div>
-        </div>
-
+            @if (count($messages) < $numOfTotalItems)
+                {{ $indents->links() }}
+            @endif
+   		</div>
         <script type="text/template" id="one-message-content-template">
             <div class="one-message-content">
 
@@ -90,5 +73,5 @@
 @section('js')
     @parent
     <script type="text/javascript" src="/lib/js/lodash/lodash.js"></script>
-    <script type="text/javascript" src='/dist/js/pages/index.js'></script>
+    <script type="text/javascript" src='/dist/js/pages/notification.js'></script>
 @stop

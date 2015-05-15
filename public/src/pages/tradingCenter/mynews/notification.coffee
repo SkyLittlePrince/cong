@@ -89,10 +89,8 @@ deleteMarkMessage = ->
 
 # 页面加载完成执行的操作，绑定事件
 $ ->
-	# dialog.loadDialogToPage()
-
 	$.get "/message/get-num-of-unread-messages", {type: 2}, (res)->
-		$(".unread-message").html(res.num)
+		$(".message-notification .unread-message").html(res.num)
 
 	$(".checkbox-wrapper-all").click selectAll
 

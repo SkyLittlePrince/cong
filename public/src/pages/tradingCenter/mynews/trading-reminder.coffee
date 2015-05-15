@@ -88,7 +88,8 @@ deleteMarkMessage = ->
 # 页面加载完成执行的操作，绑定事件
 $ ->
 	$.get "/message/get-num-of-unread-messages", {type: 1}, (res)->
-		$(".unread-message").html(res.num)
+		console.log $(".trading-reminder .unread-message").length
+		$(".trading-reminder .unread-message").html(res.num)
 
 	$(".checkbox-wrapper-all").click selectAll
 

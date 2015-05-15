@@ -2,6 +2,7 @@
 use Gregwar\Captcha\CaptchaBuilder;
 
 class BuyerPageController extends BaseController {
+
 	public function index()
 	{
 		if(Sentry::check()) 
@@ -13,14 +14,16 @@ class BuyerPageController extends BaseController {
 			return Redirect::guest('user/login');
 		}
 
-		$indents = Indent::where("user_id", "=", $user_id)->get();
+		$numOfItemsPerPage = 3;
+		$indents = Indent::where("user_id", "=", $user_id)->paginate($numOfItemsPerPage);
+		$numOfTotalItems = Indent::where("user_id", "=", $user_id)->count();
 
 		foreach ($indents as $key => $indent) 
 		{
 			$indent->product = $indent->product;
 		}
 
-		return View::make('tradingCenter.buyer-center.index', array("indents" => $indents));
+		return View::make('tradingCenter.buyer-center.index', array("indents" => $indents, "numOfTotalItems" => $numOfTotalItems));
 	}
 
 	public function tradingList()
@@ -34,13 +37,15 @@ class BuyerPageController extends BaseController {
 			return Redirect::guest('user/login');
 		}
 
-		$indents = Indent::where("user_id", "=", $user_id)->get();
+		$numOfItemsPerPage = 5;
+		$indents = Indent::where("user_id", "=", $user_id)->paginate($numOfItemsPerPage);
+		$numOfTotalItems = Indent::where("user_id", "=", $user_id)->count();
 
 		foreach ($indents as $key => $indent) 
 		{
 			$indent->product = $indent->product;
 		}
 
-		return View::make('tradingCenter.buyer-center.trading-manage.trading-list', array("indents" => $indents));
+		return View::make('tradingCenter.buyer-center.trading-manage.trading-list', array("indents" => $indents, "numOfTotalItems" => $numOfTotalItems));
 	}
 }
