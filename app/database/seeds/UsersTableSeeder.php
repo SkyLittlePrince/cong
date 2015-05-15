@@ -81,6 +81,17 @@ class UsersTableSeeder extends Seeder {
 
 		Sentry::register(array(
 			'avatar' => 'http://7sbxao.com1.z0.glb.clouddn.com/login.jpg',
+			'username' => '丛丛网小管家',
+			'email' => '13660543593@163.com',
+			'password' => '12345678',
+			'gender' => 0,
+			'mobile' => '13560474456',
+			'activated' => 1,
+			'role_id' => 3
+		));
+
+		Sentry::register(array(
+			'avatar' => 'http://7sbxao.com1.z0.glb.clouddn.com/login.jpg',
 			'username' => 'turtle',
 			'email'    => '930030895@qq.com',
 			'password' => '12345678',

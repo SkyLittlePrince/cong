@@ -23,9 +23,7 @@ class CreateIndentsTable extends Migration {
 
 		   	$table                          
 				->foreign('product_id')
-				->references('id')->on('products') 
-				->onDelete('cascade')
-				->onUpdate('cascade');
+				->references('id')->on('products');
 
 			$table                          
 				->foreign('user_id')
