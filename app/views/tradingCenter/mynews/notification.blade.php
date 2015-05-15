@@ -6,7 +6,7 @@
 
 @section('css')
     @parent
-    <link rel="stylesheet" type="text/css" href="/dist/css/tradingCenter/mynews/index.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/tradingCenter/mynews/notification.css">
     <link rel="stylesheet" type="text/css" href="/dist/css/checkbox/checkbox.css">
 @stop
 
@@ -71,5 +71,5 @@
 @section('js')
     @parent
     <script type="text/javascript" src="/lib/js/lodash/lodash.js"></script>
-    <script type="text/javascript" src='/dist/js/pages/index.js'></script>
+    <script type="text/javascript" src='/dist/js/pages/notification.js'></script>
 @stop

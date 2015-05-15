@@ -25,8 +25,8 @@
                 </a>
             </li>
             <li class="message">
-                <a href="/trading-center/mynews">
-                    (<span class="unread-message"></span>)
+                <a href="/trading-center/mynews/trading-reminder">
+                    (<span class="unread-message">0</span>)
                 </a>
             </li>
             <li class="help">
