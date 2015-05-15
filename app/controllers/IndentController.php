@@ -4,31 +4,63 @@ class IndentController extends BaseController {
 	
 	public function create()
 	{
-		$taskId = Input::get("taskId");
+		$product_id = Input::get("product_id");
+		$user = Sentry::getUser();
 
-		if(!Sentry::check())
-			return Response::json(array('errCode' => 1,'message' => '请登录!', 'newIndentId' => $indent->id));
+		$product = Product::with('shop')->find($product_id);
+		if(!isset($product))
+			return Response::json(array('errCode' => 1,'message' => '商品不存在!'));
 
-		$userId = Sentry::getUser()->id;
+		if($product->shop->user_id == $user->id)
+			return Response::json(array('errCode' => 2,'message' => '不能给自己的商品下单!'));
 
 		$indent = new Indent();
-		$indent->task_id = $taskId;
-		$indent->user_id = $userId;
- 		$indent->save();
+		$indent->product_id = $product_id;
+		$indent->user_id = $user->id;
+ 		
+		if($indent->save())
+		{
+			$content = '用户' . $user->name . '对你的' . $product->name . '商品下了订单!';
+			$message = Message::create(array(
+					'title' => '下单消息',
+					'content' => $content,
+					'sender' => 8,
+					'receiver' => $product->shop->user_id,
+					'type' => 1
+				));
+			return Response::json(array('errCode' => 0,'message' => '创建订单成功!', 'newIndentId' => $indent->id));
+		}			
 
-		return Response::json(array('errCode' => 0,'message' => '创建订单成功!', 'newIndentId' => $indent->id));
+		return Response::json(array('errCode' => 3,'message' => '创建订单失败!'));
 	}
 
 	public function cancel()
 	{
-		if(!Sentry::check())
-			return Response::json(array('errCode' => 1,'message' => '请登录!', 'newIndentId' => $indent->id));
-		
 		$indentId = Input::get("indentId");
+		$user = Sentry::getUser();
 
-		Indent::destroy($indentId);
+		$indent = Indent::with('product.shop')->find($indentId);
+		if(!isset($indent))
+			return Response::json(array('errCode' => 1,'message' => '该订单不存在!'));
 
-		return Response::json(array('errCode' => 0,'message' => '取消订单成功!'));
+		if($indent->user_id != $user->id)
+			return Response::json(array('errCode' => 2,'message' => '你没有此操作权限!'));
+
+		$content = '用户' . $user->name . '取消了你的' . $indent->product->name . '商品的订单!';
+		$receiver = $indent->product->shop->user_id;
+		if($indent->delete())
+		{		
+			$message = Message::create(array(
+					'title' => '取消订单消息',
+					'content' => $content,
+					'sender' => 8,
+					'receiver' => $receiver,
+					'type' => 1
+				));
+			return Response::json(array('errCode' => 0,'message' => '取消订单成功!'));
+		}	
+
+		return Response::json(array('errCode' => 3,'message' => '取消订单失败!'));
 	}
 
 	public function getIndent()

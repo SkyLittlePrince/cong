@@ -20,7 +20,7 @@
             @foreach ($indents as $indent)
 	    	<div class="one-order">
 	    		<div class="order-num order-component">
-	    			<p class="order-p">订单号：<span>{{{ $indent->id }}}</span></p>	
+	    			<p class="order-p">订单号：<span class="id">{{{ $indent->id }}}</span></p>	
 	    		</div>
 				<div class="order-date order-component">
 					{{{ $indent->created_at }}}
@@ -31,7 +31,9 @@
 					</span>
 				</div>
 				<div class="order-title order-component">
-					<p class="order-p">{{{ $indent["product"]["name"] }}}</p>
+					<p class="order-p">
+						<a href="{{{ $indent['product']['id'] }}}" target="_blank">{{{ $indent["product"]["name"] }}}</a>
+					</p>
 					<p class="price line-two">￥<span>{{{ $indent["product"]["price"] }}}</span></p>
 				</div>
 				<div class="order-status order-component">
@@ -47,6 +49,9 @@
 				</div>
 	    	</div>
 	    	@endforeach
+	    	@if (count($indents) < $numOfTotalItems)
+	        	{{ $indents->links() }}
+	        @endif
 	    </div>
 
 	    <div class="my-history">
@@ -84,4 +89,5 @@
 
 @section('js')
 	@parent
+    <script type="text/javascript" src='/dist/js/pages/buyer-index.js'></script>
 @stop

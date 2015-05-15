@@ -368,7 +368,9 @@
                     </div>               
                 </div>
             @endforeach
-            <div class="clear">{{ $friend_links->links() }}</div>
+            @if (count($friends) < $numOfTotalFriends)
+                <div class="clear">{{ $friend_links->links() }}</div>
+            @endif
             <div class="clear"></div>
         </div>
     	<div class="contact block">

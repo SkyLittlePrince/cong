@@ -21,7 +21,7 @@ class CreateMessagesTable extends Migration {
 			$table->string("title");
 			$table->text("content");
 			$table->integer("type");	// 消息类型，0为用户消息，1为交易提醒，2为活动通知
-			$table->integer("status")->default(0);	// 消息状态，0为已读，1为未读
+			$table->integer("status")->default(0);	// 消息状态，0为未读，1为已读
 
 			$table
 				->foreign('sender')

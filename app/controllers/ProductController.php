@@ -11,7 +11,7 @@ class ProductController extends \BaseController {
 		$price = Input::get('price');
 		$avatar = Input::get('avatar');
 
-		$shop = Shop::where('shop_id',$shop_id)->first();
+		$shop = Shop::find($shop_id);
 
 		if(!isset($shop))
 		{
@@ -44,14 +44,12 @@ class ProductController extends \BaseController {
 		$price = Input::get('price');
 		$avatar = Input::get('avatar');
 
-		$product = Product::find($id);
+		$product = Product::with('shop')->find($id);
 
 		if(!isset($product))
 			return Response::json(array('errCode' => 1,'message' => '该产品不存在!'));
 
-		$shop = $product->shop()->first();
-
-		if($shop->user_id != $user->id)
+		if($product->shop->user_id != $user->id)
 			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
 
 		$product->name = $name;
@@ -70,15 +68,25 @@ class ProductController extends \BaseController {
 		$user = Sentry::getUser();
 		$id = Input::get('id');
 
-		$product = Product::find($id);
+		$product = Product::with('shop','indents')->find($id);
 
 		if(!isset($product))
 			return Response::json(array('errCode' => 1,'message' => '该产品不存在!'));
 
-		$shop = $product->shop()->first();
-
-		if($shop->user_id != $user->id)
+		if($product->shop->user_id != $user->id)
 			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
+
+		$indents = $product->indents;
+		$content = '你对' . $product->name . '商品下的订单已被取消!';
+		foreach ($indents as $indent) {
+			$message = Message::create(array(
+					'title' => '取消订单',
+					'content' => $content,
+					'sender' => 8,
+					'receiver' => $indent->user_id,
+					'type' => 1
+				));
+		}
 
 		if($product->delete())
 			return Response::json(array('errCode' => 0,'message' => '删除成功!'));

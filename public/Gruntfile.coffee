@@ -12,7 +12,8 @@ module.exports = (grunt)->
         copy:
             dev:
                 files: [
-                    {expand: true, flatten: true, src: ["lib/js/jquery/*"], dest: 'dist/js/lib/jquery/'}
+                    {expand: true, flatten: true, src: ["lib/js/jquery/*"], dest: 'dist/js/lib/jquery/'},
+                    {expand: true, flatten: true, src: ["lib/js/lodash/*"], dest: 'dist/js/lib/lodash/'}
                 ]
 
         clean:
@@ -98,7 +99,7 @@ module.exports = (grunt)->
                     'dist/css/tradingCenter/account/protect-password.css': ['src/pages/tradingCenter/account/protect-password.less']
                     'dist/css/tradingCenter/account/pay-account.css': ['src/pages/tradingCenter/account/pay-account.less']
                     'dist/css/tradingCenter/layout.css': ['src/pages/tradingCenter/layout.less']
-                    'dist/css/tradingCenter/mynews/index.css': ['src/pages/tradingCenter/mynews/index.less']
+                    'dist/css/tradingCenter/mynews/notification.css': ['src/pages/tradingCenter/mynews/notification.less']
                     'dist/css/tradingCenter/mynews/setting.css': ['src/pages/tradingCenter/mynews/setting.less']
                     'dist/css/tradingCenter/mynews/history.css': ['src/pages/tradingCenter/mynews/history.less']
                     'dist/css/tradingCenter/mynews/trading-reminder.css': ['src/pages/tradingCenter/mynews/trading-reminder.less']
@@ -119,6 +120,10 @@ module.exports = (grunt)->
                     'dist/css/tradingCenter/seller-center/wait-check.css': ['src/pages/tradingCenter/seller-center/wait-check.less']
                     'dist/css/tradingCenter/seller-center/seller-store.css': ['src/pages/tradingCenter/seller-center/seller-store.less']
                     'dist/css/tradingCenter/seller-center/seller-product-detail.css': ['src/pages/tradingCenter/seller-center/seller-product-detail.less']
+                    'dist/css/admin/user-manager.css': ['src/pages/admin/user-manager.less']
+                    'dist/css/admin/product-manager.css': ['src/pages/admin/product-manager.less']
+                    'dist/css/admin/indent-manager.css': ['src/pages/admin/indent-manager.less']
+                    'dist/css/admin/product-report.css': ['src/pages/admin/product-report.less']
 
         cssmin:
             compress:
