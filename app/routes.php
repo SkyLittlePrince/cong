@@ -340,6 +340,14 @@ Route::group(array('prefix' => 'trading-center'),function()
 });
 
 // for admin
+Route::group(array('prefix' => 'admin'),function()
+{
+	Route::get('user-manager','AdminPageController@userManager');
+	Route::get('product-manager','AdminPageController@productManager');
+	Route::get('indent-manager','AdminPageController@IndentManager');
+	Route::get('product-report','AdminPageController@productReport');
+});
+
 
 Route::group(array('prefix' => 'categories'),function()
 {
@@ -347,6 +355,7 @@ Route::group(array('prefix' => 'categories'),function()
 });
 
 /*--------------------------</页面模版路由>------------------------------*/
+
 
 
 

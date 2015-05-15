@@ -64,7 +64,9 @@ class AccountPageController extends BaseController {
 			$user_id = Input::get("user_id");
 		}
 
-		$friends = Friend::where("user_id", "=", $user_id)->paginate(10);;
+		$numOfItemsPerPage = 1;
+		$friends = Friend::where("user_id", "=", $user_id)->paginate($numOfItemsPerPage);
+		$numOfTotalFriends = Friend::where("user_id", "=", $user_id)->count();
 		$friendsArray = [];
 		foreach ($friends as $friend) {
 			$friendsArray[] = $friend->info;
@@ -79,6 +81,8 @@ class AccountPageController extends BaseController {
 		$user["friends"] = $friendsArray;
 		$user["friend_links"] = $friends;
 		$user["skills"] = $user->skills;
+		$user["numOfItemsPerPage"] = $numOfItemsPerPage;
+		$user["numOfTotalFriends"] = $numOfTotalFriends;
 
 		if(isset($user->shop) && count($user->shop->tags))
 			$user["shop"]["tags"] = $user->shop->tags;
