@@ -3,35 +3,11 @@ use Gregwar\Captcha\CaptchaBuilder;
 
 class SellerPageController extends BaseController {
 
-	public function authentication()
+	public function myIndents()
 	{
-		if(Sentry::check()) 
-		{
-			$user_id = Sentry::getUser()->id;
-		} 
-		else
-		{
-			return Redirect::guest('user/login');
-		}
+		$indents = [];
 
-		$authentication = SellerAuthentication::where("user_id", "=", $user_id)->get();
-
-		if(count($authentication) == 0)
-		{
-			$authentication = ["isExist" => false];
-			$authentication["name"] = "";
-			$authentication["credit_id"] = "";
-			$authentication["gender"] = 1;
-			$authentication["address"] = "";
-			$authentication["phone"] = "";
-		}
-		else
-		{
-			$authentication = $authentication[0];
-			$authentication["isExist"] = true;
-		}
-
-		return View::make('tradingCenter.seller-center.authentication', $authentication);
+		return View::make('tradingCenter.seller-center.my-indents', array("indents" => $indents));
 	}
 
 	public function myStore()
@@ -45,17 +21,14 @@ class SellerPageController extends BaseController {
 			return Redirect::guest('user/login');
 		}
 
-		$myShop = Shop::where("user_id", "=", $user_id)->get();
+		$myShop = Shop::where("user_id", "=", $user_id)->with('tags','products')->first();
 
-		if(!isset($myShop) || count($myShop) == 0)
+		if(!isset($myShop))
 		{
 			return View::make('errors.haveNoStore');
 		}
 
-		$shop = $myShop[0];
-		$myshop = Shop::find($shop->id);
-		$shop["tags"] = $myshop->tags;
-		$shop["products"] = $myshop->products;
+		$shop = $myShop->toArray();
 
 		return View::make('tradingCenter.seller-center.my-store', $shop);
 	}

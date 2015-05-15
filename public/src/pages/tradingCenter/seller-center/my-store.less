@@ -1,4 +1,5 @@
 @import '../../../common/common.less';
+@import './tags.less';
 @font: "Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
 @right-width: 750px;
 @money-color: #b08511;
@@ -32,6 +33,13 @@
         &:hover {
             cursor: pointer;
         }
+    }
+}
+.product-operation {
+    top: 5px;
+    bottom: none;
+    div {
+        width: 70px;
     }
 }
 // 头部两块的样式
@@ -91,7 +99,7 @@
     float: left;
     margin-top: 7px;
     overflow: hidden;
-    .main-content {
+    .main-content-component {
         min-height: 425px;
         background-color: #fff;
         float: left;
@@ -103,6 +111,9 @@
         .edit {
             bottom: 12px;
         }
+    }
+    .recommendation.edit-state {
+        width: 750px;
     }
     .recommendation {
         width: 461px;
@@ -221,3 +232,59 @@
     }
 }
 
+// 增加商品弹出框主体内容样式
+.dialog {
+    width: 600px;
+    height: 500px;
+    margin-left: -300px;
+    margin-top: -250px;
+}
+.content-main {
+    @line-height: 35px;
+    margin-top: 20px;
+    color: #787878;
+    .content-row {
+        margin-bottom: 15px;
+        overflow: hidden;
+        .label {
+            float: left;
+            display: inline-block;
+            line-height: @line-height;
+            vertical-align: middle;
+            width: 85px;
+        }
+        .content-input {
+            float: left;
+            position: relative; 
+            input[type="text"] {
+                .input(260px, @line-height);
+            }
+            textarea {
+                width: 450px;
+                height: 100px;
+                border: solid 1px #d8d8d8;
+                outline: none;
+                .border-radius(10px);
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            .avatar-img {
+                float: left;
+                margin-left: 20px;
+                .border-radius(40px);
+            }
+            #avatar-btn {
+                float: left;
+                .border-radius(14px);
+                font-size: 12px;
+                line-height: 28px;
+                width: 76px;
+                height: 28px;
+                position: absolute;
+                bottom: 0px;
+                margin: 0px 0px 0px 105px;
+            }
+        }
+    }   
+}

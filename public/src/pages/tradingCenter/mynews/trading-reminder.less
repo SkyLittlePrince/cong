@@ -1,20 +1,82 @@
+@import '../../../common/common.less';
 @import './common.less';
+@import './../common/pagination.less';
 @page-address: "../../../../images/icon";
 
+.button(@padding: 3px 9px) {
+	font-size: 16px;
+	padding:@padding;
+	background-color: #7ecaca;
+	color: #fff;
+	margin-left: 16px;
+	outline: none;
+	text-align: center;
+	border: none;
+	.border-radius(12px);
+}
+
 .trading-reminder {
-	min-height: 411px;
-	.no-message {
-		width: 21px;
-		height: 21px;
-		margin-top: -1px;
-		background: url("@{page-address}/icon-exclamation.gif") no-repeat;
-	}
-	.messages {
-		color: #c5b496;
-		padding-bottom: 17px;
-		ul li {
-			overflow: hidden;
-			margin-top: 22px;
+	padding-bottom: 10px;
+	.message-wrapper {
+		.unread-message {
+			color: red;
 		}
+		.operate {
+			margin-top: 15px;
+			overflow: hidden;
+			input[type="button"] {
+				.button();
+			}
+			.mark-all {
+				margin-left: 0;
+			}
+		}
+		.messages {
+			color: #c5b496;
+			padding-bottom: 17px;
+			border-bottom: solid 1px #dcdcdc;
+			ul li {
+				overflow: hidden;
+				margin-top: 22px;
+
+				.col-right {
+					background: url('@{page-address}/message-white.png') no-repeat 11px 2px;
+					padding-left: 37px;
+
+					.message-title {
+						cursor: pointer;
+					}
+					.status-0 {
+						font-weight: bold;
+						color: #987D4F
+					}
+					.status-1 {
+						font-weight: normal;
+						color: #c5b496;
+					}
+				}
+			}
+		}
+	}
+}
+
+// 消息主体样式
+.one-message-content {
+	.message-row {
+		label, .time {
+			color: #8e877d;
+			font-size: 12px;
+		}
+		.sender {
+			color: #5fa207;
+		}
+		.content {
+			color: #ae8c4d;
+		}
+	}
+	.message-content-main {
+		margin-top: 5px;
+		border-top: solid 1px #87a34d;
+		padding-top: 5px;
 	}
 }

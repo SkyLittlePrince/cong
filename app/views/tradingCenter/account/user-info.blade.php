@@ -18,11 +18,11 @@
     			<img src="/images/tradingcenter/icon/13.png" width="252" height="252" />
     		</div>
             @if (Sentry::check() && Sentry::getUser()->id == $id)
-            <div class="operation">
+          <!--   <div class="operation">
                 <div class="edit-btn">编辑</div>
                 <div class="hidden save-btn">保存</div>
                 <div class="hidden cancel-btn">取消</div>
-            </div>
+            </div> -->
             @endif
     		<div class="info">
     			<div class="name">
@@ -105,17 +105,12 @@
           
             @endif
             <div class="skill-items">
-                <div class="skill-item"><span>HTML</span></div>
-                <div class="skill-item">CSS</div>
-                <div class="skill-item">Javascript</div>
-                <div class="skill-item">PHP</div>
-                <div class="skill-item">Ruby</div>
-                <div class="skill-item">Python</div>
-                <div class="skill-item">Go</div>
-                <div class="skill-item">Perl</div>
-                <div class="skill-item">Photoshop</div>
-                <div class="skill-item">Ai</div>
-                <div class="skill-item">Axure</div>
+                @foreach ($skills as $skill)
+                <div class="skill-item">
+                    <input type="hidden" class="skill-id" value="{{{ $skill['id'] }}}">
+                    <span>{{{ $skill["name"] }}}</span>
+                </div>
+                @endforeach
                 <div class="clear"></div>
             </div>
     	</div>

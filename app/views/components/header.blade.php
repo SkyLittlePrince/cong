@@ -18,14 +18,15 @@
     <ul class="user-info">
         @if (Sentry::check())
             <li class="info">
-                <a href="#">
-                    <img src="/images/common/avatar.png" alt="avatar">
-                    <span>Vivine</span>
+                <a href="/trading-center/account/user-info?user_id={{{ Sentry::getUser()->id }}}">
+                    <img src="{{{ Sentry::getUser()->avatar }}}" class="avatar" alt="avatar" width="34" height="34" />
+                    <!-- <img src="/images/tradingcenter/icon/9.png" class="avatar" alt="avatar" width="34" height="34" /> -->
+                    <span>{{{ Sentry::getUser()->username }}}</span>
                 </a>
             </li>
             <li class="message">
-                <a href="#">
-                    (<span>6</span>)
+                <a href="/trading-center/mynews">
+                    (<span class="unread-message"></span>)
                 </a>
             </li>
             <li class="help">

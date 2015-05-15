@@ -12,11 +12,12 @@
 */
 /*------------------------<接口路由>------------------------------*/
 //测试模块
-Route::get('test',function()
-{
-	return View::make('test');
-});
-Route::post('test','UserController@getCheckRegister');
+// Route::get('test',function()
+// {
+// 	return View::make('test');
+// });
+//Route::get('test','TestController@getAscore');
+//Route::post('test','UserController@getCheckRegister');
 
 // 用户模块
 Route::group(array('prefix' => 'user'),function()
@@ -54,6 +55,12 @@ Route::group(array('prefix' => 'user'),function()
 	});
 });
 
+//邀请好友模块
+Route::group(array('prefix' => 'invitation','before' => 'auth.user.isIn'),function()
+{
+	Route::post('sendEmail','InvitationController@sendEmail');
+});
+
 //评论模块
 Route::group(array('prefix' => 'comment','before' => 'auth.user.isIn'),function()
 {
@@ -68,9 +75,8 @@ Route::group(array('prefix' => 'shop','before' => 'auth.user.isIn'),function()
 	Route::post('addShop','ShopController@addShop');
 	Route::post('updateShop','ShopController@updateShop');
 	Route::post('addTag','ShopController@addTag');
-	Route::post('deleteTag','ShopController@deleteShop');
-	Route::get('deleteShop','ShopController@deleteShop');
-	
+	Route::post('deleteTag','ShopController@deleteTag');
+	Route::get('deleteShop','ShopController@deleteShop');	
 });
 
 //产品模块
@@ -81,6 +87,8 @@ Route::group(array('prefix' => 'product','before' => 'auth.user.isIn'),function(
 	Route::get('deleteProduct','ProductController@deleteProduct');
 	Route::get('getSortedProductsBySellNum','ProductController@sortProductBySellNum');
 	Route::get('getSortedProductsByFavorNum','ProductController@sortProductByFavorNum');
+	Route::post('addPicture','PictureController@addPicture');
+	Route::get('deletePicture','PictureController@deletePicture');
 });
 
 // 消息模块
@@ -94,6 +102,9 @@ Route::group(array('prefix' => 'message'),function()
 		Route::post('delete','MessageController@delete');
 		Route::post('clear','MessageController@clear');
 		Route::get('get-my-messages','MessageController@getMyMessages');
+		Route::get('get-num-of-unread-messages', 'MessageController@getNumOfUnreadMessages');
+		Route::post('set-config','MessageController@changeMessageConfig');
+		Route::get('get-config','MessageController@getMessageConfig');
 	});
 });
 
@@ -120,7 +131,6 @@ Route::group(array('prefix' => 'task'),function()
 
 	Route::get('get-published-tasks-by-user','TaskController@getTasksByUser');
 	Route::get('get-info','TaskController@getTaskInfo');
-
 });
 
 Route::group(array('prefix' => 'seller-authentication'),function()
@@ -218,39 +228,20 @@ Route::group(array('prefix' => 'trading-center'),function()
 	// 我的消息
 	Route::group(array('prefix' => 'mynews'),function()
 	{
-		Route::get('/', function()
-		{
-			return View::make('tradingCenter.mynews.notification');
-		});
-		Route::get('notification', function()
-		{
-			return View::make('tradingCenter.mynews.notification');
-		});
-		Route::get('setting', function()
-		{
-			return View::make('tradingCenter.mynews.setting');
-		});
-		Route::get('history', function()
-		{
-			return View::make('tradingCenter.mynews.history');
-		});
-		Route::get('trading-reminder', function()
-		{
-			return View::make('tradingCenter.mynews.trading-reminder');
-		});
+		Route::get('notification', 'MessagePageController@notification');
+
+		Route::get('setting', 'MessagePageController@setting');
+
+		Route::get('trading-reminder', 'MessagePageController@tradingReminder');
 	});
 
 	// 买家中心
 	Route::group(array('prefix' => 'buyer'),function()
 	{
-		Route::get('/', function()
-		{
-			return View::make('tradingCenter.buyer-center.index');
-		});
-		Route::get('trading-list', function()
-		{
-			return View::make('tradingCenter.buyer-center.trading-manage.trading-list');
-		});
+		Route::get('/', 'BuyerPageController@index');
+
+		Route::get('trading-list', 'BuyerPageController@tradingList');
+
 		Route::get('trading-comment', function()
 		{
 			return View::make('tradingCenter.buyer-center.trading-manage.trading-comment');
@@ -284,18 +275,32 @@ Route::group(array('prefix' => 'trading-center'),function()
 	// 账号设置
 	Route::group(array('prefix' => 'account'),function()
 	{
-		Route::get('/', function()
+		Route::group(array('before' => 'auth.user.isIn'), function() 
 		{
-			return View::make('tradingCenter.account.index');
+			Route::get('/', 'AccountPageController@index');
+			Route::get('authentication', 'AccountPageController@authentication');
+		
+			Route::get('bind-weibo', function()
+			{
+				return View::make('tradingCenter.account.bind-weibo');
+			});
+
+			Route::get('change-password', function()
+			{
+				return View::make('tradingCenter.account.change-password');
+			});
+			
+			Route::get('pay-account', function()
+			{
+				return View::make('tradingCenter.account.pay-account');
+			});
 		});
+
 		Route::get('base-info', function()
 		{
 			return View::make('tradingCenter.account.base-info');
 		});
-		Route::get('contact', function()
-		{
-			return View::make('tradingCenter.account.contact');
-		});
+
 		Route::get('address', function()
 		{
 			return View::make('tradingCenter.account.address');
@@ -304,39 +309,6 @@ Route::group(array('prefix' => 'trading-center'),function()
 		Route::get('card', 'AccountPageController@card');
 		
 		Route::get('user-info', 'AccountPageController@userInfo');
-
-		Route::get('bind-phone', function()
-		{
-			return View::make('tradingCenter.account.bind-phone');
-		});
-		Route::get('bind-email', function()
-		{
-			return View::make('tradingCenter.account.bind-email');
-		});
-		Route::get('bind-weibo', function()
-		{
-			return View::make('tradingCenter.account.bind-weibo');
-		});
-		Route::get('authentication', function()
-		{
-			return View::make('tradingCenter.account.authentication');
-		});
-		Route::get('change-password', function()
-		{
-			return View::make('tradingCenter.account.change-password');
-		});
-		Route::get('protect-login', function()
-		{
-			return View::make('tradingCenter.account.protect-login');
-		});
-		Route::get('protect-password', function()
-		{
-			return View::make('tradingCenter.account.protect-password');
-		});
-		Route::get('pay-account', function()
-		{
-			return View::make('tradingCenter.account.pay-account');
-		});
 	});
 
 	Route::group(array('prefix' => 'seller'),function()
@@ -352,12 +324,7 @@ Route::group(array('prefix' => 'trading-center'),function()
 
 			Route::get('my-store', 'SellerPageController@myStore');
 
-			Route::get('my-indents', function()
-			{
-				return View::make('tradingCenter.seller-center.my-indents');
-			});
-
-			Route::get('authentication', 'SellerPageController@authentication');
+			Route::get('my-indents', 'SellerPageController@myIndents');
 
 			Route::get('indent-evaluation', function()
 			{

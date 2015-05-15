@@ -4,7 +4,7 @@ class SellerAuthenticationTableSeeder extends Seeder {
 
   	public function run()
   	{
-		SellerAuthentication::create([
+		Authentication::create([
 			"user_id"  => 1,
 			"name" => "无名氏",
 			"credit_id" => "460035199004280312",
@@ -15,7 +15,7 @@ class SellerAuthenticationTableSeeder extends Seeder {
 			"phone" => "15902084760"
 		]);
 
-		SellerAuthentication::create([
+		Authentication::create([
 			"user_id" => 2,
 			"name" => "脑残无名氏",
 			"credit_id" => "460035198805160576",

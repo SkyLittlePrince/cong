@@ -9,7 +9,7 @@ class MessagesTableSeeder extends Seeder {
 			"content" => "内容1",
 			"sender" => 2,
 			"receiver" => 1,
-			"type" => 0
+			"type" => 1
 		]);
 
 		Message::create([
@@ -17,7 +17,7 @@ class MessagesTableSeeder extends Seeder {
 			"content" => "内容2",
 			"sender" => 2,
 			"receiver" => 1,
-			"type" => 0
+			"type" => 1
 		]);
 
 		Message::create([
@@ -25,7 +25,7 @@ class MessagesTableSeeder extends Seeder {
 			"content" => "内容3",
 			"sender" => 2,
 			"receiver" => 1,
-			"type" => 0
+			"type" => 2
 		]);
 	}
 }

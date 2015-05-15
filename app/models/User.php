@@ -90,10 +90,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	{
 		return $this->hasMany("Task");
 	}
-	public function skills()
-	{
-		return $this->belongsToMany('Skill');
-	}
 
 	public function shop()
 	{
@@ -110,13 +106,18 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->hasMany('Comment');
 	}
 
-	public function sellerAuthentication()
+	public function Authentication()
 	{
-		return $this->hasOne('SellerAuthentication');
+		return $this->hasOne('Authentication');
 	}
 
 	public function scores()
 	{
 		return $this->hasMany('Score');
+	}
+
+	public function skills()
+	{
+		return $this->belongsToMany('Skill', 'user_skill', 'user_id', 'skill_id');
 	}
 }

@@ -25,9 +25,8 @@ navConfig = {
 		},
 		navIndexes: {
 			"register": 0,
-			"authentication": 1,
-			"my-store": 2,
-			"my-indents": 3
+			"my-store": 1,
+			"my-indents": 2
 		}
 	}
 	account: {
@@ -49,13 +48,11 @@ navConfig = {
 	},
 	mynews: {
 		subNavIndexes: {
-			"notification": 0,
-			"history": 1
+			"notification": 0
 		},
 		navIndexes: {
 			"trading-reminder": 0,
 			"notification": 1,
-			"history": 1,
 			"setting": 2,
 		}
 	}

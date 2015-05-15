@@ -7,9 +7,18 @@ class Tag extends \Eloquent {
 	 *
 	 * @var string
 	 */
-	protected $table = 'tags';
+	protected $fillable = array(
+			'name'
+		);
 
-    public $primaryKey = 'id';
-	public $incrementing = true;
-   	public $timestamps = false;
+	protected $hidden = array(
+			'created_at',
+			'updated_at'
+		);
+
+   	public function shops()
+   	{
+   		return $this->belongsToMany('Tag');
+   	}
+
 }

@@ -6,7 +6,6 @@
 
 @section('css')
     @parent
-    <!-- <link rel="stylesheet" type="text/css" href="/dist/css/checkbox/checkbox.css"> -->
     <link rel="stylesheet" type="text/css" href="/dist/css/tradingCenter/seller-center/my-indents.css">
 @stop
 
@@ -16,126 +15,35 @@
          	<p>成功完成10笔交易可以成为“任务达人”，获得勋章显示在名字旁。成功完成50笔交易可以成为“任务大侠”</p>
         </div>
 	    <div class="order-list">
+            @foreach ($indents as $indent)
 	    	<div class="one-order">
 	    		<div class="info">
-	    			<label class="my-self-checkbox-label">
-	                    <input type="checkbox" name="indent" value="order1" style="display:hidden;">
-	                </label>
-	                <span class="date">2014-12-24</span> 
-	                <span class="order-number">订单号: <span>WX187369727786</span></span>
+                    <div class="checkbox-wrapper"></div>           
+	                <span class="date">{{{ $indent->create_time }}}</span> 
+	                <span class="order-number">订单号: <span>{{{ $indent-id }}}</span></span>
 	    		</div>
 	    		<div class="detail">
-	    			<div class="img detail-component">
+                    <div class="img detail-component">
 		    			<img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
-	    			</div>
+	    			</div>       
 	    			<div class="title detail-component">
-	    				<p>此处描述为产品的标题XXXXXXXXXXX</p>
+	    				<p>{{{ $indent["product"]["name"] }}}</p>
 	    			</div>
 	    			<div class="price detail-component">
-	    				￥<span>380</span>
+	    				￥<span>{{{ $indenx["product"]["price"] }}}</span>
 	    			</div>
 	    			<div class="status detail-component">
+	    				@if ($status == 0)
+	    				<p>未付款</p>
+	    				@elseif ($status == 1)
+	    				<p>已付款</p>
+	    				@else
 	    				<p>交易成功</p>
-	    				<p>雇主已评</p>
+	    				@endif 
 	    			</div>
 	    		</div>
 	    	</div>
-	    	<div class="one-order">
-	    		<div class="info">
-	    			<label class="my-self-checkbox-label">
-	                    <input type="checkbox" name="indent" value="order1" style="display:hidden;">
-	                </label>
-	                <span class="date">2014-12-24</span> 
-	                <span class="order-number">订单号: <span>WX187369727786</span></span>
-	    		</div>
-	    		<div class="detail">
-	    			<div class="img detail-component">
-		    			<img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
-	    			</div>
-	    			<div class="title detail-component">
-	    				<p>此处描述为产品的标题XXXXXXXXXXX</p>
-	    			</div>
-	    			<div class="price detail-component">
-	    				￥<span>380</span>
-	    			</div>
-	    			<div class="status detail-component">
-	    				<p>交易成功</p>
-	    				<p>雇主已评</p>
-	    			</div>
-	    		</div>
-	    	</div>
-	    		    	<div class="one-order">
-	    		<div class="info">
-	    			<label class="my-self-checkbox-label">
-	                    <input type="checkbox" name="indent" value="order1" style="display:hidden;">
-	                </label>
-	                <span class="date">2014-12-24</span> 
-	                <span class="order-number">订单号: <span>WX187369727786</span></span>
-	    		</div>
-	    		<div class="detail">
-	    			<div class="img detail-component">
-		    			<img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
-	    			</div>
-	    			<div class="title detail-component">
-	    				<p>此处描述为产品的标题XXXXXXXXXXX</p>
-	    			</div>
-	    			<div class="price detail-component">
-	    				￥<span>380</span>
-	    			</div>
-	    			<div class="status detail-component">
-	    				<p>交易成功</p>
-	    				<p>雇主已评</p>
-	    			</div>
-	    		</div>
-	    	</div>
-	    	<div class="one-order">
-	    		<div class="info">
-	    			<label class="my-self-checkbox-label">
-	                    <input type="checkbox" name="indent" value="order1" style="display:hidden;">
-	                </label>
-	                <span class="date">2014-12-24</span> 
-	                <span class="order-number">订单号: <span>WX187369727786</span></span>
-	    		</div>
-	    		<div class="detail">
-	    			<div class="img detail-component">
-		    			<img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
-	    			</div>
-	    			<div class="title detail-component">
-	    				<p>此处描述为产品的标题XXXXXXXXXXX</p>
-	    			</div>
-	    			<div class="price detail-component">
-	    				￥<span>380</span>
-	    			</div>
-	    			<div class="status detail-component">
-	    				<p>交易成功</p>
-	    				<p>雇主已评</p>
-	    			</div>
-	    		</div>
-	    	</div>
-	    	<div class="one-order">
-	    		<div class="info">
-	    			<label class="my-self-checkbox-label">
-	                    <input type="checkbox" name="indent" value="order1" style="display:hidden;">
-	                </label>
-	                <span class="date">2014-12-24</span> 
-	                <span class="order-number">订单号: <span>WX187369727786</span></span>
-	    		</div>
-	    		<div class="detail">
-	    			<div class="img detail-component">
-		    			<img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
-	    			</div>
-	    			<div class="title detail-component">
-	    				<p>此处描述为产品的标题XXXXXXXXXXX</p>
-	    			</div>
-	    			<div class="price detail-component">
-	    				￥<span>380</span>
-	    			</div>
-	    			<div class="status detail-component">
-	    				<p>交易成功</p>
-	    				<p>雇主已评</p>
-	    			</div>
-	    		</div>
-	    	</div>
+	    	@endforeach
 	    </div>
         <div class="pagination">
                 <div class="right to-page">
