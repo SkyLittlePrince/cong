@@ -46,7 +46,7 @@ class IndentController extends BaseController {
 		if($indent->user_id != $user->id)
 			return Response::json(array('errCode' => 2,'message' => '你没有此操作权限!'));
 
-		$content = '用户' . $user->name . '取消了你的' .  $indent->product->name . '商品的订单!';
+		$content = '用户' . $user->name . '取消了你的' . $indent->product->name . '商品的订单!';
 		$receiver = $indent->product->shop->user_id;
 		if($indent->delete())
 		{		
