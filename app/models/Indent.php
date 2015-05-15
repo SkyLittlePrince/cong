@@ -11,8 +11,6 @@ class Indent extends \Eloquent {
 
 	protected $fillable = array(
 			'user_id',
-			'product_id',
-			'task_id',
 			'status'
 		);
 
@@ -26,8 +24,8 @@ class Indent extends \Eloquent {
 	        return $this->belongsTo('Task');
 	}
 
-	public function product()
+	public function products()
 	{
-		return $this->belongsTo('Product');
+		return $this->belongsToMany('Product');
 	}
 }

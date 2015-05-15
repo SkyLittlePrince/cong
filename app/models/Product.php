@@ -37,6 +37,6 @@ class Product extends \Eloquent {
 
 	public function indents()
 	{
-		return $this->hasMany('Indent');
+		return $this->belongsToMany('Indent');
 	}
 }
