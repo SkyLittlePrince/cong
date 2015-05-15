@@ -48,6 +48,8 @@ init = ->
 	$('.' + step).show()
 	renderSecond() if step is 'step-2'
 	renderStepBanner(step.charAt(step.length - 1))
+	console.log registerCookie.getLoginNameCookie()
+	$loginname.text(registerCookie.getLoginNameCookie()) is step is 'step-3'
 
 # 更换验证码
 changeCaptcha = ->
@@ -198,7 +200,7 @@ step2Handler = ->
 startStep3 = (registerAuthcode)->
 	$step2.hide()
 	$step3.show()
-	renderStepBanner(2)
+	renderStepBanner(3)
 	registerCookie.setStepCookie 'step-3'
 	registerCookie.setStep2CaptchaCookie registerAuthcode
 	# 渲染第三步中用户之前所填信息
