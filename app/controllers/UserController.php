@@ -30,12 +30,12 @@ class UserController extends \BaseController {
 				'captcha'  => $captcha  
 			),
 			array(
-				'captcha' => 'required'
+				'captcha' => 'required | string |size:5'
 			)
 		);
 
 		if($validator->fails()){
-			return Response::json(array('errCode' => 2, "message" => "验证码不能为空", "validateMes" => $validator->messages()));
+			return Response::json(array('errCode' => 2, "message" => "参数错误", "validateMes" => $validator->messages()));
 		}
 
 		//$sessionCaptcha = Session::get('phrase');
@@ -128,7 +128,7 @@ class UserController extends \BaseController {
 				'captcha'  => $captcha  
 			),
 			array(
-				'captcha' => 'required'
+				'captcha' => 'required | string |size:6'
 			)
 		);
 
@@ -176,14 +176,31 @@ class UserController extends \BaseController {
 		$sessionSalt = $_SESSION['registerSalt'];
 		$invitationCode = $_SESSION['invitationCode'];
 
+		$validator = Validator::make(
+				array(
+					'username' => $username,
+					'password' => $password,
+					'salt'	     => $salt
+				),
+				array(
+					'username' => 'required |string|between:4,15',
+					'password'  => 'required |string |between:6,20',
+					'salt' 	      => 'required | string |size:6'
+				)
+			);
+
+		if($validator-<fails()){
+			return Response::json(array('errCode' => 11, "message" => "参数错误", "validateMes" => $validator->messages()));
+		}
+
 		if($salt != $sessionSalt)
 			return Response::json(array('errCode' => 9,'message' => '验证码错误!'));
 
 		if(strlen($username) < 4)
 			return Response::json(array('errCode' => 1,'message' => '用户名长度不能少于4.'));
 
-		if(strlen($username) > 20)
-			return Response::json(array('errCode' => 2,'message' => '用户名长度不能长于20.'));
+		if(strlen($username) > 15)
+			return Response::json(array('errCode' => 2,'message' => '用户名长度不能长于15.'));
 
 		$user = User::where('username',$username)->first();
 		if(isset($user))
@@ -274,6 +291,23 @@ class UserController extends \BaseController {
 		//$sessionCaptcha = Session::get('phrase');
 		$sessionCaptcha = $_SESSION['phrase'];
 
+		$validator = Validator::make(
+				array(
+					'login' => $login,
+					'password' => $password,
+					'captcha'    => $captcha
+				),
+				array(
+					'login' => 'required | string',
+					'password' => 'require | string |between:6,20',
+					'captcha'    => 'require | string | size :5'
+				)
+			);
+
+		if ($validator->fails()) {
+			return Response::json(array('errCode' => 5, "message" => "参数错误", "validateMes" => $validator->messages()));
+		}
+
 		if($captcha != $sessionCaptcha)
 			return Response::json(array('errCode' => 4,'messge' => '验证码有误!'));
 
@@ -335,7 +369,7 @@ class UserController extends \BaseController {
 			return Response::json(array('errCode' => 1,'message' => '你没有该操作权限!'));
 
 		if(!isset($user))
-			return Response::json(array('errCode' => 1,'message' => '用户不存在!'));
+			return Response::json(array('errCode' => 2,'message' => '用户不存在!'));
 
 		$user->delete();
 		return Response::json(array('errCode' => 0,'message' => '删除成功!'));
@@ -359,23 +393,25 @@ class UserController extends \BaseController {
 		$validator = Validator::make(
 			array(
 				'qq' => $qq,
-				'gender' =>$gender,
 				'wechat'    => $wechat,
 				'province'  => $province,
 				'city'	=>$city,
 				'region' =>$region,
 				'address' =>$address,
-				'birthday'=>$birthday
+				'birthday'=>$birthday,
+				'realname' => $realname,
+				'avatar'   => $avatar
 			),
 			array(
-				'qq' => 'digits',
-				'gender' =>''
-				'wechat'    => '',
-				'province' =>'',
-				'city'  =>'',
-				'region' =>'',
-				'address' =>'',
-				'birthday' =>'date_format:Y-m-d'
+				'qq' => 'numeric',
+				'wechat'    => 'alpha_num',
+				'province' =>'string',
+				'city'  =>'string',
+				'region' =>'string',
+				'address' =>'string',
+				'birthday' =>'date_format:Y-m-d',
+				'realname' =>'string',
+				'avatar'    => 'url'
 			)
 		);
 
@@ -430,12 +466,12 @@ class UserController extends \BaseController {
 				'description' => $description
 			),
 			array(
-				'description' => 'required| between:2,40'
+				'description' => 'required| string | between:2,40'
 			)
 		);
 
 		if($validator->fails()){
-			return Response::json(array('errCode' => 2, "message" => "描述字数超过40", "validateMes" => $validator->messages()));
+			return Response::json(array('errCode' => 2, "message" => "字数不得少于2，不得超过40", "validateMes" => $validator->messages()));
 		}
 
 		$user->description = $description;
@@ -470,8 +506,8 @@ class UserController extends \BaseController {
 				'newPwd'    => $newPwd		
 			),
 			array(
-				'oldPwd' => 'required',
-				'newPwd'    => 'required | different:oldPwd'
+				'oldPwd' => 'required |string |between:6,20',
+				'newPwd'    => 'required | different:oldPwd |string |between:6,20'
 			)
 		);
 
@@ -524,8 +560,8 @@ class UserController extends \BaseController {
 			),
 			array(
 				'email' => 'required|email',
-				'salt'    => 'required',
-				'password' => 'required '
+				'salt'    => 'required | string | size :5',
+				'password' => 'required |string'
 			)
 		);
 
@@ -578,7 +614,7 @@ class UserController extends \BaseController {
 				'content' => $content			
 			),
 			array(
-				'content' => 'required|between:2,40'
+				'content' => 'required| string |between:2,40'
 			)
 		);
 
@@ -627,7 +663,7 @@ class UserController extends \BaseController {
 			),
 			array(
 				'mobile' => 'required|digits:11',
-				'qq' => 'required |digits',
+				'qq' => 'required |numeric',
 				'email' => 'required|email'
 			)
 		);
@@ -667,7 +703,7 @@ class UserController extends \BaseController {
 			array(
 				'start_time' => 'required|date_format:Y-m',
 				'end_time' => 'required|date_format:Y-m',
-				'description' => 'required|between:2,40'
+				'description' => 'required|string |between:2,40'
 			)
 		);
 
@@ -721,7 +757,7 @@ class UserController extends \BaseController {
 			array(
 				'start_time' => 'required|date_format:Y-m',
 				'end_time' => 'required|date_format:Y-m',
-				'description' => 'required|between:2,40'
+				'description' => 'required|string |between:2,40'
 			)
 		);
 
@@ -779,7 +815,7 @@ class UserController extends \BaseController {
 			array(
 				'start_time' => 'required|date_format:Y-m',
 				'end_time' => 'required|date_format:Y-m',
-				'description' => 'required|between:2,40'
+				'description' => 'required|string |between:2,40'
 			)
 		);
 
@@ -833,7 +869,7 @@ class UserController extends \BaseController {
 			array(
 				'start_time' => 'required|date_format:Y-m',
 				'end_time' => 'required|date_format:Y-m',
-				'description' => 'required|between:2,40'
+				'description' => 'required|string |between:2,40'
 			)
 		);
 
@@ -884,7 +920,7 @@ class UserController extends \BaseController {
 			),
 			array(
 				'time' => 'required|date_format:Y-m',
-				'description' => 'required|between:2,40'
+				'description' => 'required|string |between:2,40'
 			)
 		);
 
@@ -930,7 +966,7 @@ class UserController extends \BaseController {
 			),
 			array(
 				'time' => 'required|date_format:Y-m',
-				'description' => 'required|between:2,40'
+				'description' => 'required|string |between:2,40'
 			)
 		);
 
