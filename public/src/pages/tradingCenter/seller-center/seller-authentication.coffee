@@ -24,7 +24,7 @@ setUploadedPhoto = (name)->
 	uploader = new Uploader {
 		domain: "http://7xj0sp.com1.z0.glb.clouddn.com/"	# bucket 域名，下载资源时用到，**必需**
 		browse_button: name + '-file',       # 上传选择的点选按钮，**必需**
-		container: name + '-wrapper',       # 上传选择的点选按钮，**必需**
+		container: name + '-wrapper',      
 	}, {
 		FileUploaded: (up, file, info)->
 			info = $.parseJSON info
