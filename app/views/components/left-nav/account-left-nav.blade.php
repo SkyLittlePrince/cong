@@ -3,10 +3,10 @@
     <div class="nav">
         <ul>
             <li>
-                <a href="javascript:void(0);" class="nav-item nav-a">我的账号</a>
+                <a href="/trading-center/account/base-info"  class="nav-item">基本信息</a>
+                <!-- <a href="javascript:void(0);" class="nav-item nav-a">我的账号</a> -->
                 <ul class="sub-nav">
-                    <li><a href="/trading-center/account/base-info">基本信息</a></li>
-                    <li><a href="/trading-center/account/card">名片</a></li>
+                    <!-- <li><a href="/trading-center/account/card">名片</a></li> -->
                 </ul>
             </li>
             <li>

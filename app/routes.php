@@ -295,7 +295,7 @@ Route::group(array('prefix' => 'trading-center'),function()
 
 			Route::get('base-info', 'AccountPageController@baseInfo');
 
-			Route::get('card', 'AccountPageController@card');
+			// Route::get('card', 'AccountPageController@card');
 		});
 		
 		Route::get('user-info', 'AccountPageController@userInfo');

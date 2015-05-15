@@ -1,4 +1,4 @@
-@extends('tradingCenter.seller-center.layout')
+@extends('tradingCenter.layout')
 
 @section('title')
     <title>丛丛网－身份认证</title>
@@ -6,14 +6,18 @@
 
 @section('css')
     @parent
-    <link rel="stylesheet" type="text/css" href="/dist/css/tradingCenter/seller-center/authentication.css">
+    <link rel="stylesheet" type="text/css" href="/dist/css/tradingCenter/account/authentication.css">
 @stop
 
-@section('seller-content')
-	<div class="seller-register-content seller-content">
+@section('tradingCenter-left-nav')
+    @include('components.left-nav.account-left-nav')
+@stop
+
+@section('tradingCenter-content')
+	<div class="authentication-content tradingCenter-content">
 		<div class="content-header">
             <p class="title">身份认证</p>
-            <p class="content line-one">身份呢认证需要提供本人信息，身份证件扫描件或者数码拍摄照片</p>
+            <p class="content line-one">身份认证需要提供本人信息，身份证件扫描件或者数码拍摄照片</p>
             <p class="content">每张身份证仅限认证一次</p>
         </div>
 		<div class="content-main">
@@ -180,6 +184,6 @@
     @parent
     <script type="text/javascript" src="/lib/js/qiniu/qiniu.min.js"></script> 
     <script type="text/javascript" src="/lib/js/plupload/plupload.full.min.js"></script>
-    <script type="text/javascript" src="/dist/js/pages/seller-authentication.js"></script>
+    <script type="text/javascript" src="/dist/js/pages/authentication.js"></script>
 @stop
 

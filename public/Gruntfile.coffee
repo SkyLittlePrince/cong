@@ -116,7 +116,6 @@ module.exports = (grunt)->
                     'dist/css/tradingCenter/seller-center/register.css': ['src/pages/tradingCenter/seller-center/register.less']
                     'dist/css/tradingCenter/seller-center/my-indents.css': ['src/pages/tradingCenter/seller-center/my-indents.less']
                     'dist/css/tradingCenter/seller-center/my-store.css': ['src/pages/tradingCenter/seller-center/my-store.less']
-                    'dist/css/tradingCenter/seller-center/authentication.css': ['src/pages/tradingCenter/seller-center/authentication.less']
                     'dist/css/tradingCenter/seller-center/wait-check.css': ['src/pages/tradingCenter/seller-center/wait-check.less']
                     'dist/css/tradingCenter/seller-center/seller-store.css': ['src/pages/tradingCenter/seller-center/seller-store.less']
                     'dist/css/tradingCenter/seller-center/seller-product-detail.css': ['src/pages/tradingCenter/seller-center/seller-product-detail.less']
