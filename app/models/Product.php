@@ -6,7 +6,8 @@ class Product extends \Eloquent {
 			'name',
 			'price',
 			'intro',
-			'shop_id'
+			'shop_id',
+			'avatar'
 		);
 
 	protected $hidden = array(

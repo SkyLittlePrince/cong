@@ -19,9 +19,10 @@ class CreateProductsTable extends Migration {
 			$table->string('name');
 			$table->double('price');
 			$table->integer('sellNum')->default(0);
-			$table->integer('favorNum')->default(0);;
+			$table->integer('favorNum')->default(0);
 			$table->integer('shop_id')->unsigned()->index('shop_id');
 			$table->longText('intro');
+			$table->string('avatar');
 
 			$table
 				->foreign('shop_id')
