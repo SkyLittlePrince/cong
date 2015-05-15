@@ -6,7 +6,7 @@ dialogCompiled = _.template dialogTpl
 # title = "我的消息"
 # dialog = new Dialog({
 #     title: title
-#     content: content
+#     content: content       
 # })
 # dialog.loadDialogToPage()
 
@@ -18,10 +18,9 @@ _defaultConfig = {
     # 弹出框中按钮数组
     # 每一个按钮为一个对象，其中text为按钮的内容，className为改按钮的class，方便自行绑定事件处理程序
     buttons: [
-        {text: "确定", className: "dialog-ok"},
-        {text: "取消", className: "dialog-cancel close-button"}
+        {text: "确定", className: "dialog-ok close-button"}    
     ],
-    title: "" 
+    title: ""                       # 弹出框的标题
 }
 # 页面弹出框组件
 # 组件提供下列功能

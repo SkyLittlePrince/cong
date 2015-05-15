@@ -1,3 +1,5 @@
+Dialog = require './../../../common/dialog/dialog.coffee'
+
 $storeName = $('.store-name')
 $aboutStoreName = $('.about-store-name')
 $BriefIntroduction = $('.brief-introduction')
@@ -6,6 +8,15 @@ $shopIdInput = $("#shop-id")
 $sellTemplate = $("#sellTemplate")
 $favorTemplate = $("#favorTemplate")
 $rankList = $(".rank-list")
+# 店铺商品有关DOM节点
+$editStoreProduct = $('#edit-store-product')
+$storeProductList = $('.store-product-list')
+$storeProductRanking = $('.store-product-ranking')
+$deleteStore = $('.delete-store')
+$saveStoreProduct = $('#save-store-product')
+$deleteProductBtn = $('.delete-product')
+$addProductBtn = $('.add-product')
+$productBtn = $('.product-btn')
 
 # 编辑店铺简略信息
 editStoreInfo = (e)->
@@ -99,8 +110,6 @@ showFavorRank = (e)->
 				$(str).appendTo $rankList
 		else
 			alert res.message
-
-
 
 $allTag = $('.detail .tags')
 $disabledTagTemplate = $('#disabledTagTemplate')
@@ -222,6 +231,36 @@ deleteStore = ->
 				alert("店铺删除成功")
 				location.reload()
 
+# 店铺商品进入编辑模式
+editStoreProductMode = (e)->
+	$deleteStore.hide()
+	$storeProductList.addClass('edit-state')
+	$storeProductRanking.hide()
+	$productBtn.show()
+	$target = $(e.currentTarget)
+	$target.parent().find(".edit-btn").addClass("hidden").siblings().removeClass("hidden")
+
+# 退出店铺商品编辑
+saveStoreProductMode = (e)->
+	$deleteStore.show()
+	$productBtn.hide()
+	$storeProductList.removeClass('edit-state')
+	$storeProductRanking.show()
+
+	$target = $(e.currentTarget)
+	$target.parent().find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
+
+$addProductTemplate = $('#addProductTemplate')
+addProductCompile = _.template $addProductTemplate.html()
+
+# 弹出一个弹出框，用于新增商品
+addOneProduct = ->
+	dialog = new Dialog({
+		title: "增加商品"
+		content: addProductCompile({})
+	})
+	dialog.loadDialogToPage()
+
 $ ->
 	$('.info .edit-btn').bind 'click', editStoreInfo
 	$('.info .save-btn').bind 'click', saveStoreInfo
@@ -240,6 +279,11 @@ $ ->
 	$('.sellRank').click()
 
 	$('.delete-store').bind 'click', deleteStore
+
+	$editStoreProduct.bind 'click', editStoreProductMode
+	$saveStoreProduct.bind 'click', saveStoreProductMode
+
+	$addProductBtn.bind 'click', addOneProduct
 
 shopDataBus =
 	updateShop: (storeInfo, callback)->

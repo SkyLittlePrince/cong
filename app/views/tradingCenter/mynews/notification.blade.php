@@ -34,9 +34,10 @@
 	   				<li class="one-message">
                         <div class="checkbox-wrapper"></div>         
                         <div class="col-right">
+                            <input type="hidden" class="message-status" value="{{{$message->status}}}">
                             <input type="hidden" class="message-id" value="{{{ $message->id }}}" />
                             <input type="hidden" class="message-content" value="{{{ $message->content }}}" />
-                            <span class="message-title">{{{ $message->title }}}</span>
+                            <span class="message-title status-{{{$message->status}}}">{{{ $message->title }}}</span>
                         </div>
                     </li>
                     @endforeach
@@ -45,26 +46,27 @@
             @if (count($messages) < $numOfTotalItems)
                 {{ $indents->links() }}
             @endif
-	   		<!-- <div class="pagination">
-                <div class="right to-page">
-                    <p>
-                        共<span class="page-count">3</span>页,到第<input type="text" >页
-                        <input type="button" value="确定">
-                    </p>
-                </div>
-	   			<div class="page-num right">
-                    <a href="#">
-                        <img src="/images/icon/icon-arrow-left.png" alt="icon-left" width="28" height="28" />         
-                    </a>
-                    <span class="num active">1</span>
-                    <span class="num">2</span>
-                    <span class="num">3</span>
-                    <a href="#">
-                        <img src="/images/icon/icon-arrow-right.png" alt="icon-right" width="28" height="28" />
-                    </a>
-                </div>
-	   		</div> -->
    		</div>
+        <script type="text/template" id="one-message-content-template">
+            <div class="one-message-content">
+
+                <div class="message-row">
+                    <label>发送者：</label>
+                    <span class="sender"><%= sender%></span>
+                </div>
+                <div class="message-row">
+                    <label>时间：</label>
+                    <span class="time"><%= created_at%></span>
+                </div>
+                <div class="message-row">
+                    <label class="receiver">接收者：</label>
+                    <span><%= receiver%></span>
+                </div>
+                <div class="message-row message-content-main">
+                    <span class="content"><%= content%></span>
+                </div>
+            </div>
+        </script>
     </div>
 @stop
 
