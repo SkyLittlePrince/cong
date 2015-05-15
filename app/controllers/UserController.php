@@ -129,8 +129,8 @@ class UserController extends \BaseController {
 		//Session::put('phrase', $phrase);
 		$_SESSION['phrase'] = $phrase;
 
-		$token = Input::get('token');
-		$_SESSION['token'] = $token;
+		$invitationCode = Input::get('invitationCode');
+		$_SESSION['invitationCode'] = $invitationCode;
 
 		return View::make('register')->with('captcha', $builder);
 	}
@@ -147,7 +147,7 @@ class UserController extends \BaseController {
 		$salt = Input::get('registerSalt');
 		//$sessionSalt = Session::get('registerSalt');
 		$sessionSalt = $_SESSION['registerSalt'];
-		$token = $_SESSION['token'];
+		$invitationCode = $_SESSION['invitationCode'];
 
 		if($salt != $sessionSalt)
 			return Response::json(array('errCode' => 9,'message' => '验证码错误!'));
@@ -206,13 +206,16 @@ class UserController extends \BaseController {
 
 		if(isset($user))
 		{
-			$friend = User::find($token);
-			if(isset($friend))
+			try
 			{
 				$friendship = new Friend;
 				$friendship->friend_id = $user->id;
-				$friendship->user_id = $friend->id;
+				$friendship->user_id = $invitationCode;
 				$friendship->save();
+			}
+			catch(Exception $e)
+			{
+
 			}
 			return Response::json(array('errCode' => 0,'message' => '注册成功!'));
 		}

@@ -1,7 +1,7 @@
 @extends('tradingCenter.layout')
 
 @section('title')
-    <title>丛丛网－雇主首页</title>
+    <title>丛丛网－个人中心</title>
 @stop
 
 @section('css')
@@ -17,12 +17,13 @@
 	<div class="buyer-content">
 	    <div class="my-order">
 	    	<div class="order-banner">我的订单</div>
+            @foreach ($indents as $indent)
 	    	<div class="one-order">
 	    		<div class="order-num order-component">
-	    			<p class="order-p">订单号<span>WX187369727786</span></p>	
+	    			<p class="order-p">订单号：<span>{{{ $indent->id }}}</span></p>	
 	    		</div>
 				<div class="order-date order-component">
-					<p>2015.1212</p>
+					{{{ $indent->created_at }}}
 				</div>
 				<div class="order-pic order-component">
 					<span>
@@ -30,35 +31,22 @@
 					</span>
 				</div>
 				<div class="order-title order-component">
-					<p class="order-p">此处描述产品的标题XXXXXXXXXXX</p>
-					<p class="price line-two">￥<span>380</span></p>
+					<p class="order-p">{{{ $indent["product"]["name"] }}}</p>
+					<p class="price line-two">￥<span>{{{ $indent["product"]["price"] }}}</span></p>
 				</div>
 				<div class="order-status order-component">
-					<p class="order-p">交易成功</p>
-					<p class="line-two">雇主已评</p>
+					@if ($indent->status == 0)
+    				<p class="order-p">未付款</p>
+    				<input type="button" class="btn pay-btn" value="现在付款" /> 
+                    <input type="button" class="btn cancel-btn" value="取消订单" /> 
+    				@elseif ($indent->status == 1)
+    				<p class="order-p">已付款</p>
+    				@else
+    				<p class="order-p">交易成功</p>
+    				@endif
 				</div>
 	    	</div>
-	    	<div class="one-order">
-	    		<div class="order-num order-component">
-	    			<p class="order-p">订单号<span>WX187369727786</span></p>	
-	    		</div>
-				<div class="order-date order-component">
-					<p>2015.1212</p>
-				</div>
-				<div class="order-pic order-component">
-					<span>
-						<img src="/images/common/avatar.png" alt="order-pic">
-					</span>
-				</div>
-				<div class="order-title order-component">
-					<p class="order-p">此处描述产品的标题XXXXXXXXXXX</p>
-					<p class="price line-two">￥<span>380</span></p>
-				</div>
-				<div class="order-status order-component">
-					<p class="order-p">交易成功</p>
-					<p class="line-two">雇主已评</p>
-				</div>
-	    	</div>
+	    	@endforeach
 	    </div>
 
 	    <div class="my-history">

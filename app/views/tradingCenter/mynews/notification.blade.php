@@ -34,9 +34,10 @@
 	   				<li class="one-message">
                         <div class="checkbox-wrapper"></div>         
                         <div class="col-right">
+                            <input type="hidden" class="message-status" value="{{{$message->status}}}">
                             <input type="hidden" class="message-id" value="{{{ $message->id }}}" />
                             <input type="hidden" class="message-content" value="{{{ $message->content }}}" />
-                            <span class="message-title">{{{ $message->title }}}</span>
+                            <span class="message-title status-{{{$message->status}}}">{{{ $message->title }}}</span>
                         </div>
                     </li>
                     @endforeach
@@ -61,11 +62,33 @@
                     </a>
                 </div>
 	   		</div>
-   		</div>
+        </div>
+
+        <script type="text/template" id="one-message-content-template">
+            <div class="one-message-content">
+
+                <div class="message-row">
+                    <label>发送者：</label>
+                    <span class="sender"><%= sender%></span>
+                </div>
+                <div class="message-row">
+                    <label>时间：</label>
+                    <span class="time"><%= created_at%></span>
+                </div>
+                <div class="message-row">
+                    <label class="receiver">接收者：</label>
+                    <span><%= receiver%></span>
+                </div>
+                <div class="message-row message-content-main">
+                    <span class="content"><%= content%></span>
+                </div>
+            </div>
+        </script>
     </div>
 @stop
 
 @section('js')
     @parent
+    <script type="text/javascript" src="/lib/js/lodash/lodash.js"></script>
     <script type="text/javascript" src='/dist/js/pages/index.js'></script>
 @stop

@@ -35,8 +35,8 @@
 						<span class="balance">不可用余额：¥100元</span>
 					</div>
 					<div>
-						<a href="" class="link">提现</a>
-						<a href="" class="link">充值</a>
+						<!-- <a href="" class="link">提现</a> -->
+						<!-- <a href="" class="link">充值</a> -->
 						<a href="" class="link">查看收支明细</a>
 					</div>
 					<div class="clear"></div>
@@ -55,9 +55,9 @@
 						<span>冻结举报诚信度：0分</span> 
 						<span>信用状态：良好</span>
 					</div>
-					<div>
+				<!-- 	<div>
 						<a href="" class="link">查看我的诚信度</a>
-					</div>
+					</div> -->
 					<div class="clear"></div>
 				</div>				
 			</div>

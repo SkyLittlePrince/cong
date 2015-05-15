@@ -19,18 +19,19 @@
 	    	<div class="order-banner">我的交易</div>
 	    	<div class="list-banner">
                 <ul>
-                    <li class="info">订单信息</li>
+                    <li class="info">订单号</li>
                     <li class="date">日期</li>
                     <li class="name">项目</li>
                     <li class="status">状态</li>
                 </ul>
             </div>
+            @foreach ($indents as $indent)
 	    	<div class="one-order">
 	    		<div class="order-num order-component">
-	    			<p class="order-p">订单号<span>WX187369727786</span></p>	
+	    			{{{ $indent->id }}}
 	    		</div>
 				<div class="order-date order-component">
-					<p>2015.1212</p>
+					{{{ $indent->created_at }}}
 				</div>
 				<div class="order-pic order-component">
 					<span>
@@ -38,77 +39,22 @@
 					</span>
 				</div>
 				<div class="order-title order-component">
-					<p class="order-p">此处描述产品的标题XXXXXXXXXXX</p>
-					<p class="price line-two">￥<span>380</span></p>
+					<p class="order-p">{{{ $indent["product"]["name"] }}}</p>
+					<p class="price line-two">￥<span>{{{ $indent["product"]["price"] }}}</span></p>
 				</div>
 				<div class="order-status order-component">
-					<p class="order-p">交易成功</p>
-					<p class="line-two">雇主已评</p>
+					@if ($indent->status == 0)
+    				<p class="order-p">未付款</p>
+                    <input type="button" class="btn pay-btn" value="现在付款" /> 
+                    <input type="button" class="btn cancel-btn" value="取消订单" /> 
+    				@elseif ($indent->status == 1)
+    				<p class="order-p">已付款</p>
+    				@else
+    				<p class="order-p">交易成功</p>
+    				@endif 
 				</div>
 	    	</div>
-	    	<div class="one-order">
-	    		<div class="order-num order-component">
-	    			<p class="order-p">订单号<span>WX187369727786</span></p>	
-	    		</div>
-				<div class="order-date order-component">
-					<p>2015.1212</p>
-				</div>
-				<div class="order-pic order-component">
-					<span>
-						<img src="/images/common/avatar.png" alt="order-pic">
-					</span>
-				</div>
-				<div class="order-title order-component">
-					<p class="order-p">此处描述产品的标题XXXXXXXXXXX</p>
-					<p class="price line-two">￥<span>380</span></p>
-				</div>
-				<div class="order-status order-component">
-					<p class="order-p">交易成功</p>
-					<p class="line-two">雇主已评</p>
-				</div>
-	    	</div>
-	    	<div class="one-order">
-	    		<div class="order-num order-component">
-	    			<p class="order-p">订单号<span>WX187369727786</span></p>	
-	    		</div>
-				<div class="order-date order-component">
-					<p>2015.1212</p>
-				</div>
-				<div class="order-pic order-component">
-					<span>
-						<img src="/images/common/avatar.png" alt="order-pic">
-					</span>
-				</div>
-				<div class="order-title order-component">
-					<p class="order-p">此处描述产品的标题XXXXXXXXXXX</p>
-					<p class="price line-two">￥<span>380</span></p>
-				</div>
-				<div class="order-status order-component">
-					<p class="order-p">交易成功</p>
-					<p class="line-two">雇主已评</p>
-				</div>
-	    	</div>
-	    	<div class="one-order">
-	    		<div class="order-num order-component">
-	    			<p class="order-p">订单号<span>WX187369727786</span></p>	
-	    		</div>
-				<div class="order-date order-component">
-					<p>2015.1212</p>
-				</div>
-				<div class="order-pic order-component">
-					<span>
-						<img src="/images/common/avatar.png" alt="order-pic">
-					</span>
-				</div>
-				<div class="order-title order-component">
-					<p class="order-p">此处描述产品的标题XXXXXXXXXXX</p>
-					<p class="price line-two">￥<span>380</span></p>
-				</div>
-				<div class="order-status order-component">
-					<p class="order-p">交易成功</p>
-					<p class="line-two">雇主已评</p>
-				</div>
-	    	</div>
+	    	@endforeach
 	    </div>
 	    <div class="pagination">
                 <div class="right to-page">
@@ -134,5 +80,6 @@
 
 @section('js')
 	@parent
+    <script type="text/javascript" src='/dist/js/pages/trading-list.css'></script>
 @stop
 	

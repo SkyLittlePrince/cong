@@ -3,6 +3,13 @@ use Gregwar\Captcha\CaptchaBuilder;
 
 class SellerPageController extends BaseController {
 
+	public function myIndents()
+	{
+		$indents = [];
+
+		return View::make('tradingCenter.seller-center.my-indents', array("indents" => $indents));
+	}
+
 	public function myStore()
 	{
 		if(Sentry::check()) 
