@@ -24,6 +24,20 @@ class UserController extends \BaseController {
 	{
 		Session_start();
 		$captcha = Input::get('captcha');
+
+		$validator = Validator::make(
+			array(
+				'captcha'  => $captcha  
+			),
+			array(
+				'captcha' => 'required'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode' => 2, "message" => "验证码不能为空", "validateMes" => $validator->messages()));
+		}
+
 		//$sessionCaptcha = Session::get('phrase');
 		$sessionCaptcha = $_SESSION['phrase'];
 
@@ -108,6 +122,19 @@ class UserController extends \BaseController {
 		$salt = Input::get('registerSalt');
 		//$sessionSalt = Session::get('registerSalt');
 		$sessionSalt = $_SESSION['registerSalt'];
+
+		$validator = Validator::make(
+			array(
+				'captcha'  => $captcha  
+			),
+			array(
+				'captcha' => 'required'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode' => 2, "message" => "验证码不能为空", "validateMes" => $validator->messages()));
+		}
 
 		if($salt != $sessionSalt)
 		{
@@ -327,6 +354,33 @@ class UserController extends \BaseController {
 		$address = Input::get('address');
 		$birthday = Input::get('birthday');
 
+		$validator = Validator::make(
+			array(
+				'qq' => $qq,
+				'gender' =>$gender,
+				'wechat'    => $wechat,
+				'province'  => $province,
+				'city'	=>$city,
+				'region' =>$region,
+				'address' =>$address,
+				'birthday'=>$birthday
+			),
+			array(
+				'qq' => 'digits',
+				'gender' =>''
+				'wechat'    => '',
+				'province' =>'',
+				'city'  =>'',
+				'region' =>'',
+				'address' =>'',
+				'birthday' =>'date_format:Y-m-d'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode' => 2, "message" => "参数格式错误", "validateMes" => $validator->messages()));
+		}
+
 		if(isset($gender) && $gender != 0)
 			$gender = 1;
 		else
@@ -367,6 +421,19 @@ class UserController extends \BaseController {
 		$user = Sentry::getUser();
 		$description = Input::get('description');
 
+		$validator = Validator::make(
+			array(
+				'description' => $description
+			),
+			array(
+				'description' => 'required| between:2,40'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode' => 2, "message" => "描述字数超过40", "validateMes" => $validator->messages()));
+		}
+
 		$user->description = $description;
 
 		if($user->save())
@@ -392,6 +459,21 @@ class UserController extends \BaseController {
 
 		// if($captcha != $sessionCaptcha)
 		// 	return Response::json(array('errCode' => 5,'message' => '验证码错误!'));
+
+		$validator = Validator::make(
+			array(
+				'oldPwd' => $oldPwd,
+				'newPwd'    => $newPwd		
+			),
+			array(
+				'oldPwd' => 'required',
+				'newPwd'    => 'required | different:oldPwd'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode' =>5, "message" => "参数格式错误", "validateMes" => $validator->messages()));
+		}
 
 		if(strlen($newPwd) < 6)
 			return Response::json(array('errCode' => 1,'message' => '密码长度不能少于6位!'));
@@ -429,6 +511,23 @@ class UserController extends \BaseController {
 		$email = Input::get('email');
 		$salt = Input::get('registerSalt');
 		$password = Input::get('password');
+
+		$validator = Validator::make(
+			array(
+				'email' => $email,
+				'salt'    => $salt,
+				'password' => $password			
+			),
+			array(
+				'email' => 'required|email',
+				'salt'    => 'required',
+				'password' => 'required '
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode' => 5, "message" => "参数格式错误", "validateMes" => $validator->messages()));
+		}
 
 		$user = User::where('email',$email)->first();
 
@@ -470,6 +569,19 @@ class UserController extends \BaseController {
 
 		$about = About::where("user_id", "=", $user_id);
 
+		$validator = Validator::make(
+			array(
+				'content' => $content			
+			),
+			array(
+				'content' => 'required|between:2,40'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode' => 2, "message" => "参数格式错误", "validateMes" => $validator->messages()));
+		}
+
 		if(count($about->get()) == 0)
 		{
 			$about = new About();
@@ -503,6 +615,23 @@ class UserController extends \BaseController {
 
 		$user = User::find($user_id);
 
+		$validator = Validator::make(
+			array(
+				'mobile' => $mobile,
+				'qq' => $qq,
+				'email' => $email
+			),
+			array(
+				'mobile' => 'required|digits:11',
+				'qq' => 'required |digits',
+				'email' => 'required|email'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode' => 4, "message" => "参数格式错误", "validateMes" => $validator->messages()));
+		}
+
 		$user->mobile = $mobile;
 		$user->qq = $qq;
 		$user->email = $email;
@@ -534,12 +663,12 @@ class UserController extends \BaseController {
 			array(
 				'start_time' => 'required|date_format:Y-m-d',
 				'end_time' => 'required|date_format:Y-m-d',
-				'description' => 'required|size:50'
+				'description' => 'required|between:2,40'
 			)
 		);
 
 		if($validator->fails()){
-			return Response::json(array('errCode' => 4, "message" => "参数格式错误", "validateMes" => $validator->messages()));
+			return Response::json(array('errCode' => 2, "message" => "参数格式错误", "validateMes" => $validator->messages()));
 		}
 
 		$workExperience = new WorkExperience;
@@ -574,6 +703,27 @@ class UserController extends \BaseController {
 
 		if($user->id != $workExperience->user_id)
 			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
+
+		if($start_time > $end_time) {
+			return Response::json(array('errCode' => 4, "message" => "起始时间不得小于终止时间"));
+		}
+
+		$validator = Validator::make(
+			array(
+				'start_time' => $start_time,
+				'end_time' => $end_time,
+				'description' => $description
+			),
+			array(
+				'start_time' => 'required|date_format:Y-m-d',
+				'end_time' => 'required|date_format:Y-m-d',
+				'description' => 'required|between:2,40'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode' => 5, "message" => "参数格式错误", "validateMes" => $validator->messages()));
+		}
 
 		$workExperience->start_time = $start_time;
 		$workExperience->end_time = $end_time;
@@ -612,6 +762,27 @@ class UserController extends \BaseController {
 		$end_time = Input::get('end_time');
 		$description = Input::get('description');
 
+		if($start_time > $end_time) {
+			return Response::json(array('errCode' => 4, "message" => "起始时间不得小于终止时间"));
+		}
+
+		$validator = Validator::make(
+			array(
+				'start_time' => $start_time,
+				'end_time' => $end_time,
+				'description' => $description
+			),
+			array(
+				'start_time' => 'required|date_format:Y-m-d',
+				'end_time' => 'required|date_format:Y-m-d',
+				'description' => 'required|between:2,40'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode' => 2, "message" => "参数格式错误", "validateMes" => $validator->messages()));
+		}
+
 		$educationExperience = new EduExperience;
 		$educationExperience->user_id = $user->id;
 		$educationExperience->start_time = $start_time;
@@ -644,6 +815,27 @@ class UserController extends \BaseController {
 
 		if($user->id != $educationExperience->user_id)
 			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
+
+		if($start_time > $end_time) {
+			return Response::json(array('errCode' => 4, "message" => "起始时间不得小于终止时间"));
+		}
+
+		$validator = Validator::make(
+			array(
+				'start_time' => $start_time,
+				'end_time' => $end_time,
+				'description' => $description
+			),
+			array(
+				'start_time' => 'required|date_format:Y-m-d',
+				'end_time' => 'required|date_format:Y-m-d',
+				'description' => 'required|between:2,40'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode' => 5, "message" => "参数格式错误", "validateMes" => $validator->messages()));
+		}
 
 		$educationExperience->start_time = $start_time;
 		$educationExperience->end_time = $end_time;
@@ -679,7 +871,22 @@ class UserController extends \BaseController {
 	{
 		$user = Sentry::getUser();
 		$time = Input::get('time');
-		$description = Input::get('description');
+		$description = Input::get('description');		
+
+		$validator = Validator::make(
+			array(
+				'time' => $time,
+				'description' => $description
+			),
+			array(
+				'time' => 'required|date_format:Y-m',
+				'description' => 'required|between:2,40'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode' => 2, "message" => "参数格式错误", "validateMes" => $validator->messages()));
+		}
 
 		$award = new Award;
 		$award->user_id = $user->id;
@@ -711,6 +918,21 @@ class UserController extends \BaseController {
 
 		if($user->id != $award->user_id)
 			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
+
+		$validator = Validator::make(
+			array(
+				'time' => $time,
+				'description' => $description
+			),
+			array(
+				'time' => 'required|date_format:Y-m',
+				'description' => 'required|between:2,40'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode' => 4, "message" => "参数格式错误", "validateMes" => $validator->messages()));
+		}
 
 		$award->time = $time;
 		$award->description = $description;
