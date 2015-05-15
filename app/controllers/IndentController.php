@@ -49,17 +49,22 @@ class IndentController extends BaseController {
 		if($indent->status > 0)
 			return Response::json(array('errCode' => 3,'message' => '你已付款不能再取消订单!'));
 
-		$content = '用户' . $user->name . '取消了你的' . $indent->product->name . '商品的订单!';
-		$receiver = $indent->product->shop->user_id;
+		if(isset($indent->product))
+		{
+			$content = '用户' . $user->name . '取消了你的' . $indent->product->name . '商品的订单!';
+			$receiver = $indent->product->shop->user_id;
+
+			$message = Message::create(array(
+						'title' => '取消订单消息',
+						'content' => $content,
+						'sender' => 8,
+						'receiver' => $receiver,
+						'type' => 1
+					));
+		}
+
 		if($indent->delete())
 		{		
-			$message = Message::create(array(
-					'title' => '取消订单消息',
-					'content' => $content,
-					'sender' => 8,
-					'receiver' => $receiver,
-					'type' => 1
-				));
 			return Response::json(array('errCode' => 0,'message' => '取消订单成功!'));
 		}	
 

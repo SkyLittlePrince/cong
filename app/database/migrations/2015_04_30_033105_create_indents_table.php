@@ -23,7 +23,7 @@ class CreateIndentsTable extends Migration {
 
 		   	$table                          
 				->foreign('product_id')
-				->references('id')->on('products') ;
+				->references('id')->on('products');
 
 			$table                          
 				->foreign('user_id')
