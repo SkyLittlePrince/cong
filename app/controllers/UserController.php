@@ -369,7 +369,7 @@ class UserController extends \BaseController {
 			),
 			array(
 				'qq' => 'digits',
-				'gender' =>''
+				'gender' =>'',
 				'wechat'    => '',
 				'province' =>'',
 				'city'  =>'',
