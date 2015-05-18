@@ -30,7 +30,7 @@ class ProductController extends \BaseController {
 		$product->avatar = $avatar;
 
 		if($product->save())
-			return Response::json(array('errCode' => 0,'message' => '创建成功!'));
+			return Response::json(array('errCode' => 0,'product_id' => $product->id));
 
 		return Response::json(array('errCode' => 3,'message' => '创建失败!'));
 	}
