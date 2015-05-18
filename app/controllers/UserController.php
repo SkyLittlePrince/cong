@@ -133,7 +133,7 @@ class UserController extends \BaseController {
 		);
 
 		if($validator->fails()){
-			return Response::json(array('errCode' => 2, "message" => "参数格式错误", "validateMes" => $validator->messages()));
+			return Response::json(array('errCode' => 2, "message" => "验证码格式错误", "validateMes" => $validator->messages()));
 		}
 
 		if($salt != $sessionSalt)
@@ -191,7 +191,7 @@ class UserController extends \BaseController {
 		);
 
 		if($validator ->fails()){
-			return Response::json(array('errCode' => 2, "message" => "参数格式错误", "validateMes" => $validator->messages()));		
+			return Response::json(array('errCode' => 2, "message" => "用户名或者密码格式错误", "validateMes" => $validator->messages()));		
 		}
 
 		if(strlen($username) < 4)
@@ -291,10 +291,12 @@ class UserController extends \BaseController {
 
 		$validator = Validator::make(
 			array(
-				'captcha' =>$captcha
+				'captcha' =>$captcha,
+				'password' => $password
 			),
 			array(
-				'captcha'=>'required | size: 5'
+				'captcha'=>'required | size: 5',
+				'password' =>'required'
 			)
 		);
 
@@ -383,7 +385,12 @@ class UserController extends \BaseController {
 		$city = Input::get('city');
 		$address = Input::get('address');
 		$birthday = Input::get('birthday');
-
+		/*
+		$birthdayYear = Input::get('birthdayYear');
+		$birthdayMonth = Input::get('birthdayMonth');
+		$birthdayDay = Input::get('birthdayDay');
+		$birthday=(string)$birthdayYear."-".(string)$birthdayMonth."-".(string)$birthdayDay;
+		*/
 		$validator = Validator::make(
 			array(
 				'qq' => $qq,
@@ -397,28 +404,24 @@ class UserController extends \BaseController {
 				'realname'=>$realname
 			),
 			array(
-
 				'qq' => 'integer | min :1',
 				'avatar' =>'url',
-				'wechat'    => 'alpha_dash',
+				'wechat'    => 'string | between: 2,20',
 				'province' =>'string |between:2,10',
 				'city'  =>'string |between:2,20',
 				'region' =>'string |between:2,20',
 				'address' =>'string |between:2,40',
-				'birthday' =>'date_format:Y-m-d',
-				'realname'=>'between:4,15'
+				'birthday' =>'',
+				'realname'=>'between:2,15'
 			)
 		);
-
 		if($validator->fails()){
 			return Response::json(array('errCode' => 2, "message" => "参数格式错误", "validateMes" => $validator->messages()));
 		}
-
 		if(isset($gender) && $gender != 0)
 			$gender = 1;
 		else
 			$gender = 0;
-
 		$user = User::find($user->id);
 		$user->realname = $realname;
 		$user->avatar = $avatar;
@@ -430,10 +433,8 @@ class UserController extends \BaseController {
 		$user->country = $country;
 		$user->address = $address;
 		$user->birthday = $birthday;
-
 		if($user->save())
 			return Response::json(array('errCode' => 0,'message' => '修改成功!'));
-
 		return Response::json(array('errCode' => 1,'message' => '修改失败!'));
 		
 	}
@@ -614,7 +615,7 @@ class UserController extends \BaseController {
 		);
 
 		if($validator->fails()){
-			return Response::json(array('errCode' => 2, "message" => "内容格式错误", "validateMes" => $validator->messages()));
+			return Response::json(array('errCode' => 2, "message" => "内容字数控制在500字内", "validateMes" => $validator->messages()));
 		}
 
 		if(count($about->get()) == 0)
