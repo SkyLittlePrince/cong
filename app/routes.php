@@ -16,7 +16,7 @@
 // {
 // 	return View::make('test');
 // });
-//Route::get('test','TestController@getAscore');
+Route::get('test','TestController@testSertInto');
 //Route::post('test','UserController@getCheckRegister');
 
 // 用户模块
