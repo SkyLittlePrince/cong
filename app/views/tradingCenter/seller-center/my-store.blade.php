@@ -89,6 +89,8 @@
                 <div class="recommendation-image">
                     @foreach ($products as $product)
                         <div class="one-image">
+                            <div class="hidden checkbox-wrapper"></div>
+                            <input type="hidden" value="{{{ $product["id"] }}}" class="product-id">
                             <img src="/images/tradingcenter/seller/test.png" alt="recommend" width="136" height="136" />
                             <div class="name">{{{ $product["name"] }}}</div>
                             <span class="price">¥{{{ $product["price"] }}}</span>
@@ -115,19 +117,19 @@
                     <div class="content-row">
                         <label class="label">商品名称：</label>
                         <div class="content-input">
-                            <input type="text" />
+                            <input type="text" id="product-name" />
                         </div>
                     </div>
                     <div class="content-row">
                         <label class="label">商品金额：</label>
                         <div class="content-input">
-                            <input type="text" /><span> 元</span>
+                            <input type="text" id="product-price" /><span> 元</span>
                         </div>
                     </div>
                     <div class="content-row">
                         <label class="label">商品描述：</label>
                         <div class="content-input">
-                            <textarea></textarea>
+                            <textarea id="product-dec"></textarea>
                         </div>
                     </div>
                 </script>
@@ -167,6 +169,8 @@
 @stop
 @section('js')
     @parent
+    <script type="text/javascript" src="/lib/js/qiniu/qiniu.min.js"></script> 
+    <script type="text/javascript" src="/lib/js/plupload/plupload.full.min.js"></script>
     <script type="text/javascript" src="/lib/js/lodash/lodash.js"></script>
     <script type="text/javascript" src="/dist/js/pages/my-store.js"></script>
 @stop
