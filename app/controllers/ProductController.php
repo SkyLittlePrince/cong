@@ -44,6 +44,7 @@ class ProductController extends \BaseController {
 		$avatar = Input::get('avatar');
 
 		$product = Product::with('shop')->find($id);
+		$user = Sentry::getUser();
 
 		if(!isset($product))
 			return Response::json(array('errCode' => 1,'message' => '该产品不存在!'));

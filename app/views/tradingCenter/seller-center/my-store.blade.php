@@ -82,21 +82,43 @@
             <div class="recommendation main-content-component store-product-list">
                 <h3>我的商品</h3>
                 <div class="operation product-operation">
-                    <div class="delete-product hidden product-btn">删除商品</div>
                     <div class="add-product hidden product-btn">增加商品</div>
+                    <div class="delete-product hidden product-btn">删除商品</div>
                     <div class="delete-store">删除店铺</div>
                 </div>
                 <div class="recommendation-image">
                     @foreach ($products as $product)
                         <div class="one-image">
-                            <div class="hidden checkbox-wrapper"></div>
-                            <input type="hidden" value="{{{ $product["id"] }}}" class="product-id">
-                            <img src="/images/tradingcenter/seller/test.png" alt="recommend" width="136" height="136" />
-                            <div class="name">{{{ $product["name"] }}}</div>
-                            <span class="price">¥{{{ $product["price"] }}}</span>
+                            <div class="product-info">
+                                <div class="hidden checkbox-wrapper"></div>
+                                <input type="hidden" value="{{{ $product["id"] }}}" class="product-id">
+                                <input type="hidden" value="{{{ $product["intro"] }}}" class="product-intro">
+                                <img src="{{{ $product["avatar"] }}}" alt="recommend" width="136" height="136" class="avatar"/>
+                                <div class="name">{{{ $product["name"] }}}</div>
+                                <span class="price">¥<span class="price-value">{{{ $product["price"] }}}</span></span>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="btn product-edit hidden">编辑</div>
                         </div>
                     @endforeach
                 </div>
+                <script type="text/template" id="one-product-template">
+                    <div class="one-image">
+                        <div class="product-info">
+                            <div class="checkbox-wrapper">
+                                <label class="my-checkbox-item">
+                                    <input type="checkbox" class="my-checkbox" value="undefined" style="display:none;">
+                                </label>
+                            </div>
+                            <input type="hidden" value="<%= intro %>" class="product-intro">
+                            <input type="hidden" value="<%= id%>" class="product-id">
+                            <img src="<%= avatar%>" alt="recommend" width="136" height="136" />
+                            <div class="name"><%= name%></div>
+                            <span class="price">¥<span class="price-value"><%= price%></span></span>
+                        </div>
+                        <div class="btn product-edit">编辑</div>
+                    </div>
+                </script>
                 <div class="operation">
                     <div class="edit-btn" id="edit-store-product">编辑</div>
                     <div class="hidden save-btn" id="save-store-product">保存</div>
@@ -130,6 +152,38 @@
                         <label class="label">商品描述：</label>
                         <div class="content-input">
                             <textarea id="product-dec"></textarea>
+                        </div>
+                    </div>
+                </script>
+                <script type="text/template" id="update-product-template">
+                    <div class="content-main">
+                    <div class="content-row">
+                        <label class="label" for="avatar">商品图片：</label>
+                        <div class="content-input" id="avatar-wrapper">
+                            <img class="avatar-img" src="<%= avatar%>" width="80" height="80" />
+                            <input type="hidden" id="avatar-url" name="avatar" class="hidden" value="<%= avatar%>" />
+                            <a href="javascript:;" class="a-upload">
+                                <input type="file" name="avatar-file" id="avatar-file">更改图片
+                            </a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="content-row">
+                        <label class="label">商品名称：</label>
+                        <div class="content-input">
+                            <input type="text" id="product-name" value="<%= name%>"/>
+                        </div>
+                    </div>
+                    <div class="content-row">
+                        <label class="label">商品金额：</label>
+                        <div class="content-input">
+                            <input type="text" id="product-price" value="<%= price %>"/ /><span> 元</span>
+                        </div>
+                    </div>
+                    <div class="content-row">
+                        <label class="label">商品描述：</label>
+                        <div class="content-input">
+                            <textarea id="product-dec" ><%= intro %></textarea>
                         </div>
                     </div>
                 </script>
