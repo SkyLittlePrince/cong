@@ -5,9 +5,9 @@ class AddressCrontroller extends \BaseController {
 	public function postCreate()
 	{
 		$username = Input::get('username');
+		$country = Input::get('country');
 		$province = Input::get('province');
 		$city = Input::get('city');
-		$region = Input::get('region');
 		$add = Input::get('address');
 		$postcode = Input::get('postcode');
 		$mobile = Input::get('mobile');
@@ -60,7 +60,7 @@ class AddressCrontroller extends \BaseController {
 			$address->user_id = $user->id;
 			$address->province = $province;
 			$address->city = $city;
-			$address->region = $region;
+			$address->country = $country;
 			$address->address = $add;
 			$address->postcode = $postcode;
 			$address->mobile = $mobile;

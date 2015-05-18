@@ -95,7 +95,7 @@
                             <input type="hidden" id="credit-positive" value="{{{ $credit_front }}}" />
                         </div>
                         <a href="javascript:;" class="a-upload">
-                            <input type="file" name="positive-file" id="positive-file">单击上传
+                            <input type="file" name="positive-file" id="positive-file"><span class="text">单击上传</span>
                         </a>
                         @else
                         <div class="content-img hidden">
@@ -104,7 +104,7 @@
                         </div>
                         <div class="img-border"></div>
                         <a href="javascript:;" class="a-upload">
-                            <input type="file" name="positive-file" id="positive-file">单击上传
+                            <input type="file" name="positive-file" id="positive-file"><span class="text">单击上传</span>
                         </a>
                         @endif
                         <div class="clear"></div>
@@ -118,11 +118,11 @@
                         </div>
                         @elseif ($isExist == true && $status == -1)
                         <div class="content-img">
-                            <img src="{{{ $credit_behind }}}" alt="front" width="105" height="66" />
+                            <img src="{{{ $credit_behind }}}" alt="behind" width="105" height="66" />
                             <input type="hidden" id="credit-negative" value="{{{ $credit_behind }}}" />
                         </div>
                         <a href="javascript:;" class="a-upload">
-                            <input type="file" name="negative-file" id="negative-file">单击上传
+                            <input type="file" name="negative-file" id="negative-file"><span class="text">单击上传</span>
                         </a>
                         @else
                         <div class="content-img hidden">
@@ -131,7 +131,7 @@
                         </div>
                         <div class="img-border"></div>
                         <a href="javascript:;" class="a-upload">
-                            <input type="file" name="negative-file" id="negative-file">单击上传
+                            <input type="file" name="negative-file" id="negative-file"><span class="text">单击上传</span>
                         </a>
                         @endif
                         <div class="clear"></div>

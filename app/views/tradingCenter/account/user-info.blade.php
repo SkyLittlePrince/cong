@@ -26,22 +26,22 @@
             @endif
     		<div class="info">
     			<div class="name">
-    				Vivine <br />
+    				{{{ $username }}} <br />
     				注册时间： {{{ $created_at }}}
     			</div>
     			<div class="region-wrapper">
-                    @if (!isset($region) || !isset($city) || !isset($province))
+                    @if (!isset($country) || !isset($city) || !isset($province))
                     <span class="region">未知地区</span>
                     @else
-    				<span class="region">$region</span>
-    				<span class="region">$province</span>
-    				<span class="region">$city</span>
+                    <span class="region">{{{ $country }}}</span>
+    				<span class="region">{{{ $province }}}</span>
+    				<span class="region">{{{ $city }}}</span>
                     @endif
     			</div>
                 @if (isset($shop))
                 <div class="shop-info">
                     <div class="text">
-                        <div>丛丛店铺：{{{ $shop["name"] }}}</div>
+                        <div>丛丛店铺： {{{ $shop["name"] }}}</div>
                         <div>店铺标签：
                             @if (isset($shop["tags"]))
                                 @foreach ($shop["tags"] as $tag)
