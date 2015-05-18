@@ -16,6 +16,8 @@ class ShopController extends \BaseController {
 		$avatar = Input::get('avatar');
 		$tags = Input::get('tags');
 
+		
+
 		if($user->role_id == 2)
 			return Response::json(array('errCode' => 1,'message' => '你已拥有店铺!'));
 
@@ -23,8 +25,7 @@ class ShopController extends \BaseController {
 		$shop->name = $name;
 		$shop->description = $description;
 		$shop->user_id = $user->id;
-		$shop->avatar = $avatar;
-
+		$shop->avatar = $avatar;		
 
 		if($shop->save())
 		{
@@ -64,6 +65,7 @@ class ShopController extends \BaseController {
 		if($user->id != $shop->user_id)
 			return Response::json(array('errCode' => 2,'message' => '你没有权限进行该操作!'));
 
+		
 		$shop->name = $name;
 		$shop->description = $description;
 
