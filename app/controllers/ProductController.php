@@ -5,12 +5,12 @@ class ProductController extends \BaseController {
 	public function addProduct()
 	{
 		$user = Sentry::getUser();
-		$shop_id = Input::get('shop_id');
 		$name = Input::get('name');
 		$intro = Input::get('intro');
 		$price = Input::get('price');
 		$avatar = Input::get('avatar');
 
+<<<<<<< HEAD
 		$validator = Validator:: make(
 			array(
 				'name' => $name,
@@ -31,10 +31,13 @@ class ProductController extends \BaseController {
 		}
 
 		$shop = Shop::find($shop_id);
+=======
+		$shop = Shop::where('user_id',$user->id)->first();
+>>>>>>> origin/master
 
 		if(!isset($shop))
 		{
-			return Response::json(array('errCode' => 1,'message' => '该店铺不存在!'));
+			return Response::json(array('errCode' => 1,'message' => '你还没有创建店铺呢!'));
 		}
 
 		if($user->id != $shop->user_id)
@@ -46,7 +49,7 @@ class ProductController extends \BaseController {
 		$product->name = $name;
 		$product->intro = $intro;
 		$product->price = $price;
-		$product->shop_id = $shop_id;
+		$product->shop_id = $shop->id;
 		$product->avatar = $avatar;
 
 		if($product->save())
