@@ -25,7 +25,7 @@
 			<div class="content-row">
 				<label class="label" for="old-password">当前密码：</label>
 				<div class="content-input">
-					<input type="text" id="old-password" name="old-password" />
+					<input type="password" id="old-password" name="old-password" />
 				</div>
 			</div>
 			<div class="content-row">

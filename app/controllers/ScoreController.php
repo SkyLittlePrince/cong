@@ -16,9 +16,10 @@ class ScoreController extends \BaseController {
 		if($product->user_id == $user->id)
 			return Response::json(array('errCode' => 2,'message' => '不能给自己的产品评分'));
 
-		$indent = Indent::where('user_id',$user->id)
-			->where('product_id',$product_id)
-			->first();
+		$indent = Indent::where('user_id',$user->id)->whereHas('products',function($q)
+		{
+			$q->where('id',$product_id);
+		})->first();
 
 		if(!isset($indent))
 			return Response::json(array('errCode' => 3,'message' => '你还没对此产品下单!'));

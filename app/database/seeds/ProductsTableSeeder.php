@@ -10,6 +10,7 @@ class ProductsTableSeeder extends Seeder {
 			"shop_id" => 1,
 			"sellNum" => 5,
 			"favorNum" => 1,
+			"avatar" => "http://7sbxao.com1.z0.glb.clouddn.com/login.jpg",
 			"intro" => "商品一介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍"
 		]);
 
@@ -19,6 +20,7 @@ class ProductsTableSeeder extends Seeder {
 			"shop_id" => 1,
 			"sellNum" => 3,
 			"favorNum" => 2,
+			"avatar" => "http://7sbxao.com1.z0.glb.clouddn.com/login.jpg",
 			"intro" => "商品二介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍"
 		]);
 
@@ -28,6 +30,7 @@ class ProductsTableSeeder extends Seeder {
 			"shop_id" => 1,
 			"sellNum" => 2,
 			"favorNum" => 6,
+			"avatar" => "http://7sbxao.com1.z0.glb.clouddn.com/login.jpg",
 			"intro" => "商品三介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍"
 		]);
 	}

@@ -1,4 +1,6 @@
 Dialog = require './../../../common/dialog/dialog.coffee'
+Uploader = require "../../../common/uploader/index.coffee"
+Checkbox = require('../../../common/checkbox/checkbox.coffee');
 
 $storeName = $('.store-name')
 $aboutStoreName = $('.about-store-name')
@@ -34,11 +36,15 @@ saveStoreInfo = (e)->
 
 	name = $aboutStoreName.val()
 	description = $aboutBriefIntroduction.val()
-
+	if name.length is 0
+		alert '店铺名称不能为空'
+		return false
 	if name.length > 19
 		alert("请输入不超过19个字的店铺名称")
 		return false
-
+	if description.length is 0
+		alert "店铺描述不能为空"
+		return false
 	if description.length > 38
 		alert("请输入不超过38个字的店铺简介")
 		return false
@@ -237,6 +243,7 @@ editStoreProductMode = (e)->
 	$storeProductList.addClass('edit-state')
 	$storeProductRanking.hide()
 	$productBtn.show()
+	$('.checkbox-wrapper').removeClass('hidden')
 	$target = $(e.currentTarget)
 	$target.parent().find(".edit-btn").addClass("hidden").siblings().removeClass("hidden")
 
@@ -246,6 +253,7 @@ saveStoreProductMode = (e)->
 	$productBtn.hide()
 	$storeProductList.removeClass('edit-state')
 	$storeProductRanking.show()
+	$('.checkbox-wrapper').addClass('hidden')
 
 	$target = $(e.currentTarget)
 	$target.parent().find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
@@ -258,8 +266,65 @@ addOneProduct = ->
 	dialog = new Dialog({
 		title: "增加商品"
 		content: addProductCompile({})
+		buttons: [{text:"确定", className: "add-product-confirm"}]
 	})
 	dialog.loadDialogToPage()
+
+	# 为上传按钮绑定上传图片事件
+	avatarUploader = setUploadedPhoto "avatar"
+	$('.add-product-confirm').bind 'click', addProductConfirm
+
+addProductConfirmAction = ->
+	if not $('#avatar-url').val() or not $('#product-name').val() or not $('#product-price').val() or not $('#product-dec').val()
+		alert "请填写完整信息"
+		return false
+	return {
+		avatar: $('#avatar-url').val()
+		name: $('#product-name').val()
+		price: $('#product-price').val()
+		intro: $('#product-dec').val()
+	}
+
+addProductConfirm = ->
+	info = addProductConfirmAction()
+	if info
+		shop_id = $shopIdInput.val()
+		console.log shop_id
+		shopDataBus.addProduct info.shop_id, info.name, info.price, info.intro, info.avatar, (data)->
+			console.log(data)
+
+# 上传图片到七牛云
+setUploadedPhoto = (name)->
+	uploader = new Uploader {
+		domain: "http://7xj0sp.com1.z0.glb.clouddn.com/"	# bucket 域名，下载资源时用到，**必需**
+		browse_button: name + '-file',       # 上传选择的点选按钮，**必需**
+		container: name + '-wrapper',       # 上传选择的点选按钮，**必需**
+	}, {
+		FileUploaded: (up, file, info)->
+			info = $.parseJSON info
+			domain = up.getOption('domain')
+			url = domain + info.key
+
+			# 显示上传之后的图片
+			$("#" + name + "-wrapper").find(".avatar-img").attr("src", url)
+			$("#avatar-url").val(url)
+	}
+
+checkbox = (new Checkbox({
+    selector: '.checkbox-wrapper'
+}))
+
+# 删除产品逻辑
+deleteProductHandler = ->
+	CheckedItem = checkbox.getCheckedItem()
+	if CheckedItem.length
+		for $item in CheckedItem
+			id = $($item).parent().parent().siblings('.product-id').val()
+			shopDataBus.deleteProduct id, (data)->
+				if data.errCode is 0
+					alert("删除成功")
+					$($item).closest('.one-img').remove()
+
 
 $ ->
 	$('.info .edit-btn').bind 'click', editStoreInfo
@@ -285,6 +350,8 @@ $ ->
 
 	$addProductBtn.bind 'click', addOneProduct
 
+	$('.delete-product').bind 'click', deleteProductHandler
+
 shopDataBus =
 	updateShop: (storeInfo, callback)->
 		$.post '/shop/updateShop', storeInfo, (data)->
@@ -303,3 +370,16 @@ shopDataBus =
 	# 删除店铺标签
 	deleteShopTag: (storeId, tag_id, callback)->
 		$.post '/shop/deleteTag', {shop_id: storeId, tag_id: tag_id}, (data)->callback(data)
+	# 增加一个产品
+	addProduct: (shop_id, name, intro, price, avatar, callback)->
+		$.post '/product/addProduct', {shop_id: shop_id, name: name, intro: intro, price: price, avatar: avatar}, (data) -> callback(data)
+	# 删除一个产品
+	deleteProduct: (id, callback)->
+		$.ajax {
+			type: "get"
+			url: "/product/deleteProduct"
+			data: 
+				id: id
+			success: (data)->
+				callback data
+		}

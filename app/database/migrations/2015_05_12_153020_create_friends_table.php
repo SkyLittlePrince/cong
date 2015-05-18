@@ -29,7 +29,7 @@ class CreateFriendsTable extends Migration {
 	                          ->onDelete('cascade')
 	                          ->onUpdate('cascade');
 
-	                          $table->primary( array('user_id', 'friend_id') );
+	                          $table->primary(array('user_id', 'friend_id'));
 		});
 	}
 

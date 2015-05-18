@@ -1,0 +1,104 @@
+@import '../../../common/common.less';
+
+.authentication-content {
+	.content-main {
+		margin-top: 20px;
+
+		.content-row {
+			@line-height: 35px;
+
+			width: 100%;
+			float: left;
+			margin-bottom: 15px;
+
+			img {
+				float: left;
+			}
+
+			.star {
+				color: red;
+				line-height: 45px;
+				vertical-align: middle;
+				float: left;
+				display: block;
+				margin-left: 5px;
+			}
+
+			.warning {
+				color: #c5b498;
+				line-height: 22px;
+				vertical-align: middle;
+				float: left;
+				margin-left: 12px; 
+				font-size: 12px;
+				width: 650px;
+			}
+
+			.label {
+				float: left;
+				line-height: @line-height;
+				vertical-align: middle;
+				width: 100px;
+			}
+
+			.content-input {
+				float: left;
+
+				input[type="text"] {
+					.input(264px, 35px);
+				}
+
+				.identity-photo {
+					height: 83px;
+					width: 131px;
+					float: left;
+					border: 1px solid #d8d8d8;
+					margin-right: 20px;
+					font-size: 12px;
+					.border-radius(10px);
+
+					span {
+						display: block;
+						text-align: center;
+						line-height: 45px;
+						vertical-align: middle;
+					}
+
+					.identity-card-btn {
+						border: 0px;
+						height: 27px;
+						width: 74px;
+						font-size: 12px;
+						margin: 0 auto;
+						margin-top: 0px;
+						display: block;
+						line-height: 27px;
+					}
+
+					.identity-card-file {
+						display: none;
+					}
+				}
+
+				.text {
+					clear: both;
+					font-size: 12px;
+				 	color: #c5b498;
+				 	margin-right: 10px;
+				 	line-height: 1.8em;
+				 	margin-top: 5px;
+				 	width: 340px;
+				 	float: left;
+				}
+			}
+
+			#authentication-save-btn {
+				margin: 0 auto;
+				margin-top: 20px;
+				display: block;
+				font-size: 14px;
+				font-family: "微软雅黑";
+			}
+		}
+	}
+}

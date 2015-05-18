@@ -1,6 +1,26 @@
 <?php
 
-class AccountPageController extends BaseController {
+class AccountPageController extends BaseController 
+{
+	public function baseInfo()
+	{
+		if(Sentry::check()) 
+		{
+			$user = Sentry::getUser();
+		} 
+		else 
+		{
+			return Redirect::guest('user/login');
+		}
+
+		$user = Sentry::getUser();
+		$birthdayArray = explode("-", $user->birthday);
+		$user["birthdayYear"] = $birthdayArray[0];
+		$user["birthdayMonth"] = $birthdayArray[1];
+		$user["birthdayDay"] = $birthdayArray[2];
+
+		return View::make('tradingCenter.account.base-info', $user);
+	}
 
 	public function index()
 	{

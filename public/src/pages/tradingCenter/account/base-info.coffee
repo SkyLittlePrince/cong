@@ -1,31 +1,11 @@
-# 更改个人信息数据模块
-baseInfoDataBus = 
-	### 
-	# 更改用户的密码
-	# @param {Object} info: 保存用户个人信息的对象
-	# @param {Function} callback: 请求响应之后执行的事件处理函数 
-	###
-	changePassword: (info, callback)->
-		$.ajax {
-			type: "post"
-			url: "/user/update"
-			data:
-				name: info.name
-				qq: info.qq
-				gender: info.gender
-				wechat: info.wechat
-				province: info.province
-				city: info.city
-				region: info.region
-				address: info.address
-				birthday: info.birthday
-			success: (data)->
-				callback(data)
-		}
+Uploader = require "../../../common/uploader/index.coffee"
 
 # 缓存DOM节点
-$name = $('#name')
-$sex = $('input[name="sex"]')
+$avatar = $("#avatar")
+$avatarImg = $("#avatarImg")
+$realname = $('#realname')
+$male = $('#male')
+$female = $('#female')
 $year = $('#year')
 $month = $('#month')
 $day = $('#day')
@@ -33,42 +13,69 @@ $wechat = $('#wechat')
 $QQ = $('#QQ')
 $prov = $('#prov')
 $city = $('#city')
-$district = $('#district')
+$region = $('#region')
 $address = $('#address')
-$contactSaveBtn = $('#contact-save-btn')
+$baseInfoSaveBtn = $('#base-info-save-btn')
 
-contactSaveAction = ->
-	name =  $name.val()
-	sex = $sex.val()
-	birthday = $year.val() + '-' + $month.val() + '-' + $day.val()
+# 更改个人信息数据模块
+baseInfoDataBus = 
+	updateUserInfo: (data, callback)->
+		$.post "/user/update", data, (data)->
+			callback data
+
+updateUserInfo = (e)->
+	avatar = $avatar.val()
+	realname = $realname.val()
+	month = if $month.val().length > 1 then $month.val() else "0" + $month.val()
+	day = if $day.val().length > 1 then $day.val() else "0" + $day.val()
+	birthday = $year.val() + "-" + month + "-" + day
 	wechat = $wechat.val()
-	QQ = $QQ.val()
-	province = $prov.val()
+	qq = $QQ.val()
+	prov = $prov.val()
 	city = $city.val()
-	region = $district.val()
+	region = $region.val()
 	address = $address.val()
 
-	return {
-		name: name
-		sex: sex
+	if $male[0].checked
+		gender = 1
+	if $female[0].checked
+		gender = 0
+
+	data = 
+		avatar: avatar
+		realname: realname
 		birthday: birthday
+		gender: gender
 		wechat: wechat
-		QQ: QQ
-		province: province
+		qq: qq
+		province: prov
 		city: city
-		district: region
+		region: region
 		address: address
+
+	baseInfoDataBus.updateUserInfo data, (res)->
+		if res.errCode == 0
+			alert "修改个人信息成功"
+			window.location.href = "/trading-center/account/base-info"
+		else 
+			alert res.message
+
+
+setUploadedAvatar = (name)->
+	uploader = new Uploader {
+		domain: "http://7xj0sp.com1.z0.glb.clouddn.com/"	# bucket 域名，下载资源时用到，**必需**
+		browse_button: 'revise-avatar',       # 上传选择的点选按钮，**必需**
+		container: 'avatar-wrapper',       
+	}, {
+		FileUploaded: (up, file, info)->
+			info = $.parseJSON info
+			domain = up.getOption('domain')
+			url = domain + info.key
+
+			$avatarImg.attr("src", url)
+			$avatar.val url
 	}
 
-contactSaveHandler = ->
-	info = contactSaveAction()
-	console.log( info)
-	if info
-		baseInfoDataBus.changePassword info, (data)->
-			alert(data.message)
-			if data.errCode is 0
-				location.reload()
-
-
 $ ->
-	$contactSaveBtn.bind 'click', contactSaveHandler
+	$baseInfoSaveBtn.bind 'click', updateUserInfo
+	frontUploader = setUploadedAvatar()

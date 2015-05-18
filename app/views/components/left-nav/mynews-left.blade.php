@@ -6,15 +6,14 @@
                 <a href="/trading-center/mynews/trading-reminder" class="nav-item">交易提醒</a>
             </li>
             <li>
-                <a href="javascript:void(0);" class="nav-item nav-a">互动通知</a>
-                <ul class="sub-nav">
-                    <li><a href="/trading-center/mynews/notification">活动通知</a></li>
+                <a href="/trading-center/mynews/notification" class="nav-item">活动通知</a>
+                <!-- <ul class="sub-nav"> -->
                     <!-- <li><a href="/trading-center/mynews/history">聊天记录</a></li> -->
-                </ul>
+                <!-- </ul> -->
             </li>
-            <li>
+  <!--           <li>
                 <a href="/trading-center/mynews/setting" class="nav-item">消息设置</a>
-            </li>
+            </li> -->
         </ul>
     </div>
 </div>

@@ -43,6 +43,7 @@ class MigrationCartalystSentryInstallUsers extends Migration {
 			$table->string('reset_password_code')->nullable();
 			// Add it on 2015-04-17
 			$table->string('username');
+			$table->string('realname')->nullable();
 			$table->string('qq')->nullable();
 			$table->string('mobile')->nullable();
 			$table->boolean('gender')->default(0);  // 0=male 1=female
