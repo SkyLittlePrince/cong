@@ -266,7 +266,7 @@ Route::group(array('prefix' => 'trading-center'),function()
 		{
 			return View::make('tradingCenter.buyer-center.report-manage.receive-report');
 		});
-		Route::get('invite','InvitationPageController@inviteFriends');
+		Route::get('invite','BuyerPageController@inviteFriends');
 	});
 
 	// 账号设置

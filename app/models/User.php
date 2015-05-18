@@ -48,7 +48,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			'wechat',
 			'province',
 			'city',
-			'region',
+			'country',
 			'address',
 			'role_id'
 		);

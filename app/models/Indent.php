@@ -26,6 +26,6 @@ class Indent extends \Eloquent {
 
 	public function products()
 	{
-		return $this->belongsToMany('Product');
+		return $this->belongsToMany('Product', 'indent_product', 'indent_id', 'product_id');
 	}
 }
