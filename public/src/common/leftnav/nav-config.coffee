@@ -44,6 +44,9 @@ navConfig = {
 		}
 	},
 	mynews: {
+		subNavIndexes: {
+
+		},
 		navIndexes: {
 			"trading-reminder": 0,
 			"notification": 1
