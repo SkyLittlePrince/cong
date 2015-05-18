@@ -11,6 +11,25 @@ class ProductController extends \BaseController {
 		$price = Input::get('price');
 		$avatar = Input::get('avatar');
 
+		$validator = Validator:: make(
+			array(
+				'name' => $name,
+				'intro'  => $intro,
+				'price'  => $price,
+				'avatar'=>$avatar
+			),
+			array(
+				'name' => 'required | between : 2,20'
+				'intro'  => 'required | between : 2,40',
+				'price'  => 'required | numeric',
+				'avatar'=>' required | url'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode' => 4, "message" => "参数格式错误", "validateMes" => $validator->messages()));
+		}
+
 		$shop = Shop::find($shop_id);
 
 		if(!isset($shop))
@@ -51,6 +70,25 @@ class ProductController extends \BaseController {
 
 		if($product->shop->user_id != $user->id)
 			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
+
+		$validator = Validator:: make(
+			array(
+				'name' => $name,
+				'intro'  => $intro,
+				'price'  => $price,
+				'avatar'=>$avatar
+			),
+			array(
+				'name' => 'between : 2,20'
+				'intro'  => 'between : 2,40',
+				'price'  => 'numeric',
+				'avatar'=> 'url'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode' => 4, "message" => "参数格式错误", "validateMes" => $validator->messages()));
+		}
 
 		$product->name = $name;
 		$product->intro = $intro;

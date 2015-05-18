@@ -14,12 +14,28 @@ class AccountPageController extends BaseController
 		}
 
 		$user = Sentry::getUser();
+
+		$validator = Validator::make(
+			array(
+				'birthday' =>$user->birthday
+			),
+			array(
+				'birthday' => 'required'
+			)
+		);
+
+		if(!$validator->fails()){
+
 		$birthdayArray = explode("-", $user->birthday);
+		
 		$user["birthdayYear"] = $birthdayArray[0];
 		$user["birthdayMonth"] = $birthdayArray[1];
 		$user["birthdayDay"] = $birthdayArray[2];
 
+		}
 		return View::make('tradingCenter.account.base-info', $user);
+
+		
 	}
 
 	public function index()

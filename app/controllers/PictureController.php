@@ -8,6 +8,15 @@ class PictureController extends \BaseController {
 		$product_id = Input::get('product_id');
 		$image = Input::get('image');
 
+		$validator = Validator::make(
+			array('image' => $image),
+			array('image' => 'required | url')
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode'=>4,"message" => '请上传正确的图片!',"validateMes"=> $validator->messages()));			
+		}
+
 		$product = Product::find($product_id);
 
 		if(!isset($product))

@@ -21,7 +21,7 @@ class AddressCrontroller extends \BaseController {
 				'province'    => $province,
 				'city'	      => $city,
 				'region'	      => $region,
-				'add' 	      => $province,
+				'add' 	      => $address,
 				'postcode'   => $postcode,
 				'mobile'	      => $mobile
 			),

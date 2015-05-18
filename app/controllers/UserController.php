@@ -397,7 +397,7 @@ class UserController extends \BaseController {
 				'realname'=>$realname
 			),
 			array(
-				'qq' => 'integer',
+				'qq' => 'integer | min :1',
 				'avatar' =>'url',
 				'wechat'    => 'alpha_dash',
 				'province' =>'string |between:2,10',
@@ -506,7 +506,7 @@ class UserController extends \BaseController {
 		);
 
 		if($validator->fails()){
-			return Response::json(array('errCode' =>5, "message" => "新密码格式错误", "validateMes" => $validator->messages()));
+			return Response::json(array('errCode' =>5, "message" => "新密码由数字和字母组成", "validateMes" => $validator->messages()));
 		}
 
 		if(strlen($newPwd) < 6)
@@ -608,7 +608,7 @@ class UserController extends \BaseController {
 				'content' => $content			
 			),
 			array(
-				'content' => 'required|between:2,40'
+				'content' => 'between:2,40'
 			)
 		);
 
@@ -656,7 +656,7 @@ class UserController extends \BaseController {
 			),
 			array(
 				'mobile' => 'integer |between:10000000000,19999999999',
-				'qq' => 'integer'
+				'qq' => 'integer | min :1'
 			)
 		);
 
@@ -747,9 +747,9 @@ class UserController extends \BaseController {
 				'description' => $description
 			),
 			array(
-				'start_time' => 'required|date_format:Y-m-d',
-				'end_time' => 'required|date_format:Y-m-d',
-				'description' => 'required|between:2,40'
+				'start_time' => 'date_format:Y-m-d',
+				'end_time' => 'date_format:Y-m-d',
+				'description' => 'between:2,40'
 			)
 		);
 
@@ -859,9 +859,9 @@ class UserController extends \BaseController {
 				'description' => $description
 			),
 			array(
-				'start_time' => 'required|date_format:Y-m-d',
-				'end_time' => 'required|date_format:Y-m-d',
-				'description' => 'required|between:2,40'
+				'start_time' => 'date_format:Y-m-d',
+				'end_time' => 'date_format:Y-m-d',
+				'description' => 'between:2,40'
 			)
 		);
 
@@ -957,8 +957,8 @@ class UserController extends \BaseController {
 				'description' => $description
 			),
 			array(
-				'time' => 'required|date_format:Y-m-d',
-				'description' => 'required|between:2,40'
+				'time' => 'date_format:Y-m-d',
+				'description' => 'between:2,40'
 			)
 		);
 
