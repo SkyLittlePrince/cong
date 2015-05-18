@@ -26,6 +26,11 @@ setUploadedPhoto = (name)->
 		browse_button: name + '-file',       # 上传选择的点选按钮，**必需**
 		container: name + '-wrapper',      
 	}, {
+		BeforeUpload: (up, file)->
+			console.log $("#" + name + "-file").parent()[0]
+			console.log "before: " + name
+			$("#" + name + "-file").parent().find(".text").html("上传中...")
+
 		FileUploaded: (up, file, info)->
 			info = $.parseJSON info
 			domain = up.getOption('domain')
@@ -35,6 +40,8 @@ setUploadedPhoto = (name)->
 			$("#" + name + "-wrapper").find(".img-border").addClass("hidden")
 	
 			$("#credit-" + name).val url
+			$("#" + name + "-file").parent().find(".text").html("重新上传")
+			console.log "complete: " + name
 	}
 
 $ ->

@@ -7,12 +7,12 @@ class IndentProductTableSeeder extends Seeder {
 
 	public function run()
 	{
-		UserSkill::create([
+		IndentProduct::create([
 			"indent_id" => 1,
 			"product_id" => 1
 		]);
 
-		UserSkill::create([
+		IndentProduct::create([
 			"indent_id" => 2,
 			"product_id" => 2
 		]);

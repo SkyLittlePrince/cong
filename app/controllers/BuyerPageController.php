@@ -9,7 +9,7 @@ class BuyerPageController extends BaseController {
 		{
 			$user_id = Sentry::getUser()->id;
 		} 
-		else 
+		else
 		{
 			return Redirect::guest('user/login');
 		}
@@ -18,9 +18,10 @@ class BuyerPageController extends BaseController {
 		$indents = Indent::where("user_id", "=", $user_id)->paginate($numOfItemsPerPage);
 		$numOfTotalItems = Indent::where("user_id", "=", $user_id)->count();
 
+		$array = array();
 		foreach ($indents as $key => $indent) 
 		{
-			$indent->product = $indent->product;
+			$indent->product = $indent->products[0];
 		}
 
 		return View::make('tradingCenter.buyer-center.index', array("indents" => $indents, "numOfTotalItems" => $numOfTotalItems));
@@ -43,9 +44,18 @@ class BuyerPageController extends BaseController {
 
 		foreach ($indents as $key => $indent) 
 		{
-			$indent->product = $indent->product;
+			$indent->product = $indent->products[0];
 		}
 
 		return View::make('tradingCenter.buyer-center.trading-manage.trading-list', array("indents" => $indents, "numOfTotalItems" => $numOfTotalItems));
+	}
+
+	public function inviteFriends()
+	{
+		$user = Sentry::getUser();
+
+		$url = Config::get('app.url') . '/user/register?invitationCode=' . $user->id;
+
+		return View::make('tradingCenter.buyer-center.invite-friends',array('url' => $url));
 	}
 }

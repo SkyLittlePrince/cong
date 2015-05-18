@@ -350,9 +350,9 @@ class UserController extends \BaseController {
 		$qq = Input::get('qq');
 		$gender = Input::get('gender');
 		$wechat = Input::get('wechat');
+		$country = Input::get('country');
 		$province = Input::get('province');
 		$city = Input::get('city');
-		$region = Input::get('region');
 		$address = Input::get('address');
 		$birthday = Input::get('birthday');
 
@@ -361,9 +361,9 @@ class UserController extends \BaseController {
 				'qq' => $qq,
 				'gender' =>$gender,
 				'wechat'    => $wechat,
+				'country' =>$country,
 				'province'  => $province,
 				'city'	=>$city,
-				'region' =>$region,
 				'address' =>$address,
 				'birthday'=>$birthday
 			),
@@ -373,7 +373,7 @@ class UserController extends \BaseController {
 				'wechat'    => '',
 				'province' =>'',
 				'city'  =>'',
-				'region' =>'',
+				'country' =>'',
 				'address' =>'',
 				'birthday' =>'date_format:Y-m-d'
 			)
@@ -396,7 +396,7 @@ class UserController extends \BaseController {
 		$user->wechat = $wechat;
 		$user->province = $province;
 		$user->city = $city;
-		$user->region = $region;
+		$user->country = $country;
 		$user->address = $address;
 		$user->birthday = $birthday;
 

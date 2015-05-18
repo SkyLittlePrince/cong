@@ -48,9 +48,9 @@ class MigrationCartalystSentryInstallUsers extends Migration {
 			$table->string('mobile')->nullable();
 			$table->boolean('gender')->default(0);  // 0=male 1=female
 			$table->string('wechat')->nullable();
+			$table->string('country')->nullable();
 			$table->string('province')->nullable();
 			$table->string('city')->nullable();
-			$table->string('region')->nullable();
 			$table->string('address')->nullable();
 			$table->string('birthday')->nullable();
 			$table->string('avatar')->default("http://7sbxao.com1.z0.glb.clouddn.com/avatar.jpg");
