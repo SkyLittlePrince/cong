@@ -15,15 +15,20 @@ class BuyerPageController extends BaseController {
 		}
 
 		$numOfItemsPerPage = 3;
-		$indents = Indent::where("user_id", "=", $user_id)->paginate($numOfItemsPerPage);
-		$numOfTotalItems = Indent::where("user_id", "=", $user_id)->count();
-
-		$array = array();
-		foreach ($indents as $key => $indent) 
-		{
-			$indent->product = $indent->products[0];
+		$indents = Indent::where("user_id", "=", $user_id)->with('products')->paginate($numOfItemsPerPage)->toArray();
+		//$numOfTotalItems = Indent::where("user_id", "=", $user_id)->count();
+		$numOfTotalItems = $indents['total'];
+		// $array = array();
+		// foreach ($indents as $key => $indent) 
+		// {
+		// 	$indent->product = $indent->products[0];
+		// }
+		$indents = $indents['data'];
+		$array = array('id' => 0,'name' => '商品已下架','price' => 0);
+		foreach ($indents as $key => $indent) {
+			if(count($indent['products']) == 0)
+				$indents[$key]['products'][0] = $array;
 		}
-
 		return View::make('tradingCenter.buyer-center.index', array("indents" => $indents, "numOfTotalItems" => $numOfTotalItems));
 	}
 
