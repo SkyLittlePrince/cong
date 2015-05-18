@@ -112,7 +112,7 @@
                             </div>
                             <input type="hidden" value="<%= intro %>" class="product-intro">
                             <input type="hidden" value="<%= id%>" class="product-id">
-                            <img src="<%= avatar%>" alt="recommend" width="136" height="136" />
+                            <img src="<%= avatar%>" alt="recommend" width="136" height="136" class="avatar" />
                             <div class="name"><%= name%></div>
                             <span class="price">¥<span class="price-value"><%= price%></span></span>
                         </div>
@@ -160,7 +160,7 @@
                     <div class="content-row">
                         <label class="label" for="avatar">商品图片：</label>
                         <div class="content-input" id="avatar-wrapper">
-                            <img class="avatar-img" src="<%= avatar%>" width="80" height="80" />
+                            <img class="avatar-img" src="<%= avatar %>" width="80" height="80" />
                             <input type="hidden" id="avatar-url" name="avatar" class="hidden" value="<%= avatar%>" />
                             <a href="javascript:;" class="a-upload">
                                 <input type="file" name="avatar-file" id="avatar-file">更改图片
