@@ -10,30 +10,7 @@ class ProductController extends \BaseController {
 		$price = Input::get('price');
 		$avatar = Input::get('avatar');
 
-<<<<<<< HEAD
-		$validator = Validator:: make(
-			array(
-				'name' => $name,
-				'intro'  => $intro,
-				'price'  => $price,
-				'avatar'=>$avatar
-			),
-			array(
-				'name' => 'required | between : 2,20'
-				'intro'  => 'required | between : 2,40',
-				'price'  => 'required | numeric',
-				'avatar'=>' required | url'
-			)
-		);
-
-		if($validator->fails()){
-			return Response::json(array('errCode' => 4, "message" => "参数格式错误", "validateMes" => $validator->messages()));
-		}
-
-		$shop = Shop::find($shop_id);
-=======
 		$shop = Shop::where('user_id',$user->id)->first();
->>>>>>> origin/master
 
 		if(!isset($shop))
 		{
@@ -67,31 +44,13 @@ class ProductController extends \BaseController {
 		$avatar = Input::get('avatar');
 
 		$product = Product::with('shop')->find($id);
+		$user = Sentry::getUser();
 
 		if(!isset($product))
 			return Response::json(array('errCode' => 1,'message' => '该产品不存在!'));
 
 		if($product->shop->user_id != $user->id)
 			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
-
-		$validator = Validator:: make(
-			array(
-				'name' => $name,
-				'intro'  => $intro,
-				'price'  => $price,
-				'avatar'=>$avatar
-			),
-			array(
-				'name' => 'between : 2,20'
-				'intro'  => 'between : 2,40',
-				'price'  => 'numeric',
-				'avatar'=> 'url'
-			)
-		);
-
-		if($validator->fails()){
-			return Response::json(array('errCode' => 4, "message" => "参数格式错误", "validateMes" => $validator->messages()));
-		}
 
 		$product->name = $name;
 		$product->intro = $intro;
