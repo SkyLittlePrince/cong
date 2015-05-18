@@ -1,6 +1,6 @@
-Dialog = require './../../../common/dialog/dialog.coffee'
 Uploader = require "../../../common/uploader/index.coffee"
 Checkbox = require('../../../common/checkbox/checkbox.coffee');
+shopDataBus = require './shopDataBus.coffee'
 
 checkbox = (new Checkbox({
     selector: '.checkbox-wrapper'
@@ -14,15 +14,6 @@ $shopIdInput = $("#shop-id")
 $sellTemplate = $("#sellTemplate")
 $favorTemplate = $("#favorTemplate")
 $rankList = $(".rank-list")
-# 店铺商品有关DOM节点
-$editStoreProduct = $('#edit-store-product')
-$storeProductList = $('.store-product-list')
-$storeProductRanking = $('.store-product-ranking')
-$deleteStore = $('.delete-store')
-$saveStoreProduct = $('#save-store-product')
-$deleteProductBtn = $('.delete-product')
-$addProductBtn = $('.add-product')
-$productBtn = $('.product-btn')
 
 # 编辑店铺简略信息
 editStoreInfo = (e)->
@@ -212,6 +203,7 @@ saveDetailStoreInfo = (e)->
 
 	$target.parent().find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
 
+# 或许当前为止正在编辑的标签
 getCurrentEditTag = ->
 	$allEditTag = $('.edit-tag-list input[disabled="disabled"]')
 	tagArray = []
@@ -241,6 +233,35 @@ deleteStore = ->
 				alert("店铺删除成功")
 				location.reload()
 
+#-------------------------------------------------店铺商品部分 begin-------------------------------------------------------------#
+# 引入所需模块
+Dialog = require './../../../common/dialog/dialog.coffee'
+# 缓存DOM节点变量
+$addProductTemplate = $('#addProductTemplate')
+addProductCompile = _.template $addProductTemplate.html()
+$recommendationImage = $('.recommendation-image')
+$productEditBtn = $('.product-edit')
+$editStoreProduct = $('#edit-store-product')
+$storeProductList = $('.store-product-list')
+$storeProductRanking = $('.store-product-ranking')
+$deleteStore = $('.delete-store')
+$saveStoreProduct = $('#save-store-product')
+$deleteProductBtn = $('.delete-product')
+$addProductBtn = $('.add-product')
+$productBtn = $('.product-btn')
+
+# 所需模板
+$oneProductTemplate = $('#one-product-template')
+oneProductCompile = _.template $oneProductTemplate.html()
+$updateProductTemplate = $('#update-product-template')
+updateProductCompile = _.template $updateProductTemplate.html()
+
+dialog = new Dialog({
+	title: "增加商品"
+	content: addProductCompile({})
+	buttons: [{text:"确定", className: "add-product-confirm"}]
+})
+
 # 店铺商品进入编辑模式
 editStoreProductMode = (e)->
 	$deleteStore.hide()
@@ -263,14 +284,6 @@ saveStoreProductMode = (e)->
 	$target = $(e.currentTarget)
 	$target.parent().find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
 
-$addProductTemplate = $('#addProductTemplate')
-addProductCompile = _.template $addProductTemplate.html()
-
-dialog = new Dialog({
-	title: "增加商品"
-	content: addProductCompile({})
-	buttons: [{text:"确定", className: "add-product-confirm"}]
-})
 
 # 弹出一个弹出框，用于新增商品
 addOneProduct = ->
@@ -279,6 +292,7 @@ addOneProduct = ->
 	# 为上传按钮绑定上传图片事件
 	avatarUploader = setUploadedPhoto "avatar"
 	$('.add-product-confirm').bind 'click', addProductConfirm
+
 # 验证商品的信息是否正确
 ProductConfirmAction = ->
 	if not $('#avatar-url').val() or not $('#product-name').val() or not $('#product-price').val() or not $('#product-dec').val()
@@ -291,21 +305,19 @@ ProductConfirmAction = ->
 		intro: $('#product-dec').val()
 	}
 
+# 点击添加商品确定事件
 addProductConfirm = ->
 	info = ProductConfirmAction()
 	if info
 		shopDataBus.addProduct info.name, info.intro, info.price, info.avatar, (data)->
 			if data.errCode is 0
 				dialog.closeDialog(dialog)
+				console.log data
 				loadOneCreateProduct(info)
 
-$oneProductTemplate = $('#one-product-template')
-oneProductCompile = _.template $oneProductTemplate.html()
-$recommendationImage = $('.recommendation-image')
-
+# 将一个新添加的商品添加到页面上
 loadOneCreateProduct = (info)->
-	# TODO  需要正确的id
-	info.id = if info.id then info.id else '12'
+	info.id = if info.id then info.id else ''
 	str = oneProductCompile(info)
 	$recommendationImage.append $(str)
 
@@ -328,24 +340,23 @@ setUploadedPhoto = (name)->
 
 # 删除产品逻辑
 deleteProductHandler = ->
-	CheckedItem = checkbox.getCheckedItem()
+	CheckedItem = checkbox.getCheckedInput()
 	if CheckedItem.length
 		if confirm '确定删除这些商品？'
 			for $item in CheckedItem
-				id = $($item).parent().parent().siblings('.product-id').val()
-				$oneImg = $($item).closest('.one-img')
-				shopDataBus.deleteProduct id, (data)->
-					if data.errCode is 0
-						$oneImg.remove()
-					else
-						alert data.message
+				(($item)->
+					id = $item.parent().parent().siblings('.product-id').val()
+					$oneImg = $item.parent().parent().parent().parent()
+					shopDataBus.deleteProduct id, (data)->
+						if data.errCode is 0
+							$oneImg.remove()
+						else
+							alert data.message
+				)($item)
 	else
 		alert "请选中商品左上角的选择框"
 
-$productEditBtn = $('.product-edit')
-$updateProductTemplate = $('#update-product-template')
-updateProductCompile = _.template $updateProductTemplate.html()
-
+# 根据所点击的编辑按钮获取用户信息
 getOneProductMessage = ($editBtn)->
 	$productInfo = $editBtn.siblings('.product-info')
 	return {
@@ -384,6 +395,9 @@ updateProductConfirm = (id, $oneImg)->
 			else
 				alert data.message
 
+#-------------------------------------------------店铺商品部分 end---------------------------------------------------------------#
+
+# 文档加载完成执行的初始化操作，主要执行事件绑定
 $ ->
 	$('.info .edit-btn').bind 'click', editStoreInfo
 	$('.info .save-btn').bind 'click', saveStoreInfo
@@ -412,37 +426,6 @@ $ ->
 
 	$('body').delegate '.product-edit', 'click', editOneProductHandler
 
-shopDataBus =
-	updateShop: (storeInfo, callback)->
-		$.post '/shop/updateShop', storeInfo, (data)->
-			callback data
-
-	getProductRank: (name, data, callback)->
-		$.get '/product/getSortedProductsBy' + name, data, (data)->
-			callback data
-	# 删除店铺
-	deleteStore: (storeId, callback) ->
-		$.get '/shop/deleteShop', storeId, (data)->
-			callback data
-	# 新增店铺标签
-	addShopTag: (storeId, tagName, callback)->
-		$.post '/shop/addTag', {shop_id: storeId, name: tagName}, (data)->callback(data)
-	# 删除店铺标签
-	deleteShopTag: (storeId, tag_id, callback)->
-		$.post '/shop/deleteTag', {shop_id: storeId, tag_id: tag_id}, (data)->callback(data)
-	# 增加一个产品
-	addProduct: (name, intro, price, avatar, callback)->
-		$.post '/product/addProduct', { name: name, intro: intro, price: price, avatar: avatar}, (data) -> callback(data)
-	# 删除一个产品
-	deleteProduct: (id, callback)->
-		$.ajax {
-			type: "get"
-			url: "/product/deleteProduct"
-			data: 
-				id: id
-			success: (data)->
-				callback data
-		}
-	# 更新一个商品
-	updateProduct: (id, name, intro, price, avatar, callback)->
-		$.post '/product/updateProduct', { id: id, name: name, intro: intro, price: price, avatar: avatar}, (data) -> callback(data)
+# for i in [1...5]
+# 	shopDataBus.addProduct 111,111,111,"http://7sbxao.com1.z0.glb.clouddn.com/login.jpg", (data) ->
+# 		console.log 'success'
