@@ -24,8 +24,9 @@
                     <p class="way-title">方式一: 链接邀请</p>
                     <p class="tips">复制邀请链接发送给好友, Ta们会自动关注你哦!</p>
                     <div class="input-row">
-                        <input type="text" id="link1" name="link1" value = "{{$url}}" readonly />
-                        <a href="" class="btn" id="copy-link1">复制链接</a>
+                        <div class="url">
+                            {{$url}}
+                        </div>
                     </div>
                 </div>
         <!--         <div class="one-way">

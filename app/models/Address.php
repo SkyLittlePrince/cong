@@ -5,7 +5,7 @@ class Address extends \Eloquent {
 			'username',
 			'province',
 			'city',
-			'region',
+			'country',
 			'postcode',
 			'mobile',
 			'address',

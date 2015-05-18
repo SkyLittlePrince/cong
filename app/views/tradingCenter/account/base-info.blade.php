@@ -75,9 +75,9 @@
 			<div class="content-row">
 				<label class="label" for="prov">所在地：</label>
 				<div class="content-input">
+					<input type="text" id="country" name="country" value="{{{ $country }}}" placeholder="国家" />
 					<input type="text" id="prov" name="prov" value="{{{ $province }}}" /> 省 
 					<input type="text" id="city" name="city" value="{{{ $city }}}" /> 市 
-					<input type="text" id="region" name="region" value="{{{ $region }}}" /> 区 
 					<!-- <input type="button" value="其他" id="other-region-btn" /> -->
 				</div>
 			</div>

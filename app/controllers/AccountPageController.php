@@ -84,7 +84,7 @@ class AccountPageController extends BaseController
 			$user_id = Input::get("user_id");
 		}
 
-		$numOfItemsPerPage = 1;
+		$numOfItemsPerPage = 10;
 		$friends = Friend::where("user_id", "=", $user_id)->paginate($numOfItemsPerPage);
 		$numOfTotalFriends = Friend::where("user_id", "=", $user_id)->count();
 		$friendsArray = [];

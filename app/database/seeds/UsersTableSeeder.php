@@ -11,9 +11,9 @@ class UsersTableSeeder extends Seeder {
 		   	'password' => '12345678',
 			'gender'   => 0,
 			'mobile'   => '13560474456',
+			"country" => "中国",
 			'province' => "广东",
 			"city" => "广州",
-			"region" => "番禺",
 			'birthday' => "1998-07-01",
 			'address' => '广东省广州市番禺区大学城外环西路',
 			'activated' => 1

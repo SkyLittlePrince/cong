@@ -13,7 +13,7 @@ $wechat = $('#wechat')
 $QQ = $('#QQ')
 $prov = $('#prov')
 $city = $('#city')
-$region = $('#region')
+$country = $('#country')
 $address = $('#address')
 $baseInfoSaveBtn = $('#base-info-save-btn')
 
@@ -31,9 +31,9 @@ updateUserInfo = (e)->
 	birthday = $year.val() + "-" + month + "-" + day
 	wechat = $wechat.val()
 	qq = $QQ.val()
+	country = $country.val()
 	prov = $prov.val()
 	city = $city.val()
-	region = $region.val()
 	address = $address.val()
 
 	if $male[0].checked
@@ -50,7 +50,7 @@ updateUserInfo = (e)->
 		qq: qq
 		province: prov
 		city: city
-		region: region
+		country: country
 		address: address
 
 	baseInfoDataBus.updateUserInfo data, (res)->
