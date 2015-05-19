@@ -25,7 +25,7 @@ class PictureController extends \BaseController {
 		if($user->id != $product->shop->user_id)
 			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
 
-		if(count($product->pictures) > 5)
+		if(count($product->pictures) >= 5)
 			return Response::json(array('errCode' => 3,'message' => '每个商品不能超过5张图片!'));
 
 		$picture = new Picture;
