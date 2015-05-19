@@ -15,7 +15,7 @@
         <input type="hidden" id="user_id" value="{{{ $id }}}" />
     	<div class="base-info block">
     		<div class="avatar">
-    			<img src="/images/tradingcenter/icon/13.png" width="252" height="252" />
+    			<img src="{{{ Sentry::getUser()->avatar }}}" width="252" height="252" />
     		</div>
             @if (Sentry::check() && Sentry::getUser()->id == $id)
           <!--   <div class="operation">
