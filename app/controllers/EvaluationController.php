@@ -2,85 +2,32 @@
 
 class EvaluationController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /evaluation
-	 *
-	 * @return Response
-	 */
-	public function index()
+	public function addEvaluation()
 	{
-		//
-	}
+		$user = Sentry::getUser();
+		$product_id = Input::get('product_id');
+		$content = Input::get('content');
+		$score = Input::get('score');
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /evaluation/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
+		$product = Product::find($product_id);
 
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /evaluation
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
+		if(!isset($product))
+			return Response::json(array('errCode' => 1,'message' => '该商品不存在!'));
+		$score = intval($score);
+		if($score < 1 || $score > 5)
+			return Response::json(array('errCode' => 2,'message' => '评分只能为1到5!'));
+		
+		$evaluation = Evaluation::create(array(
+				'product_id' => $product_id,
+				'content' => $content,
+				'score' => $score,
+				'user_id' => $user->id
+			));
 
-	/**
-	 * Display the specified resource.
-	 * GET /evaluation/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
+		if(!isset($evaluation))
+			return Response::json(array('errCode' => 3,'message' => '评价失败!'));
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /evaluation/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /evaluation/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /evaluation/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		return Response::json(array('errCode' => 4,'message' => '评价成功!'));
 	}
 
 }

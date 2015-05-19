@@ -34,6 +34,11 @@ class Product extends \Eloquent {
 		return $this->hasMany('Score');
 	}
 
+	public function evaluations()
+	{
+		return $this->hasMany('Evaluation');
+	}
+
 	public function indents()
 	{
 		return $this->belongsToMany('Indent', 'indent_product', 'product_id', 'indent_id');
