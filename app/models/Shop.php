@@ -30,4 +30,9 @@ class Shop extends \Eloquent {
 	{
 		return $this->belongsToMany('Tag');
 	}
+
+	public function user()
+	{
+		return $this->belongsTo('User');
+	}
 }

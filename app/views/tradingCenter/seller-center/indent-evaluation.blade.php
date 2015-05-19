@@ -24,14 +24,14 @@
 			<div class="center-right">
 				<p class="word1 point">提示：请根据对商品的满意程度给卖家打分，共五星满意度.</p>
 				<div class="point">
-					<span class="word2">商品和描述相符：</span>
+					<span class="word2">商品评价：</span>
 					<img src="/images/tradingcenter/icon/star.png" />
 					<img src="/images/tradingcenter/icon/star.png" />
 					<img src="/images/tradingcenter/icon/star.png" />
 					<img src="/images/tradingcenter/icon/star.png" />
 					<img src="/images/tradingcenter/icon/star.png" />
 				</div>
-				<div class="point">
+				<!-- <div class="point">
 					<span class="word2">卖家的服务态度：</span>
 					<img src="/images/tradingcenter/icon/star.png" />
 					<img src="/images/tradingcenter/icon/star.png" />
@@ -46,15 +46,16 @@
 					<img src="/images/tradingcenter/icon/star.png" />
 					<img src="/images/tradingcenter/icon/star.png" />
 					<img src="/images/tradingcenter/icon/star.png" />
-				</div>
-				<p class="word1 point">提示：请根据对商品的满意程度给商品进行评价或添加内容描述。</p>
-				<div  class="point">
+				</div> -->
+				<!-- <p class="word1 point">提示：请根据对商品的满意程度给商品进行评价或添加内容描述。</p> -->
+				<!-- <div  class="point">
 					<span class="word2">评价内容：</span>
 					<input type="radio" class="assess" id="best"/><span>好评</span>
 					<input type="radio" class="assess" id="medium"/><span>中评</span>
 					<input type="radio" class="assess" id="worse"/><span>差评</span>
-				</div>
+				</div>-->
 					<textarea id="appraise" name="appraise" ></textarea>
+
 					<input type="button" class="confirm" id="confirm" value="确认">
 			</div>
 			<div class="center-foot">
