@@ -4,21 +4,12 @@ class IndentsTableSeeder extends Seeder {
 
 	public function run()
 	{
-		Indent::create([
-			"user_id" => 1
-		]);
-
-		Indent::create([
-			"user_id" => 1
-		]);
-
-		Indent::create([
-			"user_id" => 1
-		]);
-
-		Indent::create([
-			"user_id" => 1,
-			"status" => 2
-		]);
+		foreach(range(1, 10) as $index)
+		{
+			Indent::create([
+				"user_id" => 1,
+				"status" =>  $index % 3 + 1
+			]);
+		}
 	}
 }
