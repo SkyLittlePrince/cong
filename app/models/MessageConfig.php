@@ -13,6 +13,6 @@ class MessageConfig extends \Eloquent {
 
 	public function receiver()
 	{
-    		return $this->belongsTo('User', 'user_id', 'id');
+    return $this->belongsTo('User', 'user_id', 'id');
 	}
 }
