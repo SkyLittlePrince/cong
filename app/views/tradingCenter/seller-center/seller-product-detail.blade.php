@@ -86,7 +86,7 @@
                 <div class="message">
                     <p>{{$product->intro}}</p>
                 </div>
-                <div class="add-to-cart btn" data-productid="3">添加到购物车</div>
+                <div class="add-to-cart btn" data-productid="{{$product->id}}">添加到购物车</div>
                 <div class="clear"></div>
             </div>
             <div class="similar-businesses components">

@@ -59,7 +59,8 @@ changeProductNumber = ->
 		# 新的总价
 		$totalPrice = $(this).parent().siblings('.total-price').find('.total-price-value')
 		price = $(this).parent().siblings('.price').find('.price-value').text()
-		$totalPrice.text newValue * parseFloat(price)
+
+		$totalPrice.text parseFloat(newValue * price).toFixed(2)
 		
 		id = $this.parent().siblings('.id').val()
 		# 更新cookie
