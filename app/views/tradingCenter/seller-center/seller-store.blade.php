@@ -91,7 +91,7 @@
             </div>
             <div class="content-wrapper">
                 <div class="content">
-                    @foreach ($productsRanking as $product)
+                    @foreach ($products as $product)
                     <a href="/trading-center/seller/product-detail?product_id={{{$product->id}}}">
                         <div class="task">
                             <div class="img">
@@ -103,9 +103,11 @@
                     </a>
                     @endforeach
                 </div>
+                @if (count($products) < $numOfTotalItems)
                 <div class="pagination">
-
+                {{ $products->appends(array("shop_id" => "1"))->links() }}
                 </div>
+                @endif
             </div>
         </div>
     </div>

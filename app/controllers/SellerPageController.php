@@ -23,11 +23,14 @@ class SellerPageController extends BaseController {
 	{
 		$shop_id = Input::get("shop_id");
 
-		$shop = Shop::where("id", "=", $shop_id)->with('tags','products')->first();
+		$shop = Shop::where("id", "=", $shop_id)->with('tags')->first();
 
+		$numOfItemsPerPage = 6;
 		$productsRanking = DB::table('products')->where("shop_id", "=", $shop_id)->orderBy('sellNum', 'desc')->take(5)->get();
+		$products = DB::table('products')->where("shop_id", "=", $shop_id)->paginate($numOfItemsPerPage);
+		$numOfTotalItems = $products->getTotal();
 
-		return View::make('tradingCenter.seller-center.seller-store', array("shop" => $shop, "productsRanking" => $productsRanking));
+		return View::make('tradingCenter.seller-center.seller-store', array("shop" => $shop, "products" => $products, "productsRanking" => $productsRanking, "numOfTotalItems" => $numOfTotalItems));
 	}
 
 	public function myIndents()
