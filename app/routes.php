@@ -178,14 +178,17 @@ Route::get('/', function()
 	return View::make('home');
 });
 
-Route::get('/shopping-cart', function()
+Route::group(array('before' => 'auth.user.isIn'), function() 
 {
-	return View::make('shopping-cart');
-});
+	Route::get('/shopping-cart', function()
+	{
+		return View::make('shopping-cart');
+	});
 
-Route::get('/shopping-cart-clearning', function()
-{
-	return View::make('shopping-cart-clearning');
+	Route::get('/shopping-cart-clearning', function()
+	{
+		return View::make('shopping-cart-clearning');
+	});
 });
 
 // 赏金猎人

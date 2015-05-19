@@ -11,6 +11,8 @@
 @section('body')
     @parent
     <div id="main" class="seller-product-detail-content">
+        <input type="hidden" id="product-name" value="{{{ $product->name }}}" />
+        <input type="hidden" id="product-price" value="{{{ $product->price }}}" />
         <div class="banner">
             <!-- 用户信息 -->
             <div class="user-info">
@@ -71,6 +73,9 @@
         </div>
         <div class="product-detail-main">
             <div class="info components">
+                <div class="product-name">
+                    {{{ $product->name }}}
+                </div>
                 @foreach($product->pictures as $picture)
                 <img src="{{$picture->image}}" class="img-comonent product-img" width="130" height="136" alt="product-detail-img" />
                 @endforeach
@@ -82,46 +87,19 @@
                     <p>{{$product->intro}}</p>
                 </div>
                 <div class="add-to-cart btn" data-productid="3">添加到购物车</div>
+                <div class="clear"></div>
             </div>
             <div class="similar-businesses components">
-                <h3>提供类似服务的商家</h3>
+                <h3>该商家的其他商品</h3>
                 <div class="rank-list">
+                    @foreach($otherProducts as $product)
                     <div class="one-list">
                         <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="38" height="38" />
-                        <p class="title">此处为描述产品的标题</p>
-                        <span class="price">￥380</span>
-                        <span class="counter">成交58次</span>
+                        <p class="title">{{{ $product->name }}}</p>
+                        <span class="price">￥{{{ $product->price }}}</span>
+                        <span class="counter">成交{{{ $product->sellNum }}}次</span>
                     </div>
-                    <div class="one-list">
-                        <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="38" height="38" />
-                        <p class="title">此处为描述产品的标题</p>
-                        <span class="price">￥380</span>
-                        <span class="counter">成交58次</span>
-                    </div>
-                    <div class="one-list">
-                        <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="38" height="38" />
-                        <p class="title">此处为描述产品的标题</p>
-                        <span class="price">￥380</span>
-                        <span class="counter">成交58次</span>
-                    </div>
-                    <div class="one-list">
-                        <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="38" height="38" />
-                        <p class="title">此处为描述产品的标题</p>
-                        <span class="price">￥380</span>
-                        <span class="counter">成交58次</span>
-                    </div>
-                    <div class="one-list">
-                        <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="38" height="38" />
-                        <p class="title">此处为描述产品的标题</p>
-                        <span class="price">￥380</span>
-                        <span class="counter">成交58次</span>
-                    </div>
-                    <div class="one-list">
-                        <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="38" height="38" />
-                        <p class="title">此处为描述产品的标题</p>
-                        <span class="price">￥380</span>
-                        <span class="counter">成交58次</span>
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <div class="comments components">
