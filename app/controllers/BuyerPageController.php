@@ -14,17 +14,31 @@ class BuyerPageController extends BaseController {
 			return Redirect::guest('user/login');
 		}
 
+		$recentSellers = array();
+		$sellerNames = array();
 		$numOfItemsPerPage = 3;
 		$indents = Indent::where("user_id", "=", $user_id)->with('products')->paginate($numOfItemsPerPage);
 		$numOfTotalItems = $indents->getTotal();
 		$array = array('id' => 0,'name' => '商品已下架','price' => 0);
-		foreach ($indents as $key => $indent) {
+		foreach ($indents as $key => $indent) 
+		{
 			if(count($indent->products) == 0)
+			{
 				$indent->product = $array;
+			}
 			else
+			{
 				$indent->product = $indent->products[0];
+				$seller = $indent->product->shop->user;
+				if(!in_array($seller->username, $sellerNames) && count($sellerNames) < 5)
+				{
+					array_push($recentSellers, $seller);
+					array_push($sellerNames, $seller->username);
+				}
+			}
 		}
-		return View::make('tradingCenter.buyer-center.index', array("indents" => $indents, "numOfTotalItems" => $numOfTotalItems));
+
+		return View::make('tradingCenter.buyer-center.index', array("indents" => $indents, "numOfTotalItems" => $numOfTotalItems, "recentSellers" => $recentSellers));
 	}
 
 	public function tradingList()

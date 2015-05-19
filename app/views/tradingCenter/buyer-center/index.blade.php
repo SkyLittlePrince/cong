@@ -58,11 +58,23 @@
 			<div class="trade one-history left">
 				<div class="banner">我和他们交易过</div>
 				<div class="panel">
-					@if (!isset($recentSeller) && count($recentSeller) == 0)
+					@if (!isset($recentSellers) || count($recentSellers) == 0)
 					<p class="message">Hi~你还没有交易过呢，快去看看哪些服务商能为你解决问题吧~</p>
 					<a class="see-now" href="#">立即查看</a>
 					@else
-
+						<div class="sellers-info">
+            			@foreach ($recentSellers as $recentSeller)
+            				<div class="seller-info">
+            					<div class="seller-avatar">
+            						<img src="{{{ $recentSeller->avatar }}}" height="30" width="30" />
+            					</div>
+            					<div class="seller-name">
+            						{{{ $recentSeller->username }}}
+            					</div>
+            				</div>
+            			@endforeach
+            			<div class="clear"></div>
+            			</div>
 					@endif
 				</div>
 			</div>
