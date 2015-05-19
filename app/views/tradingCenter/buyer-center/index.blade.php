@@ -47,6 +47,7 @@
     				<p class="order-p">已付款</p>
     				@else
     				<p class="order-p">交易成功</p>
+                    <input type="button" class="btn comment-btn" value="发表评价" /> 
     				@endif
 				</div>
 	    	</div>

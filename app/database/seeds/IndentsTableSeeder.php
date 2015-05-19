@@ -15,5 +15,10 @@ class IndentsTableSeeder extends Seeder {
 		Indent::create([
 			"user_id" => 1
 		]);
+
+		Indent::create([
+			"user_id" => 1,
+			"status" => 2
+		]);
 	}
 }
