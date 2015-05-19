@@ -27,5 +27,13 @@ class MessagesTableSeeder extends Seeder {
 			"receiver" => 1,
 			"type" => 2
 		]);
+
+		Message::create([
+			"title" => "题目4",
+			"content" => "内容4",
+			"sender" => 2,
+			"receiver" => 1,
+			"type" => 2
+		]);
 	}
 }

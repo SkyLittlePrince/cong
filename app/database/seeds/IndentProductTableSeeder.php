@@ -9,12 +9,17 @@ class IndentProductTableSeeder extends Seeder {
 	{
 		IndentProduct::create([
 			"indent_id" => 1,
-			"product_id" => 1
+			"product_id" => 3
 		]);
 
 		IndentProduct::create([
 			"indent_id" => 2,
-			"product_id" => 2
+			"product_id" => 4
+		]);
+
+		IndentProduct::create([
+			"indent_id" => 3,
+			"product_id" => 5
 		]);
 	}
 

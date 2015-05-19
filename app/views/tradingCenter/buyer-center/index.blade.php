@@ -49,18 +49,36 @@
 				</div>
 	    	</div>
 	    	@endforeach
+	    	@if (count($indents) < $numOfTotalItems)
 	        	{{ $indents->links() }}
+	        @endif
 	    </div>
 
 	    <div class="my-history">
 			<div class="trade one-history left">
 				<div class="banner">我和他们交易过</div>
 				<div class="panel">
+					@if (!isset($recentSellers) || count($recentSellers) == 0)
 					<p class="message">Hi~你还没有交易过呢，快去看看哪些服务商能为你解决问题吧~</p>
 					<a class="see-now" href="#">立即查看</a>
+					@else
+						<div class="sellers-info">
+            			@foreach ($recentSellers as $recentSeller)
+            				<div class="seller-info">
+            					<div class="seller-avatar">
+            						<img src="{{{ $recentSeller->avatar }}}" height="30" width="30" />
+            					</div>
+            					<div class="seller-name">
+            						{{{ $recentSeller->username }}}
+            					</div>
+            				</div>
+            			@endforeach
+            			<div class="clear"></div>
+            			</div>
+					@endif
 				</div>
 			</div>
-			<div class="trade one-history right">
+			<!-- <div class="trade one-history right">
 				<div class="banner">我收藏的服务</div>
 				<div class="panel">
 					<p class="message">Hi~你还没收藏任何服务，收藏服务能让你快速找到中意的服务及服务商~</p>
@@ -73,9 +91,9 @@
 					<p class="message">Hi~你还没收藏任何需求，现在去需求大厅看看吧~</p>
 					<a class="see-now" href="#">立即查看</a>
 				</div>
-			</div>
+			</div> -->
 			<div class="trade one-history right">
-				<div class="banner">最近浏览的需求</div>
+				<div class="banner">最近购买的商品</div>
 				<div class="panel">
 					<p class="message">Hi~快去看看小伙伴们有哪些需求在这里成功得到解决~</p>
 					<a class="see-now" href="#">立即查看</a>
