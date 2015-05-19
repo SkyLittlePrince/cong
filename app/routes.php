@@ -62,11 +62,9 @@ Route::group(array('prefix' => 'invitation','before' => 'auth.user.isIn'),functi
 });
 
 //评论模块
-Route::group(array('prefix' => 'comment','before' => 'auth.user.isIn'),function()
+Route::group(array('prefix' => 'evaluation','before' => 'auth.user.isIn'),function()
 {
-	Route::post('addComment','CommentController@addComment');
-	Route::get('deleteComment','CommentController@deleteComment');
-	Route::get('getComment','CommentController@getComment');
+	Route::post('addEvaluation','EvaluationController@addEvaluation');
 });
 
 //店铺模块
