@@ -17,13 +17,16 @@ class PictureController extends \BaseController {
 			return Response::json(array('errCode'=>4,"message" => '请上传正确的图片!',"validateMes"=> $validator->messages()));			
 		}
 
-		$product = Product::with('shop')->find($product_id);
+		$product = Product::with('shop','pictures')->find($product_id);
 
 		if(!isset($product))
 			return Response::json(array('errCode' => 1,'message' => '商品不存在!'));
 
 		if($user->id != $product->shop->user_id)
 			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
+
+		if(count($product->pictures))
+			return Response::json(array('errCode' => 3,'message' => '每个商品不能超过5张图片!'));
 
 		$picture = new Picture;
 		$picture->image = $image;
@@ -32,7 +35,7 @@ class PictureController extends \BaseController {
 		if($picture->save())
 			return Response::json(array('errCode' => 0,'picture_id' => $picture->id));
 
-		return Response::json(array('errCode' => 3,'message' => '保存失败!'));
+		return Response::json(array('errCode' => 4,'message' => '保存失败!'));
 	}
 
 	public function deletePicture()
