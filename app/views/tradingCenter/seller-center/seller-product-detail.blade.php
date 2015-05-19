@@ -92,12 +92,12 @@
             <div class="similar-businesses components">
                 <h3>该商家的其他商品</h3>
                 <div class="rank-list">
-                    @foreach($otherProducts as $product)
+                    @foreach($otherProducts as $otherProduct)
                     <div class="one-list">
                         <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="38" height="38" />
-                        <p class="title">{{{ $product->name }}}</p>
-                        <span class="price">￥{{{ $product->price }}}</span>
-                        <span class="counter">成交{{{ $product->sellNum }}}次</span>
+                        <p class="title">{{{ $otherProduct->name }}}</p>
+                        <span class="price">￥{{{ $otherProduct->price }}}</span>
+                        <span class="counter">成交{{{ $otherProduct->sellNum }}}次</span>
                     </div>
                     @endforeach
                 </div>

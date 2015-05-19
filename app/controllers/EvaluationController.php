@@ -18,9 +18,11 @@ class EvaluationController extends \BaseController {
 		$content = Input::get('content');
 		$score = Input::get('score');
 
-		$product = Product::with(array('indents' => function($q) {
-			$q->where('user_id',$user->id);
-		}))->find($product_id);
+		$product = Product::with(array('indents' => function($q) use ($user)
+			{
+				$q->where('user_id',$user->id);
+			}))->find($product_id);
+
 
 		if(!isset($product))
 			return Response::json(array('errCode' => 1,'message' => '该商品已下架!'));
