@@ -661,7 +661,7 @@ class UserController extends \BaseController {
 
 		$reg = "/^13[0-9]{1}[0-9]{8}$|15[0189]{1}[0-9]{8}$|189[0-9]{8}$/";
 		if(!preg_match($reg, $mobile)){
-			return Response::json(array('errCode' => 1,'message' => '请填写正确的邮箱或手机号!'));
+			return Response::json(array('errCode' => 2,'message' => '请填写正确的邮箱或手机号!'));
 		}
 			
 		$user->mobile = $mobile;
