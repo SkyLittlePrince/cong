@@ -14,10 +14,20 @@ class BuyerPageController extends BaseController {
 			return Redirect::guest('user/login');
 		}
 
-		$recentSellers = array();
-		$sellerNames = array();
+		// $recentSellers = array();
+		// $sellerNames = array();
 		$numOfItemsPerPage = 3;
-		$indents = Indent::where("user_id", "=", $user_id)->with('products','products.shop.user')->paginate($numOfItemsPerPage);
+		$indents = Indent::where("user_id", $user_id)->with('products','products.shop.user')->paginate($numOfItemsPerPage);
+		
+		$sellers = User::whereHas('products',function($q) use ($user_id)
+			{
+				$q->whereHas('indents',function($q) use ($user_id)
+					{
+						$q->where('user_id',$user_id);
+					});
+			})
+			->take(5)->get();
+
 		$numOfTotalItems = $indents->getTotal();
 		$array = array('id' => 0,'name' => '商品已下架','price' => 0);
 		foreach ($indents as $key => $indent) 
@@ -29,16 +39,16 @@ class BuyerPageController extends BaseController {
 			else
 			{
 				$indent->product = $indent->products[0];
-				$seller = $indent->product->shop->user;
-				if(!in_array($seller->username, $sellerNames) && count($sellerNames) < 5)
-				{
-					array_push($recentSellers, $seller);
-					array_push($sellerNames, $seller->username);
-				}
+				// $seller = $indent->product->shop->user;
+				// if(!in_array($seller->username, $sellerNames) && count($sellerNames) < 5)
+				// {
+				// 	array_push($recentSellers, $seller);
+				// 	array_push($sellerNames, $seller->username);
+				// }
 			}
 		}
 
-		return View::make('tradingCenter.buyer-center.index', array("indents" => $indents, "numOfTotalItems" => $numOfTotalItems, "recentSellers" => $recentSellers));
+		return View::make('tradingCenter.buyer-center.index', array("indents" => $indents, "numOfTotalItems" => $numOfTotalItems, "recentSellers" => $sellers));
 	}
 
 	public function tradingList()
