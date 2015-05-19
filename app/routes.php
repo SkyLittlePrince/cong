@@ -319,11 +319,8 @@ Route::group(array('prefix' => 'trading-center'),function()
 			{
 				return View::make('tradingCenter.seller-center.indent-evaluation');
 			});
-			Route::get('seller-store', function()
-			{
-				return View::make('tradingCenter.seller-center.seller-store');
-			});
-			Route::get('product-detail', 'SellerProductDetailPageController@index');
+			Route::get('seller-store', 'SellerPageController@sellerStore');
+			Route::get('product-detail', 'SellerPageController@productDetail');
 		});
 	});
 });
