@@ -14,8 +14,16 @@ cancelIndent = (e)->
 		else
 			alert res.message
 
+openCommentPage = (e)->
+	$elem = $(e.currentTarget)
+	$parent = $elem.parent().parent();
+
+	id = parseInt($parent.find(".id").html());
+	window.location.href = "/trading-center/seller/indent-evaluation?indent_id=" + id
+
 $ ->
 	$(".cancel-btn").click cancelIndent
+	$(".comment-btn").click openCommentPage
 
 dataBus = 
 	cancelIndent: (data, callback)->
