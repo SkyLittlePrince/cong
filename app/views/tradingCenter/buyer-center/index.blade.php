@@ -62,27 +62,27 @@
 					<a class="see-now" href="#">立即查看</a>
 				</div>
 			</div>
-			<div class="trade one-history right">
+			<!-- <div class="trade one-history right">
 				<div class="banner">我收藏的服务</div>
 				<div class="panel">
 					<p class="message">Hi~你还没收藏任何服务，收藏服务能让你快速找到中意的服务及服务商~</p>
 					<a class="see-now" href="#">立即查看</a>
 				</div>
 			</div>
-<!-- 			<div class="trade one-history left">
+			<div class="trade one-history left">
 				<div class="banner">我收藏的需求</div>
 				<div class="panel">
 					<p class="message">Hi~你还没收藏任何需求，现在去需求大厅看看吧~</p>
 					<a class="see-now" href="#">立即查看</a>
 				</div>
-			</div>
+			</div> -->
 			<div class="trade one-history right">
-				<div class="banner">最近浏览的需求</div>
+				<div class="banner">最近浏览的商品</div>
 				<div class="panel">
 					<p class="message">Hi~快去看看小伙伴们有哪些需求在这里成功得到解决~</p>
 					<a class="see-now" href="#">立即查看</a>
 				</div>
-			</div> -->
+			</div>
 	    </div>
 	</div>
 @stop
