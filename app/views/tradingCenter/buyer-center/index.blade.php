@@ -20,10 +20,10 @@
             @foreach ($indents as $indent)
 	    	<div class="one-order">
 	    		<div class="order-num order-component">
-	    			<p class="order-p">订单号：<span class="id">{{{ $indent['id'] }}}</span></p>	
+	    			<p class="order-p">订单号：<span class="id">{{{ $indent->id }}}</span></p>	
 	    		</div>
 				<div class="order-date order-component">
-					{{{ $indent['created_at'] }}}
+					{{{ $indent->created_at }}}
 				</div>
 				<div class="order-pic order-component">
 					<span>
@@ -32,16 +32,16 @@
 				</div>
 				<div class="order-title order-component">
 					<p class="order-p">
-						<a href="{{{ $indent['products'][0]['id'] }}}" target="_blank">{{{ $indent["products"][0]["name"] }}}</a>
+						<a href="{{{ $indent->product['id'] }}}" target="_blank">{{{ $indent->product["name"] }}}</a>
 					</p>
-					<p class="price line-two">￥<span>{{{ $indent["products"][0]["price"] }}}</span></p>
+					<p class="price line-two">￥<span>{{{ $indent->product["price"] }}}</span></p>
 				</div>
 				<div class="order-status order-component">
-					@if ($indent['status'] == 0)
+					@if ($indent->status == 0)
     				<p class="order-p">未付款</p>
     				<input type="button" class="btn pay-btn" value="现在付款" /> 
                     <input type="button" class="btn cancel-btn" value="取消订单" /> 
-    				@elseif ($indent['status'] == 1)
+    				@elseif ($indent->status == 1)
     				<p class="order-p">已付款</p>
     				@else
     				<p class="order-p">交易成功</p>
@@ -49,9 +49,7 @@
 				</div>
 	    	</div>
 	    	@endforeach
-	    	@if (count($indents) < $numOfTotalItems)
 	        	{{ $indents->links() }}
-	        @endif
 	    </div>
 
 	    <div class="my-history">

@@ -40,8 +40,8 @@
 				</div>
 				<div class="order-title order-component">
 					<p class="order-p">
-                        <a href="{{{ $indent['product']['id'] }}}" target="_blank">{{{ $indent["product"]["name"] }}}</a></p>
-					<p class="price line-two">￥<span>{{{ $indent["product"]["price"] }}}</span></p>
+                        <a href="{{{ $indent['product']['id'] }}}" target="_blank">{{{ $indent->product["name"] }}}</a></p>
+					<p class="price line-two">￥<span>{{{ $indent->product["price"] }}}</span></p>
 				</div>
 				<div class="order-status order-component">
 					@if ($indent->status == 0)
@@ -57,9 +57,7 @@
 	    	</div>
 	    	@endforeach
 	    </div>
-	    @if (count($indents) < $numOfTotalItems)
-        	{{ $indents->links() }}
-        @endif
+        		{{ $indents->links() }}
 	</div>
 @stop
 
