@@ -30,7 +30,7 @@ class UserController extends \BaseController {
 				'captcha'  => $captcha  
 			),
 			array(
-				'captcha' => 'required |alpha_num |size :5'
+				'captcha' => 'required|alpha_num|size :5'
 			)
 		);
 
@@ -128,7 +128,7 @@ class UserController extends \BaseController {
 				'salt'  => $salt 
 			),
 			array(
-				'salt' => 'required | alpha_num |size:6'
+				'salt' => 'required|alpha_num|size:6'
 			)
 		);
 
@@ -186,7 +186,7 @@ class UserController extends \BaseController {
 			),
 			array(
 				'username' =>'required ',
-				'password' =>'required | alpha_num |between:6,20'
+				'password' =>'required|alpha_num|between:6,20'
 			)
 		);
 
@@ -295,7 +295,7 @@ class UserController extends \BaseController {
 				'password' => $password
 			),
 			array(
-				'captcha'=>'required | size: 5',
+				'captcha'=>'required|size: 5',
 				'password' =>'required'
 			)
 		);
@@ -498,7 +498,7 @@ class UserController extends \BaseController {
 			),
 			array(
 				'oldPwd' => 'required ',
-				'newPwd'    => 'required |alpha_num |between :6,20 '
+				'newPwd'    => 'required|alpha_num|between :6,20 '
 			)
 		);
 
@@ -551,7 +551,7 @@ class UserController extends \BaseController {
 			),
 			array(
 				'email' => 'required|email',
-				'salt'    => 'required | alpha_num |size:6',
+				'salt'    => 'required|alpha_num|size:6',
 				'password' => 'required '
 			)
 		);
@@ -651,7 +651,7 @@ class UserController extends \BaseController {
 				'qq' => $qq
 			),
 			array(				
-				'qq' => 'integer | min :1'
+				'qq' => 'integer|min :1'
 			)
 		);
 
