@@ -50,16 +50,16 @@
 				<p class="word1 point">提示：请根据对商品的满意程度给商品进行评价或添加内容描述。</p>
 				<div  class="point">
 					<span class="word2">评价内容：</span>
-					<input type="radio" class="assess" name="assess"/><span>好评</span>
-					<input type="radio" class="assess" name="assess"/><span>中评</span>
-					<input type="radio" class="assess" name="assess"/><span>差评</span>
+					<input type="radio" class="assess" id="best"/><span>好评</span>
+					<input type="radio" class="assess" id="medium"/><span>中评</span>
+					<input type="radio" class="assess" id="worse"/><span>差评</span>
 				</div>
-					<input type="text" id="appraise" name="appraise">
+					<textarea id="appraise" name="appraise" ></textarea>
 					<input type="button" class="confirm" id="confirm" value="确认">
 			</div>
 			<div class="center-foot">
 				<p>提示：如果对此次交易特别满意，还可以给卖家打赏哦！</p>
-				<input type="text" class="reward-enter" id="reward-enter" value="输入赏金">
+				<input type="text" class="reward-enter" id="reward-enter" placeholder="输入赏金">
 				<input type="radio" class="evaluate" name="evaluate"/><span>好评</span>
 				<input type="radio" class="evaluate" name="evaluate"/><span>中评</span>
 				<input type="radio" class="evaluate" name="evaluate"/><span>差评</span>
