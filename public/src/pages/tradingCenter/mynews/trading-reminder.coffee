@@ -37,6 +37,7 @@ readMessage = ->
 	id = $this.siblings('.message-id').val()
 	status = if $this.siblings('.message-status').val() is '0' then 1 else 0
 	newsDataBus.getOneMessage id, (data)->
+		console.log data
 		# 加载弹出框
 		dialog.options.content = oneMessageContentCompile(data.message)
 		dialog.loadDialogToPage()

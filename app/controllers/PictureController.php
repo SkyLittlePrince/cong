@@ -30,9 +30,9 @@ class PictureController extends \BaseController {
 		$pictrue->product_id = $product_id;
 
 		if($pictrue->save())
-			return Response::json(array('errCode' => 0,'保存成功!'));
+			return Response::json(array('errCode' => 0,'picture_id' => $picture->id));
 
-		return Response::json(array('errCode' => 3,'保存失败!'));
+		return Response::json(array('errCode' => 3,'message' => '保存失败!'));
 	}
 
 	public function deletePicture()

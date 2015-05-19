@@ -411,8 +411,13 @@ class UserController extends \BaseController {
 				'city'  =>'string |between:2,20',
 				'region' =>'string |between:2,20',
 				'address' =>'string |between:2,40',
+<<<<<<< HEAD
 				'birthday' =>'',
 				'realname'=>'between:2,15'
+=======
+				'birthday' =>'date_format:Y-m-d',
+				'realname'=>'between:1,15'
+>>>>>>> origin/master
 			)
 		);
 		if($validator->fails()){
