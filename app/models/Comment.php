@@ -10,4 +10,9 @@ class Comment extends \Eloquent {
 			'created_at',
 			'updated_at'
 		);
+
+	public function user()
+	{
+		return $this->belongsTo('User');
+	}
 }

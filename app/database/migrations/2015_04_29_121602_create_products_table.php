@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration {
 			$table->double('price');
 			$table->integer('sellNum')->default(0);
 			$table->integer('favorNum')->default(0);
+			$table->integer('visiteNum')->default(0);
 			$table->integer('shop_id')->unsigned()->index('shop_id');
 			$table->longText('intro');
 			$table->string('avatar');

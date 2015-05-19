@@ -189,13 +189,15 @@ class ShopController extends \BaseController {
 		$name = Input::get('name');
 
 		$shop = DB::table('shops')
-			->join('shop_tag','shops.id','=','shop_tag.user_id')
+			->join('shop_tag','shops.id','=','shop_tag.shop_id')
 			->join('tags','tags.id','=','shop_tag.tag_id')
-			->join('scores','shops.id','=','scores.shop_id')
+			->leftjoin('products','products.shop_id','=','shops.id')
+			->leftJoin('scores','products.id','=','scores.product_id')
 			->select('shops.id','shops.name','shops.description','shops.avatar')
 			->where('tags.name','like','%'.$name.'%')
 			->groupBy('shops.id')
 			->orderBy(DB::raw('avg(scores.score)'))
+			//->paginate(5);
 			->get();
 
 		return Response::json(array('errCode' => 0,'shop' => $shop));

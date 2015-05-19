@@ -11,7 +11,6 @@ class Product extends \Eloquent {
 		);
 
 	protected $hidden = array(
-			'created_at',
 			'updated_at'
 		);
 

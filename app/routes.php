@@ -76,7 +76,8 @@ Route::group(array('prefix' => 'shop','before' => 'auth.user.isIn'),function()
 	Route::post('updateShop','ShopController@updateShop');
 	Route::post('addTag','ShopController@addTag');
 	Route::post('deleteTag','ShopController@deleteTag');
-	Route::get('deleteShop','ShopController@deleteShop');	
+	Route::get('deleteShop','ShopController@deleteShop');
+	Route::get('searchShop','ShopController@searchShopByTag');	
 });
 
 //产品模块
@@ -324,10 +325,7 @@ Route::group(array('prefix' => 'trading-center'),function()
 			{
 				return View::make('tradingCenter.seller-center.seller-store');
 			});
-			Route::get('product-detail', function()
-			{
-				return View::make('tradingCenter.seller-center.seller-product-detail');
-			});
+			Route::get('product-detail', 'SellerProductDetailPageController@index');
 		});
 	});
 });
