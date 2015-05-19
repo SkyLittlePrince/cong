@@ -43,17 +43,17 @@ class PictureController extends \BaseController {
 		$id = Input::get('id');
 		$user = Sentry::getUser();
 
-		$pictrue = Picture::find($id);
+		$picture = Picture::with('product.shop')->find($id);
 
-		if(!isset($pictrue))
+		if(!isset($picture))
 			return Response::json(array('errCode' => 1,'message' => '该图片不存在!'));
 
-		$shop = $picture->product()->shop()->first();
+		$shop = $picture->product->shop;
 
 		if($shop->user_id != $user->id)
 			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
 
-		if($pictrue->delete())
+		if($picture->delete())
 			return Response::json(array('errCode' => 0,'message' => '删除成功!'));
 
 		return Response::json(array('errCode' => 3,'message' => '删除失败!'));
