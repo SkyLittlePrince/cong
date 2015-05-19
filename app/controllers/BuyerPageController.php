@@ -19,15 +19,27 @@ class BuyerPageController extends BaseController {
 		$numOfItemsPerPage = 3;
 		$indents = Indent::where("user_id", $user_id)->with('products','products.shop.user')->paginate($numOfItemsPerPage);
 
-		$sellers = User::whereHas('products',function($q) use ($user_id)
-			{
-				$q->whereHas('indents',function($q) use ($user_id)
-					{
-						$q->where('user_id',$user_id);
-					});
-			})
-			->remember(10)
-			->take(5)->get();
+		$sellers = DB::table('users')
+			->join('shops','users.id','=','shops.user_id')
+			->join('products','shops.id','=','products.shop_id')
+			->join('indent_product','products.id','=','indent_product.product_id')
+			->join('indents','indent_product.indent_id','=','indents.id')
+			->select('users.id','users.username','users.avatar')
+			->orderBy('indents.id','desc')
+			->take(5)
+			->distinct()
+			->remember(5)
+			->get();
+
+		// $sellers = User::whereHas('products',function($q) use ($user_id)
+		// 	{
+		// 		$q->whereHas('indents',function($q) use ($user_id)
+		// 			{
+		// 				$q->where('user_id',$user_id);
+		// 			});
+		// 	})
+		// 	->remember(10)
+		// 	->take(5)->get();
 
 		$numOfTotalItems = $indents->getTotal();
 		$array = array('id' => 0,'name' => '商品已下架','price' => 0);
