@@ -33,4 +33,18 @@ shopDataBus =
 	updateProduct: (id, name, intro, price, avatar, callback)->
 		$.post '/product/updateProduct', { id: id, name: name, intro: intro, price: price, avatar: avatar}, (data) -> callback(data)
 
+	# 商品新增图片
+	addPicture: (product_id, image, callback)->
+		$.post '/product/addPicture', { product_id: product_id, image: image}, (data) -> callback(data)
+
+	# 删除商品一张图片
+	deletePicture: (id, callback)->
+		$.ajax {
+			type: "get"
+			url: "/product/deletePicture"
+			data: 
+				id: id
+			success: (data)->
+				callback data
+		}
 module.exports = shopDataBus

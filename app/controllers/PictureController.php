@@ -17,12 +17,12 @@ class PictureController extends \BaseController {
 			return Response::json(array('errCode'=>4,"message" => '请上传正确的图片!',"validateMes"=> $validator->messages()));			
 		}
 
-		$product = Product::find($product_id);
+		$product = Product::with('shop')->find($product_id);
 
 		if(!isset($product))
 			return Response::json(array('errCode' => 1,'message' => '商品不存在!'));
 
-		if($user->id != $product->user_id)
+		if($user->id != $product->shop->user_id)
 			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
 
 		$pictrue = new Picture;

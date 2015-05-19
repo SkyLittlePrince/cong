@@ -270,6 +270,7 @@ editStoreProductMode = (e)->
 	$productBtn.show()
 	$('.checkbox-wrapper').removeClass('hidden')
 	$('.product-edit').removeClass('hidden')
+	$('.add-product-picture').removeClass('hidden')
 	$target = $(e.currentTarget)
 	$target.parent().find(".edit-btn").addClass("hidden").siblings().removeClass("hidden")
 
@@ -281,6 +282,7 @@ saveStoreProductMode = (e)->
 	$storeProductRanking.show()
 	$('.checkbox-wrapper').addClass('hidden')
 	$('.product-edit').addClass('hidden')
+	$('.add-product-picture').addClass('hidden')
 	$target = $(e.currentTarget)
 	$target.parent().find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
 
@@ -358,7 +360,7 @@ deleteProductHandler = ->
 
 # 根据所点击的编辑按钮获取用户信息
 getOneProductMessage = ($editBtn)->
-	$productInfo = $editBtn.siblings('.product-info')
+	$productInfo = $editBtn.parent().siblings('.product-info')
 	return {
 		id: $productInfo.find('.product-id').val()
 		name: $productInfo.find('.name').text()
@@ -395,6 +397,67 @@ updateProductConfirm = (id, $oneImg)->
 			else
 				alert data.message
 
+# 获取一个商品的所有图片地址和id
+getProductImageCollection = ($btn)->
+	$imgsUrl = $btn.parent().siblings('.imgs-url')
+	id = $btn.parent().siblings('.product-info').find('.product-id').val()
+	imgUrls = []
+	$imgsUrl.find('.one-img-url').each ->
+		imgUrls.push $(this).val()
+
+	return {
+		imgUrls: imgUrls
+		id: id
+	}
+
+$addProductImgTemplate = $('#add-product-img-template')
+addProductImgCompile = _.template $addProductImgTemplate.html()
+
+# 弹出增加商品弹出框
+addProductImgHandler = ->
+	info = getProductImageCollection($(this))
+	dialog.options.dialogClass = 'add-image'
+	dialog.options.title = "添加图片"
+	dialog.options.content = addProductImgCompile({imgUrls: info.imgUrls, id: info.id})
+	dialog.options.buttons = [
+		{text:"确定", className: "add-product-img-confirm"}
+		{text:"取消", className: "close-button"}
+	]
+	dialog.loadDialogToPage()
+
+	addNewUploader = addNewPicUpload "avatar"
+
+# 给商品添加图片
+addImageToProduct = ->
+	product_id = $('#unique-product-id').val()
+	image = $("#avatar-url").val()
+	console.log product_id, image
+	shopDataBus.addPicture product_id, image, (data)->
+		if data.errCode is 0
+			alert("添加成功")
+		else
+			alert data.message
+
+# 上传新的商品图片到云端
+addNewPicUpload = (name)->
+	uploader = new Uploader {
+		domain: "http://7xj0sp.com1.z0.glb.clouddn.com/"	# bucket 域名，下载资源时用到，**必需**
+		browse_button: name + '-file',       # 上传选择的点选按钮，**必需**
+		container: name + '-wrapper',       # 上传选择的点选按钮，**必需**
+	}, {
+		FileUploaded: (up, file, info)->
+			info = $.parseJSON info
+			domain = up.getOption('domain')
+			url = domain + info.key
+			# 显示上传之后的图片
+			$("#" + name + "-wrapper").find(".avatar-img").attr("src", url)
+			$("#avatar-url").val(url)
+		UploadComplete: ()->
+			$('.add-new-img-file').hide()
+			$('.add-img-to-product').removeClass('hidden')
+	}
+
+
 #-------------------------------------------------店铺商品部分 end---------------------------------------------------------------#
 
 # 文档加载完成执行的初始化操作，主要执行事件绑定
@@ -426,7 +489,12 @@ $ ->
 
 	$('body').delegate '.product-edit', 'click', editOneProductHandler
 
+	$('body').delegate '.add-product-picture', 'click', addProductImgHandler
+
+	$('body').delegate '.add-img-to-product', 'click', addImageToProduct
+
 # 用于添加测试用例
 # for i in [1...5]
 # 	shopDataBus.addProduct 111,111,111,"http://7sbxao.com1.z0.glb.clouddn.com/login.jpg", (data) ->
 # 		console.log 'success'
+
