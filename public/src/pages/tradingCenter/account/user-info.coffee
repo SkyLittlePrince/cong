@@ -389,11 +389,11 @@ saveAbout = (e)->
 		if res.errCode == 0
 			alert "修改成功"
 			$aboutText.html data.content
+			$aboutText.removeClass("hidden")
+			$aboutTextarea.addClass("hidden")
+			$parent.find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
 		else
 			alert res.message
-		$aboutText.removeClass("hidden")
-		$aboutTextarea.addClass("hidden")
-		$parent.find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
 
 saveSkill = (e)->
 	# need to continue...
@@ -414,10 +414,11 @@ saveWorkExperience = (e)->
 			$parent.find("input").each (index, elem)->
 				$elem = $ elem
 				replaceInputByContent $elem, $elem.val()
+			$parent.find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
+			$parent.find(".del-btn").removeClass("hidden")
 		else
 		 	alert data.message
-		$parent.find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
-		$parent.find(".del-btn").removeClass("hidden")
+		
 
 
 saveEduExperience = (e)->
@@ -436,10 +437,11 @@ saveEduExperience = (e)->
 			$parent.find("input").each (index, elem)->
 				$elem = $ elem
 				replaceInputByContent $elem, $elem.val()
+			$parent.find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
+			$parent.find(".del-btn").removeClass("hidden")
 		else
 		 	alert data.message
-		$parent.find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
-		$parent.find(".del-btn").removeClass("hidden")
+		
 
 saveAwards = (e)->
 	$target = $(e.currentTarget)
@@ -456,11 +458,11 @@ saveAwards = (e)->
 			$parent.find("input").each (index, elem)->
 				$elem = $ elem
 				replaceInputByContent $elem, $elem.val()
+			$parent.find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
+			$parent.find(".del-btn").removeClass("hidden")
 		else
 		 	alert data.message
-		$parent.find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
-		$parent.find(".del-btn").removeClass("hidden")
-
+		
 saveContact = (e)->
 	$target = $(e.currentTarget)
 	$parent = $target.parent().parent()
@@ -476,9 +478,9 @@ saveContact = (e)->
 			$parent.find("input").each (index, elem)->
 				$elem = $ elem
 				replaceInputByContent $elem, $elem.val()
+			$parent.find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
 		else
 		 	alert data.message
-		$parent.find(".edit-btn").removeClass("hidden").siblings().addClass("hidden")
 
 ###
 # 工具函数

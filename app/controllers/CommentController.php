@@ -8,6 +8,19 @@ class CommentController extends \BaseController {
 		$product_id = Input::get('product_id');
 		$content = Input::get('content');
 
+		$validator = Validator::make(
+			array(
+				'content' => $content
+			),
+			array(
+				'content' => 'required|between:2,40'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode' => 2, "message" => "描述字数不能少于2也不能超过40", "validateMes" => $validator->messages()));
+		}
+
 		$product = Product::with('shop')->find($product_id);
 		if(!isset($product))
 			return Response::json(array('errCode' => 1,'message' => '该产品不存在!'));
@@ -22,9 +35,11 @@ class CommentController extends \BaseController {
 		if(!isset($indent))
 			return Response::json(array('errCode' => 3,'message' => '你还没对此产品下单!'));
 
+		/*
 		if(!isset($title))
 			return Response::json(array('errCode' => 4,'message' => '标题不能为空!'));
-
+		*/
+			
 		if(!isset($content))
 			return Response::json(array('errCode' => 5,'message' => '内容不能为空!'));
 
