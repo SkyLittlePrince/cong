@@ -20,7 +20,7 @@
 		<div class="indent-center">
 			<input type="hidden" id="product-id" value="{{{$product->id}}}" />
 			<div class="center-left">
-				<img src="/images/tradingcenter/buyer/comment.png" />
+				<img src="{{{ $product->avatar }}}" width="256" height="320" />
 			</div>
 			<div class="center-right">
 				<p class="word1 point">提示：请根据对商品的满意程度给卖家打分，共五星满意度.</p>

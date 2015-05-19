@@ -18,7 +18,7 @@ class EvaluationController extends \BaseController {
 			return Response::json(array('errCode' => 1,'message' => '该商品已下架!'));
 
 		if(count($product->indents) == 0)
-			return Response::json(array('errCode' => 2,'message' => '你还没对该商品下单!'))
+			return Response::json(array('errCode' => 2,'message' => '你还没对该商品下单!'));
 
 		$flag = 0;
 		foreach ($product->indents as $indent) {
