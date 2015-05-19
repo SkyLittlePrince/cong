@@ -9,7 +9,7 @@ class EvaluationController extends \BaseController {
 		$content = Input::get('content');
 		$score = Input::get('score');
 
-		$product = Product::with(array('indents' => function($q)
+		$product = Product::with(array('indents' => function($q) use ($user)
 			{
 				$q->where('user_id',$user->id);
 			}))->find($product_id);
