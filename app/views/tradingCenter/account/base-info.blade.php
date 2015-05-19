@@ -21,22 +21,20 @@
 			<p class="main-p1">填写真实的资料更方便大家了解你，以下信息将显示在个人主页。</p>
 			<p class="main-p2">请不要在资料里面留电话，QQ，网址，邮箱等联系信息，会导致您的资料无法通过审核。</p>
 			<div class="content-row">
-				<label class="label">当前头像：</label>
-					<div class="content-input" id="avatar-wrapper">
-						<div class="content-img">
-							<input type="hidden" id="avatar" value="{{{ $avatar }}}" />
-                    		<img src="{{{ $avatar }}}" alt="avatar" class="person-img" id="avatarImg" />
-                    	</div>
-                    	<a href="javascript:void(0);" class="person-upload">
-                    		<input type="file" id="revise-avatar" /> 修改头像
-                    	</a>
-                    </div>
-                </a>
+				<label class="label" for="avatar">当前头像：</label>
+				<div class="content-input" id="avatar-wrapper">
+					<img class="person-img" src="{{{ $avatar }}}" width="80" height="80" id="avatarImg" />
+					<input type="hidden" id="avatar" name="avatar" class="hidden" value="{{{ $avatar }}}" />
+					<a href="javascript:;" class="a-upload base-info-upload">
+                        <input type="file" id="revise-avatar">单击上传
+                    </a>
+				</div>
+				<div class="clear"></div>
 			</div>
 			<div class="content-row">
 				<label class="label">真实姓名：</label>
 				<div class="content-input">
-					<input type="text" id="realname" name="realname" value="{{{ $realname }}}" />
+					<input type="text" id="realname" name="realname" value="{{{ $realname }}}" placeholder="请填写真实姓名" />
 					<!-- <span class="name-tip red-tip">请填写真实姓名</span> -->
 				</div>
 			</div>
@@ -63,28 +61,28 @@
 			<div class="content-row">
 				<label class="label" for="wechat">微信：</label>
 				<div class="content-input">
-					<input type="text" id="wechat" name="wechat" value="{{{ $wechat }}}" />
+					<input type="text" id="wechat" name="wechat" value="{{{ $wechat }}}" placeholder="微信号" />
 				</div>
 			</div>
 			<div class="content-row">
 				<label class="label" for="QQ">QQ：</label>
 				<div class="content-input">
-					<input type="text" id="QQ" name="QQ" value="{{{ $qq }}}" />
+					<input type="text" id="QQ" name="QQ" value="{{{ $qq }}}" placeholder="QQ号" />
 				</div>
 			</div>
 			<div class="content-row">
 				<label class="label" for="prov">所在地：</label>
 				<div class="content-input">
-					<input type="text" id="country" name="country" value="{{{ $country }}}" placeholder="国家" />
-					<input type="text" id="prov" name="prov" value="{{{ $province }}}" /> 省 
-					<input type="text" id="city" name="city" value="{{{ $city }}}" /> 市 
+					<input type="text" id="country" name="country" value="{{{ $country }}}" placeholder="国家" /> 国
+					<input type="text" id="prov" name="prov" value="{{{ $province }}}" placeholder="省份" /> 省 
+					<input type="text" id="city" name="city" value="{{{ $city }}}" placeholder="市" /> 市 
 					<!-- <input type="button" value="其他" id="other-region-btn" /> -->
 				</div>
 			</div>
 			<div class="content-row">
 				<label class="label" for="address">详细地址：</label>
 				<div class="content-input">
-					<input type="text" id="address" name="address" value="{{{ $address }}}" />
+					<input type="text" id="address" name="address" value="{{{ $address }}}" placeholder="请填写您的详细地址" />
 				</div>
 			</div>
 			<div class="content-row">
