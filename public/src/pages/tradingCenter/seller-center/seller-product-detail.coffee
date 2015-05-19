@@ -37,13 +37,16 @@ addToCartCookieHandler = (price)->
 # @param {jQuery Object} $btn: 添加到购物车按钮
 ###
 getProduceInfo = ($btn)->
-	return {
+	data = {
 		productId : $btn.data 'productid'
-		productName : 'test'
-		productPrice : '100'
+		productName : $("#product-name").val()
+		productPrice : $("#product-price").val()
 		productNumber : 1
 		productImgUrl : $btn.siblings('.product-img').attr 'src'
 	}
+
+	console.log data
+	return data
 ###
 # 添加一件商品到购物车处理逻辑
 ###
@@ -52,6 +55,7 @@ addToCartHandler = ->
 	if not getOneProductFromCookie(info.productId)
 		addOneProductToCookie info
 		addToCartCookieHandler info.productPrice
+	window.location.href = "/shopping-cart"
 
 $ ->
 	$addToCart.bind 'click', addToCartHandler

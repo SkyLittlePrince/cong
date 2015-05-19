@@ -10,7 +10,7 @@ class Message extends \Eloquent {
 	protected $table = 'messages';
 
 	public $timestamps = true;
-    	public $primaryKey = 'id';
+  public $primaryKey = 'id';
 	public $incrementing = true;
 
 	protected $fillable = array(
@@ -24,6 +24,6 @@ class Message extends \Eloquent {
 
 	public function receiver()
 	{
-              	return $this->belongsTo('User', 'receiver', 'id');
+    return $this->belongsTo('User', 'receiver', 'id');
 	}
 }

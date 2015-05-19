@@ -26,6 +26,7 @@ class SellerPageController extends BaseController {
 		$evaluations = Evaluation::where('product_id',$product_id)
 				->with('user')
 				->paginate($numOfItemsPerPage);
+
 		$sum = 0;
 		foreach ($evaluations as $evaluation) 
 		{
@@ -35,7 +36,10 @@ class SellerPageController extends BaseController {
 		$aScore = ($sum == 0 ? 0 : round($sum / count($evaluations)));
 		$product->aScore = $aScore;	
 
-		return View::make('tradingCenter.seller-center.seller-product-detail',array('product' => $product,'evaluations' => $evaluations));
+		$shop_id = $product->shop_id;
+		$otherProducts = Product::where("shop_id", "=", $shop_id)->where("id", "<>", $product_id)->take(10)->get();
+
+		return View::make('tradingCenter.seller-center.seller-product-detail',array('product' => $product, 'evaluations' => $evaluations, "otherProducts" => $otherProducts));
 	}
 
 	public function sellerStore()
