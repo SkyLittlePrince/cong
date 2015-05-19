@@ -22,6 +22,23 @@ class ProductController extends \BaseController {
 			return Response::json(array('errCode' => 2, 'message' => '你没有操作权限!'));
 		}
 
+		$validator = Validator::make(
+			array(
+				'intro' => $intro,
+				'price' => $price,
+				'avatar' => $avatar
+			),
+			array(
+				'intro'=>'between : 2,500',
+				'price' => 'numeric',
+				'avatar' =>'url'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode' => 4, "message" => "参数格式错误", "validateMes" => $validator->messages()));
+		}
+
 		$product = new Product;
 		$product->name = $name;
 		$product->intro = $intro;
@@ -51,6 +68,23 @@ class ProductController extends \BaseController {
 
 		if($product->shop->user_id != $user->id)
 			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
+
+		$validator = Validator::make(
+			array(
+				'intro' => $intro,
+				'price' => $price,
+				'avatar' => $avatar
+			),
+			array(
+				'intro'=>'between : 2,500',
+				'price' => 'numeric',
+				'avatar' =>'url'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode' => 4, "message" => "参数格式错误", "validateMes" => $validator->messages()));
+		}
 
 		$product->name = $name;
 		$product->intro = $intro;
@@ -128,7 +162,6 @@ class ProductController extends \BaseController {
 		return Response::json(array('errCode' => 0, 'products' => $products));
 	}
 }
-
 
 
 

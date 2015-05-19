@@ -19,6 +19,25 @@ class ShopController extends \BaseController {
 		if($user->role_id == 2)
 			return Response::json(array('errCode' => 1,'message' => '你已拥有店铺!'));
 
+		$validator = Validator::make(
+			array(
+				'name'=>$name,
+				'description'=>$description,
+				'avatar'=>$avatar,
+				'tags'=>$tags
+			),
+			array(
+				'name'=>'required',
+				'description'=>'required |between : 2,500',
+				'avatar'=>'required |url',
+				'tags'=>'required |array'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode' =>4, "message" => "若有描述,字数在2-500之间,数据请填写完整!", "validateMes" => $validator->messages()));
+		}
+
 		$shop = new Shop;
 		$shop->name = $name;
 		$shop->description = $description;
@@ -60,6 +79,19 @@ class ShopController extends \BaseController {
 
 		if($user->id != $shop->user_id)
 			return Response::json(array('errCode' => 2,'message' => '你没有权限进行该操作!'));
+
+		$validator = Validator::make(
+			array(
+				'description'=>$description
+			),
+			array(
+				'description'=>'required |between : 2,500'
+			)
+		);
+		
+		if($validator->fails()){
+			return Response::json(array('errCode' =>4, "message" => "若有描述,字数在2-500之间,数据请填写完整!", "validateMes" => $validator->messages()));
+		}
 
 		$shop->name = $name;
 		$shop->description = $description;

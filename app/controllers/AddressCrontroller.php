@@ -15,6 +15,31 @@ class AddressCrontroller extends \BaseController {
 
 		$user = Sentry::getUser();
 
+		$validator = Validator::make(
+			array(
+				'username'  => $username,
+				'province'    => $province,
+				'city'	      => $city,
+				'region'	      => $region,
+				'add' 	      => $address,
+				'postcode'   => $postcode,
+				'mobile'	      => $mobile
+			),
+			array(
+				'username'  => 'required',
+				'province'    => 'between:2,10',
+				'city'	      => 'between:2,20',
+				'region'	      => 'between:2,20',
+				'add' 	      =>'between:2,40',
+				'postcode'   => 'integer |between :000000,999999',
+				'mobile'	      => 'integer | between:10000000000,19999999999'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode' => 2, "message" => "参数格式错误", "validateMes" => $validator->messages()));
+		}
+
 		if(isset($is_default))
 			$is_default = 1;
 		else
