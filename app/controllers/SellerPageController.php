@@ -59,6 +59,31 @@ class SellerPageController extends BaseController {
 	public function myIndents()
 	{
 		$indents = [];
+		if(Sentry::check()) 
+		{
+			$user_id = Sentry::getUser()->id;
+		} 
+		else 
+		{
+			return Redirect::guest('user/login');
+		}
+
+		$myShop = Shop::where("user_id", "=", $user_id)->with('tags','products')->first();
+
+		if(!isset($myShop))
+		{
+			return View::make('errors.haveNoStore');
+		}
+
+		$numOfItemsPerPage = 10;
+		$products = Shop::find($myShop->id)->products;
+
+		foreach ($products as $key => $product) {
+			foreach ($product->indents as $key => $indent) {
+				$indent->product = $indent->products[0];
+			}
+			$indents = array_merge($indents, $product->indents->toArray());
+		}
 
 		return View::make('tradingCenter.seller-center.my-indents', array("indents" => $indents));
 	}

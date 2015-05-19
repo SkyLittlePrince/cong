@@ -19,8 +19,8 @@
 	    	<div class="one-order">
 	    		<div class="info">
                     <div class="checkbox-wrapper"></div>           
-	                <span class="date">{{{ $indent->create_time }}}</span> 
-	                <span class="order-number">订单号: <span>{{{ $indent-id }}}</span></span>
+	                <span class="date">{{{ $indent["created_at"] }}}</span> 
+	                <span class="order-number">订单号: <span>{{{ $indent["id"] }}}</span></span>
 	    		</div>
 	    		<div class="detail">
                     <div class="img detail-component">
@@ -30,12 +30,12 @@
 	    				<p>{{{ $indent["product"]["name"] }}}</p>
 	    			</div>
 	    			<div class="price detail-component">
-	    				￥<span>{{{ $indenx["product"]["price"] }}}</span>
+	    				￥<span>{{{ $indent["product"]["price"] }}}</span>
 	    			</div>
 	    			<div class="status detail-component">
-	    				@if ($status == 0)
+	    				@if ($indent["status"] == 0)
 	    				<p>未付款</p>
-	    				@elseif ($status == 1)
+	    				@elseif ($indent["status"] == 1)
 	    				<p>已付款</p>
 	    				@else
 	    				<p>交易成功</p>
@@ -46,23 +46,31 @@
 	    	@endforeach
 	    </div>
         <div class="pagination">
-                <div class="right to-page">
-                    <p>
-                        共<span class="page-count">3</span>页,到第<input type="text" >页
-                        <input type="button" value="确定">
-                    </p>
-                </div>
-	   			<div class="page-num right">
-                    <a href="#">
-                        <img src="/images/icon/icon-arrow-left.png" alt="icon-left" width="28" height="28" />         
-                    </a>
-                    <span class="num active">1</span>
-                    <span class="num">2</span>
-                    <span class="num">3</span>
-                    <a href="#">
-                        <img src="/images/icon/icon-arrow-right.png" alt="icon-right" width="28" height="28" />
-                    </a>
-                </div>
+				<ul class="links">
+					<li class="unavailable">
+						<span>
+							<img src="/images/icon/icon-arrow-left.png" alt="icon-left" width="28" height="28">
+						</span>
+					</li>
+					<li class="current">
+						<span class="num active">1</span>
+					</li>
+					<li>
+						<a class="num" href="http://cong.laravel.com/trading-center/buyer/trading-list?page=2">2</a>
+					</li>
+					<li>
+						<a class="num" href="http://cong.laravel.com/trading-center/buyer/trading-list?page=2"><img src="/images/icon/icon-arrow-right.png" alt="icon-right" width="28" height="28"></a>
+					</li>
+	   			</ul>
+                <div class="to-page">
+	   				<div class="right to-page">
+	   					<p>
+	   						跳转到第 <input class="to-page-input" type="text"> 页
+	   						<input type="button" class="to-page-btn btn" value="确定">
+	   					</p>
+	   				</div>	
+	   			</div>
+                <div class="clear"></div>
 	   		</div>
     </div>
 @stop
