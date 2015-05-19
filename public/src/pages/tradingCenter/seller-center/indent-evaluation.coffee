@@ -1,6 +1,6 @@
 
 # 缓存DOM节点
-$productId = $("#product_id");
+$productId = $("#product-id");
 $score = $('#score')
 $content = $('#content')
 $confirm = $('#confirm')
@@ -13,10 +13,12 @@ addAppraise = (e)->
 		alert("评价不能为空")
 		return false
 
+
 	data = 
 		product_id: $productId.val()
 		score: 5
 		content: $content.val()
+	console.log data
 	
 	databus.addIndentAppraise data, (res)->
 		if res.errCode == 0
