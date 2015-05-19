@@ -16,6 +16,11 @@ class Shop extends \Eloquent {
 		'updated_at'
 	);
 
+	public function user()
+	{
+		return $this->belongsTo('User');
+	}
+
 	public function products()
 	{
 		return $this->hasMany('Product');

@@ -14,11 +14,6 @@ class Indent extends \Eloquent {
 			'status'
 		);
 
-	public function task()
-	{
-	        return $this->belongsTo('Task');
-	}
-
 	public function products()
 	{
 		return $this->belongsToMany('Product', 'indent_product', 'indent_id', 'product_id');
