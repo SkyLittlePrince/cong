@@ -20,7 +20,7 @@ class SellerPageController extends BaseController {
 			$sum += $evaluation->score;
 		}
 
-		$aScore = round($sum / count($evaluations));
+		$aScore = ($sum == 0 ? 0 : round($sum / count($evaluations)));
 		$product->aScore = $aScore;	
 
 		return View::make('tradingCenter.seller-center.seller-product-detail',array('product' => $product,'evaluations' => $evaluations));
