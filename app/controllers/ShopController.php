@@ -16,6 +16,9 @@ class ShopController extends \BaseController {
 		$avatar = Input::get('avatar');
 		$tags = Input::get('tags');
 
+		if($user->role_id == 2)
+			return Response::json(array('errCode' => 1,'message' => '你已拥有店铺!'));
+
 		$validator = Validator::make(
 			array(
 				'name'=>$name,
@@ -30,19 +33,17 @@ class ShopController extends \BaseController {
 				'tags'=>'required |array'
 			)
 		);
-		
+
 		if($validator->fails()){
 			return Response::json(array('errCode' =>4, "message" => "若有描述,字数在2-500之间,数据请填写完整!", "validateMes" => $validator->messages()));
 		}
-
-		if($user->role_id == 2)
-			return Response::json(array('errCode' => 1,'message' => '你已拥有店铺!'));
 
 		$shop = new Shop;
 		$shop->name = $name;
 		$shop->description = $description;
 		$shop->user_id = $user->id;
-		$shop->avatar = $avatar;		
+		$shop->avatar = $avatar;
+
 
 		if($shop->save())
 		{
@@ -84,15 +85,14 @@ class ShopController extends \BaseController {
 				'description'=>$description
 			),
 			array(
-				'description'=>'between : 2,500'
+				'description'=>'required |between : 2,500'
 			)
 		);
 		
 		if($validator->fails()){
-			return Response::json(array('errCode' =>4, "message" => "若有描述,字数在2-500之间", "validateMes" => $validator->messages()));
+			return Response::json(array('errCode' =>4, "message" => "若有描述,字数在2-500之间,数据请填写完整!", "validateMes" => $validator->messages()));
 		}
 
-		
 		$shop->name = $name;
 		$shop->description = $description;
 

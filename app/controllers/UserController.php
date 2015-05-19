@@ -385,12 +385,7 @@ class UserController extends \BaseController {
 		$city = Input::get('city');
 		$address = Input::get('address');
 		$birthday = Input::get('birthday');
-		/*
-		$birthdayYear = Input::get('birthdayYear');
-		$birthdayMonth = Input::get('birthdayMonth');
-		$birthdayDay = Input::get('birthdayDay');
-		$birthday=(string)$birthdayYear."-".(string)$birthdayMonth."-".(string)$birthdayDay;
-		*/
+		
 		$validator = Validator::make(
 			array(
 				'qq' => $qq,
@@ -411,9 +406,8 @@ class UserController extends \BaseController {
 				'city'  =>'string |between:2,20',
 				'region' =>'string |between:2,20',
 				'address' =>'string |between:2,40',
-				'birthday' =>'',
+				'birthday' =>'date_format:Y-m-d',
 				'realname'=>'between:2,15'
-
 			)
 		);
 		if($validator->fails()){
@@ -468,7 +462,7 @@ class UserController extends \BaseController {
 		);
 
 		if($validator->fails()){
-			return Response::json(array('errCode' => 2, "message" => "描述字数不能少于2也不能超过40", "validateMes" => $validator->messages()));
+			return Response::json(array('errCode' => 2, "message" => "描述字数不能少于2也不能超过500", "validateMes" => $validator->messages()));
 		}
 
 		$user->description = $description;
