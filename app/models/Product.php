@@ -11,7 +11,6 @@ class Product extends \Eloquent {
 		);
 
 	protected $hidden = array(
-			'created_at',
 			'updated_at'
 		);
 
@@ -33,6 +32,11 @@ class Product extends \Eloquent {
 	public function scores()
 	{
 		return $this->hasMany('Score');
+	}
+
+	public function evaluations()
+	{
+		return $this->hasMany('Evaluation');
 	}
 
 	public function indents()

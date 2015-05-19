@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommemtsTable extends Migration {
+class CreateEvaluationsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,14 @@ class CreateCommemtsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('commemts', function(Blueprint $table)
+		Schema::create('evaluations', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->timestamps();
+
 			$table->integer('product_id')->unsigned()->index('product_id');
 			$table->longText('content');
+			$table->integer('score')->default(5);
 			$table->integer('user_id')->unsigned()->index('user_id');
 
 			$table
@@ -31,6 +33,7 @@ class CreateCommemtsTable extends Migration {
 				->references('id')->on('users') 
 				->onDelete('cascade')
 				->onUpdate('cascade');
+
 		});
 	}
 
@@ -41,7 +44,7 @@ class CreateCommemtsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('commemts');
+		Schema::drop('evaluations');
 	}
 
 }

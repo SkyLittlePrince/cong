@@ -15,15 +15,14 @@
             <!-- 用户信息 -->
             <div class="user-info">
                 <div class="avatar component">
-                    <img src="/images/common/avatar.png" alt="avatar">
+                    <img src="{{$product->shop->user->avatar}}" alt="avatar">
                 </div>
                 <div class="info component">
-                    <p>Vivine</p>
-                    <p>学号 FC634085</p>
+                    <p>{{$product->shop->user->username}}</p>
                     <p class="address-info">
-                        <span>中国</span>
-                        <span>广东</span>
-                        <span>广州</span>
+                        <span>{{$product->shop->user->country}}</span>
+                        <span>{{$product->shop->user->province}}</span>
+                        <span>{{$product->shop->user->city}}</span>
                     </p>
                 </div>
             </div>
@@ -31,12 +30,18 @@
             <div class="store-detail header-component">
                 <div class="row-content">
                     <span class="label">丛丛店铺: </span>
-                    <span class="content">平面设计、日文家教、动画3D</span>
+                    <span class="content">
+                    @foreach($product->shop->tags as $tag)
+                    {{ $tag->name}}
+                    @endforeach
+                    </span>
                 </div>
+                <!--
                 <div class="row-content">
                     <span class="label">教育情况: </span>
                     <span class="content">上海负担大学动画出传媒专业硕士</span>
                 </div>
+                -->
                 <div class="row-content">
                     <span class="label">买家信用: </span>
                     <span class="content">
@@ -52,28 +57,30 @@
             <div class="store-info header-component">
                 <div class="row-content">
                     <span class="label">店铺简介: </span>
-                    <span class="content">此处描述店铺的经营范围和粗略介绍产品的种类。</span>
+                    <span class="content">{{$product->shop->description}}</span>
                 </div>
                 <div class="talk">
                     <a href="#" class="btn">谈一谈</a>
                 </div>
                 <div class="stastic">
                     <span>累计交易: </span>
-                    <span>35149</span>
-                    <span>访问量</span>
-                    <span>98927</span>
+                    <span>{{$product->sellNum}}</span>
+                    <span>访问量: </span>
+                    <span>{{$product->visiteNum}}</span>
                 </div>
             </div>
         </div>
         <div class="product-detail-main">
             <div class="info components">
-                <img src="/images/tradingcenter/seller/product-detail.gif" class="img-comonent product-img" width="130" height="136" alt="product-detail-img" />
+                @foreach($product->pictures as $picture)
+                <img src="{{$picture->image}}" class="img-comonent product-img" width="130" height="136" alt="product-detail-img" />
+                @endforeach
                 <div href="#" class="video">
                     <img src="/images/tradingcenter/seller/product-detail-video.gif" width="130" height="136" alt="product-detail-img" />
                     <img src="/images/tradingcenter/seller/video-btn.gif" width="130" height="136" alt="video-btn" />
                 </div>
                 <div class="message">
-                    <p>此处讲解服务介绍对象此处讲解服务介绍对象此处讲解服务介绍对象此处讲解服务介绍对象此处讲解服务介绍对象此处讲解服务介绍对象</p>
+                    <p>{{$product->intro}}</p>
                 </div>
                 <div class="add-to-cart btn" data-productid="3">添加到购物车</div>
             </div>
@@ -133,40 +140,17 @@
                         </span>
                         <span>共<span>427</span>次打分</span>
                     </div>
+                    @foreach($comments as $comment)
                     <div class="row-content">
-                        <img src="/images/tradingcenter/seller/comment-user-info.gif" alt="rank" width="30" height="30" />
-                        <span>很好,完成得不错,好评。</span>
+                        <img src="{{$comment->user->avatar}}" alt="rank" width="30" height="30" />
+                        <span>{{$comment->content}}</span>
                     </div>
-                    <div class="row-content">
-                        <span><img src="/images/tradingcenter/seller/comment-user-info.gif" alt="rank" width="30" height="30" />
-                        <span>很好,完成得不错,好评。</span>
-                    </div>
-                    <div class="row-content">
-                        <img src="/images/tradingcenter/seller/comment-user-info.gif" alt="rank" width="30" height="30" />
-                        <span>很好,完成得不错,好评。</span>
-                    </div>
-                    <div class="row-content">
-                        <img src="/images/tradingcenter/seller/comment-user-info.gif" alt="rank" width="30" height="30" />
-                        <span>很好,完成得不错,好评。</span>
-                    </div>
-                    <div class="row-content">
-                        <img src="/images/tradingcenter/seller/comment-user-info.gif" alt="rank" width="30" height="30" />
-                        <span>很好,完成得不错,好评。</span>
-                    </div>
-                    <div class="row-content">
-                        <img src="/images/tradingcenter/seller/comment-user-info.gif" alt="rank" width="30" height="30" />
-                        <span>很好,完成得不错,好评。</span>
-                    </div>
-                    <div class="row-content">
-                        <img src="/images/tradingcenter/seller/comment-user-info.gif" alt="rank" width="30" height="30" />
-                        <span>很好,完成得不错,好评。</span>
-                    </div>
-                    <div class="row-content">
-                        <img src="/images/tradingcenter/seller/comment-user-info.gif" alt="rank" width="30" height="30" />
-                        <span>很好,完成得不错,好评。</span>
-                    </div>
+                    @endforeach
                 </div>
-
+                @if(count($comments) < $comments->getTotal())
+                {{$comments->appends(array('product_id' => $product->id))->links();}}
+                @endif
+                <!--
                 <div class="pagination">
                     <div class="right to-page">
                         <p>
@@ -186,6 +170,7 @@
                         </a>
                     </div>
                 </div>
+            -->
             </div>
         </div>
     </div>

@@ -1,10 +1,11 @@
 <?php
 
-class Score extends \Eloquent {
+class Evaluation extends \Eloquent {
 	protected $fillable = array(
-			'score',
 			'user_id',
-			'product_id'
+			'product_id',
+			'score',
+			'content'
 		);
 
 	protected $hidden = array(

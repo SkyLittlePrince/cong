@@ -30,4 +30,5 @@ class Shop extends \Eloquent {
 	{
 		return $this->belongsToMany('Tag');
 	}
+
 }

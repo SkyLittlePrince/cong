@@ -11,7 +11,7 @@ class Picture extends \Eloquent {
 			'updated_at'
 		);
 
-	public funtion product()
+	public function product()
 	{
 		return $this->belongsTo('Product');
 	}
