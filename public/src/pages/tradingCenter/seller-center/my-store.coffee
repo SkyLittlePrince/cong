@@ -422,15 +422,14 @@ addProductImgCompile = _.template $addProductImgTemplate.html()
 
 newcheckbox = null
 
-# 弹出增加商品弹出框
+# 弹出编辑商品图片弹出框
 addProductImgHandler = ->
 	info = getProductImageCollection($(this))
 	dialog.options.dialogClass = 'add-image'
 	dialog.options.title = "添加图片"
 	dialog.options.content = addProductImgCompile({imgUrls: info.imgUrls, id: info.id})
 	dialog.options.buttons = [
-		{text:"确定", className: "add-product-img-confirm"}
-		{text:"取消", className: "close-button"}
+		{text:"完成", className: "close-button"}
 	]
 	dialog.loadDialogToPage()
 

@@ -100,7 +100,7 @@
                             </div>
                             <div class="operate-button">
                                 <div class="btn product-edit hidden">编辑</div>
-                                <div class="btn add-product-picture hidden">添加图片</div>
+                                <div class="btn add-product-picture hidden">编辑图片</div>
                             </div>
                             <div class="imgs-url">
                                 @foreach($product['pictures'] as $picture)
@@ -127,7 +127,7 @@
 
                          <div class="operate-button">
                             <div class="btn product-edit">编辑</div>
-                            <div class="btn add-product-picture">添加图片</div>
+                            <div class="btn add-product-picture">编辑图片</div>
                         </div>
                     </div>
                 </script>

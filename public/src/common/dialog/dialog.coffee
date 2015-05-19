@@ -56,6 +56,8 @@ class Dialog
     # 关闭弹出框
     closeDialog: (self)->
         self.options.content = ''
+        if self.options.dialogClass
+            self.options.dialogClass = ''
         $(self.options.grayBgSelector).remove()
         $(self.options.dialogSelector).remove()
 
