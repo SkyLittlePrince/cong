@@ -6,6 +6,7 @@
 @section('css')
     @parent
     <link rel="stylesheet" type="text/css" href="/dist/css/tradingCenter/buyer-center/trading-manage/trading-comment.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/dist/css/score/score.css"> -->
 @stop
 
 @section('body')
@@ -22,13 +23,9 @@
                 <img src="/images/tradingcenter/buyer/comment.png" alt="login" width="265px" height="319px" />
             </div>
             <div class="info">
-                <p class="score">对买家总评分: 
-                    <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
-                    <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
-                    <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
-                    <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
-                    <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
-                </p>
+                <p class="score buyer-score">对买家总评分: </p>
+                <p class="score buyer-score">对买家总评分: 
+                <!-- </p> -->
                 <p class="tip">提示: 请根据对商品的满意程度给商品进行评价或者添加内容描述</p>
                 <p class="score">评价内容: </p>
                 <textarea name="" id="" cols="30" rows="10">
@@ -44,4 +41,5 @@
 
 @section('js')
     @parent
+    <script type="text/javascript" src='/dist/js/pages/trading-comment.js'></script>
 @stop
