@@ -27,12 +27,12 @@
 				</div>
 				<div class="order-pic order-component">
 					<span>
-						<img src="/images/common/avatar.png" alt="order-pic">
+						<img src="{{{ $indent->product['avatar'] }}}" alt="order-pic">
 					</span>
 				</div>
 				<div class="order-title order-component">
 					<p class="order-p">
-						<a href="{{{ $indent->product['id'] }}}" target="_blank">{{{ $indent->product["name"] }}}</a>
+						<a href="/trading-center/seller/product-detail?product_id={{{$indent['product']['id']}}}" target="_blank">{{{ $indent->product["name"] }}}</a>
 					</p>
 					<p class="price line-two">￥<span>{{{ $indent->product["price"] }}}</span></p>
 				</div>
@@ -64,14 +64,16 @@
 					@else
 						<div class="sellers-info">
             			@foreach ($recentSellers as $recentSeller)
-            				<div class="seller-info">
-            					<div class="seller-avatar">
-            						<img src="{{{ $recentSeller->avatar }}}" height="30" width="30" />
-            					</div>
-            					<div class="seller-name">
-            						{{{ $recentSeller->username }}}
-            					</div>
-            				</div>
+            				<a href="/trading-center/account/user-info?user_id={{{$recentSeller->id}}}" target="_blank">
+	            				<div class="seller-info">
+	            					<div class="seller-avatar">
+	            						<img src="{{{ $recentSeller->avatar }}}" height="30" width="30" />
+	            					</div>
+	            					<div class="seller-name">
+	            						{{{ $recentSeller->username }}}
+	            					</div>
+	            				</div>
+	            			</a>
             			@endforeach
             			<div class="clear"></div>
             			</div>
@@ -95,8 +97,8 @@
 			<div class="trade one-history right">
 				<div class="banner">最近购买的商品</div>
 				<div class="panel">
-					<p class="message">Hi~快去看看小伙伴们有哪些需求在这里成功得到解决~</p>
-					<a class="see-now" href="#">立即查看</a>
+					<p class="message">最近没有购买任何商品哦～</p>
+					<!-- <a class="see-now" href="#">立即查看</a> -->
 				</div>
 			</div>
 	    </div>
