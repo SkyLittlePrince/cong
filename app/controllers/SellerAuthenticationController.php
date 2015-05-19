@@ -16,6 +16,29 @@ class SellerAuthenticationController extends \BaseController {
 		$address = Input::get('address');
 		$phone = Input::get('phone');
 
+		$validator = Validator::make(
+			array(
+				'name' => $name,
+				'credit_id' => $credit_id,
+				'credit_front' => $credit_front,
+				'credit_behind' => $credit_behind,
+				'address' => $address,
+				'phone' => $phone
+			),
+			array(
+				'name' => 'required|between:2,15',
+				'credit_id' => 'required|alpha_num',
+				'credit_front' => 'required|url|different:credit_behind',
+				'credit_behind' => 'required|url',
+				'address' => 'required|between:2,40',
+				'phone' => 'required|integer'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode'=>4,'message'=>'参数格式错误','validateMes' =>$validator->messages()));
+		}
+
 		$sellerAuthentication = new Authentication();
 		$sellerAuthentication->user_id = $user_id;
 		$sellerAuthentication->name = $name;
@@ -50,6 +73,29 @@ class SellerAuthenticationController extends \BaseController {
 		$gender = Input::get('gender');
 		$address = Input::get('address');
 		$phone = Input::get('phone');
+
+		$validator = Validator::make(
+			array(
+				'name' => $name,
+				'credit_id' => $credit_id,
+				'credit_front' => $credit_front,
+				'credit_behind' => $credit_behind,
+				'address' => $address,
+				'phone' => $phone
+			),
+			array(
+				'name' => 'required|between:2,15',
+				'credit_id' => 'required|alpha_num',
+				'credit_front' => 'required|url|different:credit_behind',
+				'credit_behind' => 'required|url',
+				'address' => 'required|between:2,40',
+				'phone' => 'required|integer'
+			)
+		);
+
+		if($validator->fails()){
+			return Response::json(array('errCode'=>4,'message'=>'参数格式错误','validateMes' =>$validator->messages()));
+		}
 
 		$sellerAuthentication->name = $name;
 		$sellerAuthentication->credit_id = $credit_id;
