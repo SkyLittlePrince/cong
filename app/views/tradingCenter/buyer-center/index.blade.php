@@ -58,8 +58,12 @@
 			<div class="trade one-history left">
 				<div class="banner">我和他们交易过</div>
 				<div class="panel">
+					@if (!isset($recentSeller) && count($recentSeller) == 0)
 					<p class="message">Hi~你还没有交易过呢，快去看看哪些服务商能为你解决问题吧~</p>
 					<a class="see-now" href="#">立即查看</a>
+					@else
+
+					@endif
 				</div>
 			</div>
 			<!-- <div class="trade one-history right">
@@ -77,7 +81,7 @@
 				</div>
 			</div> -->
 			<div class="trade one-history right">
-				<div class="banner">最近浏览的商品</div>
+				<div class="banner">最近购买的商品</div>
 				<div class="panel">
 					<p class="message">Hi~快去看看小伙伴们有哪些需求在这里成功得到解决~</p>
 					<a class="see-now" href="#">立即查看</a>
