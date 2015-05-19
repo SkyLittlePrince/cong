@@ -18,27 +18,37 @@
                     <img src="/images/common/avatar.png" alt="avatar">
                 </div>
                 <div class="info component">
-                    <p>Vivine</p>
-                    <p>学号 FC634085</p>
+                    <p>{{{ Sentry::getUser()->username }}}</p>
+                    <p>
+                        @if (Sentry::getUser()->gender)
+                        男
+                        @else
+                        女
+                        @endif
+                    </p>
                     <p class="address-info">
-                        <span>中国</span>
-                        <span>广东</span>
-                        <span>广州</span>
+                        @if ( isset(Sentry::getUser()->country) && isset(Sentry::getUser()->province) && isset(Sentry::getUser()->city) )
+                        <span>{{{ Sentry::getUser()->country }}}</span>
+                        <span>{{{ Sentry::getUser()->province }}}</span>
+                        <span>{{{ Sentry::getUser()->city }}}</span>
+                        @else
+                        <span>未知地区</span>
+                        @endif
                     </p>
                 </div>
             </div>
             <!-- 店铺信息简介 -->
             <div class="store-detail header-component">
                 <div class="row-content">
-                    <span class="label">丛丛店铺: </span>
-                    <span class="content">平面设计、日文家教、动画3D</span>
+                    <span class="label">店铺标签: </span>
+                    <span class="content">
+                        @foreach ($shop->tags as $tag)
+                            <span class="one-tag" data-tagid="{{{$tag["id"]}}}">{{{$tag["name"]}}}&nbsp&nbsp</span>
+                        @endforeach
+                    </span>
                 </div>
                 <div class="row-content">
-                    <span class="label">教育情况: </span>
-                    <span class="content">上海负担大学动画出传媒专业硕士</span>
-                </div>
-                <div class="row-content">
-                    <span class="label">买家信用: </span>
+                    <span class="label">店铺信用: </span>
                     <span class="content">
                         <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
                         <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
@@ -52,158 +62,50 @@
             <div class="store-info header-component">
                 <div class="row-content">
                     <span class="label">店铺简介: </span>
-                    <span class="content">此处描述店铺的经营范围和粗略介绍产品的种类。</span>
+                    <span class="content">{{{ $shop->description }}}</span>
                 </div>
                 <div class="talk">
                     <a href="#" class="btn">谈一谈</a>
                 </div>
                 <div class="stastic">
                     <span>累计交易: </span>
-                    <span>35149</span>
+                    <span>{{{ $shop->dealNum }}}</span>
                     <span>访问量</span>
-                    <span>98927</span>
+                    <span>{{{ $shop->visitNum }}}</span>
                 </div>
             </div>
         </div>
         <div class="store-main">
             <div class="ranking store-main-content">
-                <h3>销售量</h3>
+                <h3>销售量排行榜</h3>
                 <div class="rank-list">
+                    @foreach ($productsRanking as $product)
                     <div class="one-list">
-                        <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
-                        <p class="title">此处为描述产品的标题</p>
-                        <span class="price">￥380</span>
-                        <span class="counter">成交58次</span>
+                        <img src="{{{ $product->avatar }}}" alt="rank" width="44" height="44" />
+                        <p class="title">{{{ $product->name }}}</p>
+                        <span class="price">￥{{{ $product->price }}}</span>
+                        <span class="counter">成交{{{ $product->sellNum }}}次</span>
                     </div>
-                    <div class="one-list">
-                        <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
-                        <p class="title">此处为描述产品的标题</p>
-                        <span class="price">￥380</span>
-                        <span class="counter">成交58次</span>
-                    </div>
-                    <div class="one-list">
-                        <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
-                        <p class="title">此处为描述产品的标题</p>
-                        <span class="price">￥380</span>
-                        <span class="counter">成交58次</span>
-                    </div>
-                    <div class="one-list">
-                        <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
-                        <p class="title">此处为描述产品的标题</p>
-                        <span class="price">￥380</span>
-                        <span class="counter">成交58次</span>
-                    </div>
-                    <div class="one-list">
-                        <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
-                        <p class="title">此处为描述产品的标题</p>
-                        <span class="price">￥380</span>
-                        <span class="counter">成交58次</span>
-                    </div>
-                    <div class="one-list">
-                        <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
-                        <p class="title">此处为描述产品的标题</p>
-                        <span class="price">￥380</span>
-                        <span class="counter">成交58次</span>
-                    </div>
-                </div>
-                <div class="sale-count">
-                    <p>月成交<span>4321</span>次</p>
+                    @endforeach
                 </div>
             </div>
             <div class="content-wrapper">
                 <div class="content">
-                    <div class="task">
-                        <div class="img">
-                            <div class="tag">平面设计类</div>
-                            <img src="/images/rewardtask/1.png" width="172" height="129" />
+                    @foreach ($productsRanking as $product)
+                    <a href="/trading-center/seller/product-detail?product_id={{{$product->id}}}">
+                        <div class="task">
+                            <div class="img">
+                                <img src="{{{$product->avatar}}}" width="172" height="129" />
+                            </div>
+                            <div class="text">{{{ $product->name }}}</div>
+                            <div class="price">RMB：{{{ $product->price }}}</div>
                         </div>
-                        <div class="text">品牌设计，vi设计，包装设计</div>
-                        <div class="price">RMB：2000</div>
-                    </div>
-                    <div class="task">
-                        <div class="img">
-                            <div class="tag">平面设计类</div>
-                            <img src="/images/rewardtask/1.png" width="172" height="129" />
-                        </div>
-                        <div class="text">品牌设计，vi设计，包装设计</div>
-                        <div class="price">RMB：2000</div>
-                    </div>
-                    <div class="task">
-                        <div class="img">
-                            <div class="tag">平面设计类</div>
-                            <img src="/images/rewardtask/1.png" width="172" height="129" />
-                        </div>
-                        <div class="text">品牌设计，vi设计，包装设计</div>
-                        <div class="price">RMB：2000</div>
-                    </div>
-                    <div class="task">
-                        <div class="img">
-                            <div class="tag">平面设计类</div>
-                            <img src="/images/rewardtask/1.png" width="172" height="129" />
-                        </div>
-                        <div class="text">品牌设计，vi设计，包装设计</div>
-                        <div class="price">RMB：2000</div>
-                    </div>
-                    <div class="task">
-                        <div class="img">
-                            <div class="tag">平面设计类</div>
-                            <img src="/images/rewardtask/1.png" width="172" height="129" />
-                        </div>
-                        <div class="text">品牌设计，vi设计，包装设计</div>
-                        <div class="price">RMB：2000</div>
-                    </div>
-                    <div class="task">
-                        <div class="img">
-                            <div class="tag">平面设计类</div>
-                            <img src="/images/rewardtask/1.png" width="172" height="129" />
-                        </div>
-                        <div class="text">品牌设计，vi设计，包装设计</div>
-                        <div class="price">RMB：2000</div>
-                    </div>
-                    <div class="task">
-                        <div class="img">
-                            <div class="tag">平面设计类</div>
-                            <img src="/images/rewardtask/1.png" width="172" height="129" />
-                        </div>
-                        <div class="text">品牌设计，vi设计，包装设计</div>
-                        <div class="price">RMB：2000</div>
-                    </div>
-                    <div class="task">
-                        <div class="img">
-                            <div class="tag">平面设计类</div>
-                            <img src="/images/rewardtask/1.png" width="172" height="129" />
-                        </div>
-                        <div class="text">品牌设计，vi设计，包装设计</div>
-                        <div class="price">RMB：2000</div>
-                    </div>
-                    <div class="task">
-                        <div class="img">
-                            <div class="tag">平面设计类</div>
-                            <img src="/images/rewardtask/1.png" width="172" height="129" />
-                        </div>
-                        <div class="text">品牌设计，vi设计，包装设计</div>
-                        <div class="price">RMB：2000</div>
-                    </div>
+                    </a>
+                    @endforeach
                 </div>
                 <div class="pagination">
-                    <div class="right to-page">
-                        <p>
-                            共<span class="page-count">3</span>页,到第<input type="text" >页
-                            <input type="button" value="确定">
-                        </p>
-                    </div>
-                    <div class="page-num right">
-                        <a href="#">
-                            <img src="/images/icon/icon-arrow-left.png" alt="icon-left" width="28" height="28" />         
-                        </a>
-                        <span class="num active">1</span>
-                        <span class="num">2</span>
-                        <span class="num">3</span>
-                        <a href="#">
-                            <img src="/images/icon/icon-arrow-right.png" alt="icon-right" width="28" height="28" />
-                        </a>
-                    </div>
-            </div>
+
+                </div>
             </div>
         </div>
     </div>

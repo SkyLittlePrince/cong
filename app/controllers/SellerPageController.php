@@ -3,6 +3,17 @@ use Gregwar\Captcha\CaptchaBuilder;
 
 class SellerPageController extends BaseController {
 
+	public function sellerStore()
+	{
+		$shop_id = Input::get("shop_id");
+
+		$shop = Shop::where("id", "=", $shop_id)->with('tags','products')->first();
+
+		$productsRanking = DB::table('products')->where("shop_id", "=", $shop_id)->orderBy('sellNum', 'desc')->take(5)->get();
+
+		return View::make('tradingCenter.seller-center.seller-store', array("shop" => $shop, "productsRanking" => $productsRanking));
+	}
+
 	public function myIndents()
 	{
 		$indents = [];
