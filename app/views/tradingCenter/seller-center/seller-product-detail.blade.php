@@ -20,28 +20,24 @@
                 <div class="info component">
                     <p>{{$product->shop->user->username}}</p>
                     <p class="address-info">
-                        <span>{{$product->shop->user->country}}</span>
-                        <span>{{$product->shop->user->province}}</span>
-                        <span>{{$product->shop->user->city}}</span>
+                        @if (isset($product->shop->user->country) && isset($product->shop->user->province) && isset($product->shop->user->city))
+                        <span>{{{$product->shop->user->country}}}</span>
+                        <span>{{{$product->shop->user->province}}}</span>
+                        <span>{{{$product->shop->user->city}}}</span>
+                        @else
+                        <span>未知地区</span>
+                        @endif 
                     </p>
                 </div>
             </div>
             <!-- 店铺信息简介 -->
             <div class="store-detail header-component">
                 <div class="row-content">
-                    <span class="label">丛丛店铺: </span>
+                    <span class="label">店铺名称: </span>
                     <span class="content">
-                    @foreach($product->shop->tags as $tag)
-                    {{ $tag->name}}
-                    @endforeach
+                    {{{ $product->shop->name }}}
                     </span>
                 </div>
-                <!--
-                <div class="row-content">
-                    <span class="label">教育情况: </span>
-                    <span class="content">上海负担大学动画出传媒专业硕士</span>
-                </div>
-                -->
                 <div class="row-content">
                     <span class="label">买家信用: </span>
                     <span class="content">
@@ -59,8 +55,13 @@
                     <span class="label">店铺简介: </span>
                     <span class="content">{{$product->shop->description}}</span>
                 </div>
-                <div class="talk">
-                    <a href="#" class="btn">谈一谈</a>
+                <div class="row-content">
+                    <span class="label">店铺标签: </span>
+                    <span class="content">
+                        @foreach($product->shop->tags as $tag)
+                            {{ $tag->name}}
+                        @endforeach
+                    </span>
                 </div>
                 <div class="stastic">
                     <span>累计交易: </span>
