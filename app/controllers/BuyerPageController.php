@@ -18,7 +18,7 @@ class BuyerPageController extends BaseController {
 		// $sellerNames = array();
 		$numOfItemsPerPage = 3;
 		$indents = Indent::where("user_id", $user_id)->with('products','products.shop.user')->paginate($numOfItemsPerPage);
-		
+
 		$sellers = User::whereHas('products',function($q) use ($user_id)
 			{
 				$q->whereHas('indents',function($q) use ($user_id)
@@ -26,6 +26,7 @@ class BuyerPageController extends BaseController {
 						$q->where('user_id',$user_id);
 					});
 			})
+			->remember(10)
 			->take(5)->get();
 
 		$numOfTotalItems = $indents->getTotal();
