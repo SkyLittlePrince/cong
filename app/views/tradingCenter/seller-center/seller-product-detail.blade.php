@@ -65,8 +65,6 @@
                 <div class="stastic">
                     <span>累计交易: </span>
                     <span>{{$product->sellNum}}</span>
-                    <span>访问量: </span>
-                    <span>{{$product->visiteNum}}</span>
                 </div>
             </div>
         </div>
@@ -140,15 +138,15 @@
                         </span>
                         <span>共<span>427</span>次打分</span>
                     </div>
-                    @foreach($comments as $comment)
+                    @foreach($evaluations as $evaluation)
                     <div class="row-content">
-                        <img src="{{$comment->user->avatar}}" alt="rank" width="30" height="30" />
-                        <span>{{$comment->content}}</span>
+                        <img src="{{$evaluation->user->avatar}}" alt="rank" width="30" height="30" />
+                        <span>{{$evaluation->content}}</span>
                     </div>
                     @endforeach
                 </div>
-                @if(count($comments) < $comments->getTotal())
-                {{$comments->appends(array('product_id' => $product->id))->links();}}
+                @if(count($evaluations) < $evaluations->getTotal())
+                {{$evaluations->appends(array('product_id' => $product->id))->links();}}
                 @endif
                 <!--
                 <div class="pagination">
