@@ -62,11 +62,9 @@ Route::group(array('prefix' => 'invitation','before' => 'auth.user.isIn'),functi
 });
 
 //评论模块
-Route::group(array('prefix' => 'comment','before' => 'auth.user.isIn'),function()
+Route::group(array('prefix' => 'evaluation','before' => 'auth.user.isIn'),function()
 {
-	Route::post('addComment','CommentController@addComment');
-	Route::get('deleteComment','CommentController@deleteComment');
-	Route::get('getComment','CommentController@getComment');
+	Route::post('addEvaluation','EvaluationController@addEvaluation');
 });
 
 //店铺模块
@@ -76,7 +74,8 @@ Route::group(array('prefix' => 'shop','before' => 'auth.user.isIn'),function()
 	Route::post('updateShop','ShopController@updateShop');
 	Route::post('addTag','ShopController@addTag');
 	Route::post('deleteTag','ShopController@deleteTag');
-	Route::get('deleteShop','ShopController@deleteShop');	
+	Route::get('deleteShop','ShopController@deleteShop');
+	Route::get('searchShop','ShopController@searchShopByTag');	
 });
 
 //产品模块
@@ -321,10 +320,7 @@ Route::group(array('prefix' => 'trading-center'),function()
 				return View::make('tradingCenter.seller-center.indent-evaluation');
 			});
 			Route::get('seller-store', 'SellerPageController@sellerStore');
-			Route::get('product-detail', function()
-			{
-				return View::make('tradingCenter.seller-center.seller-product-detail');
-			});
+			Route::get('product-detail', 'SellerPageController@productDetail');
 		});
 	});
 });

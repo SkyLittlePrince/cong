@@ -3,6 +3,22 @@ use Gregwar\Captcha\CaptchaBuilder;
 
 class SellerPageController extends BaseController {
 
+	public function productDetail()
+	{
+		$product_id = Input::get('product_id');
+		$product = Product::with('shop','shop.tags','shop.user','pictures')->find($product_id);
+		if(!isset($product))
+			return Response::view('errors.missing', array(), 404); 
+
+		$numOfItemsPerPage = 8;
+		$comments = Comment::where('product_id',$product_id)
+				->with('user')
+				->paginate($numOfItemsPerPage);
+
+
+		return View::make('tradingCenter.seller-center.seller-product-detail',array('product' => $product,'comments' => $comments));
+	}
+
 	public function sellerStore()
 	{
 		$shop_id = Input::get("shop_id");
