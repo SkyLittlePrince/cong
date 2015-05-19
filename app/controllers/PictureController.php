@@ -25,11 +25,11 @@ class PictureController extends \BaseController {
 		if($user->id != $product->shop->user_id)
 			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
 
-		$pictrue = new Picture;
-		$pictrue->image = $image;
-		$pictrue->product_id = $product_id;
+		$picture = new Picture;
+		$picture->image = $image;
+		$picture->product_id = $product_id;
 
-		if($pictrue->save())
+		if($picture->save())
 			return Response::json(array('errCode' => 0,'picture_id' => $picture->id));
 
 		return Response::json(array('errCode' => 3,'message' => '保存失败!'));
