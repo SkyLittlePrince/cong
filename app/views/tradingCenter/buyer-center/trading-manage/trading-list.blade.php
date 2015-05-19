@@ -35,12 +35,12 @@
 				</div>
 				<div class="order-pic order-component">
 					<span>
-						<img src="/images/common/avatar.png" alt="order-pic">
+						<img src="{{{ $indent->product['avatar'] }}}" alt="order-pic">
 					</span>
 				</div>
 				<div class="order-title order-component">
 					<p class="order-p">
-                        <a href="{{{ $indent['product']['id'] }}}" target="_blank">{{{ $indent->product["name"] }}}</a></p>
+                        <a href="/trading-center/seller/product-detail?product_id={{{$indent['product']['id']}}}" target="_blank">{{{ $indent->product["name"] }}}</a></p>
 					<p class="price line-two">￥<span>{{{ $indent->product["price"] }}}</span></p>
 				</div>
 				<div class="order-status order-component">
@@ -52,6 +52,7 @@
     				<p class="order-p">已付款</p>
     				@else
     				<p class="order-p">交易成功</p>
+                    <input type="button" class="btn comment-btn" value="发表评价" /> 
     				@endif 
 				</div>
 	    	</div>

@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 @endif
-    			
+
     			<div class="talk">
     				<span><img src="/images/tradingcenter/icon/9.png" height="23" width="25"></span>
                     <input type="button" id="talk-btn" value="谈一谈" class="btn" />
@@ -101,16 +101,39 @@
     			<img src="/images/tradingcenter/icon/5.png" width="20" height="20" />
     			<span>我的技能</span>
     		</div>
-            @if (Sentry::check() && Sentry::getUser()->id == $id)
-          
-            @endif
             <div class="skill-items">
                 @foreach ($skills as $skill)
                 <div class="skill-item">
-                    <input type="hidden" class="skill-id" value="{{{ $skill['id'] }}}">
-                    <span>{{{ $skill["name"] }}}</span>
+                    <span class="skill-id hidden">{{{ $skill['id'] }}}</span>
+                    <span class="skill-name">{{{ $skill["name"] }}}</span>
+                    @if (Sentry::check() && Sentry::getUser()->id == $id)
+                    <img src="/images/tradingcenter/icon/delete.png" class="hidden del-btn-skill" />
+                    @endif
                 </div>
                 @endforeach
+                @if (Sentry::check() && Sentry::getUser()->id == $id)
+                <div class="skill-add">
+                    <img class="add-btn-img" src="/images/tradingcenter/icon/add.png" />
+                </div>
+                @endif
+                <div class="clear"></div>
+                <script type="text-template" id="skillTemplate">
+                    <div class="skill-item">
+                        <span class="skill-id hidden"><%= skill_id %></span>
+                        <span class="skill-name"><%= name %></span>
+                        <img src="/images/tradingcenter/icon/delete.png" class="hidden del-btn-skill" />
+                    </div>
+                </script>
+                <div class="bg hidden"></div>
+                <div class="show hidden">
+                    <span  class="skill-name">
+                        <input type="text" placeholder="技能"/>
+                    </span>
+                    @if (Sentry::check() && Sentry::getUser()->id == $id)
+                        <div class="add-save-btn">添加</div>
+                        <div class="add-cancel-btn">取消</div>
+                    @endif
+                </div>
                 <div class="clear"></div>
             </div>
     	</div>
@@ -124,8 +147,8 @@
                 <div class="work-item">
                     <span class="hidden id">{{{ $workExperience["id"] }}}</span>
                     <div class="work-time">
-                        <span class="start-time">{{{ $workExperience["start_time"] }}}</span> 
-                         至 
+                        <span class="start-time">{{{ $workExperience["start_time"] }}}</span>
+                         至
                         <span class="end-time">{{{ $workExperience["end_time"] }}}</span>
                     </div>
                     <div class="work-content">
@@ -146,8 +169,8 @@
                     <div class="work-item">
                         <span class="hidden id"><%= newWorkExperienceId %></span>
                         <div class="work-time">
-                            <span class="start-time"><%= startTime %></span> 
-                             至 
+                            <span class="start-time"><%= startTime %></span>
+                             至
                             <span class="end-time"><%= endTime %></span>
                         </div>
                         <div class="work-content">
@@ -166,8 +189,8 @@
                     <div class="work-time hidden">
                         <span class="start-time">
                             <input type="text" placeholder="起始时间" />
-                        </span> 
-                         至 
+                        </span>
+                         至
                         <span class="end-time">
                             <input type="text" placeholder="截止时间" />
                         </span>
@@ -198,8 +221,8 @@
                 <div class="edu-item">
                     <span class="hidden id">{{{ $eduExperience["id"] }}}</span>
                     <div class="edu-time">
-                        <span class="start-time">{{{ $eduExperience["start_time"] }}}</span> 
-                         至 
+                        <span class="start-time">{{{ $eduExperience["start_time"] }}}</span>
+                         至
                         <span class="end-time">{{{ $eduExperience["end_time"] }}}</span>
                     </div>
                     <div class="edu-content">
@@ -220,8 +243,8 @@
                     <div class="edu-item">
                         <span class="hidden id"><%= newEduExperienceId %></span>
                         <div class="edu-time">
-                            <span class="start-time"><%= startTime %></span> 
-                             至 
+                            <span class="start-time"><%= startTime %></span>
+                             至
                             <span class="end-time"><%= endTime %></span>
                         </div>
                         <div class="edu-content">
@@ -238,13 +261,13 @@
                 </script>
                 <div class="edu-item">
                     <span class="hidden id">
-                        
+
                     </span>
                     <div class="edu-time hidden">
                         <span class="start-time">
                             <input type="text" placeholder="起始时间" />
-                        </span> 
-                         至 
+                        </span>
+                         至
                         <span class="end-time">
                             <input type="text" placeholder="截止时间" />
                         </span>
@@ -275,10 +298,10 @@
                 <div class="award-item">
                     <span class="hidden id">{{{ $award["id"] }}}</span>
                     <div class="award-time">
-                        <span class="time">{{{ $award["time"] }}}</span>        
+                        <span class="time">{{{ $award["time"] }}}</span>
                     </div>
                     <div class="award-content">
-                        <span class="description">{{{ $award["description"] }}}</span> 
+                        <span class="description">{{{ $award["description"] }}}</span>
                     </div>
                     @if (Sentry::check() && Sentry::getUser()->id == $id)
                     <div class="operation">
@@ -295,10 +318,10 @@
                     <div class="award-item">
                         <span class="hidden id"><%= newAwardId %></span>
                         <div class="award-time">
-                            <span class="time"><%= time %></span>        
+                            <span class="time"><%= time %></span>
                         </div>
                         <div class="award-content">
-                            <span class="description"><%= description %></span> 
+                            <span class="description"><%= description %></span>
                         </div>
                         <div class="operation">
                             <div class="edit-btn">编辑</div>
@@ -313,12 +336,12 @@
                     <div class="award-time">
                         <span class="time">
                             <input type="text" class="hidden" placeholder="获奖时间" />
-                        </span>        
+                        </span>
                     </div>
                     <div class="award-content">
                         <span class="description">
                             <input type="text" class="hidden" placeholder="获奖描述" />
-                        </span> 
+                        </span>
                     </div>
                     @if (Sentry::check() && Sentry::getUser()->id == $id)
                     <div class="operation">
@@ -336,10 +359,10 @@
                 <div class="friend">
                     <div class="friend-avatar">
                         <img src="{{{ $friend['head'] }}}" width="50" height="50" />
-                    </div>  
+                    </div>
                     <div class="friend-name">
                         <a href="/trading-center/account/user-info?user_id={{{$friend['id']}}}">{{{$friend["username"]}}}</a>
-                    </div>               
+                    </div>
                 </div>
             @endforeach
             @if (count($friends) < $numOfTotalFriends)
@@ -361,7 +384,7 @@
     		<div class="contact-text">
     			<div>
 	    			<img src="/images/tradingcenter/icon/14.png"/>
-					<span class="title">联系方式</span>    				
+					<span class="title">联系方式</span>
     			</div>
     			<div><label>手机：</label><span class="mobile">{{{ $mobile }}}</span></div>
     			<div><label>QQ：</label><span class="qq">{{{ $qq }}}</span></div>
@@ -371,6 +394,24 @@
     	</div>
         <div class="clear"></div>
     </div>
+    <div id="chat-box" style="border: 1px solid gray; position: fixed; right: 0; bottom: 50px; width: 300px; height: 400px; display: none;">
+        <div class="chat-log" style="overflow: scroll; height: 300px; width: 300px; border-bottom: 1px solid gray;">
+
+        </div>
+        <div class="chat-bar" style="height: 30px; width: 300px; background-color: green;"></div>
+        <div class="chat-input">
+            <input type="text" id="chat-input-box" value="" style="width: 300px; height: 30px;">
+            <input type="submit" id="chat-submit" value="发送" style="width: 300px; height: 30px;">
+        </div>
+        <div id="chat-data">
+            @if (Sentry::check())
+            <input type="hidden" name="current_user_id" value="{{{ Sentry::getUser()->id }}}" id="current-userid">
+            <input type="hidden" name="current_user_name" value="{{{ Sentry::getUser()->username }}}" id="current-username">
+            @endif
+            <input type="hidden" name="to_user_id" value="{{{ $id }}}" id="to-userid">
+            <input type="hidden" name="to_user_name" value="{{{ $username }}}" id="to-username">
+        </div>
+    </div>
 @append
 
 
@@ -378,4 +419,114 @@
 	@parent
     <script type="text/javascript" src="/lib/js/lodash/lodash.js"></script>
 	<script type="text/javascript" src="/dist/js/pages/user-info.js"></script>
+    <script type="text/javascript">
+// 扩展DATE
+Date.prototype.Format = function (fmt) {
+  var o = {
+    "M+": this.getMonth() + 1, //月份
+    "d+": this.getDate(), //日
+    "h+": this.getHours(), //小时
+    "m+": this.getMinutes(), //分
+    "s+": this.getSeconds(), //秒
+    "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+    "S": this.getMilliseconds() //毫秒
+  };
+  if (/(y+)/.test(fmt))
+    fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+  for (var k in o)
+    if (new RegExp("(" + k + ")").test(fmt))
+      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+  return fmt;
+};
+
+// 谈一谈事件绑定
+$('#talk-btn').on('click', function() {
+  // 检查当前用户是否登录
+  @if (Sentry::check())
+  var logStatus = 1;
+  @else
+  var logStatus = 0;
+  @endif
+  if (logStatus === 0) {
+    alert('请先登录');
+    return;
+  }
+
+  // 活取当前登录用户和聊天对象的id和用户名
+  var currentId = $('#current-userid').val();
+  var currentUsername = $('#current-username').val();
+  var toId = $('#to-userid').val();
+  var toUsername = $('#to-username').val();
+  if (currentId === toId) {
+    alert('你不能自己聊天');
+    return;
+  }
+
+  var ws = new WebSocket('ws://127.0.0.1:9501/');
+  // 显示聊天框
+  $('#chat-box').show();
+
+  ws.onopen = function(event) {
+    var data = {
+      who: currentId,
+      dowhat: 'login'
+    };
+    ws.send(JSON.stringify(data));
+  };
+
+  ws.onmessage = function(message){
+    console.log(message.data);
+    var data = JSON.parse(message.data);
+
+    if (data.dowhat === 'login') {
+      // alert(data.fd + 'logined');
+    } else if (data.dowhat === 'chat') {
+      var current_time = new Date().Format("yyyy-MM-dd hh:mm:ss");
+      $('.chat-log').append("<div style='float: left;'>" + "<p><small>" + current_time + '</small></p><p>' + toUsername + ': ' + data.msg + "</p></div><div style='clear: both; height: 10px;'></div>");
+    } else if (data.dowhat === 'logout') {
+      // alert(data.who + ': ' + data.dowhat);
+    }
+  };
+
+  ws.onclose = function(){
+    var who = currentId;
+    var data = {
+      who: who,
+      dowhat: 'logout'
+    };
+    ws.send(JSON.stringify(data));
+  };
+
+  // 消息发送, 回车键绑定
+  $('#chat-box').keydown(function(event) {
+    if(event.keyCode==13) {
+      $("#chat-submit").click();
+    }
+  });
+
+  // 消息发送
+  $('#chat-submit').on('click', function(event){
+    event.preventDefault();
+    var msg = $('#chat-input-box').val();
+    if (msg === '') {
+      alert('请输入消息');
+      return;
+    }
+    var who = currentId;
+    var to = toId;
+    var data = {
+      who: who,
+      dowhat: 'chat',
+      to: to,
+      msg: msg
+    };
+    ws.send(JSON.stringify(data));
+    // 添加聊天记录到box
+    var current_time = new Date().Format("yyyy-MM-dd hh:mm:ss");
+    $('.chat-log').append("<div style='float: right;'>" + "<p><small>" + current_time + '</small></p><p>' + currentUsername + ': ' + msg + "</p></div><div style='clear: both; height: 10px;'></div>");
+
+    $('#chat-input-box').val('');
+  });
+});
+    </script>
 @stop

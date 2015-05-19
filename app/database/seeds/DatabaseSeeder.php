@@ -13,7 +13,6 @@ class DatabaseSeeder extends Seeder {
 
 		$this->call('GroupsTableSeeder');
 		$this->call('UsersTableSeeder');
-		$this->call('CatsTableSeeder');
 		$this->call('ShopsTableSeeder');
 		$this->call('CategoriesTableSeeder');
 		$this->call('ProductsTableSeeder');
@@ -33,7 +32,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('SkillsTableSeeder');
 		$this->call('UserSkillsTableSeeder');
 		$this->call('PicturesTableSeeder');
-		$this->call('CommentsTableSeeder');		
+		$this->call('EvaluationTableSeeder');
 	}
 
 }

@@ -1,6 +1,5 @@
 # 引入所需模块
 Checkbox = require './../../common/checkbox/checkbox.coffee'
-shoppingCartCookie = require './shopping-cart-cookie.coffee'
 shopping = require './../../common/shopping/shopping.coffee'
 
 # 缓存DOM节点
@@ -32,7 +31,7 @@ loadShoppingCart = ->
 		$noProductContent.show()
 	else
 		$CartContent.show()
-		allProduct = shoppingCartCookie.getAllProductFromCookie()
+		allProduct = shopping.getAllProductFromCookie()
 		loadProductToPage(product) for product in allProduct
 		$clearningNumber.text(cartCookie.setNum)
 		$clearningTotal.text(cartCookie.setTotal)
@@ -64,7 +63,7 @@ changeProductNumber = ->
 		
 		id = $this.parent().siblings('.id').val()
 		# 更新cookie
-		shoppingCartCookie.updateOneProductInCookie id, (newValue - value)
+		shopping.updateOneProductInCookie id, (newValue - value)
 		shopping.updateShoppingCartCookie (newValue - value), price
 		# 更新页面上的结算数据
 		updateShoppingCart();
@@ -94,7 +93,7 @@ deleteOneProductHandler = ->
 	if confirm('确定删除该商品？')
 		info = getProductInfo($(this))
 		# 移除该商品的cookie
-		shoppingCartCookie.deleteOneProductInCookie info.$id.val() 
+		shopping.deleteOneProductInCookie info.$id.val() 
 		shopping.updateShoppingCartCookie -parseInt(info.$counterInput.val()), info.$price.text()
 		$(this).closest(".one-list").remove()
 		updateShoppingCart()

@@ -10,6 +10,7 @@ class SkillController extends \BaseController {
 			return Response::json(array('errCode' => 1,'message' => '技能名不能为空!'));
 
 		$skill = Skill::firstOrCreate(array('name' => $name));
+
 		try
 		{
 			if($user->skills()->save($skill))

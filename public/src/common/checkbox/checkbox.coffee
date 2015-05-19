@@ -123,7 +123,3 @@ class Checkbox
 
 
 module.exports = Checkbox
-
-
-
-
