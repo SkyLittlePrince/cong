@@ -1,4 +1,5 @@
 @import './common.less';
+@import '../../../common/common.less';
 @import './../common/order.less';
 @import './../common/panel.less';
 
@@ -11,4 +12,30 @@
 	.employer-content {
 		padding-bottom: 33px;
 	}
+
+	.my-history {
+		.sellers-info {
+			.seller-info {
+				@width: 60px;
+
+				width: @width;
+				margin: 20px 5px;
+				.seller-avatar {
+					width: 30px;
+					margin: 0 auto;
+					img {
+						.border-radius(15px);
+					}
+				}
+
+				.seller-name {
+					text-align: center;
+					width: @width;
+					word-wrap: break-word;
+				}
+				float: left;
+			}
+		}
+	}
 }
+

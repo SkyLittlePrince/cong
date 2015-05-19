@@ -34,6 +34,8 @@
 	   				<li class="one-message">
                         <div class="checkbox-wrapper"></div>         
                         <div class="col-right">
+                            <input type="hidden" class="receiver-name" value="{{{$message->receiverName}}}">
+                            <input type="hidden" class="sender-name" value="{{{$message->senderName}}}">
                             <input type="hidden" class="message-status" value="{{{$message->status}}}">
                             <input type="hidden" class="message-id" value="{{{ $message->id }}}" />
                             <input type="hidden" class="message-content" value="{{{ $message->content }}}" />
@@ -44,7 +46,7 @@
 	   			</ul>
 	   		</div>
             @if (count($messages) < $numOfTotalItems)
-                {{ $indents->links() }}
+                {{ $messageLinks->links() }}
             @endif
    		</div>
         <script type="text/template" id="one-message-content-template">
@@ -52,18 +54,18 @@
 
                 <div class="message-row">
                     <label>发送者：</label>
-                    <span class="sender"><%= sender%></span>
+                    <span class="sender"><%= senderName %></span>
                 </div>
                 <div class="message-row">
                     <label>时间：</label>
-                    <span class="time"><%= created_at%></span>
+                    <span class="time"><%= created_at %></span>
                 </div>
                 <div class="message-row">
                     <label class="receiver">接收者：</label>
-                    <span><%= receiver%></span>
+                    <span><%= receiverName %></span>
                 </div>
                 <div class="message-row message-content-main">
-                    <span class="content"><%= content%></span>
+                    <span class="content"><%= content %></span>
                 </div>
             </div>
         </script>

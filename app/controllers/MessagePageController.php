@@ -16,9 +16,16 @@ class MessagePageController extends BaseController {
 
 		$numOfItemsPerPage = 10;
 		$messages = DB::table('messages')->where("receiver", "=", $user_id)->where("type", "=", 2)->paginate($numOfItemsPerPage);
-		$numOfTotalItems = DB::table('messages')->where("receiver", "=", $user_id)->where("type", "=", 2)->count();
+		$numOfTotalItems = $messages->getTotal();
 
-		return View::make('tradingCenter.mynews.notification', array("messages" => $messages, "numOfTotalItems" => $numOfTotalItems));
+		$messageLinks = DB::table('messages')->where("receiver", "=", $user_id)->where("type", "=", 2)->paginate($numOfItemsPerPage);
+
+		foreach ($messages as $message) {
+			$message->receiverName = User::find($message->receiver)->username;
+			$message->senderName = User::find($message->sender)->username;
+		}
+
+		return View::make('tradingCenter.mynews.notification', array("messages" => $messages, "numOfTotalItems" => $numOfTotalItems, "messageLinks" => $messageLinks));
 	}
 
 	public function setting()
@@ -46,8 +53,17 @@ class MessagePageController extends BaseController {
 			return Redirect::guest('user/login');
 		}
 
-		$messages = DB::table('messages')->where("receiver", "=", $user_id)->where("type", "=", 1)->get();
+		$numOfItemsPerPage = 10;
+		$messages = DB::table('messages')->where("receiver", "=", $user_id)->where("type", "=", 1)->paginate($numOfItemsPerPage);
+		$numOfTotalItems = $messages->getTotal();
 
-		return View::make('tradingCenter.mynews.trading-reminder', array("messages" => $messages));
+		$messageLinks = DB::table('messages')->where("receiver", "=", $user_id)->where("type", "=", 2)->paginate($numOfItemsPerPage);
+
+		foreach ($messages as $message) {
+			$message->receiverName = User::find($message->receiver)->username;
+			$message->senderName = User::find($message->sender)->username;
+		}
+
+		return View::make('tradingCenter.mynews.trading-reminder', array("messages" => $messages, "numOfTotalItems" => $numOfTotalItems));
 	}
 }
