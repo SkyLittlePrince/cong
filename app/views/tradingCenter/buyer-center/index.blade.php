@@ -27,7 +27,9 @@
 				</div>
 				<div class="order-pic order-component">
 					<span>
-						<img src="{{{ $indent->product['avatar'] }}}" alt="order-pic">
+						<a href="/trading-center/seller/product-detail?product_id={{{$indent['product']['id']}}}" target="_blank">
+							<img src="{{{ $indent->product['avatar'] }}}" alt="order-pic">
+						</a>
 					</span>
 				</div>
 				<div class="order-title order-component">
