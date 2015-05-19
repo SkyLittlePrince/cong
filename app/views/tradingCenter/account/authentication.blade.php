@@ -170,10 +170,10 @@
             <div class="operate-btn">
                 @if ($isExist == true)
                     @if ($status == -1)
-                    <a href="javascript::void(0);" class="btn" id="edit-btn">提交审核</a>
+                    <a href="javascript:void(0);" class="btn" id="edit-btn">提交审核</a>
                     @endif
                 @else
-                    <a href="javascript::void(0);" class="btn" id="create-btn">提交审核</a>
+                    <a href="javascript:void(0);" class="btn" id="create-btn">提交审核</a>
                 @endif
             </div>
         </div>

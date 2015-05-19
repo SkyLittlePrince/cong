@@ -45,8 +45,8 @@ setUploadedPhoto = (name)->
 	}
 
 $ ->
-	$('#edit-btn').bind 'click', editAuthentication
-	$('#create-btn').bind 'click', createAuthentication
+	$(document).on 'click', '#edit-btn', editAuthentication
+	$(document).on 'click', '#create-btn', createAuthentication
 
 	frontUploader = setUploadedPhoto "positive"
 	behindUploader = setUploadedPhoto "negative"
@@ -68,6 +68,7 @@ editAuthentication = (e)->
 		gender: gender
 
 	dataBus.updateAuthenticatoin data, (res)->
+		console.log res
 		if res.errCode == 0
 			alert "提交审核成功"
 			window.location.href = "/trading-center/account/authentication"

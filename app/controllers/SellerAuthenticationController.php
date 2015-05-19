@@ -16,6 +16,16 @@ class SellerAuthenticationController extends \BaseController {
 		$address = Input::get('address');
 		$phone = Input::get('phone');
 
+		$errMes = array(
+			'required' => 'The :attribute field is required.',
+			'between' =>  'The :attribute must be between :min - :max.',
+			'alpha_num' => 'The :attribute must be consist of numeric or alphabetical characters',
+			'url'	=>'The :attribute must be right url of image',
+			'address' =>'The :attribute must be string ',
+			'different' => 'The :attribute must be different from :other',
+			'integer' => 'The :attribute must be int'
+			);
+
 		$validator = Validator::make(
 			array(
 				'name' => $name,
@@ -32,11 +42,19 @@ class SellerAuthenticationController extends \BaseController {
 				'credit_behind' => 'required|url',
 				'address' => 'required|between:2,40',
 				'phone' => 'required|integer'
-			)
+			),
+			$errMes
 		);
 
 		if($validator->fails()){
-			return Response::json(array('errCode'=>4,'message'=>'参数格式错误','validateMes' =>$validator->messages()));
+			//return Response::json(array('errCode'=>4,'message'=>'参数格式错误','validateMes' =>$validator->messages()));
+			$messages = $validator->messages();
+			$mes = '';
+			
+			foreach ($messages->all() as $message) {
+				$mes .= $message;
+			}
+			return Response::json(array('errCode'=>4,'message'=>$mes,'validateMes' =>$messages));
 		}
 
 		$sellerAuthentication = new Authentication();
@@ -53,6 +71,7 @@ class SellerAuthenticationController extends \BaseController {
 			return Response::json(array('errCode' => 3,'message' => '认证信息提交失败!'));
 
 		return Response::json(array('errCode' => 0,'message' => '认证信息提交成功!', 'newAuthenticationId' => $sellerAuthentication->id));
+		
 	}
 
 	public function update()
