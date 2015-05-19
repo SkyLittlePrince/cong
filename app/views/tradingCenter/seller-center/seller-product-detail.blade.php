@@ -65,8 +65,6 @@
                 <div class="stastic">
                     <span>累计交易: </span>
                     <span>{{$product->sellNum}}</span>
-                    <span>访问量: </span>
-                    <span>{{$product->visiteNum}}</span>
                 </div>
             </div>
         </div>
@@ -129,26 +127,24 @@
                 <div class="comment-list">
                     <div class="row-content">
                         <span class="label">产品评价</span>
-                        <span>(共<span>458</span>条)</span>
+                        <span>(共<span>{{$evaluations->getTotal()}}</span>条)</span>
                         <span class="label total-comment" >总体评价</span>
                         <span class="content">
+                            @for($i = 0;$i < $product->aScore;$i++)
                             <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
-                            <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
-                            <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
-                            <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
-                            <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
+                            @endfor
                         </span>
-                        <span>共<span>427</span>次打分</span>
+                        <span>共<span>{{$evaluations->getTotal()}}</span>次打分</span>
                     </div>
-                    @foreach($comments as $comment)
+                    @foreach($evaluations as $evaluation)
                     <div class="row-content">
-                        <img src="{{$comment->user->avatar}}" alt="rank" width="30" height="30" />
-                        <span>{{$comment->content}}</span>
+                        <img src="{{$evaluation->user->avatar}}" alt="rank" width="30" height="30" />
+                        <span>{{$evaluation->content}}</span>
                     </div>
                     @endforeach
                 </div>
-                @if(count($comments) < $comments->getTotal())
-                {{$comments->appends(array('product_id' => $product->id))->links();}}
+                @if(count($evaluations) < $evaluations->getTotal())
+                {{$evaluations->appends(array('product_id' => $product->id))->links();}}
                 @endif
                 <!--
                 <div class="pagination">
