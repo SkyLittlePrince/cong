@@ -46,7 +46,7 @@ shopping =
 		result = []
 		for oneCookie, oneCookieValue of allCookie
 			if oneCookie.indexOf(cookieConfig.productIdCookieBegin) > -1
-				productInfo = shoppingCartCookie.parseFoodInCookie oneCookieValue
+				productInfo = shopping.parseFoodInCookie oneCookieValue
 				result.push productInfo
 		return result
 	###
