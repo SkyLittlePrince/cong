@@ -1,6 +1,6 @@
 
 <?php
-require_once(__DIR__ . "/ZurbPresenter.php");
+require_once(app_path() . "/views/components/pagination/ZurbPresenter.php");
 
 $zurbPresenter = with(new ZurbPresenter($paginator));
 ?>

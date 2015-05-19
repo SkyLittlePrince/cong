@@ -57,7 +57,9 @@
 	    	</div>
 	    	@endforeach
 	    </div>
-        		{{ $indents->links() }}
+	    @if (count($indents) < $numOfTotalItems)
+			{{ $indents->links() }}
+		@endif
 	</div>
 @stop
 

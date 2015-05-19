@@ -49,7 +49,9 @@
 				</div>
 	    	</div>
 	    	@endforeach
+	    	@if (count($indents) < $numOfTotalItems)
 	        	{{ $indents->links() }}
+	        @endif
 	    </div>
 
 	    <div class="my-history">
