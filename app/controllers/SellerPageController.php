@@ -74,7 +74,7 @@ class SellerPageController extends BaseController {
 			return Redirect::guest('user/login');
 		}
 
-		$myShop = Shop::where("user_id", "=", $user_id)->with('tags','products')->first();
+		$myShop = Shop::where("user_id", "=", $user_id)->with('tags','products.pictures')->first();
 
 		if(!isset($myShop))
 		{
