@@ -406,7 +406,7 @@ class UserController extends \BaseController {
 				'region' =>'string |between:2,20',
 				'address' =>'string |between:2,40',
 				'birthday' =>'date_format:Y-m-d',
-				'realname'=>'between:4,15'
+				'realname'=>'between:1,15'
 			)
 		);
 

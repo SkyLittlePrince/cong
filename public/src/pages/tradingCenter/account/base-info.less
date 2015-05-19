@@ -68,7 +68,7 @@
 					.input(168px, @line-height);
 				}
 
-				#prov, #city, #region {
+				#prov, #city, #region, #country {
 					.input(64px, @line-height);
 				}
 
@@ -90,41 +90,16 @@
 				#year, #month, #day {
 					.input(33px, @line-height);
 				}
-
-				.person-upload {
-					.border-radius(16px);
-			        padding: 3px 5px;
-			        width: 68px;
-			        height: 20px;
-			        line-height: 20px;
-			        position: relative;
-			        cursor: pointer;
-			        color: #fff;
-			        background: #7ecac9;
-			        border: none;
-			        overflow: hidden;
-			        display: inline-block;
-			        *display: inline;
-			        *zoom: 1;
-			        margin-top: 10px;
-			        font-size: 14px;
-			        font-family: @font;
-			        margin-left: 20px;
-			        text-align: center;
-
-					#revise-avatar {
-						z-index: 1;
-						position: absolute;
-				        font-size: 100px;
-				        right: 0;
-				        top: 0;
-				        cursor: pointer;
-				        width: 78px;
-  						height: 26px;
-					}
+				.base-info-upload {
+					top: 0;
 				}
 			}
-
+			#avatar-wrapper {
+				div {
+					width: 70px !important;
+					height: 20px !important;
+				}
+			}
 			.sex{
 				margin-top:8px;
 			}
