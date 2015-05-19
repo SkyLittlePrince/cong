@@ -147,27 +147,6 @@
                 @if(count($evaluations) < $evaluations->getTotal())
                 {{$evaluations->appends(array('product_id' => $product->id))->links();}}
                 @endif
-                <!--
-                <div class="pagination">
-                    <div class="right to-page">
-                        <p>
-                            共<span class="page-count">3</span>页,到第<input type="text" >页
-                            <input type="button" value="确定">
-                        </p>
-                    </div>
-                    <div class="page-num right">
-                        <a href="#">
-                            <img src="/images/icon/icon-arrow-left.png" alt="icon-left" width="28" height="28" />         
-                        </a>
-                        <span class="num active">1</span>
-                        <span class="num">2</span>
-                        <span class="num">3</span>
-                        <a href="#">
-                            <img src="/images/icon/icon-arrow-right.png" alt="icon-right" width="28" height="28" />
-                        </a>
-                    </div>
-                </div>
-            -->
             </div>
         </div>
     </div>
