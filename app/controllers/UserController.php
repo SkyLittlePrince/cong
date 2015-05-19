@@ -664,7 +664,6 @@ class UserController extends \BaseController {
 			return Response::json(array('errCode' => 1,'message' => '请填写正确的邮箱或手机号!'));
 		}
 			
-
 		$user->mobile = $mobile;
 		$user->qq = $qq;
 		$user->email = $email;
