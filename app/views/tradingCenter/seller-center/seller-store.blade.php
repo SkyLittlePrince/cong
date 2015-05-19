@@ -18,19 +18,19 @@
                     <img src="/images/common/avatar.png" alt="avatar">
                 </div>
                 <div class="info component">
-                    <p>{{{ Sentry::getUser()->username }}}</p>
+                    <p>{{{ $shop->user->username }}}</p>
                     <p>
-                        @if (Sentry::getUser()->gender)
+                        @if ($shop->user->gender)
                         男
                         @else
                         女
                         @endif
                     </p>
                     <p class="address-info">
-                        @if ( isset(Sentry::getUser()->country) && isset(Sentry::getUser()->province) && isset(Sentry::getUser()->city) )
-                        <span>{{{ Sentry::getUser()->country }}}</span>
-                        <span>{{{ Sentry::getUser()->province }}}</span>
-                        <span>{{{ Sentry::getUser()->city }}}</span>
+                        @if ( isset($shop->user->country) && isset($shop->user->province) && isset($shop->user->city) )
+                        <span>{{{ $shop->user->country }}}</span>
+                        <span>{{{ $shop->user->province }}}</span>
+                        <span>{{{ $shop->user->city }}}</span>
                         @else
                         <span>未知地区</span>
                         @endif
