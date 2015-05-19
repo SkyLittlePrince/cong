@@ -44,6 +44,26 @@
                 </ul>
             </div>
         </div>
+        <script type="text/template" id="one-message-content-template">
+            <div class="one-message-content">
+
+                <div class="message-row">
+                    <label>发送者：</label>
+                    <span class="sender"><%= sender%></span>
+                </div>
+                <div class="message-row">
+                    <label>时间：</label>
+                    <span class="time"><%= created_at%></span>
+                </div>
+                <div class="message-row">
+                    <label class="receiver">接收者：</label>
+                    <span><%= receiver%></span>
+                </div>
+                <div class="message-row message-content-main">
+                    <span class="content"><%= content%></span>
+                </div>
+            </div>
+        </script>
     </div>
 @stop
 

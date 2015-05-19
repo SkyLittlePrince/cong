@@ -50,6 +50,16 @@ class Checkbox
 
         return checkedBoxes;
 
+    getCheckedInput: ()->
+        checkedInput = []
+        items = @getAllCheckBox()
+
+        items.each ->
+            if $(this).prop('checked')
+                checkedInput.push $(this)
+
+        return checkedInput
+
     setAllItemsSelected: ()->
         items = @getAllCheckBox()
 

@@ -22,11 +22,6 @@ class Message extends \Eloquent {
 			'status'
 		);
 
-	protected $hidden = array(
-			'created_at',
-			'updated_at'
-		);
-
 	public function receiver()
 	{
               	return $this->belongsTo('User', 'receiver', 'id');

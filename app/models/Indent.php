@@ -14,11 +14,6 @@ class Indent extends \Eloquent {
 			'status'
 		);
 
-	protected $hidden = array(
-			'created_at',
-			'updated_at'
-		);
-
 	public function task()
 	{
 	        return $this->belongsTo('Task');
