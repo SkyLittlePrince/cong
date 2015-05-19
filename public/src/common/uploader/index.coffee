@@ -38,15 +38,18 @@ _defaultConfig =
 	auto_start: true,                 # 选择文件后自动上传，若关闭需要自己绑定事件触发上传,
 	unique_names: true,
 	save_key: true,
+	statusTip: '.image-upload-tips'		# 显示图片上传进度的标签的选择器
 	init: {
 		'Error': (up, err, errTip)->
 			console.log errTip
 			# 上传出错时,处理相关的事情
 
 		'BeforeUpload': (up, file)->
-			console.log up
+			$(@getOption().statusTip).text('准备上传图片')
+			# console.log up
 			# 每个文件上传前,处理相关的事情
-
+		'UploadProgress': (up, file)->
+			$(@getOption().statusTip).text('正在上传图片')
 		'FileUploaded': (up, file, info)->
 			# 每个文件上传成功后,处理相关的事情
 			# 其中 info 是文件上传成功后，服务端返回的json，形式如
@@ -56,12 +59,13 @@ _defaultConfig =
 			# }
 			info = $.parseJSON info
 			domain = up.getOption('domain')
-			console.log "url: " + domain + info.key
+			# console.log "url: " + domain + info.key
 			#$("#positive-wrapper").find(".content-img").removeClass("hidden").find("img").attr("src", domain + info.key)
 			#$("#positive-wrapper").find(".img-border").addClass("hidden")
 
 		'UploadComplete': ()->
-			console.log "UploadComplete"
+			# console.log "UploadComplete"
+			$(@getOption().statusTip).text('图片上传成功')
 			# 队列文件处理完毕后,处理相关的事情
 	}
 

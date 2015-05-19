@@ -133,6 +133,7 @@
                             <a href="javascript:;" class="a-upload">
                                 <input type="file" name="avatar-file" id="avatar-file">单击上传
                             </a>
+                            <span class="image-upload-tips"></span>
                         </div>
                         <div class="clear"></div>
                     </div>

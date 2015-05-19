@@ -311,8 +311,9 @@ addProductConfirm = ->
 	if info
 		shopDataBus.addProduct info.name, info.intro, info.price, info.avatar, (data)->
 			if data.errCode is 0
+				alert("商品添加成功")
 				dialog.closeDialog(dialog)
-				console.log data
+				info.id = data.product_id
 				loadOneCreateProduct(info)
 
 # 将一个新添加的商品添加到页面上
@@ -332,7 +333,6 @@ setUploadedPhoto = (name)->
 			info = $.parseJSON info
 			domain = up.getOption('domain')
 			url = domain + info.key
-
 			# 显示上传之后的图片
 			$("#" + name + "-wrapper").find(".avatar-img").attr("src", url)
 			$("#avatar-url").val(url)
@@ -426,6 +426,7 @@ $ ->
 
 	$('body').delegate '.product-edit', 'click', editOneProductHandler
 
+# 用于添加测试用例
 # for i in [1...5]
 # 	shopDataBus.addProduct 111,111,111,"http://7sbxao.com1.z0.glb.clouddn.com/login.jpg", (data) ->
 # 		console.log 'success'
