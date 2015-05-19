@@ -24,5 +24,15 @@ class ShopsTableSeeder extends Seeder {
 			'user_id' => 3,
 			'description' => '100教育广州分公司'
 		]);
+
+		foreach(range(4, 8) as $index)
+		{
+			Shop::create([
+				'avatar' => 'http://7sbxao.com1.z0.glb.clouddn.com/avatar.jpg',
+				'name' => '100教育',
+				'user_id' => $index,
+				'description' => '100教育广州分公司'
+			]);
+		}
   	}
 }
