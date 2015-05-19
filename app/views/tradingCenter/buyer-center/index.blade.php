@@ -100,7 +100,24 @@
 			<div class="trade one-history right">
 				<div class="banner">最近购买的商品</div>
 				<div class="panel">
+					@if (!isset($recentProducts) || count($recentProducts) == 0)
 					<p class="message">最近没有购买任何商品哦～</p>
+					@else
+						<div class="products-info">
+							@foreach ($recentProducts as $recentProduct)
+            				<a href="/trading-center/seller/product-detail?product_id={{{$recentProduct->id}}}" target="_blank">
+	            				<div class="product-info">
+	            					<div class="product-avatar">
+	            						<img src="{{{ $recentProduct->avatar }}}" height="30" width="30" />
+	            					</div>
+	            					<div class="product-name">
+	            						{{{ $recentProduct->name }}}
+	            					</div>
+	            				</div>
+	            			</a>
+            				@endforeach
+						</div>
+					@endif
 					<!-- <a class="see-now" href="#">立即查看</a> -->
 				</div>
 			</div>
