@@ -372,7 +372,7 @@
         </div>
     	<div class="contact block">
     		<div class="contact-avatar">
-    			<img src="/images/tradingcenter/icon/13.png" width="150" height="150" />
+    			<img src="{{{ Sentry::getUser()->avatar }}}" width="150" height="150" />
     		</div>
             @if (Sentry::check() && Sentry::getUser()->id == $id)
             <div class="operation">
