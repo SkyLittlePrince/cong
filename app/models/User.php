@@ -81,7 +81,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->hasMany('Award');
 	}
 
-	public function messages() 
+	public function messages()
 	{
 		return $this->hasMany("Message");
 	}
@@ -119,5 +119,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function evaluations()
 	{
 		return $this->hasMany('Evaluation');
+	}
+
+	public function chatmsgs()
+	{
+		return $this->hasMany('Chatmsg');
 	}
 }

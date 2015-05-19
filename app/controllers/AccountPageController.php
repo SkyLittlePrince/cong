@@ -1,21 +1,21 @@
 <?php
 
-class AccountPageController extends BaseController 
+class AccountPageController extends BaseController
 {
 	public function baseInfo()
 	{
-		if(Sentry::check()) 
+		if(Sentry::check())
 		{
 			$user = Sentry::getUser();
-		} 
-		else 
+		}
+		else
 		{
 			return Redirect::guest('user/login');
 		}
 
 		$user = Sentry::getUser();
 		$birthdayArray = explode("-", $user->birthday);
-		
+
 		if(count($birthdayArray) == 3)
 		{
 			$user["birthdayYear"] = $birthdayArray[0];
@@ -34,11 +34,11 @@ class AccountPageController extends BaseController
 
 	public function index()
 	{
-		if(Sentry::check()) 
+		if(Sentry::check())
 		{
 			$user = Sentry::getUser();
-		} 
-		else 
+		}
+		else
 		{
 			return Redirect::guest('user/login');
 		}
@@ -48,10 +48,10 @@ class AccountPageController extends BaseController
 
 	public function authentication()
 	{
-		if(Sentry::check()) 
+		if(Sentry::check())
 		{
 			$user_id = Sentry::getUser()->id;
-		} 
+		}
 		else
 		{
 			return Redirect::guest('user/login');
@@ -77,19 +77,20 @@ class AccountPageController extends BaseController
 		return View::make('tradingCenter.account.authentication', $authentication);
 	}
 
+	// 用户个人资料页面
 	public function userInfo()
 	{
-		if(!Input::has("user_id")) 
+		if(!Input::has("user_id"))
 		{
-			if(Sentry::check()) 
+			if(Sentry::check())
 			{
 				$user_id = Sentry::getUser()->id;
-			} 
-			else 
+			}
+			else
 			{
 				return Redirect::guest('user/login');
 			}
-		} else 
+		} else
 		{
 			$user_id = Input::get("user_id");
 		}
@@ -122,18 +123,18 @@ class AccountPageController extends BaseController
 
 	public function card()
 	{
-		if(Sentry::check()) 
+		if(Sentry::check())
 		{
 			$user_id = Sentry::getUser()->id;
-		} 
-		else 
+		}
+		else
 		{
 			return Redirect::guest('user/login');
 		}
 
 		$user = User::find($user_id);
 		$user["description"] = $user->description;
-		
+
 		return View::make('tradingCenter.account.card', $user);
 	}
 }
