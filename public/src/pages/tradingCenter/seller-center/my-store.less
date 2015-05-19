@@ -134,15 +134,20 @@
                 .hidden {
                     display: none;
                 }
-                .product-edit {
-                    margin: 0 auto;
-                    width: 60px;
-                    height: 25px;
-                    line-height: 25px;
-                    font-size: 13px;
-                    margin-top: 10px;
-                    margin-left: 42px;
-                    cursor: pointer;
+                .operate-button {
+                    text-align: center;
+                    overflow: hidden;
+                    .product-edit, .add-product-picture {
+                        float: left;
+                        width: 55px;
+                        height: 23px;
+                        line-height: 23px;
+                        font-size: 12px;
+                        margin-top: 10px;
+                        cursor: pointer;
+                        margin-left: 5px;
+                    }
+                        
                 }
                 margin-bottom: 12px;
                 padding-bottom: 5px;
@@ -151,11 +156,6 @@
                 overflow: hidden;
                 margin-left: 6px;
                 position: relative;
-                // span {
-                //     display: inline-block;
-                //     position: relative;
-                //     top: -5px;
-                // }
                 .name {
                     font-size: 8px !important;
                 }

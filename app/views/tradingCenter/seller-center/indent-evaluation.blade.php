@@ -20,17 +20,11 @@
 		<div class="indent-center">
 			<input type="hidden" id="product-id" value="{{{$product->id}}}" />
 			<div class="center-left">
-				<img src="/images/tradingcenter/buyer/comment.png" />
+				<img src="{{{ $product->avatar }}}" width="256" height="320" />
 			</div>
 			<div class="center-right">
 				<p class="word1 point">提示：请根据对商品的满意程度给卖家打分，共五星满意度.</p>
-				<div class="point">
-					<span class="word2" id="score" name="score">商品评价：</span>
-					<img src="/images/tradingcenter/icon/star.png" />
-					<img src="/images/tradingcenter/icon/star.png" />
-					<img src="/images/tradingcenter/icon/star.png" />
-					<img src="/images/tradingcenter/icon/star.png" />
-					<img src="/images/tradingcenter/icon/star.png" />
+				<div class="buyer-score point">商品评价：
 				</div>
 				<textarea name="content" id="content"></textarea>
 				<input type="button" class="confirm" id="confirm" value="确认">

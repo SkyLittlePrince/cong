@@ -98,7 +98,10 @@
                                 <span class="price">¥<span class="price-value">{{{ $product["price"] }}}</span></span>
                                 <div class="clear"></div>
                             </div>
-                            <div class="btn product-edit hidden">编辑</div>
+                            <div class="operate-button">
+                                <div class="btn product-edit hidden">编辑</div>
+                                <div class="btn add-product-picture hidden">添加图片</div>
+                            </div>
                         </div>
                     @endforeach
                 </div>
@@ -116,7 +119,9 @@
                             <div class="name"><%= name%></div>
                             <span class="price">¥<span class="price-value"><%= price%></span></span>
                         </div>
+
                         <div class="btn product-edit">编辑</div>
+                        <div class="btn add-product-picture">添加图片</div>
                     </div>
                 </script>
                 <div class="operation">
