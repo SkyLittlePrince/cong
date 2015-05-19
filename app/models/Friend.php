@@ -9,10 +9,10 @@ class Friend extends \Eloquent {
 	 */
 	protected $table = 'friends';
 
-   	public $timestamps = false;
+ 	public $timestamps = false;
 
-   	public function info()
-    	{
-        		return $this->belongsTo('User', 'friend_id', 'id');
-   	 }
+ 	public function info()
+  {
+    return $this->belongsTo('User', 'friend_id', 'id');
+ 	}
 }

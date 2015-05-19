@@ -4,6 +4,15 @@ class EvaluationController extends \BaseController {
 
 	public function addEvaluation()
 	{
+		if(Sentry::check()) 
+		{
+			$user_id = Sentry::getUser()->id;
+		} 
+		else 
+		{
+			return Response::json(array('errCode' => 1, 'message' => '请先登录'));
+		}
+
 		$user = Sentry::getUser();
 		$product_id = Input::get('product_id');
 		$content = Input::get('content');
@@ -13,6 +22,7 @@ class EvaluationController extends \BaseController {
 			{
 				$q->where('user_id',$user->id);
 			}))->find($product_id);
+
 
 		if(!isset($product))
 			return Response::json(array('errCode' => 1,'message' => '该商品已下架!'));
