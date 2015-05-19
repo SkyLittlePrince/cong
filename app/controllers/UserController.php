@@ -399,13 +399,13 @@ class UserController extends \BaseController {
 				'realname'=>$realname
 			),
 			array(
-				'qq' => 'integer | min :1',
+				'qq' => 'integer|min :1',
 				'avatar' =>'url',
-				'wechat'    => 'string | between: 2,20',
-				'province' =>'string |between:2,10',
-				'city'  =>'string |between:2,20',
-				'region' =>'string |between:2,20',
-				'address' =>'string |between:2,40',
+				'wechat'    => 'between: 2,20',
+				'province' =>'between:2,10',
+				'city'  =>'between:2,20',
+				'region' =>'between:2,20',
+				'address' =>'between:2,40',
 				'birthday' =>'date_format:Y-m-d',
 				'realname'=>'between:2,15'
 			)
@@ -648,18 +648,22 @@ class UserController extends \BaseController {
 
 		$validator = Validator::make(
 			array(
-				'mobile' => $mobile,
 				'qq' => $qq
 			),
-			array(
-				'mobile' => 'integer |between:10000000000,19999999999',
+			array(				
 				'qq' => 'integer | min :1'
 			)
 		);
 
 		if($validator->fails()){
-			return Response::json(array('errCode' => 4, "message" => "参数格式错误", "validateMes" => $validator->messages()));
+			return Response::json(array('errCode' => 4, "message" => "QQ格式错误", "validateMes" => $validator->messages()));
 		}
+
+		$reg = "/^13[0-9]{1}[0-9]{8}$|15[0189]{1}[0-9]{8}$|189[0-9]{8}$/";
+		if(!preg_match($reg, $mobile)){
+			return Response::json(array('errCode' => 1,'message' => '请填写正确的邮箱或手机号!'));
+		}
+			
 
 		$user->mobile = $mobile;
 		$user->qq = $qq;
@@ -989,5 +993,5 @@ class UserController extends \BaseController {
 			return Response::json(array('errCode' => 0,'message' => '删除成功!'));	
 
 		return Response::json(array('errCode' => 3,'message' => '删除失败!'));
-	}
+	}	
 }
