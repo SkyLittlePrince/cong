@@ -289,6 +289,10 @@ saveStoreProductMode = (e)->
 
 # 弹出一个弹出框，用于新增商品
 addOneProduct = ->
+	dialog.options.title = "增加商品"
+	dialog.options.content = addProductCompile({})
+	dialog.options.buttons = [{text:"确定", className: "add-product-confirm"}]
+
 	dialog.loadDialogToPage()
 
 	# 为上传按钮绑定上传图片事件
@@ -372,7 +376,7 @@ getOneProductMessage = ($editBtn)->
 # 更新一个产品处理逻辑
 editOneProductHandler = ->
 	message = getOneProductMessage($(this))
-	$oneImg = $(this).parent()
+	$oneImg = $(this).parent().parent()
 	dialog.options.title = "更新商品"
 	dialog.options.content = updateProductCompile(message)
 	dialog.options.buttons = [
@@ -496,9 +500,6 @@ addNewPicUpload = (name)->
 			$('.add-new-img-file').hide()
 			$('.add-img-to-product').removeClass('hidden')
 	}
-
-
-
 
 #-------------------------------------------------店铺商品部分 end---------------------------------------------------------------#
 
