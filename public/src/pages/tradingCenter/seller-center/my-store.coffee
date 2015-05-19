@@ -403,7 +403,10 @@ getProductImageCollection = ($btn)->
 	id = $btn.parent().siblings('.product-info').find('.product-id').val()
 	imgUrls = []
 	$imgsUrl.find('.one-img-url').each ->
-		imgUrls.push $(this).val()
+		imgUrls.push {
+			url: $(this).val()
+			id: $(this).data('id')
+		}
 
 	return {
 		imgUrls: imgUrls
@@ -412,6 +415,8 @@ getProductImageCollection = ($btn)->
 
 $addProductImgTemplate = $('#add-product-img-template')
 addProductImgCompile = _.template $addProductImgTemplate.html()
+
+newcheckbox = null
 
 # 弹出增加商品弹出框
 addProductImgHandler = ->
@@ -427,17 +432,52 @@ addProductImgHandler = ->
 
 	addNewUploader = addNewPicUpload "avatar"
 
+	# 图片左上角的复选框
+	newcheckbox = (new Checkbox({
+    	selector: '.delete-checkbox-wrapper'
+	}))
+
+$currentImgTemplate = $('#current-img-template')
+currentImgCompile = _.template $currentImgTemplate.html()
+
 # 给商品添加图片
 addImageToProduct = ->
+	console.log $(this).closest('.dialog-content').find('.current-imgs').length
+	if $(this).closest('.dialog-content').find('.current-imgs').length is 5
+		alert('最多只能添加5张图片')
+		return false
 	product_id = $('#unique-product-id').val()
 	image = $("#avatar-url").val()
-	console.log product_id, image
 	shopDataBus.addPicture product_id, image, (data)->
+		console.log data
 		if data.errCode is 0
 			alert("添加成功")
+			$('.avatar-img').attr("src", 'http://fakeimg.pl/80x80/?text=new')
+			$('#avatar-wrapper').before currentImgCompile({id: data.picture_id, url: image })
+			$('.add-new-img-file').show()
+			$('.add-img-to-product').addClass('hidden')
 		else
 			alert data.message
 
+#
+deleteImgFromProduct = ->
+	CheckedItem = newcheckbox.getCheckedInput()
+	if CheckedItem.length
+		if confirm '确定删除这些图片？'
+			for $item in CheckedItem
+				(($item)->
+					$oneImg = $item.parent().parent().siblings('.current-imgs')
+					id = $oneImg.data('id')
+					console.log id
+					shopDataBus.deletePicture id, (data)->
+						if data.errCode is 0
+							alert('删除成功')
+							$oneImg.parent().remove()
+						else
+							alert data.message
+				)($item)
+	else
+		alert "请选中商品左上角的选择框"
 # 上传新的商品图片到云端
 addNewPicUpload = (name)->
 	uploader = new Uploader {
@@ -456,6 +496,8 @@ addNewPicUpload = (name)->
 			$('.add-new-img-file').hide()
 			$('.add-img-to-product').removeClass('hidden')
 	}
+
+
 
 
 #-------------------------------------------------店铺商品部分 end---------------------------------------------------------------#
@@ -492,6 +534,9 @@ $ ->
 	$('body').delegate '.add-product-picture', 'click', addProductImgHandler
 
 	$('body').delegate '.add-img-to-product', 'click', addImageToProduct
+
+	$('body').delegate '.delete-img-from-product', 'click', deleteImgFromProduct
+	
 
 # 用于添加测试用例
 # for i in [1...5]

@@ -104,7 +104,7 @@
                             </div>
                             <div class="imgs-url">
                                 @foreach($product['pictures'] as $picture)
-                                    <input type="hidden" class="one-img-url" value="{{$picture['image']}}">
+                                    <input type="hidden" class="one-img-url" value="{{$picture['image']}}" data-id="{{$picture['id']}}">
                                 @endforeach
                             </div>
                         </div>
@@ -202,9 +202,11 @@
                 </script>
                 <script type="text/template" id="add-product-img-template">
                     <% _.forEach(imgUrls, function(imgUrl) {
-                         %><img class="current-imgs" src="<%- imgUrl %>" /><% 
+                         %><div class="image-wrapper"><%
+                            %><img class="current-imgs" src="<%- imgUrl.url %>" data-id="<%- imgUrl.id %>" /><% 
+                            %><div class="delete-checkbox-wrapper"></div><%
+                         %></div><%
                     }); %>
-
                     <div class="content-input" id="avatar-wrapper">
                         <img class="avatar-img" src="http://fakeimg.pl/80x80/?text=new" width="80" height="80" />
                         <input type="hidden" id="avatar-url" name="avatar" class="hidden" value="" />
@@ -213,6 +215,17 @@
                         </a>
                         <p class="add-img-to-product btn hidden">添加</p>
                         <input type="hidden" id="unique-product-id" value="<%- id %>">
+                    </div>
+                    <p class="delete-img-from-product btn">删除</p>
+                </script>
+                <script type="text/template" id="current-img-template">
+                    <div class="image-wrapper">
+                        <img class="current-imgs" src="<%- url %>" data-id="<%- id %>">
+                        <div class="delete-checkbox-wrapper">
+                            <label class="my-checkbox-item">
+                                <input type="checkbox" name="undefined" class="my-checkbox" value="undefined" style="display:none;">
+                            </label>
+                        </div>
                     </div>
                 </script>
             </div>
