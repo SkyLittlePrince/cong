@@ -127,16 +127,14 @@
                 <div class="comment-list">
                     <div class="row-content">
                         <span class="label">产品评价</span>
-                        <span>(共<span>458</span>条)</span>
+                        <span>(共<span>{{$evaluations->getTotal()}}</span>条)</span>
                         <span class="label total-comment" >总体评价</span>
                         <span class="content">
+                            @for($i = 0;$i < $product->aScore;$i++)
                             <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
-                            <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
-                            <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
-                            <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
-                            <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
+                            @endfor
                         </span>
-                        <span>共<span>427</span>次打分</span>
+                        <span>共<span>{{$evaluations->getTotal()}}</span>次打分</span>
                     </div>
                     @foreach($evaluations as $evaluation)
                     <div class="row-content">
