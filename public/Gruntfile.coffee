@@ -27,10 +27,9 @@ module.exports = (grunt)->
                     b.transform(stringify({extensions: ['.hbs', '.html', '.tpl', '.txt']}))
                 expand: true
                 flatten: true
-
-                src: ['src/common/common.coffee']
-                dest: 'dist/js/'
-                ext: '.js'
+                files: {
+                    'dist/js/common.js': ['src/common/pagination/pagination.coffee'],
+                }
 
             components:
                 options:
