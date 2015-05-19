@@ -11,12 +11,19 @@ class SellerPageController extends BaseController {
 			return Response::view('errors.missing', array(), 404); 
 
 		$numOfItemsPerPage = 8;
-		$comments = Comment::where('product_id',$product_id)
+		$evaluations = Evaluation::where('product_id',$product_id)
 				->with('user')
 				->paginate($numOfItemsPerPage);
+		$sum = 0;
+		foreach ($evaluations as $evaluation) 
+		{
+			$sum += $evaluation->score;
+		}
 
+		$aScore = round($sum / count($evaluations));
+		$product->aScore = $aScore;	
 
-		return View::make('tradingCenter.seller-center.seller-product-detail',array('product' => $product,'comments' => $comments));
+		return View::make('tradingCenter.seller-center.seller-product-detail',array('product' => $product,'evaluations' => $evaluations));
 	}
 
 	public function sellerStore()

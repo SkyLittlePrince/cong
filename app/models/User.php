@@ -101,19 +101,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->hasManyThrough('Product','Shop');
 	}
 
-	public function comments()
-	{
-		return $this->hasMany('Comment');
-	}
-
 	public function Authentication()
 	{
 		return $this->hasOne('Authentication');
-	}
-
-	public function scores()
-	{
-		return $this->hasMany('Score');
 	}
 
 	public function skills()
@@ -124,5 +114,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public function tests()
 	{
 		return $this->hasMany('Test');
+	}
+
+	public function evaluations()
+	{
+		return $this->hasMany('Evaluation');
 	}
 }
