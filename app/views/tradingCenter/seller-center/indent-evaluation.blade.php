@@ -24,7 +24,7 @@
 			<div class="center-right">
 				<p class="word1 point">提示：请根据对商品的满意程度给卖家打分，共五星满意度.</p>
 				<div class="point">
-					<span class="word2">商品评价：</span>
+					<span class="word2" id="score" name="score">商品评价：</span>
 					<img src="/images/tradingcenter/icon/star.png" />
 					<img src="/images/tradingcenter/icon/star.png" />
 					<img src="/images/tradingcenter/icon/star.png" />
@@ -54,16 +54,16 @@
 					<input type="radio" class="assess" id="medium"/><span>中评</span>
 					<input type="radio" class="assess" id="worse"/><span>差评</span>
 				</div>-->
-					<textarea id="appraise" name="appraise" ></textarea>
+					<textarea name="content" id="content"></textarea>
 
 					<input type="button" class="confirm" id="confirm" value="确认">
 			</div>
 			<div class="center-foot">
 				<p>提示：如果对此次交易特别满意，还可以给卖家打赏哦！</p>
-				<input type="text" class="reward-enter" id="reward-enter" placeholder="输入赏金">
-				<input type="radio" class="evaluate" name="evaluate"/><span>好评</span>
-				<input type="radio" class="evaluate" name="evaluate"/><span>中评</span>
-				<input type="radio" class="evaluate" name="evaluate"/><span>差评</span>
+				<input type="text" class="reward-enter" id="rewardenter" placeholder="输入赏金">
+				<input type="radio" class="evaluate" name="best" id="best"/><span>好评</span>
+				<input type="radio" class="evaluate" name="medium" id="medium"/><span>中评</span>
+				<input type="radio" class="evaluate" name="worse" id="worse"/><span>差评</span>
 				<input type="button" class="reward" id="reward" value="打赏">
 			</div>
 		</div>
@@ -72,4 +72,5 @@
 
 @section('js')
     @parent
+    <script type="text/javascript" src='/dist/js/pages/indent-evaluation.js'></script>
 @stop

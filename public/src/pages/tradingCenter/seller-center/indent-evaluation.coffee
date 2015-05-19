@@ -1,37 +1,36 @@
 
 # 缓存DOM节点
-$best = $('#best')
-$medium = $('#medium')
-$worse = $('#worse')
-$appraise = $('#appraise')
+$score = $('#score')
+$content = $('#content')
 $confirm = $('#confirm')
 
-confirm = 
-	addIntent: (data, callback)->
-		$.post "/user/", data, (data)->
-			callback data
+$ ->
+	$confirm.bind 'click',addAppraise
 
-addIntent = (e)->
-	if $best[0].checked
-		gender = 1
-	if $medium[0].checked
-		gender = 2
-	if $worse[0].checked
-		gender = 3
+addAppraise = (e)->
+
+	if not ($content.val())
+		alert("评价不能为空")
+		return false
 
 	data = 
-		gender: gender
-		appraise：appraise
-
+		product_id:1
+		score: 5
+		content: $content.val()
+	
 	console.log data
 
-	confirm.addIntent data, (res)->
-	#	if res.errCode == 0
-			alert "订单评价成功"
-			window.location.href = "/trading-center/seller/product-detail?product_id=1"
-	#	else 
+	databus.addIndentAppraise data, (res)->
+		if res.errCode == 0
+			alert res.message
+			window.location.href = '/trading-center/seller/product-detail?product_id=1'
+			
+		else 
 			alert res.message
 
-$ ->
-	$confirm.bind 'click', addIndent
-	console.log "hehe"
+databus = 
+	addIndentAppraise: (data, callback)->
+		$.post "/evaluation/addEvaluation", data, (data)->
+			callback data
+	
+
