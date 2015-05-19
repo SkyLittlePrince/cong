@@ -3,6 +3,18 @@ use Gregwar\Captcha\CaptchaBuilder;
 
 class SellerPageController extends BaseController {
 
+	public function indentEvaluation()
+	{
+		$indent_id = Input::get("indent_id");
+
+		$indent = Indent::find($indent_id);
+		$product = $indent->products[0];
+		$shop = $product->shop;
+		$seller = $shop->user;
+
+		return View::make('tradingCenter.seller-center.indent-evaluation', array("indent" => $indent, "product" => $product, "seller" => $seller, "shop" => $shop));
+	}
+
 	public function productDetail()
 	{
 		$product_id = Input::get('product_id');

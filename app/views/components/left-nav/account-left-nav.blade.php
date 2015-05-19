@@ -2,7 +2,7 @@
    <div id="user-info-banner">
         <div class="user-info">
             <div class="avatar component">
-                <img id="user-info-banner-avatar" src="/images/common/avatar.png" alt="avatar" width="50" height="50" />
+                <img id="user-info-banner-avatar" src="{{{ Sentry::getUser()->avatar }}}" alt="avatar" width="50" height="50" />
             </div>
             <div class="info component">
                 <p id="user-info-banner-username">{{{ Sentry::getUser()->username }}}</p>

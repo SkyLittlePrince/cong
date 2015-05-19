@@ -21,6 +21,14 @@ class IndentProductTableSeeder extends Seeder {
 			"indent_id" => 3,
 			"product_id" => 5
 		]);
+
+		foreach(range(1, 10) as $index)
+		{
+			IndentProduct::create([
+				"indent_id" => $index,
+				"product_id" => $index
+			]);
+		}
 	}
 
 }

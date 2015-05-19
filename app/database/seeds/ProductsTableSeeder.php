@@ -53,5 +53,18 @@ class ProductsTableSeeder extends Seeder {
 			"avatar" => "http://7sbxao.com1.z0.glb.clouddn.com/login.jpg",
 			"intro" => "商品五介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍介绍"
 		]);
+
+		foreach(range(6, 10) as $index)
+		{
+			Product::create([
+				"name" => "商品名称" + $index,
+				"price" => 28.04,
+				"shop_id" => $index - 2,
+				"sellNum" => 29,
+				"favorNum" => 6,
+				"avatar" => "http://7sbxao.com1.z0.glb.clouddn.com/login.jpg",
+				"intro" => "商品介绍!!"
+			]);
+		}
 	}
 }

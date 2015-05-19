@@ -101,16 +101,39 @@
     			<img src="/images/tradingcenter/icon/5.png" width="20" height="20" />
     			<span>我的技能</span>
     		</div>
-            @if (Sentry::check() && Sentry::getUser()->id == $id)
-
-            @endif
             <div class="skill-items">
                 @foreach ($skills as $skill)
                 <div class="skill-item">
-                    <input type="hidden" class="skill-id" value="{{{ $skill['id'] }}}">
-                    <span>{{{ $skill["name"] }}}</span>
+                    <span class="skill-id hidden">{{{ $skill['id'] }}}</span>
+                    <span class="skill-name">{{{ $skill["name"] }}}</span>
+                    @if (Sentry::check() && Sentry::getUser()->id == $id)
+                    <img src="/images/tradingcenter/icon/delete.png" class="hidden del-btn-skill" />
+                    @endif
                 </div>
                 @endforeach
+                @if (Sentry::check() && Sentry::getUser()->id == $id)
+                <div class="skill-add">
+                    <img class="add-btn-img" src="/images/tradingcenter/icon/add.png" />
+                </div>
+                @endif
+                <div class="clear"></div>
+                <script type="text-template" id="skillTemplate">
+                    <div class="skill-item">
+                        <span class="skill-id hidden"><%= skill_id %></span>
+                        <span class="skill-name"><%= name %></span>
+                        <img src="/images/tradingcenter/icon/delete.png" class="hidden del-btn-skill" />
+                    </div>
+                </script>
+                <div class="bg hidden"></div>
+                <div class="show hidden">
+                    <span  class="skill-name">
+                        <input type="text" placeholder="技能"/>
+                    </span>
+                    @if (Sentry::check() && Sentry::getUser()->id == $id)
+                        <div class="add-save-btn">添加</div>
+                        <div class="add-cancel-btn">取消</div>
+                    @endif
+                </div>
                 <div class="clear"></div>
             </div>
     	</div>

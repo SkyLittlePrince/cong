@@ -324,11 +324,10 @@ Route::group(array('prefix' => 'trading-center'),function()
 
 			Route::get('my-indents', 'SellerPageController@myIndents');
 
-			Route::get('indent-evaluation', function()
-			{
-				return View::make('tradingCenter.seller-center.indent-evaluation');
-			});
+			Route::get('indent-evaluation', 'SellerPageController@indentEvaluation');
+			
 			Route::get('seller-store', 'SellerPageController@sellerStore');
+			
 			Route::get('product-detail', 'SellerPageController@productDetail');
 		});
 	});
