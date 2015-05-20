@@ -34,45 +34,25 @@
  			 <th>商家：</th>
  			 <th>热度：</th>
 		      </tr>
+                                        @foreach($shops as $shop)
 			<tr>
-			  <td>奶茶</td>
-			  <td>统一集团有限公司</td>
-			  <td>3000</td>
+                                            @if(count($shop->products) > 0)
+			  <td>{{$shop->products[0]->name}}</td>
+                                            @else
+                                            <td>该商家所有商品都已下架</td>
+                                            @endif
+			  <td>{{$shop->name}}</td>
+			  <td>{{$shop->visitNum}}</td>
 			</tr>
-			<tr>
-			  <td>伊利优酸乳</td>
-			  <td>统一</td>
-			  <td>3000</td>
-			</tr>
-			<tr>
-			  <td>红茶</td>
-			  <td>统一</td>
-			  <td>3000</td>
-			</tr>
+                                        @endforeach
 		</table>
             </div>
           
         </div>
     
-     <div class="pagination">
-                <div class="right to-page">
-                    <p>
-                        共<span class="page-count">3</span>页,到第<input type="text" >页
-                        <input type="button" value="确定">
-                    </p>
-                </div>
-	   	<div class="page-num right">
-                    <a href="#">
-                        <img src="/images/icon/icon-arrow-left.png" alt="icon-left" width="28" height="28" />         
-                    </a>
-                    <span class="num active">1</span>
-                    <span class="num">2</span>
-                    <span class="num">3</span>
-                    <a href="#">
-                        <img src="/images/icon/icon-arrow-right.png" alt="icon-right" width="28" height="28" />
-                    </a>
-                </div>
-	   </div>
+     @if(count($shops) < $shops->getTotal())
+                    {{$shops->links()}}
+     @endif
 	
 </div>
 
