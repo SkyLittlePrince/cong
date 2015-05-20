@@ -15,7 +15,9 @@
             <!-- 用户信息 -->
             <div class="user-info">
                 <div class="avatar component">
-                    <img src="/images/common/avatar.png" alt="avatar">
+                    <a href="/trading-center/account/user-info?user_id={{{$shop->user->id}}}" target="_blank">
+                        <img src="{{{ $shop->user->avatar }}}" alt="avatar">
+                    </a>
                 </div>
                 <div class="info component">
                     <p>{{{ $shop->user->username }}}</p>
