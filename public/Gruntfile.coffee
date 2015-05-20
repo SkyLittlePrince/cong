@@ -124,6 +124,7 @@ module.exports = (grunt)->
                     'dist/css/admin/product-manager.css': ['src/pages/admin/product-manager.less']
                     'dist/css/admin/indent-manager.css': ['src/pages/admin/indent-manager.less']
                     'dist/css/admin/product-report.css': ['src/pages/admin/product-report.less']
+                    'dist/css/searchShop/searchShop.css': ['src/pages/searchShop/searchShop.less']
 
         cssmin:
             compress:
