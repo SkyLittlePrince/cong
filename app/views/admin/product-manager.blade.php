@@ -32,15 +32,16 @@
                 </ul>
             </div>
             <div class="messages">
+            		@foreach($products as $product)
 		<div class="one-order">
 	    		<div class="order-name order-component">
-	    			<span "c_name">康师傅绿茶</span>
+	    			<span "c_name">{{$product->name}}</span>
 	    		</div>
 				<div class="order-phone order-component">
-				<span "c_phone">3.00</span>
+				<span "c_phone">{{$product->price}}</span>
 				</div>
 				<div class="order-address order-component">
-					<span>康师傅做的绿茶，2015出厂
+					<span>{{$product->intro}}
 					</span>
 				</div>
 				<div class="order-more order-component">
@@ -49,46 +50,13 @@
 				</div>
 				
 	    	</div>
-		<div class="one-order">
-	    		<div class="order-name order-component">
-	    			<span "c_name">盒味道</span>
-	    		</div>
-				<div class="order-phone order-component">
-				<span "c_phone">4.00</span>
-				</div>
-				<div class="order-address order-component">
-					<span>海鲜味的方便面
-					</span>
-				</div>
-				<div class="order-more order-component">
-					<a href="product-manager-edit" >更多&nbsp;&nbsp;&nbsp;</a>
-				<a class="del" href="" >删除</a>
-				</div>
-				
-	    	</div>
-               
+	    	@endforeach            
             </div>
     
 </div>
-        <div class="pagination">
-                <div class="right to-page">
-                    <p>
-                        共<span class="page-count">3</span>页,到第<input type="text" >页
-                        <input type="button" value="确定">
-                    </p>
-                </div>
-	   	<div class="page-num right">
-                    <a href="#">
-                        <img src="/images/icon/icon-arrow-left.png" alt="icon-left" width="28" height="28" />         
-                    </a>
-                    <span class="num active">1</span>
-                    <span class="num">2</span>
-                    <span class="num">3</span>
-                    <a href="#">
-                        <img src="/images/icon/icon-arrow-right.png" alt="icon-right" width="28" height="28" />
-                    </a>
-                </div>
-	   </div>
+       	@if(count($products) < $products->getTotal())
+       		{{$products->links();}}
+       	@endif 
 	   <div class="operate-btn right">
                 <a href="product-manager-edit" class="one-btn btn-1" id="confirm-btn">增加数据</a>
 

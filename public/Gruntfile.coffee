@@ -124,6 +124,7 @@ module.exports = (grunt)->
                     'dist/css/admin/user-manager-edit.css': ['src/pages/admin/user-manager-edit.less']
                     'dist/css/admin/product-manager.css': ['src/pages/admin/product-manager.less']
                     'dist/css/admin/indent-manager.css': ['src/pages/admin/indent-manager.less']
+                    'dist/css/searchShop/searchShop.css': ['src/pages/searchShop/searchShop.less']
                     'dist/css/admin/product-report-visit.css': ['src/pages/admin/product-report-visit.less']
                     'dist/css/admin/product-report-buy.css': ['src/pages/admin/product-report-buy.less']
 

@@ -1,0 +1,93 @@
+@import "../../common/common.less";
+
+#main {
+	@color: #6b6648;
+	@line-height: 33px;
+	@info-width: 250px;
+	@desc-width: 300px;
+	@tags-width: 250px;
+	@score-width: 1024px - @info-width - @desc-width - @tags-width;
+	.list-banner {
+		overflow: hidden;
+		height: @line-height;
+		background-color: #fff;
+		font-size: 16px;
+		color: @color;
+		margin-top: 12px;
+
+		li {
+			float: left;
+			text-align: center;
+	  		line-height: @line-height;
+		}
+
+		.info {
+			width: @info-width;
+		}
+
+		.desc {
+			width: @desc-width;
+		}
+
+		.tags {
+			width: @tags-width;
+		}
+
+		.score {
+			width: @score-width;
+		}
+	}
+
+	.one-shop {
+		@line-height: 100px;
+
+		color: @color;
+		margin: 10px 0px 10px 0px;
+		text-align: center;
+		.shop-component {
+			float: left;
+			height: @line-height;
+			line-height: @line-height;
+			vertical-align: middle;
+			background-color: #fff;
+		}
+
+		.shop-info {
+			width: @info-width;
+
+			.shop-avatar {
+				position: relative;
+				bottom: -15px;
+				right: 10px;
+			}
+		}
+
+		.shop-desc {
+			width: @desc-width;
+		}
+
+		.shop-tags {
+			width: @tags-width;
+		}
+
+		.shop-score {
+			width: @score-width;
+		}
+
+		&:hover {
+			.box-shadow(3px, 3px, 3px, #d8d8d8);
+			cursor: pointer;
+		}
+	}
+}
+
+.pagination {
+	float: right;
+}
+
+
+
+
+
+
+
