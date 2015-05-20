@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="row-content">
-                    <span class="label">买家信用: </span>
+                    <span class="label">卖家信用: </span>
                     <input type="hidden" id="credit" value="{{{ $credit }}}" />
                     <span class="content">
                         <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />

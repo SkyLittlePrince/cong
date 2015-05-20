@@ -58,7 +58,7 @@ updateUserInfo = (e)->
 	console.log data
 	baseInfoDataBus.updateUserInfo data, (res)->
 		if res.errCode == 0
-			alert "修改个人信息成功"
+			alert "批准个人信息成功"
 			window.location.href = "/trading-center/account/base-info"
 		else 
 			alert res.message

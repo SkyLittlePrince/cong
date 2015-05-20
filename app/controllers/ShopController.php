@@ -186,20 +186,20 @@ class ShopController extends \BaseController {
 
 	public function searchShopByTag()
 	{
-		$name = Input::get('name');
+		$keyword = Input::get('keyword');
 
-		$shop = DB::table('shops')
+		$numOfItemsPerPage = 8;
+		$shops = DB::table('shops')
 			->join('shop_tag','shops.id','=','shop_tag.shop_id')
 			->join('tags','tags.id','=','shop_tag.tag_id')
 			->leftjoin('products','products.shop_id','=','shops.id')
 			->leftJoin('evaluations','products.id','=','evaluations.product_id')
-			->select(DB::raw('shops.id,shops.name,shops.description,shops.avatar,avg(evaluations.score) as aScore'))
-			->where('tags.name','like','%'.$name.'%')
+			->select(DB::raw('shops.id,shops.name,shops.description,shops.avatar,avg(evaluations.score) as aScore,tags.name as tagName'))
+			->where('tags.name','like','%'.$keyword.'%')
 			->groupBy('shops.id')
 			->orderBy(DB::raw('avg(evaluations.score)'))
-			//->paginate(5);
-			->get();
+			->paginate($numOfItemsPerPage);
 
-		return Response::json(array('errCode' => 0,'shop' => $shop));
+		return View::make('searchShop', array("shops" => $shops));
 	}
 }

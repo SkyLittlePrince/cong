@@ -87,7 +87,7 @@
             </div>
             <div class="content-row">
                 <a href="user-manager" class="btn">批准</a>
-                <a href="javasctipt: void(0);" class="btn" id="base-info-save-btn">修改</a>
+                <a href="user-manager" class="btn">打回</a>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="user-manager" class="btn">返回上一步</a>
 
