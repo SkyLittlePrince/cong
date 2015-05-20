@@ -254,7 +254,7 @@ step3Handler = ->
 				registerCookie.removeStepCookie()
 				registerCookie.removeloginNameCookie()
 				setTimeout ->
-					location.href = '/user/login'
+					location.href = '/'
 				, 1000
 			else
 				$step3Tip.text(data.message)

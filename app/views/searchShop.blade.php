@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    <title>丛丛网－店铺搜索结果</title>
+    <title>丛丛网－搜索结果</title>
 @stop
 @section('css')
     @parent
@@ -13,9 +13,9 @@
 	<div id="main">
 		<div class="list-banner">
             <ul>
-                <li class="info">店铺名称</li>
-                <li class="desc">店铺简介</li>
-                <li class="tags">店铺标签</li>
+                <li class="info">工作室名称</li>
+                <li class="desc">工作室简介</li>
+                <li class="tags">工作室标签</li>
                 <li class="score">综合评分</li>
             </ul>
         </div>
@@ -44,7 +44,7 @@
 	        	@endforeach
 	        @else
 	        	<div class="one-shop">
-	        		很抱歉，没有找到您需要的店铺
+	        		很抱歉，没有找到您需要的工作室
 	        	</div>
 	        @endif
         </div>

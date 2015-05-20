@@ -124,7 +124,7 @@ return array(
 
 		'Way\Generators\GeneratorsServiceProvider',
 		// for laravel-debugbar
-		'Barryvdh\Debugbar\ServiceProvider',
+		//'Barryvdh\Debugbar\ServiceProvider',
 		// for Sentry
 		'Cartalyst\Sentry\SentryServiceProvider',
 		// for Nested Set impl baum
