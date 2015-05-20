@@ -4,9 +4,10 @@ class AdminPageController extends BaseController {
 
 	public function userManager()
 	{
-		$user = Sentry::getUser();
+		$numOfItemsPerPage = 10;
+		$users = User::paginate($numOfItemsPerPage); 
 
-		return View::make('admin.user-manager',$user->toArray());
+		return View::make('admin.user-manager',array('users' => $users));
 	}
 
 	public function productManager()
