@@ -109,10 +109,23 @@ Route::filter('auth.user.isIn',function()
 	}
 });
 
-Route::filter('auth.user.isOut',function()
+Route::filter('auth.user.isAdmin',function()
 {
 	if(Sentry::check())
 	{
-		return Response::json(array('errCode' => 10,'message' => '请退出！'));
+		$user = Sentry::getUser();
+		if($user->role_id != 3)
+			return Response::view('errors.isNotAdmin', array(), 404); 
+	}
+	else
+	{
+		if (Request::ajax())
+		{
+			return Response::json(array('errCode' => 10,'message' => '请登陆！'));
+		}
+		else
+		{
+			return Redirect::guest('user/login');
+		}
 	}
 });

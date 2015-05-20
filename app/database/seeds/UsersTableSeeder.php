@@ -7,8 +7,8 @@ class UsersTableSeeder extends Seeder {
 		Sentry::register(array(
 			'avatar' => 'http://7sbxao.com1.z0.glb.clouddn.com/login.jpg',
 			'username' => 'yangfusheng',
-	   	'email'    => 'yangfusheng@congcong.com',
-	   	'password' => '12345678',
+	   		'email'    => 'yangfusheng@congcong.com',
+	   		'password' => '12345678',
 			'gender'   => 0,
 			'mobile'   => '13560474456',
 			"country" => "中国",
@@ -22,8 +22,8 @@ class UsersTableSeeder extends Seeder {
 		Sentry::register(array(
 			'avatar' => 'http://7sbxao.com1.z0.glb.clouddn.com/login.jpg',
 			'username' => 'aaa',
-	   	'email'    => 'aaa@congcong.com',
-	  	'password' => '12345678',
+	   		'email'    => 'aaa@congcong.com',
+	  		'password' => '12345678',
 			'gender'   => 1,
 			'mobile'   => '13560474456',
 			'activated' => 1
@@ -32,7 +32,7 @@ class UsersTableSeeder extends Seeder {
 		Sentry::register(array(
 			'avatar' => 'http://7sbxao.com1.z0.glb.clouddn.com/login.jpg',
 			'username' => 'cyrilzhao',
-		  'email'    => 'cyrilzhao@congcong.com',
+		 	 'email'    => 'cyrilzhao@congcong.com',
 			'password' => '12345678',
 			'gender'   => 1,
 			'mobile'   => '12434931123',

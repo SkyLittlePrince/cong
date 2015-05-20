@@ -45,7 +45,7 @@
                                 @endif
                             </div>
                             <div class="order-address order-component">
-		      @if ($qq)
+		      @if ($address)
                                 <span  id="address"> {{{$address}}} </span>
                                 @else
                                     <span  id="address"> 该用户尚未提交地址</span>
