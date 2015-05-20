@@ -14,16 +14,37 @@
 		<div class="list-banner">
             <ul>
                 <li class="info">店铺名称</li>
-                <li class="date">日期</li>
-                <li class="name">项目</li>
-                <li class="status">状态</li>
+                <li class="desc">店铺简介</li>
+                <li class="tags">店铺标签</li>
+                <li class="score">综合评分</li>
             </ul>
         </div>
-        @foreach ($shops as $shop)
-        	<div>
-        		{{{ $shop->name }}}
-        	</div>
-        @endforeach
+        <div class="shops">
+        	@foreach ($shops as $shop)
+        	<a href="/trading-center/seller/seller-store?shop_id={{{ $shop->id }}}" target="_blank">
+	        	<div class="one-shop">
+		    		<div class="shop-info shop-component">
+		    			<input type="hidden" value="{{{ $shop->id }}}">
+		    			<img class="shop-avatar" src="{{{ $shop->avatar }}}" width="40" height="40" />
+		    			<span>{{{ $shop->name }}}</span>
+		    		</div>
+					<div class="shop-desc shop-component">
+						{{{ $shop->description }}}
+					</div>
+					<div class="shop-tags shop-component">
+						{{{ $shop->tagName }}}
+					</div>
+					<div class="shop-score shop-component">
+						{{{ $shop->aScore }}}
+					</div>
+					<div class="clear"></div>
+		    	</div>
+		    </a>
+        	@endforeach
+        </div>
+        @if (count($shops) < $shops->getTotal())
+            {{ $shops->links() }}
+        @endif
 	</div>
 @stop
 
