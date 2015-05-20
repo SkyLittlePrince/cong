@@ -345,9 +345,9 @@ Route::group(array('prefix' => 'admin','before' => 'auth.user.isAdmin'),function
 	Route::get('indent-manager','AdminPageController@IndentManager');
 	Route::get('product-report-visit','AdminPageController@productReportvisit');
 	Route::get('product-report-buy','AdminPageController@productReportbuy');
-	Route::get('user-manager-edit','AdminPageController@useredit');
-	Route::get('indent-manager-edit','AdminPageController@indentedit');
-	Route::get('product-manager-edit','AdminPageController@productedit');
+	Route::post('user-manager-edit','AdminPageController@useredit');
+	Route::post('indent-manager-edit','AdminPageController@indentedit');
+	Route::post('product-manager-edit','AdminPageController@productedit');
 });
 
 
