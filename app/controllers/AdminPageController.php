@@ -69,8 +69,12 @@ class AdminPageController extends BaseController {
 	}
 	public function productedit()
 	{
-		$user = Sentry::getUser();
+		$id = Input::get('id');
+		$product = Product::with('shop')->find($id);
 
-		return View::make('admin.product-manager-edit',$user);
+		if(!isset($product))
+			return Response::view('errors.missing', array(), 404);  
+
+		return View::make('admin.product-manager-edit',array('product' => $product));
 	}
 }
