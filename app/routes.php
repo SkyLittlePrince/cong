@@ -348,6 +348,10 @@ Route::group(array('prefix' => 'admin','before' => 'auth.user.isAdmin'),function
 	Route::get('user-manager-edit','AdminPageController@useredit');
 	Route::get('indent-manager-edit','AdminPageController@indentedit');
 	Route::get('product-manager-edit','AdminPageController@productedit');
+
+	Route::post('product-manager-edit','ProductController@updateProduct');
+	Route::post('indent-manager-edit','AdminController@updateIndent');
+	Route::post('deleteUser','AdminController@deleteUser');
 });
 
 

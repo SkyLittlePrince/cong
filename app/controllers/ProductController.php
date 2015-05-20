@@ -66,8 +66,12 @@ class ProductController extends \BaseController {
 		if(!isset($product))
 			return Response::json(array('errCode' => 1,'message' => '该产品不存在!'));
 
-		if($product->shop->user_id != $user->id)
-			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
+		if($user->role_id != 3)
+		{
+			if($product->shop->user_id != $user->id)
+				return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));	
+		}
+		
 
 		$validator = Validator::make(
 			array(
