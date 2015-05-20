@@ -25,7 +25,7 @@
 			<div class="content-row">
 				<label class="label" >订单号：</label>
 				<div class="content-input">
-					<input type="text" id="indentId" name="indentId" value="1001" />
+					<input type="text" id="indentId" name="indentId" value="{{$indent->id}}" />
 					
 				</div>
 			</div>
@@ -40,13 +40,13 @@
 			<div class="content-row">
 				<label class="label">创建日期：</label>
 				<div class="content-input">
-					<input type="text" id="createTime" name="createTime" value="2015/5/11" />
+					<input type="text" id="createTime" name="createTime" value="{{$indent->created_at}}" />
 				</div>
 			</div>
 			<div class="content-row">
 				<label class="label">状态：</label>
 				<div class="content-input">
-					<input type="text" id="status" name="status" value="2" />（0表示未付款，1表示已付款，2表示交易成功）
+					<input type="text" id="status" name="status" value="{{$indent->status}}" />（0表示未付款，1表示已付款，2表示交易成功）
 				</div>
 			</div>
 			

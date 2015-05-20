@@ -63,9 +63,13 @@ class AdminPageController extends BaseController {
 	}
 	public function indentedit()
 	{
-		$user = Sentry::getUser();
+		$id = Input::get('id');
+		$indent = Input::get($id);
 
-		return View::make('admin.indent-manager-edit',$user);
+		if(!isset($indent))
+			return Response::view('errors.missing', array(), 404);  
+
+		return View::make('admin.indent-manager-edit',array('indent' => $indent));
 	}
 	public function productedit()
 	{
