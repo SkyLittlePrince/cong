@@ -1,6 +1,7 @@
-
+# 引入所需的模块
 Uploader = require "../../../common/uploader/index.coffee"
 
+# 缓存DOM节点变量
 $name = $("#realname") 
 $credit = $("#idnumber")
 $male = $("#male")
@@ -11,11 +12,13 @@ $address = $("#address")
 $phone = $("#phone")
 $id = $("#id")
 
+# 身份认证数据模块
 dataBus =
+	# 提交审核
 	createAuthentication: (data, callback)->
 		$.post "/seller-authentication/create", data, (res)->
 			callback res
-
+	# 编辑审核
 	updateAuthenticatoin: (data, callback)->
 		$.post "/seller-authentication/update", data, (res)->
 			callback res
@@ -27,9 +30,6 @@ setUploadedPhoto = (name)->
 		container: name + '-wrapper',      
 	}, {
 		BeforeUpload: (up, file)->
-			console.log $("#" + name + "-file").parent()[0]
-			console.log "before: " + name
-			$("#" + name + "-file").parent().find(".text").html("上传中...")
 
 		FileUploaded: (up, file, info)->
 			info = $.parseJSON info
@@ -48,8 +48,8 @@ $ ->
 	$(document).on 'click', '#edit-btn', editAuthentication
 	$(document).on 'click', '#create-btn', createAuthentication
 
-	frontUploader = setUploadedPhoto "positive"
-	behindUploader = setUploadedPhoto "negative"
+	frontUploader = setUploadedPhoto("positive")
+	behindUploader = setUploadedPhoto("negative")
 
 editAuthentication = (e)->
 	if $male[0].checked
@@ -90,6 +90,7 @@ createAuthentication = (e)->
 		phone: $phone.val()
 		gender: gender
 
+	console.log data
 	dataBus.createAuthentication data, (res)->
 		if res.errCode == 0
 			alert "提交审核成功"
