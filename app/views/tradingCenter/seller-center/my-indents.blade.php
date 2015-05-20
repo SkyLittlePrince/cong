@@ -19,23 +19,23 @@
 	    	<div class="one-order">
 	    		<div class="info">
                     <div class="checkbox-wrapper"></div>           
-	                <span class="date">{{{ $indent["created_at"] }}}</span> 
-	                <span class="order-number">订单号: <span>{{{ $indent["id"] }}}</span></span>
+	                <span class="date">{{{ $indent->created_at }}}</span> 
+	                <span class="order-number">订单号: <span>{{{ $indent->id }}}</span></span>
 	    		</div>
 	    		<div class="detail">
                     <div class="img detail-component">
 		    			<img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
 	    			</div>       
 	    			<div class="title detail-component">
-	    				<p>{{{ $indent["product"]["name"] }}}</p>
+	    				<p>{{{ $indent->products[0]->name}}}</p>
 	    			</div>
 	    			<div class="price detail-component">
-	    				￥<span>{{{ $indent["product"]["price"] }}}</span>
+	    				￥<span>{{{ $indent->products[0]->price }}}</span>
 	    			</div>
 	    			<div class="status detail-component">
-	    				@if ($indent["status"] == 0)
+	    				@if ($indent->status == 0)
 	    				<p>未付款</p>
-	    				@elseif ($indent["status"] == 1)
+	    				@elseif ($indent->status == 1)
 	    				<p>已付款</p>
 	    				@else
 	    				<p>交易成功</p>
@@ -45,7 +45,10 @@
 	    	</div>
 	    	@endforeach
 	    </div>
-        <div class="pagination">
+	    @if (count($indents) < $indents->getTotal())
+	    	{{$indents->links()}}
+	    @endif
+       <!-- <div class="pagination">
 				<ul class="links">
 					<li class="unavailable">
 						<span>
@@ -72,6 +75,7 @@
 	   			</div>
                 <div class="clear"></div>
 	   		</div>
+	   	-->
     </div>
 @stop
 @section('js')

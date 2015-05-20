@@ -36,10 +36,9 @@
 							<p class="change-captcha">看不清？<a href="javascript: void(0)">换张图</a></p>
 						</div>
 						<div class="register-item" style="line-height:18px;vertical-align:top;margin-top: 10px;"> 
-							<input type="checkbox" name="agree" id="agree-box" class="hidden" />
-							<img src="/images/register/3.jpg" class="agree-img" width="16" height="16" />
-							<img src="/images/register/4.jpg" class="disagree-img hidden" width="16" height="16" />
-							<div style="margin-left:25px;">我同意《丛丛网协议》</div>
+							<div class="checkbox-wrapper"></div>
+								我同意<a href="/agreement" target="_blank">《丛丛网用户协议》</a>
+							<div class="clear"></div>
 						</div>
 						<span class="step1-tips"></span>
 					</div>

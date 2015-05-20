@@ -2,6 +2,10 @@ Checkbox = require('../../../common/checkbox/checkbox.coffee');
 Captcha = require('../../../common/captcha/captcha.coffee')
 Uploader = require "../../../common/uploader/index.coffee"
 
+checkbox = (new Checkbox({
+    selector: '.checkbox-wrapper'
+}))
+
 $store = $('#store')
 $storeDesc = $('#store-desc')
 $skill = $('#skill')
@@ -34,9 +38,13 @@ AjaxAddStore = (storeInfo, callback)->
 
 # 开通店铺DOM操作
 registerConfirmAction = ->
-	if not $store.pVal() or not $storeDesc.pVal() or not $skill.pVal()
-		alert('请填写完整信息')
+	if not $("#avatar-url").val()
+		alert ("请上传工作室头像")
 		return false
+	if not $store.val()
+		alert '请输入工作室名称'
+		return false
+
 	skills = $skill.val().trim()
 	if skills.indexOf(',') > -1
 		alert('技能标签请用中文逗号分隔')
@@ -47,6 +55,11 @@ registerConfirmAction = ->
 		alert('不能连续出现两个逗号')
 		$skill.focus()
 		return false
+	CheckedItem = checkbox.getCheckedInput()
+	if not CheckedItem.length
+		alert("请勾选协议同意选择框")
+		return false
+		
 	return {
 		name: $store.val()
 		description: $storeDesc.val()
@@ -83,7 +96,5 @@ setUploadedPhoto = (name)->
 
 # 文档加载完成执行的操作
 $ ->
-	checkbox = (new Checkbox({selector: '.my-indents-content'}));
 	$registerConfirm.bind 'click', registerConfirmHandler
 	avatarUploader = setUploadedPhoto "avatar"
-

@@ -156,9 +156,6 @@ class UserController extends \BaseController {
 		//Session::put('phrase', $phrase);
 		$_SESSION['phrase'] = $phrase;
 
-		$invitationCode = Input::get('invitationCode');
-		$_SESSION['invitationCode'] = $invitationCode;
-
 		return View::make('register')->with('captcha', $builder);
 	}
 

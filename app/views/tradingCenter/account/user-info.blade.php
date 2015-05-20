@@ -41,8 +41,8 @@
                 @if (isset($shop))
                 <div class="shop-info">
                     <div class="text">
-                        <div>丛丛店铺： {{{ $shop["name"] }}}</div>
-                        <div>店铺标签：
+                        <div>丛丛工作室： {{{ $shop["name"] }}}</div>
+                        <div>工作室标签：
                             @if (isset($shop["tags"]))
                                 @foreach ($shop["tags"] as $tag)
                                     {{{$tag["name"]}}}
@@ -60,13 +60,13 @@
                         </div>
                     </div>
                     <div class="desc">
-                        店铺简介：{{{ $shop["description"] }}}
+                        工作室简介：{{{ $shop["description"] }}}
                     </div>
                     <div class="data">
                         <span>累计交易：{{{$shop["dealNum"]}}}</span>
                         <span style="margin-left: 20px;">访问量：{{{$shop["visitNum"]}}}</span>
                         <span style="margin-left: 20px;">
-                            <a target="_blank" href="/trading-center/seller/seller-store?shop_id={{{ $shop['id'] }}}">进入店铺</a>
+                            <a target="_blank" href="/trading-center/seller/seller-store?shop_id={{{ $shop['id'] }}}">进入工作室</a>
                         </span>
                     </div>
                 </div>

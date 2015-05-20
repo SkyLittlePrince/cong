@@ -33,10 +33,10 @@
 				<a href="/trading-center/seller/register" class="nav-item">卖家注册</a>
 			</li>
 			<li>
-				<a href="/trading-center/seller/my-store" class="nav-item">我的店铺</a>
+				<a href="/trading-center/seller/my-store" class="nav-item">我的工作室</a>
 			</li>
 			<li>
-				<a href="/trading-center/seller/my-indents" class="nav-item">店铺订单</a>
+				<a href="/trading-center/seller/my-indents" class="nav-item">工作室订单</a>
 			</li>
 		</ul>
 	</div>

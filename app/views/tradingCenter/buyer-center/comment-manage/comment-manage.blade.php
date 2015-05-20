@@ -20,7 +20,7 @@
                 <h3 class="title">评价管理</h3>
             </div>
             <div class="shop-rating">
-                <p class="title">店铺综合评分</p>
+                <p class="title">工作室综合评分</p>
                 <div class="rating-bar">
                     <div class="line">
                         <span class="index comment">付款及时度: <span>0</span> 分</span>

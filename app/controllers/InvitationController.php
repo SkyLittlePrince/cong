@@ -7,7 +7,7 @@ class InvitationController extends \BaseController {
 		$reg = "/^[_.0-9a-z-a-z-]+@([0-9a-z][0-9a-z-]+.)+[a-z]{2,4}$/";
 		if(!preg_match($reg, $email))
 			return Response::json(array('errCode' => 1,'message' => '邮箱格式不正确!'));
-		$url = Config::get('app.url') . '/user/register?invitationCode=' . $user->id;
+		$url = Config::get('app.url') . '?invitationCode=' . $user->id;
 		try
 		{
 			Mail::send('invitation',array('url' => $url),function($message) use ($email)
