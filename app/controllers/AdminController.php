@@ -13,7 +13,7 @@ class AdminController extends \BaseController {
 			return Response::json(array('errCode' => 1,'message' => '该订单不存在!'));
 
 		$status = intval($status);
-		if(1 > $status || $status > 3)
+		if(0 > $status || $status > 2)
 			return Response::json(array('errCode' => 2,'message' => '订单状态有误!'));
 
 		$indent->status = $status;

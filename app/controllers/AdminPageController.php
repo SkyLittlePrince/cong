@@ -68,7 +68,7 @@ class AdminPageController extends BaseController {
 	public function indentedit()
 	{
 		$id = Input::get('id');
-		$indent = Input::get($id);
+		$indent = Indent::find($id);
 
 		if(!isset($indent))
 			return Response::view('errors.missing', array(), 404);  
