@@ -44,22 +44,26 @@ class AdminPageController extends BaseController {
 	}
 	public function useredit()
 	{
-		$user = Sentry::getUser();
+		$id = Input::get('id');
+		$user = User::find($id);
+
+		if(!isset($user))
+			return Response::view('errors.missing', array(), 404);  
 
 		$birthdayArray = explode("-", $user->birthday);
 		if(count($birthdayArray) == 3)
 		{
-			$user["birthdayYear"] = $birthdayArray[0];
-			$user["birthdayMonth"] = $birthdayArray[1];
-			$user["birthdayDay"] = $birthdayArray[2];
+			$user->birthdayYear = $birthdayArray[0];
+			$user->birthdayMonth = $birthdayArray[1];
+			$user->birthdayDay = $birthdayArray[2];
 		}
 		else
 		{
-			$user["birthdayYear"] = "";
-			$user["birthdayMonth"] = "";
-			$user["birthdayDay"] = "";
+			$user->birthdayYear = "";
+			$user->birthdayMonth = "";
+			$user->birthdayDay = "";
 		}
-		return View::make('admin.user-manager-edit',$user);
+		return View::make('admin.user-manager-edit',array('user' => $user));
 	}
 	public function indentedit()
 	{
