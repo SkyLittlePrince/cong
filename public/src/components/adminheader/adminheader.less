@@ -1,0 +1,44 @@
+@nav-height: 31px;
+@nav-bg-color: #7ecac8;
+@nav-color: #a3a3a3;
+@nav-margin: 19px;
+@wrapper-width: 750px;
+
+#admin-header {
+	width: @wrapper-width;
+	float: left;
+	color: @nav-color;
+	overflow: hidden;
+	margin-left: 30px;
+	
+
+	.nav {
+		width: (@wrapper-width - @nav-margin * 3) / 4;
+		height: @nav-height;
+		float: left;
+		margin-left: @nav-margin;
+		background-color: #fff;
+		line-height: @nav-height;
+		vertical-align: middle;
+		text-align: center;
+
+		&:first-child {
+			margin-left: 0px;
+		}
+		&.active {
+			background-color: @nav-bg-color;
+			a {
+				color: #fff;
+			}
+		}
+		a {
+			display: block;
+			color: @nav-color;
+
+			&:hover {
+				color: #fff;
+				background-color: @nav-bg-color;
+			}
+		}
+	}
+}

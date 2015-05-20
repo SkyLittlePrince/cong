@@ -342,7 +342,11 @@ Route::group(array('prefix' => 'admin'),function()
 	Route::get('user-manager','AdminPageController@userManager');
 	Route::get('product-manager','AdminPageController@productManager');
 	Route::get('indent-manager','AdminPageController@IndentManager');
-	Route::get('product-report','AdminPageController@productReport');
+	Route::get('product-report-visit','AdminPageController@productReportvisit');
+	Route::get('product-report-buy','AdminPageController@productReportbuy');
+	Route::get('user-manager-edit','AdminPageController@useredit');
+	Route::get('indent-manager-edit','AdminPageController@indentedit');
+	Route::get('product-manager-edit','AdminPageController@productedit');
 });
 
 

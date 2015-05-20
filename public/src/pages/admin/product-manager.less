@@ -1,0 +1,49 @@
+
+@import './common.less';
+@import './common/order.less';
+@import './common/common.less';
+@import './common/pagination.less';
+@page-address: "../../../../images/icon";
+#main {
+    overflow: hidden;
+    font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
+    .buyer-content {
+        padding-bottom: 33px;
+    }
+}
+
+.message-setting {
+    padding-bottom: 35px;
+    .messages {
+        color: #c5b496;
+        padding-bottom: 17px;
+        ul li {
+            overflow: hidden;
+            margin-top: 22px;
+
+            .checkbox-wrapper {
+                float: left;
+                display: block;
+                width: 17px;
+                height: 17px;
+            }
+
+            .col-right.setting-title {
+                padding-left: 0;
+            }
+        }
+    }
+    .operate-btn {
+        text-align: center;
+        .one-btn {
+            .btn();
+            font-size: 14px;
+            .border-radius(13px);
+        }
+        .btn-2 {
+            width: 76px;
+            margin-left: 25px;
+            background-color: #c3c3c3;
+        }
+    }
+}

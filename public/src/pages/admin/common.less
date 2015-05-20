@@ -1,0 +1,58 @@
+.admin-component {
+	width: 750px;
+	margin-left: 30px;
+	overflow: hidden;
+	margin-top: 10px;
+	background-color: #fff;
+	float: left;
+}
+#main {
+    overflow: hidden;
+}
+
+@width: 750px;
+@margin: 32px;
+.message-wrapper {
+    width: @width - 2 * @margin;
+    margin: 0 auto;
+    margin-top: 18px;
+    .banner {
+        border-bottom: solid 1px #dcdcdc;
+        overflow: hidden;
+        color: #787878;
+        span {
+            padding-bottom: 7px;
+            display: inline-block;
+        }
+        .title {
+            float: left;
+        }
+        .status {
+            float: right;
+        }
+    }
+    label {
+        display: inline-block;
+        margin-top: 1px;
+        float: left;
+    }
+    .col-right {
+        float: left;
+        padding-left: 11px;
+    }
+}
+
+.btn (@width: 70px, @height: 34px, @bg-color: #7ecac9 ) {
+    width: @width;
+    height: @height;
+    line-height: @height;
+    font-family: "Microsoft YaHei";
+    text-align: center;
+    background-color: @bg-color;
+    font-size: 18px;
+    display: inline-block;
+    margin: 0 auto;
+    margin-top: 12px;
+    .border-radius(10px);
+    color: #fff;
+}

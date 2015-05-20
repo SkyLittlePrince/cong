@@ -1,0 +1,77 @@
+@import '../userinfonav/user-info-nav.less';
+#admin-left-nav {
+	@nav-color: #7ecac9;
+	@component-color: #bca890;
+	@width: 175px;
+	@height: 285px;
+	@info-width: 50px;
+
+	width: @width;
+	background-color: #fff;
+	float: left;
+	margin-left: 36px;
+	padding-bottom: 20px;
+
+	//导航栏样式
+	.nav {
+		margin-top: 13px;
+		font-size: 14px;
+		li {
+			@line-height: 35px;
+
+			border-bottom: 1px solid #fff;
+			a {
+				display: block;
+				height: @line-height;
+				@padding-left: 30px;
+				padding-left: @padding-left;
+				width: @width - @padding-left;
+				color: #787878;
+			}
+			.nav-item {
+				line-height: @line-height;
+				height: @line-height;
+			
+				&:hover {
+					color: #fff;
+					background-color: @nav-color;
+					cursor: pointer;
+				}
+			}
+
+			&.active {
+				.nav-item {
+					color: #fff;
+					background-color: @nav-color;
+				}
+			}
+			
+
+			.sub-nav {
+				color: #bbbbbb;
+				display: none;
+
+				li {
+					a {
+						line-height: 27px;
+						height: 27px;
+					}
+
+					&.active {
+						a { 
+							background-color: #bee5e4;
+							color: #fff;
+						}
+					}
+
+					&:hover {
+						a { 
+							background-color: #bee5e4;
+							color: #fff;
+						}
+					}
+				}
+			}
+		}
+	}
+}
