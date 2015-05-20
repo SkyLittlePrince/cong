@@ -43,4 +43,32 @@ class AdminController extends \BaseController {
 		return Response::json(array('errCode' => 3,'message' => '删除失败!'));
 	}
 
+	public function deleteIndent()
+	{
+		$id = Input::get('id');
+		$indent = Indent::find($id);
+
+		if(!isset($indent))
+			return Response::json(array('errCode' => 1,'message' => '该订单不存在!'));
+
+		if($indent->delete())
+			return Response::json(array('errCode' => 0,'message' => '删除成功!'));
+
+		return Response::json(array('errCode' => 2,'message' => '删除失败!'));
+	}
+
+	public function deleteProduct()
+	{
+		$id = Input::get('id');
+		$product = Product::find($id);
+
+		if(!isset($product))
+			return Response::json(array('errCode' => 1,'message' => '该商品不存在!'));
+
+		if($product->delete())
+			return Response::json(array('errCode' => 0,'message' => '删除成功!'));
+
+		return Response::json(array('errCode' => 2,'message' => '删除失败!'));
+	}
+
 }
