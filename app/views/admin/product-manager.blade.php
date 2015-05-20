@@ -45,7 +45,7 @@
 					</span>
 				</div>
 				<div class="order-more order-component">
-				<a href="product-manager-edit" >更多&nbsp;&nbsp;&nbsp;</a>
+				<a href="product-manager-edit?id={{$product->id}}" >更多&nbsp;&nbsp;&nbsp;</a>
 				<a class="del" href="" id="del-btn">删除</a>
 				</div>
 				

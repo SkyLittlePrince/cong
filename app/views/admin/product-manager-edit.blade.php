@@ -26,7 +26,7 @@
 					<div class="content-input" id="avatar-wrapper">
 						<div class="content-img">
 							<input type="hidden" id="avatar" value="图像" />
-                    		<img src="" alt="avatar" class="person-img" id="avatarImg" />
+                    		<img src="{{$product->avatar}}" alt="avatar" class="person-img" id="avatarImg" />
                     	</div>
                     	<a href="javascript:void(0);" class="person-upload">
                     		<input type="file" id="revise-avatar" /> 修改图像
@@ -37,7 +37,7 @@
 			<div class="content-row">
 				<label class="label">商品名称：</label>
 				<div class="content-input">
-					<input type="text" id="name" name="name" value="康师傅绿茶" />
+					<input type="text" id="name" name="name" value="{{$product->name}}" />
 
 				</div>
 			</div>
@@ -45,20 +45,20 @@
 			<div class="content-row">
 				<label class="label">价格:</label>
 				<div class="content-input">
-                    <input type="text"  id="price" name="price" value="10" />
+                    <input type="text"  id="price" name="price" value="{{$product->price}}" />
                     
                 </div>
 			</div>
 			<div class="content-row">
 				<label class="label">商品介绍：</label>
 				<div class="content-input">
-					<input type="text" id="intro" name="intro" value="一瓶绿茶" />
+					<input type="text" id="intro" name="intro" value="{{$product->intro}}" />
 				</div>
 			</div>
 			<div class="content-row">
 				<label class="label">所属商店：</label>
 				<div class="content-input">
-					<input type="text" id="shop_id" name="shop_id" value="姑娘走过的店" />
+					<input type="text" id="shop_id" name="shop_id" value="{{$product->shop->name}}" />
 				</div>
 			</div>
 			

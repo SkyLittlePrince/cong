@@ -26,7 +26,7 @@
                     <div class="content-img">
                         <input type="hidden" id="avatar" value=""  readonly="readonly"/>
                         <input type="hidden" id="avatar" value=""  readonly="readonly"/>
-                        <img src="" alt="avatar" class="person-img" id="avatarImg" />
+                        <img src="{{$user->avatar}}" alt="avatar" class="person-img" id="avatarImg" />
                     </div>
                    
                 </div>
@@ -35,16 +35,20 @@
             <div class="content-row">
                 <label class="label">真实姓名：</label>
                 <div class="content-input">
-                    <input type="text" id="realname" name="realname" value="" readonly="readonly" />
+                    <input type="text" id="realname" name="realname" value="{{$user->realname}}" readonly="readonly" />
                 </div>
             </div>
             <div class="content-row">
                 <label class="label">性别:</label>
                 <div class="content-input sex">
                    
+                        @if($user->gender == 1)
                         <input name="sex" type="radio" checked="checked" id="male" value="" readonly="readonly"/> <label for="male" style="padding-right: 35px;">男</label>
                         <input name="sex" type="radio" id="female"  value="" readonly="readonly"/> <label for="female">女</label>
-                 
+                        @else
+                         <input name="sex" type="radio"  id="male" value="" readonly="readonly"/> <label for="male" style="padding-right: 35px;">男</label>
+                        <input name="sex" type="radio" checked="checked" id="female"  value="" readonly="readonly"/> <label for="female">女</label>
+                        @endif
                        
                   
                 </div>
@@ -52,36 +56,36 @@
             <div class="content-row">
                 <label class="label">生日:</label>
                 <div class="content-input">
-                    <input type="text" name="year" id="year" maxlength="4" value="" readonly="readonly"/><span class="text"> 年</span>
-                    <input type="text" name="month" id="month" maxlength="2" value="" readonly="readonly"/><span class="text"> 月</span>
-                    <input type="text" name="day" id="day"  maxlength="2" value=""  readonly="readonly"/><span class="text"> 日</span>
+                    <input type="text" name="year" id="year" maxlength="4" value="{{$user->birthdayYear}}" readonly="readonly"/><span class="text"> 年</span>
+                    <input type="text" name="month" id="month" maxlength="2" value="{{$user->birthdayMonth}}" readonly="readonly"/><span class="text"> 月</span>
+                    <input type="text" name="day" id="day"  maxlength="2" value="{{$user->birthdayDay}}"  readonly="readonly"/><span class="text"> 日</span>
                 </div>
             </div>
             <div class="content-row">
                 <label class="label" for="wechat">微信：</label>
                 <div class="content-input">
-                    <input type="text" id="wechat" name="wechat" value=""  readonly="readonly"/>
+                    <input type="text" id="wechat" name="wechat" value="{{$user->wechat}}"  readonly="readonly"/>
                 </div>
             </div>
             <div class="content-row">
                 <label class="label" for="QQ">QQ：</label>
                 <div class="content-input">
-                    <input type="text" id="QQ" name="QQ" value="" readonly="readonly"/>
+                    <input type="text" id="QQ" name="QQ" value="{{$user->qq}}" readonly="readonly"/>
                 </div>
             </div>
             <div class="content-row">
                 <label class="label" for="prov">所在地：</label>
                 <div class="content-input">
-                    <input type="text" id="prov" name="prov" value="" readonly="readonly"/> 省
-                    <input type="text" id="city" name="city" value="" readonly="readonly"/> 市
-                    <input type="text" id="region" name="region" value="" readonly="readonly"/> 区
+                    <input type="text" id="prov" name="prov" value="{{$user->country}}" readonly="readonly"/> 国
+                    <input type="text" id="city" name="city" value="{{$user->province}}" readonly="readonly"/> 省
+                    <input type="text" id="region" name="region" value="{{$user->city}}" readonly="readonly"/> 市
                     <!-- <input type="button" value="其他" id="other-region-btn" /> -->
                 </div>
             </div>
             <div class="content-row">
                 <label class="label" for="address">详细地址：</label>
                 <div class="content-input">
-                    <input type="text" id="address" name="address" value="" readonly="readonly"/>
+                    <input type="text" id="address" name="address" value="{{$user->address}}" readonly="readonly"/>
                 </div>
             </div>
             <div class="content-row">
