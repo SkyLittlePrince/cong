@@ -38,7 +38,7 @@
 	    			<span "c_name">{{$indent->id}}</span>
 	    		</div>
 				<div class="order-phone order-component">
-				<span "c_phone">{{$indent->user->name}}</span>
+				<span "c_phone">{{$indent->user->username}}</span>
 				</div>
 				<div class="order-address order-component">
 					@if(count($indent->products) > 0)

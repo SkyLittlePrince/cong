@@ -22,7 +22,6 @@ class AdminPageController extends BaseController {
 	{
 		$numOfItemsPerPage = 10;
 		$indents = Indent::with('user','products')->paginate($numOfItemsPerPage); 
-
 		return View::make('admin.indent-manager',array('indents' => $indents));
 	}
 
