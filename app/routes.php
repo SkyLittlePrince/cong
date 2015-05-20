@@ -193,7 +193,7 @@ Route::group(array('before' => 'auth.user.isIn'), function()
 });
 
 // 赏金猎人
-Route::group(array('prefix' => 'bounty-hunter'),function()
+Route::group(array('prefix' => 'bounty-hunter', 'before' => 'auth.user.isIn'),function()
 {
 	Route::get('/', function()
 	{
