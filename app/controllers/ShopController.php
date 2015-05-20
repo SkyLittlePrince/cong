@@ -193,7 +193,7 @@ class ShopController extends \BaseController {
 			->join('tags','tags.id','=','shop_tag.tag_id')
 			->leftjoin('products','products.shop_id','=','shops.id')
 			->leftJoin('evaluations','products.id','=','evaluations.product_id')
-			->select('shops.id','shops.name','shops.description','shops.avatar')
+			->select(DB::raw('shops.id,shops.name,shops.description,shops.avatar,avg(evaluations.score) as aScore'))
 			->where('tags.name','like','%'.$name.'%')
 			->groupBy('shops.id')
 			->orderBy(DB::raw('avg(evaluations.score)'))
