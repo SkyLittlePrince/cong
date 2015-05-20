@@ -20,9 +20,10 @@ class AdminPageController extends BaseController {
 
 	public function IndentManager()
 	{
-		$user = Sentry::getUser();
+		$numOfItemsPerPage = 10;
+		$indents = Indent::with('user','products')->paginate($numOfItemsPerPage); 
 
-		return View::make('admin.indent-manager',$user);
+		return View::make('admin.indent-manager',array('indents' => $indents));
 	}
 
 	public function productReportvisit()
