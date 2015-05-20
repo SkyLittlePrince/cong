@@ -34,9 +34,10 @@ class AdminPageController extends BaseController {
 	}
 	public function productReportbuy()
 	{
-		$user = Sentry::getUser();
+		$numOfItemsPerPage = 10;
+		$products = Product::with('shop')->orderBy('sellNum','desc')->paginate($numOfItemsPerPage);
 
-		return View::make('admin.product-report-buy',$user);
+		return View::make('admin.product-report-buy',array('products' => $products));
 	}
 	public function useredit()
 	{

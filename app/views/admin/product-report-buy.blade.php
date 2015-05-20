@@ -34,46 +34,22 @@
  			 <th>商家：</th>
  			 <th>热度：</th>
 		      </tr>
+                    @foreach($products as $product)
 			<tr>
-			  <td>百事可乐</td>
-			  <td>百事集团有限公司</td>
-			  <td>3000</td>
+			  <td>{{$product->name}}</td>
+			  <td>{{$product->shop->name}}</td>
+			  <td>{{$product->sellNum}}</td>
 			</tr>
-			<tr>
-			  <td>伊利优酸乳</td>
-			  <td>统一</td>
-			  <td>3000</td>
-			</tr>
-			<tr>
-			  <td>阿萨姆</td>
-			  <td>统一</td>
-			  <td>3000</td>
-			</tr>
+                    @endforeach
 		</table>
             </div>
           
         </div>
     
 
-        <div class="pagination">
-                <div class="right to-page">
-                    <p>
-                        共<span class="page-count">3</span>页,到第<input type="text" >页
-                        <input type="button" value="确定">
-                    </p>
-                </div>
-	   	<div class="page-num right">
-                    <a href="#">
-                        <img src="/images/icon/icon-arrow-left.png" alt="icon-left" width="28" height="28" />         
-                    </a>
-                    <span class="num active">1</span>
-                    <span class="num">2</span>
-                    <span class="num">3</span>
-                    <a href="#">
-                        <img src="/images/icon/icon-arrow-right.png" alt="icon-right" width="28" height="28" />
-                    </a>
-                </div>
-	   </div>
+        @if(count($products) < $products->getTotal())
+                {{$products->links()}}
+        @endif
 	
 </div>
          <div class="clear"></div>	
