@@ -152,7 +152,7 @@ class SellerAuthenticationController extends \BaseController {
 
 	public function pass()
 	{
-		if(Sentry::check())
+		if(!Sentry::check())
 			return Response::json(array('errCode' => 1, 'message' => '请先登录'));
 
 		$id = Input::get("id");
@@ -169,7 +169,7 @@ class SellerAuthenticationController extends \BaseController {
 
 	public function fail()
 	{
-		if(Sentry::check())
+		if(!Sentry::check())
 			return Response::json(array('errCode' => 1, 'message' => '请先登录'));
 
 		$id = Input::get("id");
