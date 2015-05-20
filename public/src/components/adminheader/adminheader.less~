@@ -4,7 +4,7 @@
 @nav-margin: 19px;
 @wrapper-width: 750px;
 
-#adminheader {
+#admin-header {
 	width: @wrapper-width;
 	float: left;
 	color: @nav-color;

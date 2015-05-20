@@ -55,7 +55,7 @@
                             </div>
                             <div class="order-more order-component">
                                 <a href="/admin/user-manager-edit" >更多&nbsp;&nbsp;&nbsp;</a>
-                                <a class="del" href="" >删除</a>
+                                <a class="del" href=""  id="del-btn">删除</a>
                             </div>
                         </div>
                         @endforeach
@@ -64,10 +64,7 @@
                 @if(count($users) < $users->getTotal())
                     {{$users->links();}}
                 @endif
-                <div class="operate-btn right">
-                    <a href="/admin/user-manager-edit" class="one-btn btn-1" id="confirm-btn">增加数据</a>
-
-                </div>
+               </div>
             </div>
         </div>
         <div class="clear"></div>

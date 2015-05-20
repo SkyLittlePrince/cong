@@ -28,9 +28,7 @@
                         <input type="hidden" id="avatar" value=""  readonly="readonly"/>
                         <img src="" alt="avatar" class="person-img" id="avatarImg" />
                     </div>
-                    <a href="javascript:void(0);" class="person-upload">修改照片
-                        <input type="file" id="revise-avatar" value="" readonly="readonly"/>
-                    </a>
+                   
                 </div>
 
             </div>

@@ -76,5 +76,5 @@
 	@parent
 	<script type="text/javascript" src="/lib/js/qiniu/qiniu.min.js"></script> 
     <script type="text/javascript" src="/lib/js/plupload/plupload.full.min.js"></script>
-	<script type="text/javascript" src='/dist/js/pages/user-manager-edit.js'></script>
+	<script type="text/javascript" src='/dist/js/pages/product-manager-edit.js'></script>
 @stop

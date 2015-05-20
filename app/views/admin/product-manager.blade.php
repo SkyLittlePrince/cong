@@ -46,7 +46,7 @@
 				</div>
 				<div class="order-more order-component">
 				<a href="product-manager-edit" >更多&nbsp;&nbsp;&nbsp;</a>
-				<a class="del" href="" >删除</a>
+				<a class="del" href="" id="del-btn">删除</a>
 				</div>
 				
 	    	</div>
