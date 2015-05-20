@@ -58,32 +58,35 @@ class SellerPageController extends BaseController {
 
 	public function myIndents()
 	{
-		$indents = [];
-		if(Sentry::check()) 
-		{
-			$user_id = Sentry::getUser()->id;
-		} 
-		else 
-		{
-			return Redirect::guest('user/login');
-		}
+		$user = Sentry::getUser();
 
-		$myShop = Shop::where("user_id", "=", $user_id)->with('tags','products')->first();
+		$myShop = Shop::where('user_id',$user->id)->first();
 
 		if(!isset($myShop))
 		{
 			return View::make('errors.haveNoStore');
 		}
 
-		$numOfItemsPerPage = 10;
-		$products = Shop::find($myShop->id)->products;
+		$numOfItemsPerPage = 3;
 
-		foreach ($products as $key => $product) {
-			foreach ($product->indents as $key => $indent) {
-				$indent->product = $indent->products[0];
-			}
-			$indents = array_merge($indents, $product->indents->toArray());
-		}
+		$indents = Indent::whereHas('products',function($q) use ($myShop)
+		{
+			$q->where('shop_id',$myShop->id);
+		})
+		->with('products')
+		->orderBy('status')
+		->paginate($numOfItemsPerPage);
+
+		//return Response::json($indents);
+
+		// $products = Shop::find($myShop->id)->products;
+
+		// foreach ($products as $key => $product) {
+		// 	foreach ($product->indents as $key => $indent) {
+		// 		$indent->product = $indent->products[0];
+		// 	}
+		// 	$indents = array_merge($indents, $product->indents->toArray());
+		// }
 
 		return View::make('tradingCenter.seller-center.my-indents', array("indents" => $indents));
 	}
