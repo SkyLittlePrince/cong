@@ -175,6 +175,10 @@ Route::group(array('before' => 'auth'), function()
 
 Route::get('/', 'HomeController@showWelcome');
 
+Route::get('/agreement', function() {
+	return View::make('agreement');
+});
+
 Route::group(array('before' => 'auth.user.isIn'), function() 
 {
 	Route::get('/shopping-cart', function()

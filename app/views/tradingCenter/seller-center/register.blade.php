@@ -32,6 +32,7 @@
 						<a href="javascript:;" class="a-upload">
                             <input type="file" name="avatar-file" id="avatar-file">单击上传
                         </a>
+                        <span class="image-upload-tips"></span>
 					</div>
 					<div class="clear"></div>
 				</div>
@@ -42,27 +43,6 @@
 					</div>
 					<div class="clear"></div>
 				</div>
-				<!-- <div class="content-row">
-					<label class="label" for="phone">手机号码：</label>
-					<div class="content-input">
-						<input type="text" id="phone" name="phone" />
-					</div>
-					<div class="clear"></div>
-				</div> -->
-				<!-- <div class="content-row">
-					<label class="label" for="age">年龄：</label>
-					<div class="content-input">
-						<input type="text" id="age" name="age" />
-					</div>
-					<div class="clear"></div>
-				</div>
-				<div class="content-row">
-					<label class="label" for="job">职业：</label>
-					<div class="content-input">
-						<input type="text" id="job" name="job" />
-					</div>
-					<div class="clear"></div>
-				</div> -->
 				<div class="content-row">
 					<label class="label" for="skill">工作室标签：</label>
 					<div class="content-input">
@@ -72,19 +52,13 @@
 				</div>
 				<div class="content-row">
 					<label class="label" for="prov">&nbsp</label>
-					<div class="content-input agree-wrapper">
-						<input type="checkbox" name="agree" value="agree" style="display:none;">
-						我同意《丛丛网用户协议》
-					</div>
+					<div class="checkbox-wrapper"></div>
+						我同意<a href="/agreement" target="_blank">《丛丛网用户协议》</a>
 					<div class="clear"></div>
 				</div>
 			</div>
 
 			<div class="content-right">
-				<!-- <div class="content-row">
-					<label class="label" for="work-experience">工作经历：</label>
-					<textarea id="work-experience"></textarea>
-				</div> -->
 				<div class="content-row">
 					<label class="label" for="store-desc">工作室简介：</label>
 					<textarea id="store-desc" placeholder="简单介绍一下自己的工作室吧！"></textarea>

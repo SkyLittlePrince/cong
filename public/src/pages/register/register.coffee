@@ -1,6 +1,11 @@
 # 引入所需模块
 registerDataBus = require './registerDataBus.coffee'
 registerCookie = require './registerCookie.coffee'
+Checkbox = require('../../common/checkbox/checkbox.coffee');
+
+checkbox = (new Checkbox({
+    selector: '.checkbox-wrapper'
+}))
 
 # 缓存DOM节点
 $registerForm = $('.register-form')
@@ -123,6 +128,10 @@ step1Action = ->
 	if !$authCode.hasClass 'input-right'
 		$step1Tips.text('请输入验证码')
 		$authCode.focus()
+		return false
+	CheckedItem = checkbox.getCheckedInput()
+	if not CheckedItem.length
+		$step1Tips.text("请勾选协议同意选择框")
 		return false
 	return true
 ###
