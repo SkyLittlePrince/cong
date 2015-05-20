@@ -65,7 +65,6 @@ module.exports = (grunt)->
                 files:
                     'dist/css/components.css': ['src/components/**/*.less']
                     'dist/css/home.css': ['src/pages/home/*.less']
-                    'dist/css/agreement.css': ['src/pages/agreement/*.less']
                     'dist/css/login.css': ['src/pages/login/*.less']
                     'dist/css/register.css': ['src/pages/register/*.less']
                     'dist/css/shopping-cart.css': ['src/pages/shoppingCart/shopping-cart.less']
@@ -121,12 +120,9 @@ module.exports = (grunt)->
                     'dist/css/tradingCenter/seller-center/seller-store.css': ['src/pages/tradingCenter/seller-center/seller-store.less']
                     'dist/css/tradingCenter/seller-center/seller-product-detail.css': ['src/pages/tradingCenter/seller-center/seller-product-detail.less']
                     'dist/css/admin/user-manager.css': ['src/pages/admin/user-manager.less']
-                    'dist/css/admin/user-manager-edit.css': ['src/pages/admin/user-manager-edit.less']
                     'dist/css/admin/product-manager.css': ['src/pages/admin/product-manager.less']
                     'dist/css/admin/indent-manager.css': ['src/pages/admin/indent-manager.less']
-                    'dist/css/searchShop/searchShop.css': ['src/pages/searchShop/searchShop.less']
-                    'dist/css/admin/product-report-visit.css': ['src/pages/admin/product-report-visit.less']
-                    'dist/css/admin/product-report-buy.css': ['src/pages/admin/product-report-buy.less']
+                    'dist/css/admin/product-report.css': ['src/pages/admin/product-report.less']
 
         cssmin:
             compress:

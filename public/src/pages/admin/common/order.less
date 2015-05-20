@@ -1,0 +1,141 @@
+@order-component-padding-top: 23px;
+@order-bg-color: #9fd5d5;
+@one-order-height: 79px;
+@page-color: #666633; 
+.order-p {
+    padding: 0px;
+}
+.line-two {
+    margin-top: 5px;
+}
+.banner(@width, @height, @color) {
+        width: @width;
+        height: @height;
+        background-color: @order-bg-color;
+        line-height: @height;
+        color: @color;
+        text-align: center;
+}
+.my-order {
+    @padding-top: 30px;
+    @num-width: 113px;
+    @date-width: 145px;
+    @pic-width: 40px;
+    @title-width: 150px;
+    @pic-margin-left: 80px;
+    @title-margin-right: 60px;
+    @title-padding-left: 10px;
+    @address-width:200px;
+    @status-width: 750px - @num-width - @date-width - @pic-width - @title-width - @pic-margin-left - @title-margin-right - @title-padding-left;
+    .order-banner {
+        .banner(100%, 29px, #fff);
+    }
+    .list-banner {
+        ul {
+            overflow: hidden;
+            height: 33px;
+            background-color: #fff;
+            font-size: 16px;
+            color: #6b6648; 
+            margin-top: 12px;
+            li {
+                float: left;
+                line-height: 33px;
+                text-align: center;
+            }
+            .c_name {
+                width: @num-width;
+                text-align: center;
+            }
+            .c_phone {
+                width: @date-width;
+            }
+            .address {
+                width: @address-width;
+
+            }
+            .more {
+                width: @status-width;
+                text-align: center;
+
+            }
+        }
+    }
+    .one-order {
+        background-color: #fff;
+        margin-top: 7px;
+
+        overflow: hidden;
+        color: @page-color;
+        font-size: 13px;
+
+        .order-component {
+            float: left;
+            height: 100%;
+            overflow: hidden;
+            text-align: center;
+            display: table-cell;
+        }
+        .order-child(@width, @padding-left: 0px) {
+            font-size: 12px;
+            width: @width;
+            p {
+                padding-left: @padding-left; 
+            }
+        }
+        .order-name {
+
+            font-weight: bold;
+            .order-child(@num-width);
+            p {
+                word-break:break-all;   //单词强制换行
+            }
+        }
+        .order-phone {
+
+            width: @date-width;
+            font-weight: bold;
+            p {
+                line-height: @one-order-height;
+                float: right;
+            }
+        }   
+        .order-address {
+
+            width: @address-width;
+            font-weight: bold;
+            p {
+                line-height: @one-order-height;
+                float: right;
+            }
+        }
+        .order-more {
+            width: @status-width;
+            font-weight: bold;
+            p { 
+                line-height: @one-order-height;
+                float: right;
+            }
+	    .del{
+		color:red;
+		}
+        }
+        .order-status {
+            font-weight: bold;
+
+            .order-child(@status-width);
+
+            .pay-btn, .cancel-btn {
+                width: 60px;
+                height: 20px;
+                font-size: 12px;
+                line-height: 20px;
+                margin-top: 5px;
+            }
+
+            .cancel-btn {
+                background-color: #d8d8d8;
+            }
+        }
+    }
+}

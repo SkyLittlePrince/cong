@@ -75,6 +75,7 @@ class SellerPageController extends BaseController {
 		})
 		->with('products')
 		->orderBy('status')
+		->orderBy('id','desc')
 		->paginate($numOfItemsPerPage);
 
 		//return Response::json($indents);

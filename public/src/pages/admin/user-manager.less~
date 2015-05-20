@@ -32,6 +32,7 @@
         }
     }
     .operate-btn {
+	right:10px;
         text-align: center;
         .one-btn {
             .btn();
