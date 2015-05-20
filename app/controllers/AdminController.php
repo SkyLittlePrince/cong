@@ -31,16 +31,16 @@ class AdminController extends \BaseController {
 
 		$user = User::find($id);
 
-		if(isset($user))
-			return Response::json(array('errCode' => 1,'message' => '该用户不存在!'));
+		if(!isset($user))
+			return Response::view('errors.missing', array(), 404);
 
 		if($user->role_id == 3)
 			return Response::json(array('errCode' => 2,'message' => '不能删除管理员!'));
 
 		if($user->delete())
-			return Response::json(array('errCode' => 0,'message' => '删除成功!'));
+			return Redirect::to('admin/user-manager');
 
-		return Response::json(array('errCode' => 3,'message' => '删除失败!'));
+		return Response::view('errors.missing', array(), 404);
 	}
 
 	public function deleteIndent()
@@ -49,12 +49,12 @@ class AdminController extends \BaseController {
 		$indent = Indent::find($id);
 
 		if(!isset($indent))
-			return Response::json(array('errCode' => 1,'message' => '该订单不存在!'));
+			return Response::view('errors.missing', array(), 404); 
 
 		if($indent->delete())
-			return Response::json(array('errCode' => 0,'message' => '删除成功!'));
+			return Redirect::to('admin/indent-manager');
 
-		return Response::json(array('errCode' => 2,'message' => '删除失败!'));
+		return Response::view('errors.missing', array(), 404); 
 	}
 
 	public function deleteProduct()
@@ -63,12 +63,12 @@ class AdminController extends \BaseController {
 		$product = Product::find($id);
 
 		if(!isset($product))
-			return Response::json(array('errCode' => 1,'message' => '该商品不存在!'));
+			return Response::view('errors.missing', array(), 404); 
 
 		if($product->delete())
-			return Response::json(array('errCode' => 0,'message' => '删除成功!'));
+			return Redirect::to('admin/product-manager');
 
-		return Response::json(array('errCode' => 2,'message' => '删除失败!'));
+		return Response::view('errors.missing', array(), 404); 
 	}
 
 }

@@ -351,9 +351,9 @@ Route::group(array('prefix' => 'admin','before' => 'auth.user.isAdmin'),function
 
 	Route::post('product-manager-edit','ProductController@updateProduct');
 	Route::post('indent-manager-edit','AdminController@updateIndent');
-	Route::post('deleteUser','AdminController@deleteUser');
-	Route::post('deleteIndent','AdminController@deleteIndent');
-	Route::post('deleteProduct','AdminController@deleteProduct');
+	Route::get('deleteUser','AdminController@deleteUser');
+	Route::get('deleteIndent','AdminController@deleteIndent');
+	Route::get('deleteProduct','AdminController@deleteProduct');
 });
 
 

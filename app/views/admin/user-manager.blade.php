@@ -55,7 +55,7 @@
                             </div>
                             <div class="order-more order-component">
                                 <a href="/admin/user-manager-edit?id={{$user->id}}" >更多&nbsp;&nbsp;&nbsp;</a>
-                                <a class="del" href=""  id="del-btn">删除</a>
+                                <a class="del" href="deleteUser?id={{$user->id}}"  id="del-btn">删除</a>
                             </div>
                         </div>
                         @endforeach
