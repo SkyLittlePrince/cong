@@ -73,7 +73,7 @@ class BuyerPageController extends BaseController {
 		}
 
 		$numOfItemsPerPage = 5;
-		$indents = Indent::where("user_id", "=", $user_id)->with('products')->paginate($numOfItemsPerPage);
+		$indents = Indent::where("user_id", "=", $user_id)->with('products')->orderBy('status')->orderBy('id','desc')->paginate($numOfItemsPerPage);
 		$numOfTotalItems = $indents->getTotal();
 
 		$array = array('id' => 0,'name' => '商品已下架','price' => 0);
