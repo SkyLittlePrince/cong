@@ -17,8 +17,7 @@ class SellerAuthenticationController extends \BaseController {
 		$phone = Input::get('phone');
 
 		$errMes = array(
-			'required' => 'The :attribute field is required.',
-			'between' =>  'The :attribute must be between :min - :max.',
+			'between' =>  'The length of :attribute must be between :min - :max.',
 			'alpha_num' => 'The :attribute must be consist of numeric or alphabetical characters',
 			'url'	=>'The :attribute must be right url of image',
 			'address' =>'The :attribute must be string ',
@@ -36,12 +35,12 @@ class SellerAuthenticationController extends \BaseController {
 				'phone' => $phone
 			),
 			array(
-				'name' => 'required|between:2,15',
-				'credit_id' => 'required|alpha_num',
-				'credit_front' => 'required|url|different:credit_behind',
-				'credit_behind' => 'required|url',
-				'address' => 'required|between:2,40',
-				'phone' => 'required|integer'
+				'name' => 'between:2,15',
+				'credit_id' => 'alpha_num',
+				'credit_front' => 'url|different:credit_behind',
+				'credit_behind' => 'url',
+				'address' => 'between:2,40',
+				'phone' => 'integer'
 			),
 			$errMes
 		);
@@ -74,6 +73,8 @@ class SellerAuthenticationController extends \BaseController {
 		
 	}
 
+
+
 	public function update()
 	{
 		$id = Input::get("id");
@@ -93,6 +94,15 @@ class SellerAuthenticationController extends \BaseController {
 		$address = Input::get('address');
 		$phone = Input::get('phone');
 
+		$errMes = array(
+			'between' =>  'The length of :attribute must be between :min - :max.',
+			'alpha_num' => 'The :attribute must be consist of numeric or alphabetical characters',
+			'url'	=>'The :attribute must be right url of image',
+			'address' =>'The :attribute must be string ',
+			'different' => 'The :attribute must be different from :other',
+			'integer' => 'The :attribute must be int'
+			);
+
 		$validator = Validator::make(
 			array(
 				'name' => $name,
@@ -103,17 +113,25 @@ class SellerAuthenticationController extends \BaseController {
 				'phone' => $phone
 			),
 			array(
-				'name' => 'required|between:2,15',
-				'credit_id' => 'required|alpha_num',
-				'credit_front' => 'required|url|different:credit_behind',
-				'credit_behind' => 'required|url',
-				'address' => 'required|between:2,40',
-				'phone' => 'required|integer'
-			)
+				'name' => 'between:2,15',
+				'credit_id' => 'alpha_num',
+				'credit_front' => 'url|different:credit_behind',
+				'credit_behind' => 'url',
+				'address' => 'between:2,40',
+				'phone' => 'integer'
+			),
+			$errMes
 		);
 
 		if($validator->fails()){
-			return Response::json(array('errCode'=>4,'message'=>'参数格式错误','validateMes' =>$validator->messages()));
+			//return Response::json(array('errCode'=>4,'message'=>'参数格式错误','validateMes' =>$validator->messages()));
+			$messages = $validator->messages();
+			$mes = '';
+			
+			foreach ($messages->all() as $message) {
+				$mes .= $message;
+			}
+			return Response::json(array('errCode'=>4,'message'=>$mes,'validateMes' =>$messages));
 		}
 
 		$sellerAuthentication->name = $name;

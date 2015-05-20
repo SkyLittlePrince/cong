@@ -1,9 +1,10 @@
 Checkbox = require './../../common/checkbox/checkbox.coffee'
-
+Uploader = require "../../common/uploader/index.coffee"
 checkbox = (new Checkbox({
     selector: '.checkbox-wrapper'
     data: ["acceptance", "finishConfirmed", "addPriceOrDelay", "publishSuccess", "publishFail", "nearDeadline"]
 }))
+
 
 
 
