@@ -67,7 +67,7 @@ class SellerPageController extends BaseController {
 			return View::make('errors.haveNoStore');
 		}
 
-		$numOfItemsPerPage = 3;
+		$numOfItemsPerPage = 10;
 
 		$indents = Indent::whereHas('products',function($q) use ($myShop)
 		{

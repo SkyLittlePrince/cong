@@ -39,7 +39,9 @@
                 <div class="row-content">
                     <span class="label">工作室名称: </span>
                     <span class="content">
-                    {{{ $product->shop->name }}}
+                        <a href="/trading-center/seller/seller-store?shop_id={{{$product->shop->id}}}"> 
+                            {{{ $product->shop->name }}}
+                        </a>
                     </span>
                 </div>
                 <div class="row-content">
