@@ -15,7 +15,7 @@ class BuyerPageController extends BaseController {
 		}
 
 		$numOfItemsPerPage = 3;
-		$indents = Indent::where("user_id", $user_id)->with('products','products.shop.user')->paginate($numOfItemsPerPage);
+		$indents = Indent::where("user_id", $user_id)->with('products','products.shop.user')->orderBy('status')->paginate($numOfItemsPerPage);
 
 		$recentSellers = DB::table('users')
 			->join('shops','users.id','=','shops.user_id')
