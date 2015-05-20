@@ -15,12 +15,12 @@
             <input type="hidden" id="shop-id" value="{{{ $id }}}" />
             <div class="info header-component">
                 <div class="row-content">
-                    <span class="label">店铺名称: </span>
+                    <span class="label">工作室名称: </span>
                     <span class="content store-name">{{{ $name }}}</span>
                     <input type="text" class="hidden about-store-name info-edit"></input>
                 </div>
                 <div class="row-content">
-                    <span class="label">店铺简介: </span>
+                    <span class="label">工作室简介: </span>
                     <span class="content brief-introduction">{{{ $description }}}</span>
                      <input type="text" class="hidden about-brief-introduction info-edit"></input>
                 </div>
@@ -33,7 +33,7 @@
             <div class="detail header-component">
                 <div class="row-content">
                     <div class="tag-display">
-                        <span class="label">店铺标签: </span>
+                        <span class="label">工作室标签: </span>
                         <span class="content tags">
                             @foreach ($tags as $tag)
                                 <span class="one-tag" data-tagid="{{{$tag["id"]}}}">{{{$tag["name"]}}}&nbsp&nbsp</span>
@@ -84,7 +84,7 @@
                 <div class="operation product-operation">
                     <div class="add-product hidden product-btn">增加商品</div>
                     <div class="delete-product hidden product-btn">删除商品</div>
-                    <div class="delete-store">删除店铺</div>
+                    <div class="delete-store">删除工作室</div>
                 </div>
                 <div class="recommendation-image">
                     @foreach ($products as $product)
@@ -100,7 +100,12 @@
                             </div>
                             <div class="operate-button">
                                 <div class="btn product-edit hidden">编辑</div>
-                                <div class="btn add-product-picture hidden">添加图片</div>
+                                <div class="btn add-product-picture hidden">编辑图片</div>
+                            </div>
+                            <div class="imgs-url">
+                                @foreach($product['pictures'] as $picture)
+                                    <input type="hidden" class="one-img-url" value="{{$picture['image']}}" data-id="{{$picture['id']}}">
+                                @endforeach
                             </div>
                         </div>
                     @endforeach
@@ -120,8 +125,10 @@
                             <span class="price">¥<span class="price-value"><%= price%></span></span>
                         </div>
 
-                        <div class="btn product-edit">编辑</div>
-                        <div class="btn add-product-picture">添加图片</div>
+                         <div class="operate-button">
+                            <div class="btn product-edit">编辑</div>
+                            <div class="btn add-product-picture">编辑图片</div>
+                        </div>
                     </div>
                 </script>
                 <div class="operation">
@@ -190,6 +197,34 @@
                         <label class="label">商品描述：</label>
                         <div class="content-input">
                             <textarea id="product-dec" ><%= intro %></textarea>
+                        </div>
+                    </div>
+                </script>
+                <script type="text/template" id="add-product-img-template">
+                    <% _.forEach(imgUrls, function(imgUrl) {
+                         %><div class="image-wrapper"><%
+                            %><img class="current-imgs" src="<%- imgUrl.url %>" data-id="<%- imgUrl.id %>" /><% 
+                            %><div class="delete-checkbox-wrapper"></div><%
+                         %></div><%
+                    }); %>
+                    <div class="content-input" id="avatar-wrapper">
+                        <img class="avatar-img" src="http://fakeimg.pl/80x80/?text=new" width="80" height="80" />
+                        <input type="hidden" id="avatar-url" name="avatar" class="hidden" value="" />
+                        <a href="javascript:;" class="a-upload add-new-img-file">
+                            <input type="file" name="avatar-file" id="avatar-file">选择图片
+                        </a>
+                        <p class="add-img-to-product btn hidden">添加</p>
+                        <input type="hidden" id="unique-product-id" value="<%- id %>">
+                    </div>
+                    <p class="delete-img-from-product btn">删除</p>
+                </script>
+                <script type="text/template" id="current-img-template">
+                    <div class="image-wrapper">
+                        <img class="current-imgs" src="<%- url %>" data-id="<%- id %>">
+                        <div class="delete-checkbox-wrapper">
+                            <label class="my-checkbox-item">
+                                <input type="checkbox" name="undefined" class="my-checkbox" value="undefined" style="display:none;">
+                            </label>
                         </div>
                     </div>
                 </script>

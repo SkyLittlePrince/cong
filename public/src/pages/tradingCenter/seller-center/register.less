@@ -42,12 +42,27 @@
 					float: left;
 					line-height: @line-height;
 					vertical-align: middle;
-					width: 85px;
+					width: 100px;
+				}
+				#avatar-wrapper {
+					div {
+						width: 0 !important;
+						height: 0 !important;
+					}
+					.image-upload-tips {
+						position: relative;
+						top: 42px;
+						left: 30px;
+						font-size: 12px;
+					}
+				}
+				.checkbox-wrapper {
+					display: inline-block;
+					margin-top: 1px;
 				}
 				.content-input {
 					float: left;
 					position: relative;
-
 					.avatar-img {
 						float: left;
 						margin-left: 20px;
@@ -67,37 +82,12 @@
 					}
 
 					.a-upload {
-						text-align: center;
-				        .border-radius(16px);
-				        padding: 3px 5px;
-				        width: 68px;
-				        height: 20px;
-				        line-height: 20px;
-				        position: relative;
-				        left: 103px;
+						left: 30px;
 				        top: 50px;
-				        cursor: pointer;
-				        color: #fff;
-				        background: #7ecac9;
-				        border: none;
-				        overflow: hidden;
-				        display: inline-block;
-				        *display: inline;
-				        *zoom: 1;
-				        margin-top: 10px;
-				        font-size: 14px;
-				        font-family: @font;
 				    }
 
-				    .a-upload  input {
-				        position: absolute;
-				        font-size: 100px;
-				        right: 0;
-				        top: 0;
-				        cursor: pointer
-				    }
 					input[type="text"] {
-						.input(260px, @line-height);
+						.input(245px, @line-height);
 					}
 
 					#authcode {

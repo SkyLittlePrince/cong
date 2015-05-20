@@ -70,7 +70,7 @@
             overflow: hidden;
             .label  {
                 float: left;
-                width: 70px;
+                width: 90px;
             }
             span {
                 display: inline-block;
@@ -83,7 +83,7 @@
     .info {
         width: 393 - 2*@padding-left;
         .content {
-            width: 275px;
+            width: 255px;
         }
         .info-edit {
             .input(240px, 25px);
@@ -93,7 +93,7 @@
         width: 348 - 2*@padding-left;
         margin-left: 9px;
         .content {
-            width: 230px;
+            width: 210px;
         }
     }
 }
@@ -260,6 +260,49 @@
     height: 500px;
     margin-left: -300px;
     margin-top: -250px;
+}
+.dialog.add-image {
+    height: 230px;
+    margin-top: -100px;
+    .add-new-img-file {
+        top: 0px;
+        left: 10px;
+    }
+    .add-img-to-product, .delete-img-from-product  {
+        width: 78px;
+        height: 26px;
+        line-height: 26px;
+        font-size: 13px;
+        position: relative;
+        top: -8px;
+        cursor: pointer;
+    }
+    .delete-img-from-product {
+        margin-left: 10px;
+    }
+    #avatar-wrapper {
+        div {
+            width: 0px !important;
+            height: 0px !important;
+        }
+    }
+    .image-wrapper {
+        position: relative;
+        float: left;
+        width: 70px;
+        height: 70px;
+        margin-right: 10px;
+        .delete-checkbox-wrapper {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 100;
+        }
+        .current-imgs {
+            width: 100%;
+            height: 100%;
+        }
+    }
 }
 .content-main {
     @line-height: 35px;

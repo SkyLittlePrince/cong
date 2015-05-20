@@ -1,5 +1,5 @@
 <div class="gray-bg"></div>
-<div class="dialog">
+<div class="dialog <%- dialogClass%>">
     <div class="dialog-banner">
         <span class="ui-dialog-title"><%= title%></span>
         <a href="javascript:void(0)" class="close-button">

@@ -29,8 +29,12 @@ addToCartCookieHandler = (price)->
 	setNum = if cartCookie.setNum then cartCookie.setNum else 0
 	setTotal = if cartCookie.setTotal then cartCookie.setTotal else 0
 	# TODO 计算精度问题
-	newSetTotal = parseInt(setTotal) + parseInt(price)
+	newPrice = parseFloat(price).toFixed(2) * 100
+	newSetTotal = (parseFloat(setTotal).toFixed(2) * 100 + newPrice) / 100
+
+	# console.log newSetTotal
 	shopping.setShoppingCartCookie (parseInt(setNum) + 1), newSetTotal
+
 
 ###
 # 获得一个产品的详情
@@ -42,10 +46,10 @@ getProduceInfo = ($btn)->
 		productName : $("#product-name").val()
 		productPrice : $("#product-price").val()
 		productNumber : 1
-		productImgUrl : $btn.siblings('.product-img').attr 'src'
+		productImgUrl : $btn.siblings('.product-img').eq(0).attr 'src'
 	}
-
-	console.log data
+	# console.log data
+	# alert 2
 	return data
 ###
 # 添加一件商品到购物车处理逻辑

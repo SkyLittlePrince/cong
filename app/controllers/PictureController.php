@@ -14,25 +14,28 @@ class PictureController extends \BaseController {
 		);
 
 		if($validator->fails()){
-			return Response::json(array('errCode'=>4,"message" => '请上传正确的图片!',"validateMes"=> $validator->messages()));			
+			return Response::json(array('errCode'=>5,"message" => '请上传正确的图片!',"validateMes"=> $validator->messages()));			
 		}
 
-		$product = Product::find($product_id);
+		$product = Product::with('shop','pictures')->find($product_id);
 
 		if(!isset($product))
 			return Response::json(array('errCode' => 1,'message' => '商品不存在!'));
 
-		if($user->id != $product->user_id)
+		if($user->id != $product->shop->user_id)
 			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
 
-		$pictrue = new Picture;
-		$pictrue->image = $image;
-		$pictrue->product_id = $product_id;
+		if(count($product->pictures) >= 5)
+			return Response::json(array('errCode' => 3,'message' => '每个商品不能超过5张图片!'));
 
-		if($pictrue->save())
+		$picture = new Picture;
+		$picture->image = $image;
+		$picture->product_id = $product_id;
+
+		if($picture->save())
 			return Response::json(array('errCode' => 0,'picture_id' => $picture->id));
 
-		return Response::json(array('errCode' => 3,'message' => '保存失败!'));
+		return Response::json(array('errCode' => 4,'message' => '保存失败!'));
 	}
 
 	public function deletePicture()
@@ -40,17 +43,17 @@ class PictureController extends \BaseController {
 		$id = Input::get('id');
 		$user = Sentry::getUser();
 
-		$pictrue = Picture::find($id);
+		$picture = Picture::with('product.shop')->find($id);
 
-		if(!isset($pictrue))
+		if(!isset($picture))
 			return Response::json(array('errCode' => 1,'message' => '该图片不存在!'));
 
-		$shop = $picture->product()->shop()->first();
+		$shop = $picture->product->shop;
 
 		if($shop->user_id != $user->id)
 			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
 
-		if($pictrue->delete())
+		if($picture->delete())
 			return Response::json(array('errCode' => 0,'message' => '删除成功!'));
 
 		return Response::json(array('errCode' => 3,'message' => '删除失败!'));

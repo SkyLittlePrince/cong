@@ -11,10 +11,15 @@ shopping =
 	updateShoppingCartCookie: (numberChange, price)->
 		cartCookie = shopping.getShoppingCartCookie()
 		newCartNumber = parseInt(cartCookie.setNum) + numberChange
-		console.log numberChange, price
-		console.log (numberChange * price)
-		newCartTotal = parseInt(cartCookie.setTotal) + (numberChange * price)
-		shopping.setShoppingCartCookie(newCartNumber, newCartTotal)
+
+		setNum = if cartCookie.setNum then cartCookie.setNum else 0
+		setTotal = if cartCookie.setTotal then cartCookie.setTotal else 0
+		# TODO 计算精度问题
+		newPrice = parseFloat(price).toFixed(2) * 100
+		newSetTotal = ((parseFloat(setTotal).toFixed(2) * 100 + newPrice * numberChange) / 100).toFixed(2)
+
+		# console.log newSetTotal
+		shopping.setShoppingCartCookie newCartNumber, newSetTotal
 
 	###
 	# 更新与购物车有关cookie
@@ -62,7 +67,8 @@ shopping =
 			number: cookieArray[3]
 			imgSrc: cookieArray[4]
 			# TODO 计算精度问题
-			totalPrice: cookieArray[2] * cookieArray[3]
+			# totalPrice: (cookieArray[2]) * cookieArray[3]
+			totalPrice: parseFloat(cookieArray[3] * cookieArray[2]).toFixed(2)
 		}
 	###
 	# 更新一个商品的cookie

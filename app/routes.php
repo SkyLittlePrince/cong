@@ -173,9 +173,10 @@ Route::group(array('before' => 'auth'), function()
 
 /*--------------------------<页面模版路由>------------------------------*/
 
-Route::get('/', function()
-{
-	return View::make('home');
+Route::get('/', 'HomeController@showWelcome');
+
+Route::get('/agreement', function() {
+	return View::make('agreement');
 });
 
 Route::group(array('before' => 'auth.user.isIn'), function() 

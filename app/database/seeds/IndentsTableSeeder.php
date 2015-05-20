@@ -8,7 +8,7 @@ class IndentsTableSeeder extends Seeder {
 		{
 			Indent::create([
 				"user_id" => 1,
-				"status" =>  $index % 3 + 1
+				"status" =>  $index % 3
 			]);
 		}
 	}

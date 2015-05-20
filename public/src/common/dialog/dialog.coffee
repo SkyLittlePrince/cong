@@ -21,6 +21,7 @@ _defaultConfig = {
         {text: "确定", className: "dialog-ok close-button"}    
     ],
     title: ""                       # 弹出框的标题
+    dialogClass: ''
 }
 # 页面弹出框组件
 # 组件提供下列功能
@@ -46,6 +47,7 @@ class Dialog
     loadDialogToPage: ->
         self = @
         $('body').append dialogCompiled({
+            dialogClass: self.options.dialogClass
             title: self.options.title
             content:self.options.content
             buttons: self.options.buttons
@@ -53,6 +55,9 @@ class Dialog
 
     # 关闭弹出框
     closeDialog: (self)->
+        self.options.content = ''
+        if self.options.dialogClass
+            self.options.dialogClass = ''
         $(self.options.grayBgSelector).remove()
         $(self.options.dialogSelector).remove()
 

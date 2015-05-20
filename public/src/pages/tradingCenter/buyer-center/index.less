@@ -42,6 +42,30 @@
 				float: left;
 			}
 		}
+
+		.products-info {
+			.product-info {
+				@width: 60px;
+
+				color: rgb(127, 125, 96);
+				width: @width;
+				margin: 20px 5px;
+				.product-avatar {
+					width: 30px;
+					margin: 0 auto;
+					img {
+						.border-radius(15px);
+					}
+				}
+
+				.product-name {
+					text-align: center;
+					width: @width;
+					word-wrap: break-word;
+				}
+				float: left;
+			}
+		}
 	}
 }
 

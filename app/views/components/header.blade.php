@@ -18,7 +18,7 @@
     <ul class="user-info">
         @if (Sentry::check())
             <li class="info">
-                <a href="/trading-center/account/user-info?user_id={{{ Sentry::getUser()->id }}}">
+                <a href="/trading-center/buyer">
                     <img src="{{{ Sentry::getUser()->avatar }}}" class="avatar" alt="avatar" width="34" height="34" />
                     <!-- <img src="/images/tradingcenter/icon/9.png" class="avatar" alt="avatar" width="34" height="34" /> -->
                     <span>{{{ Sentry::getUser()->username }}}</span>

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    <title>丛丛网－卖家店铺</title>
+    <title>丛丛网－卖家工作室</title>
 @stop
 @section('css')
     @parent
@@ -15,7 +15,9 @@
             <!-- 用户信息 -->
             <div class="user-info">
                 <div class="avatar component">
-                    <img src="/images/common/avatar.png" alt="avatar">
+                    <a href="/trading-center/account/user-info?user_id={{{$shop->user->id}}}" target="_blank">
+                        <img src="{{{ $shop->user->avatar }}}" alt="avatar">
+                    </a>
                 </div>
                 <div class="info component">
                     <p>{{{ $shop->user->username }}}</p>
@@ -40,7 +42,7 @@
             <!-- 店铺信息简介 -->
             <div class="store-detail header-component">
                 <div class="row-content">
-                    <span class="label">店铺标签: </span>
+                    <span class="label">工作室标签: </span>
                     <span class="content">
                         @foreach ($shop->tags as $tag)
                             <span class="one-tag" data-tagid="{{{$tag["id"]}}}">{{{$tag["name"]}}}&nbsp&nbsp</span>
@@ -48,7 +50,7 @@
                     </span>
                 </div>
                 <div class="row-content">
-                    <span class="label">店铺信用: </span>
+                    <span class="label">工作室信用: </span>
                     <span class="content">
                         <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
                         <img src="/images/tradingcenter/icon/star.png" alt="star" width="14" height="14" />
@@ -61,7 +63,7 @@
 
             <div class="store-info header-component">
                 <div class="row-content">
-                    <span class="label">店铺简介: </span>
+                    <span class="label">工作室简介: </span>
                     <span class="content">{{{ $shop->description }}}</span>
                 </div>
                 <div class="talk">
