@@ -31,7 +31,7 @@
                             <span>2014-12-24<span>09:30</span></span>
                         </li>
                         <li>
-                            <label class="label">店铺名称：</label>
+                            <label class="label">工作室名称：</label>
                             <span>店铺名称XXXXX</span>
                         </li>
                         <li>

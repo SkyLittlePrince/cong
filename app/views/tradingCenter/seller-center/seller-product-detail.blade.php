@@ -35,7 +35,7 @@
             <!-- 店铺信息简介 -->
             <div class="store-detail header-component">
                 <div class="row-content">
-                    <span class="label">店铺名称: </span>
+                    <span class="label">工作室名称: </span>
                     <span class="content">
                     {{{ $product->shop->name }}}
                     </span>
@@ -54,11 +54,11 @@
 
             <div class="store-info header-component">
                 <div class="row-content">
-                    <span class="label">店铺简介: </span>
+                    <span class="label">工作室简介: </span>
                     <span class="content">{{$product->shop->description}}</span>
                 </div>
                 <div class="row-content">
-                    <span class="label">店铺标签: </span>
+                    <span class="label">工作室标签: </span>
                     <span class="content">
                         @foreach($product->shop->tags as $tag)
                             {{ $tag->name}}

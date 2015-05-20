@@ -15,7 +15,7 @@
 			<p>订单号：{{{ $indent->id }}}</p>
 			<p>下单时间：{{{ $indent->created_at }}}</p>
 			<p>卖家：{{{ $seller->username }}}</p>
-			<p>店铺名称：{{{ $shop->name }}}</p>
+			<p>工作室名称：{{{ $shop->name }}}</p>
 		</div>
 		<div class="indent-center">
 			<input type="hidden" id="product-id" value="{{{$product->id}}}" />

@@ -15,12 +15,12 @@
             <input type="hidden" id="shop-id" value="{{{ $id }}}" />
             <div class="info header-component">
                 <div class="row-content">
-                    <span class="label">店铺名称: </span>
+                    <span class="label">工作室名称: </span>
                     <span class="content store-name">{{{ $name }}}</span>
                     <input type="text" class="hidden about-store-name info-edit"></input>
                 </div>
                 <div class="row-content">
-                    <span class="label">店铺简介: </span>
+                    <span class="label">工作室简介: </span>
                     <span class="content brief-introduction">{{{ $description }}}</span>
                      <input type="text" class="hidden about-brief-introduction info-edit"></input>
                 </div>
@@ -33,7 +33,7 @@
             <div class="detail header-component">
                 <div class="row-content">
                     <div class="tag-display">
-                        <span class="label">店铺标签: </span>
+                        <span class="label">工作室标签: </span>
                         <span class="content tags">
                             @foreach ($tags as $tag)
                                 <span class="one-tag" data-tagid="{{{$tag["id"]}}}">{{{$tag["name"]}}}&nbsp&nbsp</span>
@@ -84,7 +84,7 @@
                 <div class="operation product-operation">
                     <div class="add-product hidden product-btn">增加商品</div>
                     <div class="delete-product hidden product-btn">删除商品</div>
-                    <div class="delete-store">删除店铺</div>
+                    <div class="delete-store">删除工作室</div>
                 </div>
                 <div class="recommendation-image">
                     @foreach ($products as $product)
