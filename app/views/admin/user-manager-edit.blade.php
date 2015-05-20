@@ -12,8 +12,7 @@
 @section('body')
 	@parent
 	<div id="main">
-        @include('components.task-banner')
-	@include('components.left-nav.admin-left')
+            @include('components.task-banner')
        	@include('components.adminheader')
 
 	<div class="base-content tradingCenter-content">
@@ -25,8 +24,8 @@
 				<label class="label">客户当前头像：</label>
                 <div class="content-input" id="avatar-wrapper">
                     <div class="content-img">
-                        <input type="hidden" id="avatar" value="{{{ $avatar }}}" />
-                        <img src="{{{ $avatar }}}" alt="avatar" class="person-img" id="avatarImg" />
+                        <input type="hidden" id="avatar" value="" />
+                        <img src="" alt="avatar" class="person-img" id="avatarImg" />
                     </div>
                     <a href="javascript:void(0);" class="person-upload">修改照片
                         <input type="file" id="revise-avatar" />
@@ -37,54 +36,53 @@
             <div class="content-row">
                 <label class="label">真实姓名：</label>
                 <div class="content-input">
-                    <input type="text" id="realname" name="realname" value="{{{ $realname }}}" />
+                    <input type="text" id="realname" name="realname" value="" />
                 </div>
             </div>
             <div class="content-row">
                 <label class="label">性别:</label>
                 <div class="content-input sex">
-                    @if ($gender == 1)
+                   
                         <input name="sex" type="radio" checked="checked" id="male" /> <label for="male" style="padding-right: 35px;">男</label>
                         <input name="sex" type="radio" id="female" /> <label for="female">女</label>
-                    @else
-                        <input name="sex" type="radio" id="male" /> <label for="male" style="padding-right: 35px;">男</label>
-                        <input name="sex" type="radio" checked="checked" id="female" /> <label for="female">女</label>
-                    @endif
+                 
+                       
+                  
                 </div>
             </div>
             <div class="content-row">
                 <label class="label">生日:</label>
                 <div class="content-input">
-                    <input type="text" name="year" id="year" maxlength="4" value="{{{ $birthdayYear }}}" /><span class="text"> 年</span>
-                    <input type="text" name="month" id="month" maxlength="2" value="{{{ $birthdayMonth }}}" /><span class="text"> 月</span>
-                    <input type="text" name="day" id="day"  maxlength="2" value="{{{ $birthdayDay }}}" /><span class="text"> 日</span>
+                    <input type="text" name="year" id="year" maxlength="4" value="" /><span class="text"> 年</span>
+                    <input type="text" name="month" id="month" maxlength="2" value="" /><span class="text"> 月</span>
+                    <input type="text" name="day" id="day"  maxlength="2" value="" /><span class="text"> 日</span>
                 </div>
             </div>
             <div class="content-row">
                 <label class="label" for="wechat">微信：</label>
                 <div class="content-input">
-                    <input type="text" id="wechat" name="wechat" value="{{{ $wechat }}}" />
+                    <input type="text" id="wechat" name="wechat" value="" />
                 </div>
             </div>
             <div class="content-row">
                 <label class="label" for="QQ">QQ：</label>
                 <div class="content-input">
-                    <input type="text" id="QQ" name="QQ" value="{{{ $qq }}}" />
+                    <input type="text" id="QQ" name="QQ" value="" />
                 </div>
             </div>
             <div class="content-row">
                 <label class="label" for="prov">所在地：</label>
                 <div class="content-input">
-                    <input type="text" id="prov" name="prov" value="{{{ $province }}}" /> 省
-                    <input type="text" id="city" name="city" value="{{{ $city }}}" /> 市
-                    <input type="text" id="region" name="region" value="{{{ $region }}}" /> 区
+                    <input type="text" id="prov" name="prov" value="" /> 省
+                    <input type="text" id="city" name="city" value="" /> 市
+                    <input type="text" id="region" name="region" value="" /> 区
                     <!-- <input type="button" value="其他" id="other-region-btn" /> -->
                 </div>
             </div>
             <div class="content-row">
                 <label class="label" for="address">详细地址：</label>
                 <div class="content-input">
-                    <input type="text" id="address" name="address" value="{{{ $address }}}" />
+                    <input type="text" id="address" name="address" value="" />
                 </div>
             </div>
             <div class="content-row">

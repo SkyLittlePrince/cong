@@ -338,7 +338,7 @@ Route::group(array('prefix' => 'trading-center'),function()
 });
 
 // for admin
-Route::group(array('prefix' => 'admin'),function()
+Route::group(array('prefix' => 'admin','before' => 'auth.user.isAdmin'),function()
 {
 	Route::get('user-manager','AdminPageController@userManager');
 	Route::get('product-manager','AdminPageController@productManager');

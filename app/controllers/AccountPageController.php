@@ -4,15 +4,6 @@ class AccountPageController extends BaseController
 {
 	public function baseInfo()
 	{
-		if(Sentry::check())
-		{
-			$user = Sentry::getUser();
-		}
-		else
-		{
-			return Redirect::guest('user/login');
-		}
-
 		$user = Sentry::getUser();
 		$birthdayArray = explode("-", $user->birthday);
 

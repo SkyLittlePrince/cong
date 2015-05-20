@@ -31,22 +31,24 @@
                             <li class="address">地址</li>
                             <li class="more">更多信息</li>
                         </ul>
+                    
                     </div>
                     <div class="messages">
+                        @foreach ($users as $user)
                         <div class="one-order">
                             <div class="order-name order-component">
-                                <span "c_name" id="realname" > {{{$username}}} </span>
+                                <span "c_name" id="realname" > {{{$user->username}}} </span>
                             </div>
                             <div class="order-phone order-component">
-                                @if ($qq)
-                                <span "c_phone" id="QQ"> {{{$qq}}} </span>
+                                @if ($user->qq)
+                                <span "c_phone" id="QQ"> {{{$user->qq}}} </span>
                                 @else
                                     <span "c_phone" id="QQ"> 该用户尚未提交QQ </span>
                                 @endif
                             </div>
                             <div class="order-address order-component">
-		      @if ($qq)
-                                <span  id="address"> {{{$address}}} </span>
+		      @if ($user->address)
+                                <span  id="address"> {{{$user->address}}} </span>
                                 @else
                                     <span  id="address"> 该用户尚未提交地址</span>
                                 @endif
@@ -55,62 +57,13 @@
                                 <a href="/admin/user-manager-edit" >更多&nbsp;&nbsp;&nbsp;</a>
                                 <a class="del" href="" >删除</a>
                             </div>
-
                         </div>
-                        <div class="one-order">
-                            <div class="order-name order-component">
-                                <span "c_name">李先生</span>
-                            </div>
-                            <div class="order-phone order-component">
-                                <span "c_phone">13611111111</span>
-                            </div>
-                            <div class="order-address order-component">
-					<span>大学城广工理学楼东座216
-					</span>
-                            </div>
-                            <div class="order-more order-component">
-                                <a href="/admin/user-manager-edit" >更多&nbsp;&nbsp;&nbsp;</a>
-                                <a class="del" href="" >删除</a>
-                            </div>
-
-                        </div>
-                        <div class="one-order">
-                            <div class="order-name order-component">
-                                <span "c_name" id="realname"></span>
-                            </div>
-                            <div class="order-phone order-component">
-                                <span "c_phone" id="QQ"> <span>
-                            </div>
-                            <div class="order-address order-component">
-					<span id="address">
-					</span>
-                            </div>
-
-
-                        </div>
-
+                        @endforeach
                     </div>
 
-                </div>
-                <div class="pagination">
-                    <div class="right to-page">
-                        <p>
-                            共<span class="page-count">3</span>页,到第<input type="text" >页
-                            <input type="button" value="确定">
-                        </p>
-                    </div>
-                    <div class="page-num right">
-                        <a href="#">
-                            <img src="/images/icon/icon-arrow-left.png" alt="icon-left" width="28" height="28" />
-                        </a>
-                        <span class="num active">1</span>
-                        <span class="num">2</span>
-                        <span class="num">3</span>
-                        <a href="#">
-                            <img src="/images/icon/icon-arrow-right.png" alt="icon-right" width="28" height="28" />
-                        </a>
-                    </div>
-                </div>
+                @if(count($users) < $users->getTotal())
+                    {{$users->links();}}
+                @endif
                 <div class="operate-btn right">
                     <a href="/admin/user-manager-edit" class="one-btn btn-1" id="confirm-btn">增加数据</a>
 

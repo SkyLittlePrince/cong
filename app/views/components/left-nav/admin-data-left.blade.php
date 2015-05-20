@@ -1,5 +1,5 @@
 <div id="admin-dataleft-nav" class="left-nav-bar">
-    @include('components.left-nav.user-info-banner')
+   
     <div class="nav">
         <ul>
             <li>
