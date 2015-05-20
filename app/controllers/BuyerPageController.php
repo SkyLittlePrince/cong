@@ -89,7 +89,7 @@ class BuyerPageController extends BaseController {
 	{
 		$user = Sentry::getUser();
 
-		$url = Config::get('app.url') . '/user/register?invitationCode=' . $user->id;
+		$url = Config::get('app.url') . '?invitationCode=' . $user->id;
 
 		return View::make('tradingCenter.buyer-center.invite-friends',array('url' => $url));
 	}

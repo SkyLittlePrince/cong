@@ -17,6 +17,9 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
+		Session_start();
+		$invitationCode = Input::get('invitationCode');
+		$_SESSION['invitationCode'] = $invitationCode;
 		return View::make('home');
 	}
 
