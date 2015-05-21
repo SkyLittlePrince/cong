@@ -31,9 +31,24 @@ updateUserInfo = (e)->
 	day = if $day.val().length > 1 then $day.val() else "0" + $day.val()
 	year = $year.val()
 	birthday = year + "-" + month + "-" + day
-	if not isBirthday.test(birthday)
+	if not isBirthday.test(birthday) and year != "" and month != "" and day != ""
 		alert('日期不符合格式要求')
 		return false
+
+	if year == "" and (month.length != 1 or day.length != 1)
+		alert('请输入完整日期')
+		return false
+
+	if month.length == 1 and (year.length or day.length != 1)
+		alert('请输入完整日期')
+		return false
+
+	if day.length == 1 and (year.length or month.length != 1)
+		alert('请输入完整日期')
+		return false
+
+	if year == "" or month.length == 1 or day.length == 1
+		birthday = ""
 
 	if $male[0].checked
 		gender = 1
@@ -55,12 +70,12 @@ updateUserInfo = (e)->
 		country: $country.val()
 		address: $address.val()
 
-	console.log data
 	baseInfoDataBus.updateUserInfo data, (res)->
 		if res.errCode == 0
 			alert "修改个人信息成功"
 			window.location.href = "/trading-center/account/base-info"
 		else 
+			console.log res
 			alert res.message
 
 setUploadedAvatar = (name)->
