@@ -27,7 +27,7 @@
                 <ul>
                     <li class="c_name">商品名</li>
                     <li class="c_phone">价格</li>
-                    <li class="address">介绍</li>
+                    <li class="address">商品ID</li>
                     <li class="more">更多信息</li>
                 </ul>
             </div>
@@ -35,13 +35,13 @@
             		@foreach($products as $product)
 		<div class="one-order">
 	    		<div class="order-name order-component">
-	    			<span "c_name">{{$product->name}}</span>
+	    			<span "c_name" id="name">{{$product->name}}</span>
 	    		</div>
 				<div class="order-phone order-component">
-				<span "c_phone">{{$product->price}}</span>
+				<span "c_phone" id="price">{{$product->price}}</span>
 				</div>
 				<div class="order-address order-component">
-					<span>{{$product->intro}}
+					<span id ="ID">{{$product->id}}
 					</span>
 				</div>
 				<div class="order-more order-component">
@@ -57,10 +57,7 @@
        	@if(count($products) < $products->getTotal())
        		{{$products->links();}}
        	@endif 
-	   <div class="operate-btn right">
-                <a href="product-manager-edit" class="one-btn btn-1" id="confirm-btn">增加数据</a>
 
-            </div>
 	</div>
 </div>
          <div class="clear"></div>	
@@ -70,5 +67,5 @@
 
 @section('js')
     @parent
-    <script type="text/javascript" src='/dist/js/pages/user-manager.js'></script>
+    <script type="text/javascript" src='/dist/js/pages/product-manager.js'></script>
 @stop
