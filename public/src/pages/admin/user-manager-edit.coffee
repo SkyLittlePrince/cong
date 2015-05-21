@@ -7,6 +7,7 @@ $realname = $('#realname')
 $male = $('#male')
 $female = $('#female')
 $year = $('#year')
+$ID = $('#ID')
 $month = $('#month')
 $day = $('#day')
 $wechat = $('#wechat')
@@ -22,9 +23,6 @@ baseInfoDataBus =
 	updateUserInfo: (data, callback)->
 		$.post "/user/update", data, (data)->
 			callback data
-# 正则表达式
-isNumber = /^\d*$/
-isBirthday = /^\d{4}-\d{1,2}-\d{1,2}$/
 
 updateUserInfo = (e)->
 	month = if $month.val().length > 1 then $month.val() else "0" + $month.val()
@@ -44,6 +42,7 @@ updateUserInfo = (e)->
 		alert("QQ号必须是数字")
 		return false
 	data = 
+		id: $ID.val()
 		avatar: $avatar.val()
 		realname: $realname.val()
 		birthday: birthday
@@ -59,7 +58,7 @@ updateUserInfo = (e)->
 	baseInfoDataBus.updateUserInfo data, (res)->
 		if res.errCode == 0
 			alert "批准个人信息成功"
-			window.location.href = "/trading-center/account/base-info"
+			window.location.href = "/admin/user-manager"
 		else 
 			alert res.message
 
@@ -67,7 +66,7 @@ setUploadedAvatar = (name)->
 	uploader = new Uploader {
 		domain: "http://7xj0sp.com1.z0.glb.clouddn.com/"	# bucket 域名，下载资源时用到，**必需**
 		browse_button: 'revise-avatar',       # 上传选择的点选按钮，**必需**
-		container: 'avatar-wrapper',       
+		container: 'avatar-wrapper',
 	}, {
 		FileUploaded: (up, file, info)->
 			info = $.parseJSON info

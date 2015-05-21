@@ -622,7 +622,7 @@ class UserController extends \BaseController {
 	{
 		$mobile = Input::get('mobile');
 		$qq = Input::get('qq');
-		$email = Input::get('email');
+		// $email = Input::get('email');
 
 		if(!Sentry::check())
 			return Response::json(array('errCode' => 1,'message' => '请登录!'));
@@ -631,27 +631,49 @@ class UserController extends \BaseController {
 
 		$user = User::find($user_id);
 
-		$validator = Validator::make(
-			array(
-				'qq' => $qq
-			),
-			array(				
-				'qq' => 'integer|min :1'
-			)
-		);
+		if(count(trim($qq)) != 0)
+		{
+			$validator = Validator::make(
+				array(
+					'qq' => $qq
+				),
+				array(				
+					'qq' => 'integer|min :1'
+				)
+			);
 
-		if($validator->fails()){
-			return Response::json(array('errCode' => 4, "message" => "QQ格式错误", "validateMes" => $validator->messages()));
+			if($validator->fails()){
+				return Response::json(array('errCode' => 4, "message" => "QQ格式错误", "validateMes" => $validator->messages()));
+			}
+		}
+		
+		if(trim($mobile) != "")
+		{
+			$reg = "/^13[0-9]{1}[0-9]{8}$|15[0189]{1}[0-9]{8}$|189[0-9]{8}$/";
+			if(!preg_match($reg, $mobile)){
+				return Response::json(array('errCode' => 2,'message' => '请填写正确的手机号'));
+			}
 		}
 
-		$reg = "/^13[0-9]{1}[0-9]{8}$|15[0189]{1}[0-9]{8}$|189[0-9]{8}$/";
-		if(!preg_match($reg, $mobile)){
-			return Response::json(array('errCode' => 2,'message' => '请填写正确的邮箱或手机号!'));
-		}
-			
+		// if(count(trim($email)) != 0)
+		// {
+		// 	$validator = Validator::make(
+		// 		array(
+		// 			'email' => $email
+		// 		),
+		// 		array(				
+		// 			'email' => 'email'
+		// 		)
+		// 	);
+
+		// 	if($validator->fails()){
+		// 		return Response::json(array('errCode' => 4, "message" => "请填写正确的电子邮箱地址", "validateMes" => $validator->messages()));
+		// 	}
+		// }
+		
 		$user->mobile = $mobile;
 		$user->qq = $qq;
-		$user->email = $email;
+		// $user->email = $email;
 
 		if($user->save())
 			return Response::json(array('errCode' => 0,'message' => '保存成功!'));

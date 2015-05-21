@@ -331,8 +331,8 @@ editSkill = (e)->
 editWorkExperience = (e)->
 	$target = $(e.currentTarget)
 	$parent = $target.parent().parent()
-	replaceConentByInput $parent.find(".start-time")
-	replaceConentByInput $parent.find(".end-time")
+	replaceConentByInput $parent.find(".start-time"), "yyyy-mm-dd"
+	replaceConentByInput $parent.find(".end-time"), "yyyy-mm-dd"
 	replaceConentByInput $parent.find(".description")
 	$target.addClass("hidden").siblings().removeClass("hidden")
 	$parent.find(".del-btn").addClass("hidden")
@@ -340,8 +340,8 @@ editWorkExperience = (e)->
 editEduExperience = (e)->
 	$target = $(e.currentTarget)
 	$parent = $target.parent().parent()
-	replaceConentByInput $parent.find(".start-time")
-	replaceConentByInput $parent.find(".end-time")
+	replaceConentByInput $parent.find(".start-time"), "yyyy-mm-dd"
+	replaceConentByInput $parent.find(".end-time"), "yyyy-mm-dd"
 	replaceConentByInput $parent.find(".description")
 	$target.addClass("hidden").siblings().removeClass("hidden")
 	$parent.find(".del-btn").addClass("hidden")
@@ -349,7 +349,7 @@ editEduExperience = (e)->
 editAwards = (e)->
 	$target = $(e.currentTarget)
 	$parent = $target.parent().parent()
-	replaceConentByInput $parent.find(".time")
+	replaceConentByInput $parent.find(".time"), "yyyy-mm"
 	replaceConentByInput $parent.find(".description")
 	$target.addClass("hidden").siblings().removeClass("hidden")
 	$parent.find(".del-btn").addClass("hidden")
@@ -361,6 +361,7 @@ editContact = (e)->
 	replaceConentByInput $parent.find(".qq")
 	replaceConentByInput $parent.find(".email")
 	$target.addClass("hidden").siblings().removeClass("hidden")
+	$parent.find(".email input")[0].readOnly = true;
 
 ###
 # 点击取消按钮事件
@@ -531,10 +532,14 @@ saveContact = (e)->
 # 工具函数
 ###
 
-replaceConentByInput = ($elem)->
+replaceConentByInput = ($elem, placeholder)->
 	content = $elem.html().trim()
 	$.data($elem[0], "oldData", content)
-	$input = $("<input type='text' value='" + content + "' />")
+	if placeholder
+		$input = $("<input type='text' value='" + content + "' placeholder='" + placeholder + "'/>")
+	else
+		$input = $("<input type='text' value='" + content + "' />")
+
 	$elem.html $input
 
 replaceInputByContent = ($input, content)->
