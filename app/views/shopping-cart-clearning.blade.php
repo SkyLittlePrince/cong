@@ -32,7 +32,7 @@
                         </li>
                         <li>
                             <label class="label">工作室名称：</label>
-                            <span>店铺名称XXXXX</span>
+                            <span>工作室名称XXXXX</span>
                         </li>
                         <li>
                             <label class="label">商品总数：</label>

@@ -15,7 +15,7 @@ class CategoryController extends \BaseController {
 		$shop = Shop::where('user_id',$user->id)->first();
 
 		if(!isset($shop))
-			return Response::json(array('errCode' => 1,'message' => '你还没有店铺!'));
+			return Response::json(array('errCode' => 1,'message' => '你还没有工作室!'));
 
 		$category = Category::where('name', $name)->where('shop_id', $shop->id)->first();
 		if(isset($category))

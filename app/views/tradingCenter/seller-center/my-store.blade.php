@@ -1,7 +1,7 @@
 @extends('tradingCenter.seller-center.layout')
 
 @section('title')
-    <title>丛丛网－我的店铺</title>
+    <title>丛丛网－我的工作室</title>
 @stop
 
 @section('css')
@@ -241,7 +241,7 @@
                 </div>
                 <script type="text/template" id="sellTemplate">
                     <div class="one-list">
-                        <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
+                        <img src="<%= avatar %>" alt="rank" width="44" height="44" />
                         <p class="title"><%= name %></p>
                         <span class="price">￥<%= price %></span>
                         <span class="counter">成交<%= sellNum %>次</span>
@@ -249,7 +249,7 @@
                 </script>
                 <script type="text/template" id="favorTemplate">
                     <div class="one-list">
-                        <img src="/images/tradingcenter/seller/rank.png" alt="rank" width="44" height="44" />
+                        <img src="<%= avatar %>" alt="rank" width="44" height="44" />
                         <p class="title"><%= name %></p>
                         <span class="price">￥<%= price %></span>
                         <span class="counter">被收藏<%= favorNum %>次</span>
