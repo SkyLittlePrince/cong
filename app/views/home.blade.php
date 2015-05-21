@@ -37,7 +37,7 @@
             <div class="search-box search-container">
                 <form action="/shop/searchShop" method="get">
                     <div class="search-box-container">
-                        <input type="text" name="keyword" placeholder="">
+                        <input type="text" name="keyword" placeholder="例: 设计,程序,健身,摄影,etc.">
                     </div>
                     <button style="cursor:pointer;outline:none;">
                         <!-- <img src="./images/common/search-btn.png" alt="search-btn"> -->

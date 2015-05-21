@@ -89,8 +89,14 @@
                 <div class="rank-list">
                     @foreach ($productsRanking as $product)
                     <div class="one-list">
-                        <img src="{{{ $product->avatar }}}" alt="rank" width="44" height="44" />
-                        <p class="title">{{{ $product->name }}}</p>
+                        <a href="/trading-center/seller/product-detail?product_id={{{$product->id}}}">
+                            <img src="{{{ $product->avatar }}}" alt="rank" width="44" height="44" />
+                        </a>
+                        <p class="title">
+                            <a href="/trading-center/seller/product-detail?product_id={{{$product->id}}}">
+                                {{{ $product->name }}}
+                            </a>
+                        </p>
                         <span class="price">￥{{{ $product->price }}}</span>
                         <span class="counter">成交{{{ $product->sellNum }}}次</span>
                     </div>
