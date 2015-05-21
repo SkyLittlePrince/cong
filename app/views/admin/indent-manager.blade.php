@@ -38,7 +38,7 @@
 	    			<span "c_name">{{$indent->id}}</span>
 	    		</div>
 				<div class="order-phone order-component">
-				<span "c_phone">{{$indent->user->name}}</span>
+				<span "c_phone">{{$indent->user->username}}</span>
 				</div>
 				<div class="order-address order-component">
 					@if(count($indent->products) > 0)
@@ -50,8 +50,8 @@
 					@endif
 				</div>
 				<div class="order-more order-component">
-				<a href="indent-manager-edit" >更多&nbsp;&nbsp;&nbsp;</a>
-				<a class="del" href="" >删除</a>
+				<a href="indent-manager-edit?id={{$indent->id}}" >更多&nbsp;&nbsp;&nbsp;</a>
+				<a class="del" href="" id="del-btn" >删除</a>
 				</div>
 				
 	    	</div>
@@ -76,5 +76,5 @@
 
 @section('js')
     @parent
-    <script type="text/javascript" src='/dist/js/pages/user-manager.js'></script>
+    <script type="text/javascript" src='/dist/js/pages/indent-manager-edit.js'></script>
 @stop

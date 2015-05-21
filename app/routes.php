@@ -193,7 +193,7 @@ Route::group(array('before' => 'auth.user.isIn'), function()
 });
 
 // 赏金猎人
-Route::group(array('prefix' => 'bounty-hunter'),function()
+Route::group(array('prefix' => 'bounty-hunter', 'before' => 'auth.user.isIn'),function()
 {
 	Route::get('/', function()
 	{
@@ -348,6 +348,14 @@ Route::group(array('prefix' => 'admin','before' => 'auth.user.isAdmin'),function
 	Route::get('user-manager-edit','AdminPageController@useredit');
 	Route::get('indent-manager-edit','AdminPageController@indentedit');
 	Route::get('product-manager-edit','AdminPageController@productedit');
+
+	Route::post('product-manager-edit','ProductController@updateProduct');
+	Route::post('indent-manager-edit','AdminController@updateIndent');
+	Route::post('deleteUser','AdminController@deleteUser');
+	Route::post('deleteIndent','AdminController@deleteIndent');
+	Route::post('deleteProduct','AdminController@deleteProduct');
+	Route::post('updateIndent','AdminController@updateIndent');
+	Route::post('updateProduct','ProductController@updateProduct');
 });
 
 

@@ -22,7 +22,6 @@ class AdminPageController extends BaseController {
 	{
 		$numOfItemsPerPage = 10;
 		$indents = Indent::with('user','products')->paginate($numOfItemsPerPage); 
-
 		return View::make('admin.indent-manager',array('indents' => $indents));
 	}
 
@@ -45,33 +44,45 @@ class AdminPageController extends BaseController {
 	}
 	public function useredit()
 	{
-		$user = Sentry::getUser();
+		$id = Input::get('id');
+		$user = User::find($id);
+
+		if(!isset($user))
+			return Response::view('errors.missing', array(), 404);  
 
 		$birthdayArray = explode("-", $user->birthday);
 		if(count($birthdayArray) == 3)
 		{
-			$user["birthdayYear"] = $birthdayArray[0];
-			$user["birthdayMonth"] = $birthdayArray[1];
-			$user["birthdayDay"] = $birthdayArray[2];
+			$user->birthdayYear = $birthdayArray[0];
+			$user->birthdayMonth = $birthdayArray[1];
+			$user->birthdayDay = $birthdayArray[2];
 		}
 		else
 		{
-			$user["birthdayYear"] = "";
-			$user["birthdayMonth"] = "";
-			$user["birthdayDay"] = "";
+			$user->birthdayYear = "";
+			$user->birthdayMonth = "";
+			$user->birthdayDay = "";
 		}
-		return View::make('admin.user-manager-edit',$user);
+		return View::make('admin.user-manager-edit',array('user' => $user));
 	}
 	public function indentedit()
 	{
-		$user = Sentry::getUser();
+		$id = Input::get('id');
+		$indent = Indent::find($id);
 
-		return View::make('admin.indent-manager-edit',$user);
+		if(!isset($indent))
+			return Response::view('errors.missing', array(), 404);  
+
+		return View::make('admin.indent-manager-edit',array('indent' => $indent));
 	}
 	public function productedit()
 	{
-		$user = Sentry::getUser();
+		$id = Input::get('id');
+		$product = Product::with('shop')->find($id);
 
-		return View::make('admin.product-manager-edit',$user);
+		if(!isset($product))
+			return Response::view('errors.missing', array(), 404);  
+
+		return View::make('admin.product-manager-edit',array('product' => $product));
 	}
 }

@@ -256,6 +256,9 @@ class UserController extends \BaseController {
 			{
 
 			}
+
+			Sentry::login(Sentry::findUserById($user->id), false);
+
 			return Response::json(array('errCode' => 0,'message' => '注册成功!'));
 		}
 		
@@ -351,22 +354,7 @@ class UserController extends \BaseController {
 		}
 	}
 
-	//管理员删除用户
-	public function getDelete()  //admin delete user
-	{
-		$id = Input::get('id');
-		$user = User::find($id);
-		$admin = Sentry::getUser();
 
-		if($admin->role_id != 3)
-			return Response::json(array('errCode' => 1,'message' => '你没有该操作权限!'));
-
-		if(!isset($user))
-			return Response::json(array('errCode' => 1,'message' => '用户不存在!'));
-
-		$user->delete();
-		return Response::json(array('errCode' => 0,'message' => '删除成功!'));
-	}
 
 	//更新用户基本资料
 	public function postUpdate()
