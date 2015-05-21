@@ -70,6 +70,7 @@ module.exports = (grunt)->
                     'dist/css/register.css': ['src/pages/register/*.less']
                     'dist/css/shopping-cart.css': ['src/pages/shoppingCart/shopping-cart.less']
                     'dist/css/shopping-cart-clearning.css': ['src/pages/shoppingCartClearning/shopping-cart-clearning.less']
+                    'dist/css/about.css': ['src/pages/about/about.less']
                     'dist/css/common.css': ['src/common/*.less', 'src/common/**/*.less']
                     'dist/css/checkbox/checkbox.css': ['src/common/checkbox/*.less']
                     'dist/css/score/score.css': ['src/common/score/*.less']

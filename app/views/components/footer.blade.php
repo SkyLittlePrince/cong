@@ -2,7 +2,7 @@
 <footer>
 	<ul>
 		<li>
-			<a href="">关于丛丛</a>
+			<a href="about">关于丛丛</a>
 		</li>
 		<li>
 			<a href="">联系我们</a>

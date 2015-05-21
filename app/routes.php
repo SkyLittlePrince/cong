@@ -196,6 +196,11 @@ Route::group(array('before' => 'auth.user.isIn'), function()
 	});
 });
 
+Route::get('/about', function()
+	{
+		return View::make('about');
+	});
+
 // 赏金猎人
 Route::group(array('prefix' => 'bounty-hunter', 'before' => 'auth.user.isIn'),function()
 {
