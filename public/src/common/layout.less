@@ -78,7 +78,7 @@ input[type="button"] {
 .green-tip {
     color: green;
 }
-
+// 自定义文件上传按钮
 @font: "Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
 .a-upload {
     text-align: center;
@@ -109,4 +109,170 @@ input[type="button"] {
     right: 0;
     top: 0;
     cursor: pointer
+}
+
+// 聊天窗口样式
+#chat-box {
+    @chat-box-width: 580px;
+    @banner-height: 40px;
+    @chat-panel-width: 420px;
+    @chat-list-width: @chat-box-width - @chat-panel-width;
+
+    border: 1px solid #f0f0f0;
+    position: fixed; 
+    right: 0; 
+    bottom: 0; 
+    width: @chat-box-width; 
+    height: 400px; 
+    background-color: #fff;
+    overflow: hidden;
+
+    // display: none;
+    .chat-banner {
+        background-color: #7dcbc8;
+        height: @banner-height;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        line-height: @banner-height;
+        font-size: 18px;
+        font-family: @font;
+        .chat-close-btn {
+            color: #fff;
+            display: inline-block;
+            float: right;
+            margin-right: 10px;
+        }
+        .chat-close-btn:hover {
+            color: #eb7350;
+        }
+    }
+    .chat-panel {
+        width: @chat-panel-width;
+        float: left;
+    }
+    .chat-list {
+        width: @chat-list-width - 1px;
+        float: left;
+        height: 100%;
+        border-right: solid 1px #d9d9d9;
+        li.active {
+            background-color: #f2f2f5;
+        }
+        li {
+            padding: 4px;
+            cursor: pointer;
+            .user-avatar {
+                width: 30px;
+                display: inline-block;
+            }
+            .user-name {
+                max-width: 100px;
+                _width: 100px;
+                height: 30px;
+                line-height: 30px;
+                margin-left: -3px;
+                overflow: hidden;
+                display: inline-block;
+            }
+        }
+    }
+    .chat-log {
+        overflow: auto;
+        width: 400px;
+        height: 280px;
+        @avatar-width: 40px;
+        padding: 10px;
+
+        .one-message {
+            overflow: hidden;
+            margin-top: 10px;
+            .avatar {
+                width: @avatar-width;
+                img {
+                    width: 40px;
+                    height: 40px;
+                    .border-radius(20px); 
+                }
+            }
+            .info {
+                width: 250px;
+                .name {
+                    width: 200px;
+                    color: #69676f;
+                    display: inline-block;
+                }
+                .chat-message {
+                    margin-top: 10px;
+                    margin-left: 10px;
+                    min-width: 70px;
+                    max-width: 200px;
+                    padding: 10px;
+                    background-color: #f2f2f2;
+                    color: #69676f;
+                    .border-radius(10px);
+                    font-family: @font;
+                    font-size: 12px;
+                }
+            }
+        }
+        .one-message.left {
+            .avatar {
+                float: left;
+            }
+            .info {
+                float: left;
+            }
+            .name {
+                float: left;
+                text-align: left;
+                margin-left: 10px;
+            }
+            .chat-message  {
+                float: left;
+                margin-left: 10px;
+            }
+        }
+        .one-message.right {
+            .avatar {
+                float: right;
+            }
+            .info {
+                float: right;
+                .name {
+                    text-align: right;
+                    float: right;
+                    margin-right: 10px;
+                }
+                .chat-message {
+                    float: right;
+                    margin-right: 10px;
+                }
+            }
+
+        }
+    }
+    .chat-input {
+        width: 100%;
+        height: 60px;
+        border: #d9d9d9 solid 1px;
+        border-left: none;
+        #chat-input-box {
+            display: inline-block;
+            margin-left: 10px;
+            width: 290px;
+            height: 30px;
+            margin-top: 2px;
+            line-height: 33px;
+            border: solid 1px #ccc;
+            .border-radius();
+            padding-left: 10px;
+        }
+        #chat-submit {
+            width: 90px;
+            height: 30px;
+            line-height: 30px;
+            cursor: pointer;
+        }
+    }
 }
