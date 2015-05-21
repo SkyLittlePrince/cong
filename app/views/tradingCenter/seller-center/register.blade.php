@@ -39,7 +39,7 @@
 				<div class="content-row">
 					<label class="label" for="store">工作室名称：</label>
 					<div class="content-input">
-						<input type="text" id="store" name="store"  placeholder="输入您的店铺名称" />
+						<input type="text" id="store" name="store"  placeholder="输入您的工作室名称" />
 					</div>
 					<div class="clear"></div>
 				</div>

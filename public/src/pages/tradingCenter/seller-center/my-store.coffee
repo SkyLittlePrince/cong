@@ -32,16 +32,16 @@ saveStoreInfo = (e)->
 	name = $aboutStoreName.val()
 	description = $aboutBriefIntroduction.val()
 	if name.length is 0
-		alert '店铺名称不能为空'
+		alert '工作室名称不能为空'
 		return false
 	if name.length > 19
-		alert("请输入不超过19个字的店铺名称")
+		alert("请输入不超过19个字的工作室名称")
 		return false
 	if description.length is 0
-		alert "店铺描述不能为空"
+		alert "工作室描述不能为空"
 		return false
 	if description.length > 38
-		alert("请输入不超过38个字的店铺简介")
+		alert("请输入不超过38个字的工作室简介")
 		return false
 
 	storeInfo = 
@@ -87,7 +87,7 @@ showSellRank = (e)->
 			products = res.products;
 			for i in [0...res.products.length]
 				product = products[i]
-				str = compiled {name: product.name, price: product.price, sellNum: product.sellNum}
+				str = compiled {name: product.name, price: product.price, sellNum: product.sellNum, avatar: product.avatar}
 				$(str).appendTo $rankList
 		else
 			alert res.message
@@ -107,7 +107,7 @@ showFavorRank = (e)->
 			products = res.products;
 			for i in [0...res.products.length]
 				product = products[i]
-				str = compiled {name: product.name, price: product.price, favorNum: product.favorNum}
+				str = compiled {name: product.name, price: product.price, favorNum: product.favorNum, avatar: product.avatar}
 				$(str).appendTo $rankList
 		else
 			alert res.message
@@ -226,11 +226,11 @@ cancelDetailStoreInfo = (e)->
 
 # 删除店铺
 deleteStore = ->
-	if (confirm('确定删除店铺？'))
+	if (confirm('确定删除工作室？'))
 		storeId = $shopIdInput.val()
 		shopDataBus.deleteStore storeId, (data)->
 			if data.errCode is 0
-				alert("店铺删除成功")
+				alert("工作室删除成功")
 				location.reload()
 
 #-------------------------------------------------店铺商品部分 begin-------------------------------------------------------------#
