@@ -25,22 +25,16 @@
 			<div class="content-row">
 				<label class="label" >订单号：</label>
 				<div class="content-input">
-					<input type="text" id="indentId" name="indentId" value="{{$indent->id}}" />
+					<input type="text" id="indentId" name="indentId" value="{{$indent->id}}"  readonly="readonly"/>
 					
 				</div>
 			</div>
 			
-			<div class="content-row">
-				<label class="label" for="wechat">订单信息:</label>
-				<div class="content-input">
-					<input type="text" id="indent" name="indent" value="这是一条新订单" />
-					
-				</div>
-			</div>
+
 			<div class="content-row">
 				<label class="label">创建日期：</label>
 				<div class="content-input">
-					<input type="text" id="createTime" name="createTime" value="{{$indent->created_at}}" />
+					<input type="text" id="createTime" name="createTime" value="{{$indent->created_at}}"  readonly="readonly" />
 				</div>
 			</div>
 			<div class="content-row">
@@ -51,7 +45,6 @@
 			</div>
 			
 			<div class="content-row">
-                	<a href="javasctipt: void(0);" class="btn" id="base-info-save-btn">修改</a>
                 	<a href="indent-manager" class="btn">返回上一步</a>
 			</div>
 		</div>	

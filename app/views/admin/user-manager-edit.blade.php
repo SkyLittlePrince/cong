@@ -33,6 +33,12 @@
 
             </div>
             <div class="content-row">
+                <label class="label">客户ID：</label>
+                <div class="content-input">
+                    <input type="text" id="ID" name="ID" value="{{$user->id}}" readonly="readonly" />
+                </div>
+            </div>
+            <div class="content-row">
                 <label class="label">真实姓名：</label>
                 <div class="content-input">
                     <input type="text" id="realname" name="realname" value="{{$user->realname}}" readonly="readonly" />
