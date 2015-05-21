@@ -75,7 +75,7 @@ Route::group(array('prefix' => 'shop','before' => 'auth.user.isIn'),function()
 	Route::post('addTag','ShopController@addTag');
 	Route::post('deleteTag','ShopController@deleteTag');
 	Route::get('deleteShop','ShopController@deleteShop');
-	Route::get('searchShop','ShopController@searchShopByTag');
+	Route::get('searchShop','ShopController@searchShop');
 });
 
 //产品模块
@@ -354,6 +354,8 @@ Route::group(array('prefix' => 'admin','before' => 'auth.user.isAdmin'),function
 	Route::post('deleteUser','AdminController@deleteUser');
 	Route::post('deleteIndent','AdminController@deleteIndent');
 	Route::post('deleteProduct','AdminController@deleteProduct');
+	Route::post('updateIndent','AdminController@updateIndent');
+	Route::post('updateProduct','ProductController@updateProduct');
 });
 
 

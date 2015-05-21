@@ -184,7 +184,7 @@ class ShopController extends \BaseController {
 		return Response::json(array('errCode' => 2,'message' => '删除失败!'));
 	}
 
-	public function searchShopByTag()
+	public function searchShop()
 	{
 		$keyword = Input::get('keyword');
 
@@ -196,6 +196,7 @@ class ShopController extends \BaseController {
 			->leftJoin('evaluations','products.id','=','evaluations.product_id')
 			->select(DB::raw('shops.id,shops.name,shops.description,shops.avatar,avg(evaluations.score) as aScore,tags.name as tagName'))
 			->where('tags.name','like','%'.$keyword.'%')
+			->orWhere('shops.name','like','%'.$keyword.'%')
 			->groupBy('shops.id')
 			->orderBy(DB::raw('avg(evaluations.score)'))
 			->paginate($numOfItemsPerPage);

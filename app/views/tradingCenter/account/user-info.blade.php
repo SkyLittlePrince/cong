@@ -188,11 +188,11 @@
                 <div class="work-item">
                     <div class="work-time hidden">
                         <span class="start-time">
-                            <input type="text" placeholder="起始时间" />
+                            <input type="text" placeholder="yyyy-mm-dd" />
                         </span>
                          至
                         <span class="end-time">
-                            <input type="text" placeholder="截止时间" />
+                            <input type="text" placeholder="yyyy-mm-dd" />
                         </span>
                     </div>
                     <div class="work-content hidden">
@@ -265,11 +265,11 @@
                     </span>
                     <div class="edu-time hidden">
                         <span class="start-time">
-                            <input type="text" placeholder="起始时间" />
+                            <input type="text" placeholder="yyyy-mm-dd" />
                         </span>
                          至
                         <span class="end-time">
-                            <input type="text" placeholder="截止时间" />
+                            <input type="text" placeholder="yyyy-mm-dd" />
                         </span>
                     </div>
                     <div class="edu-content hidden">
@@ -335,7 +335,7 @@
                 <div class="award-item">
                     <div class="award-time">
                         <span class="time">
-                            <input type="text" class="hidden" placeholder="获奖时间" />
+                            <input type="text" class="hidden" placeholder="格式：yyyy-mm" />
                         </span>
                     </div>
                     <div class="award-content">
