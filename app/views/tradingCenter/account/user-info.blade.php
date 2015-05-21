@@ -15,7 +15,7 @@
         <input type="hidden" id="user_id" value="{{{ $id }}}" />
     	<div class="base-info block">
     		<div class="avatar">
-    			<img src="{{{ Sentry::getUser()->avatar }}}" width="252" height="252" />
+    			<img src="{{{ $avatar }}}" width="252" height="252" />
     		</div>
             @if (Sentry::check() && Sentry::getUser()->id == $id)
           <!--   <div class="operation">
@@ -358,7 +358,7 @@
             @foreach ($friends as $friend)
                 <div class="friend">
                     <div class="friend-avatar">
-                        <img src="{{{ $friend['head'] }}}" width="50" height="50" />
+                        <img src="{{{ $friend['avatar'] }}}" width="50" height="50" />
                     </div>
                     <div class="friend-name">
                         <a href="/trading-center/account/user-info?user_id={{{$friend['id']}}}">{{{$friend["username"]}}}</a>
@@ -372,7 +372,7 @@
         </div>
     	<div class="contact block">
     		<div class="contact-avatar">
-    			<img src="{{{ Sentry::getUser()->avatar }}}" width="150" height="150" />
+    			<img src="{{{ $avatar }}}" width="150" height="150" />
     		</div>
             @if (Sentry::check() && Sentry::getUser()->id == $id)
             <div class="operation">
