@@ -75,7 +75,7 @@ Route::group(array('prefix' => 'shop','before' => 'auth.user.isIn'),function()
 	Route::post('addTag','ShopController@addTag');
 	Route::post('deleteTag','ShopController@deleteTag');
 	Route::get('deleteShop','ShopController@deleteShop');
-	Route::get('searchShop','ShopController@searchShopByTag');
+	Route::get('searchShop','ShopController@searchShop');
 });
 
 //产品模块
