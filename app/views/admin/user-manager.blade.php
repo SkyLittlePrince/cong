@@ -27,7 +27,7 @@
                     <div class="list-banner">
                         <ul>
                             <li class="c_name">客户名</li>
-                            <li class="c_phone">QQ</li>
+                            <li class="c_phone">ID</li>
                             <li class="address">地址</li>
                             <li class="more">更多信息</li>
                         </ul>
@@ -40,10 +40,10 @@
                                 <span "c_name" id="realname" > {{{$user->username}}} </span>
                             </div>
                             <div class="order-phone order-component">
-                                @if ($user->qq)
-                                <span "c_phone" id="QQ"> {{{$user->qq}}} </span>
+                                @if ($user->id)
+                                <span "c_phone" id="ID"> {{{$user->id}}} </span>
                                 @else
-                                    <span "c_phone" id="QQ"> 该用户尚未提交QQ </span>
+                                    <span "c_phone" id="ID"> 用户不存在 </span>
                                 @endif
                             </div>
                             <div class="order-address order-component">
@@ -55,7 +55,7 @@
                             </div>
                             <div class="order-more order-component">
                                 <a href="/admin/user-manager-edit?id={{$user->id}}" >更多&nbsp;&nbsp;&nbsp;</a>
-                                <a class="del" href=""  id="del-btn">删除</a>
+                                <a class="del" href="javascript:void(0);"  id="del-btn">删除</a>
                             </div>
                         </div>
                         @endforeach
