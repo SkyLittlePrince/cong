@@ -36,7 +36,7 @@ class ProductController extends \BaseController {
 				'avatar' => $avatar
 			),
 			array(
-				'intro'=>'between : 2,501',
+				'intro'=>'between : 2,500',
 				'price' => 'numeric',
 				'avatar' =>'url'
 			),
@@ -101,7 +101,7 @@ class ProductController extends \BaseController {
 				'avatar' => $avatar
 			),
 			array(
-				'intro'=>'between : 2,502',
+				'intro'=>'between : 2,500',
 				'price' => 'numeric',
 				'avatar' =>'url'
 			),
