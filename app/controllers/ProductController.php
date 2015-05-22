@@ -22,6 +22,13 @@ class ProductController extends \BaseController {
 			return Response::json(array('errCode' => 2, 'message' => '你没有操作权限!'));
 		}
 
+		$errMes = array(
+			'between ' => 'The :attribute must between :min - :max',
+			'numeric' => 'The :attribute must be number',
+			'url' => 'The url of the :attribute must right url'
+			);
+
+
 		$validator = Validator::make(
 			array(
 				'intro' => $intro,
@@ -32,11 +39,18 @@ class ProductController extends \BaseController {
 				'intro'=>'between : 2,500',
 				'price' => 'numeric',
 				'avatar' =>'url'
-			)
+			),
+			$errMes
 		);
 
 		if($validator->fails()){
-			return Response::json(array('errCode' => 4, "message" => "参数格式错误", "validateMes" => $validator->messages()));
+			$messages = $validator->messages();
+			$mes = '';
+			
+			foreach ($messages->all() as $message) {
+				$mes .= $message;
+			}
+			return Response::json(array('errCode'=>4,'message'=>$mes,'validateMes' =>$messages));
 		}
 
 		$product = new Product;
@@ -72,6 +86,13 @@ class ProductController extends \BaseController {
 				return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));	
 		}
 		
+		
+		$errMes = array(
+			'between ' => 'The :attribute must between :min - :max',
+			'numeric' => 'The :attribute must be number',
+			'url' => 'The url of the :attribute must right'
+			);
+
 
 		$validator = Validator::make(
 			array(
@@ -83,12 +104,20 @@ class ProductController extends \BaseController {
 				'intro'=>'between : 2,500',
 				'price' => 'numeric',
 				'avatar' =>'url'
-			)
+			),
+			$errMes
 		);
 
 		if($validator->fails()){
-			return Response::json(array('errCode' => 4, "message" => "参数格式错误", "validateMes" => $validator->messages()));
+			$messages = $validator->messages();
+			$mes = '';
+			
+			foreach ($messages->all() as $message) {
+				$mes .= $message;
+			}
+			return Response::json(array('errCode'=>4,'message'=>$mes,'validateMes' =>$messages));
 		}
+
 
 		$product->name = $name;
 		$product->intro = $intro;
@@ -166,7 +195,6 @@ class ProductController extends \BaseController {
 		return Response::json(array('errCode' => 0, 'products' => $products));
 	}
 }
-
 
 
 
