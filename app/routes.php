@@ -365,6 +365,8 @@ Route::group(array('prefix' => 'admin','before' => 'auth.user.isAdmin'),function
 	Route::post('deleteProduct','AdminController@deleteProduct');
 	Route::post('updateIndent','AdminController@updateIndent');
 	Route::post('updateProduct','ProductController@updateProduct');
+	Route::post('passAuthentication','SellerAuthenticationController@pass');
+	Route::post('failAuthentication','SellerAuthenticationController@fail');
 });
 
 
