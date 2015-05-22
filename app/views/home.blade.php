@@ -17,16 +17,16 @@
                     <img src="/images/slider/slider1.png" alt="slider1">
                 </li>
                 <li>
-                    <img src="/images/slider/slider1.png" alt="slider1">
+                    <img src="/images/slider/slider2.png" alt="slider2">
                 </li>
                 <li>
-                    <img src="/images/slider/slider1.png" alt="slider1">
+                    <img src="/images/slider/slider3.png" alt="slider3">
                 </li>
                 <li>
-                    <img src="/images/slider/slider1.png" alt="slider1">
+                    <img src="/images/slider/slider4.png" alt="slider4">
                 </li>
                 <li>
-                    <img src="/images/slider/slider1.png" alt="slider1">
+                    <img src="/images/slider/slider5.png" alt="slider5">
                 </li>
             </ul>
         </div>
