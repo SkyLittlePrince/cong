@@ -13,7 +13,7 @@ $baseInfoSaveBtn = $('#base-info-save-btn')
 # 更改product信息数据模
 baseInfoDataBus = 
   updateInfo: (data, callback)->
-    $.post "/product/updateProduct", data, (data)->
+    $.post "/admin/updateProduct", data, (data)->
       callback data
 
 

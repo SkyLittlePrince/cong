@@ -160,7 +160,7 @@ class SellerAuthenticationController extends \BaseController {
 		$sellerAuthentication = Authentication::find($id);
 
         if(!isset($sellerAuthentication))
-            return Response::json(array('errCode' => 2,'message' => '该卖家验证不存在!'));
+            return Reponse::json(array('errCode' => 2,'message' => '该卖家验证不存在!'));
 
 		$sellerAuthentication->status = 1;
 
