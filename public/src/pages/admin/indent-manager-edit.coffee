@@ -10,7 +10,7 @@ $baseInfoSaveBtn = $('#base-info-save-btn')
 # 更改indent信息数据模块
 baseInfoDataBus = 
 	updateindentInfo: (data, callback)->
-		$.post "/indent/updata", data, (data)->
+		$.post "/admin/updataIndent", data, (data)->
 			callback data
 # 正则表达式
 isNumber = /^\d*$/
