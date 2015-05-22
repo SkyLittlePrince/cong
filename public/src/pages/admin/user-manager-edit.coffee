@@ -55,7 +55,7 @@ failUserInfo = (e)->
   	console.log data
   	failInfoDataBus.failUserInfo data, (res)->
     		if res.errCode == 0
-      			alert "批准个人信息成功"
+      			alert "打回个人信息成功"
     		else
       			alert res.message
 
