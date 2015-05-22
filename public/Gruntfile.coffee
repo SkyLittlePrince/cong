@@ -69,6 +69,7 @@ module.exports = (grunt)->
                     'dist/css/register.css': ['src/pages/register/*.less']
                     'dist/css/shopping-cart.css': ['src/pages/shoppingCart/shopping-cart.less']
                     'dist/css/shopping-cart-clearning.css': ['src/pages/shoppingCartClearning/shopping-cart-clearning.less']
+                    'dist/css/about.css': ['src/pages/about/about.less']
                     'dist/css/common.css': ['src/common/*.less', 'src/common/**/*.less']
                     'dist/css/checkbox/checkbox.css': ['src/common/checkbox/*.less']
                     'dist/css/score/score.css': ['src/common/score/*.less']
@@ -126,7 +127,9 @@ module.exports = (grunt)->
                     'dist/css/searchShop/searchShop.css': ['src/pages/searchShop/searchShop.less']
                     'dist/css/admin/product-report-visit.css': ['src/pages/admin/product-report-visit.less']
                     'dist/css/admin/product-report-buy.css': ['src/pages/admin/product-report-buy.less']
-
+                    'dist/css/about/summary.css': ['src/pages/about/summary.less']
+                    'dist/css/about/contactus.css': ['src/pages/about/contactus.less']
+                    'dist/css/about/law.css': ['src/pages/about/law.less']
         cssmin:
             compress:
                 files:

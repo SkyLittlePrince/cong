@@ -322,7 +322,7 @@ addProductConfirm = ->
 				info.id = data.product_id
 				loadOneCreateProduct(info)
 			else 
-				alert(data.message)
+				alert data.message
 
 # 将一个新添加的商品添加到页面上
 loadOneCreateProduct = (info)->
