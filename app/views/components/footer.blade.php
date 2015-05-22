@@ -2,10 +2,10 @@
 <footer>
 	<ul>
 		<li>
-			<a href="about">关于丛丛</a>
+			<a href="/about/summary">关于丛丛</a>
 		</li>
 		<li>
-			<a href="">联系我们</a>
+			<a href="/about/contactus">联系我们</a>
 		</li>
 		<li>
 			<a href="">广告服务</a>

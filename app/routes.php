@@ -195,12 +195,24 @@ Route::group(array('before' => 'auth.user.isIn'), function()
 		return View::make('shopping-cart-clearning');
 	});
 });
-
-Route::get('/about', function()
-	{
-		return View::make('about');
-	});
-
+//公司简介
+Route::get('/about/summary', function()
+{
+	return View::make('about.summary');
+	
+});
+//联系我们
+Route::get('/about/contactus', function()
+{
+	return View::make('about.contactus');
+	
+});
+//法律声明
+Route::get('/about/law', function()
+{
+	return View::make('about.law');
+	
+});
 // 赏金猎人
 Route::group(array('prefix' => 'bounty-hunter', 'before' => 'auth.user.isIn'),function()
 {
