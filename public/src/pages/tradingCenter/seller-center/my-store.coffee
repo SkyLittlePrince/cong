@@ -321,6 +321,8 @@ addProductConfirm = ->
 				dialog.closeDialog(dialog)
 				info.id = data.product_id
 				loadOneCreateProduct(info)
+			else 
+				alert(data.message)
 
 # 将一个新添加的商品添加到页面上
 loadOneCreateProduct = (info)->
@@ -542,4 +544,3 @@ $ ->
 # for i in [1...5]
 # 	shopDataBus.addProduct 111,111,111,"http://7sbxao.com1.z0.glb.clouddn.com/login.jpg", (data) ->
 # 		console.log 'success'
-
