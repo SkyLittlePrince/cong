@@ -5,7 +5,7 @@ class AdminPageController extends BaseController {
 	public function userManager()
 	{
 		$numOfItemsPerPage = 10;
-		$users = User::paginate($numOfItemsPerPage); 
+		$users = User::with('Authentication')->paginate($numOfItemsPerPage); 
 
 		return View::make('admin.user-manager',array('users' => $users));
 	}

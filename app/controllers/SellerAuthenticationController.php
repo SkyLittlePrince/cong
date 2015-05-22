@@ -152,12 +152,12 @@ class SellerAuthenticationController extends \BaseController {
 
 	public function pass()
 	{
-		if(!Sentry::check())
-			return Response::json(array('errCode' => 1, 'message' => '请先登录'));
-
 		$id = Input::get("id");
 
-		$sellerAuthentication = Authentication::find($id);
+		$sellerAuthentication = Authentication::where('user_id',$id)->first();
+
+		if(!isset($sellerAuthentication))
+			return Response::json(array('errCode' => 1,'message' => '该用户验证不存在!'));
 
 		$sellerAuthentication->status = 1;
 
@@ -169,13 +169,13 @@ class SellerAuthenticationController extends \BaseController {
 
 	public function fail()
 	{
-		if(!Sentry::check())
-			return Response::json(array('errCode' => 1, 'message' => '请先登录'));
-
 		$id = Input::get("id");
 		$fail_reason = Input::get("fail_reason");
 
-		$sellerAuthentication = Authentication::find($id);
+		$sellerAuthentication = Authentication::where('user_id',$id)->first();
+
+		if(!isset($sellerAuthentication))
+			return Response::json(array('errCode' => 1,'message' => '该用户验证不存在!'));
 
 		$sellerAuthentication->status = -1;
 		$sellerAuthentication->fail_reason = $fail_reason;

@@ -54,7 +54,9 @@
                                 @endif
                             </div>
                             <div class="order-more order-component">
+                                @if(isset($user->Authentication))
                                 <a href="/admin/user-manager-edit?id={{$user->id}}" >更多&nbsp;&nbsp;&nbsp;</a>
+                                @endif
                                 <a class="del" href="javascript:void(0);"  id="del-btn">删除</a>
                             </div>
                         </div>
