@@ -30,7 +30,6 @@ module.exports = (grunt)->
                 files: {
                     'dist/js/common.js': ['src/common/pagination/pagination.coffee'],
                 }
-
             components:
                 options:
                   preBundleCB: (b)->
