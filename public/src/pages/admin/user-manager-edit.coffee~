@@ -16,14 +16,18 @@ $prov = $('#prov')
 $city = $('#city')
 $country = $('#country')
 $address = $('#address')
+$bool = $('#bool')
 $baseInfoSaveBtn = $('#base-info-save-btn')
 $failInfoSaveBtn = $('#base-info-fail-btn')
 
 # 更改个人信息数据模块
 baseInfoDataBus = 
 	updateUserInfo: (data, callback)->
-		$.post "/admin/passAuthentication", data, (data)->
-			callback data
+    if $bool.val() == 1
+		  $.post "/admin/passAuthentication", data, (data)->
+			  callback data
+    else
+      alert "该用户无需验证"
 
 updateUserInfo = (e)->
 
@@ -58,6 +62,6 @@ failUserInfo = (e)->
       			alert res.message
 
 
-$ ->
-	$baseInfoSaveBtn.bind 'click', updateUserInfo
 
+$baseInfoSaveBtn.bind 'click', updateUserInfo
+$failInfoSaveBtn.bind 'click', failUserInfo

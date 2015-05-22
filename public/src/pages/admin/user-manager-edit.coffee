@@ -16,14 +16,16 @@ $prov = $('#prov')
 $city = $('#city')
 $country = $('#country')
 $address = $('#address')
+$bool = $('#bool')
 $baseInfoSaveBtn = $('#base-info-save-btn')
 $failInfoSaveBtn = $('#base-info-fail-btn')
 
 # 更改个人信息数据模块
 baseInfoDataBus = 
 	updateUserInfo: (data, callback)->
-		$.post "/admin/passAuthentication", data, (data)->
-			callback data
+		  $.post "/admin/passAuthentication", data, (data)->
+			  callback data
+
 
 updateUserInfo = (e)->
 
