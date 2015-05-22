@@ -68,14 +68,18 @@ Route::group(array('prefix' => 'evaluation','before' => 'auth.user.isIn'),functi
 });
 
 //店铺模块
-Route::group(array('prefix' => 'shop','before' => 'auth.user.isIn'),function()
+Route::group(array('prefix' => 'shop'),function()
 {
-	Route::post('addShop','ShopController@addShop');
-	Route::post('updateShop','ShopController@updateShop');
-	Route::post('addTag','ShopController@addTag');
-	Route::post('deleteTag','ShopController@deleteTag');
-	Route::get('deleteShop','ShopController@deleteShop');
-	Route::get('searchShop','ShopController@searchShopByTag');
+	Route::group(array('before' => 'auth.user.isIn'), function()
+	{
+		Route::post('addShop','ShopController@addShop');
+		Route::post('updateShop','ShopController@updateShop');
+		Route::post('addTag','ShopController@addTag');
+		Route::post('deleteTag','ShopController@deleteTag');
+		Route::get('deleteShop','ShopController@deleteShop');
+	});
+	
+	Route::get('searchShop','ShopController@searchShop');
 });
 
 //产品模块
@@ -329,11 +333,11 @@ Route::group(array('prefix' => 'trading-center'),function()
 			Route::get('my-indents', 'SellerPageController@myIndents');
 
 			Route::get('indent-evaluation', 'SellerPageController@indentEvaluation');
-			
-			Route::get('seller-store', 'SellerPageController@sellerStore');
-			
-			Route::get('product-detail', 'SellerPageController@productDetail');
 		});
+		
+		Route::get('product-detail', 'SellerPageController@productDetail');
+
+		Route::get('seller-store', 'SellerPageController@sellerStore');
 	});
 });
 

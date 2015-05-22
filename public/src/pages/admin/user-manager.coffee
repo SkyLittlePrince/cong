@@ -23,13 +23,11 @@ baseInfoDataBus =
   deleteUserInfo: (data, callback)->
     $.post "/admin/deleteUser", data, (data)->
       callback data
-# 正则表达式
-isNumber = /^\d*$/
-isBirthday = /^\d{4}-\d{1,2}-\d{1,2}$/
+
 
 deleteUserInfo = (e)->
   data =
-    id: $ID.val()
+    id: $ID.text()
 
   console.log data
   baseInfoDataBus.deleteUserInfo data, (res)->

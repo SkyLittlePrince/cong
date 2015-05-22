@@ -35,23 +35,23 @@
             		@foreach($indents as $indent)
 		<div class="one-order">
 	    		<div class="order-name order-component">
-	    			<span "c_name">{{$indent->id}}</span>
+	    			<span "c_name" id="ID">{{$indent->id}}</span>
 	    		</div>
 				<div class="order-phone order-component">
-				<span "c_phone">{{$indent->user->username}}</span>
+				<span "c_phone" id="username">{{$indent->user->username}}</span>
 				</div>
 				<div class="order-address order-component">
 					@if(count($indent->products) > 0)
 						<span>该商品已下架
 						</span>
 					@else
-						<span>{{$indent->products[0]->name}}
+						<span id="name">{{$indent->products[0]->name}}
 						</span>
 					@endif
 				</div>
 				<div class="order-more order-component">
 				<a href="indent-manager-edit?id={{$indent->id}}" >更多&nbsp;&nbsp;&nbsp;</a>
-				<a class="del" href="" id="del-btn" >删除</a>
+				<a class="del" href="javascript:void(0);" id="del-btn" >删除</a>
 				</div>
 				
 	    	</div>
@@ -63,10 +63,7 @@
        	@if(count($indents) < $indents->getTotal())
        		{{$indents->links()}}
        	@endif
-	   <div class="operate-btn right">
-                <a href="indent-manager-edit" class="one-btn btn-1" id="confirm-btn">增加数据</a>
 
-            </div>
 	</div>
 </div>
          <div class="clear"></div>	

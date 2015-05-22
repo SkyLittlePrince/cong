@@ -28,9 +28,7 @@
 							<input type="hidden" id="avatar" value="图像" />
                     		<img src="{{$product->avatar}}" alt="avatar" class="person-img" id="avatarImg" />
                     	</div>
-                    	<a href="javascript:void(0);" class="person-upload">
-                    		<input type="file" id="revise-avatar" /> 修改图像
-                    	</a>
+
                     </div>
                 </a>
 			</div>
@@ -41,7 +39,13 @@
 
 				</div>
 			</div>
-			
+            <div class="content-row">
+                <label class="label">商品ID：</label>
+                <div class="content-input">
+                    <input type="text" id="ID" name="ID" value="{{$product->id}}" readonly="readonly"/>
+
+                </div>
+            </div>
 			<div class="content-row">
 				<label class="label">价格:</label>
 				<div class="content-input">
@@ -59,6 +63,7 @@
 				<label class="label">所属商店：</label>
 				<div class="content-input">
 					<input type="text" id="shop_id" name="shop_id" value="{{$product->shop->name}}" />
+
 				</div>
 			</div>
 			

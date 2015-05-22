@@ -14,7 +14,7 @@ class ProductController extends \BaseController {
 
 		if(!isset($shop))
 		{
-			return Response::json(array('errCode' => 1,'message' => '你还没有创建店铺呢!'));
+			return Response::json(array('errCode' => 1,'message' => '你还没有创建工作室呢!'));
 		}
 
 		if($user->id != $shop->user_id)

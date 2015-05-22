@@ -17,7 +17,7 @@ class ShopController extends \BaseController {
 		$tags = Input::get('tags');
 
 		if($user->role_id == 2)
-			return Response::json(array('errCode' => 1,'message' => '你已拥有店铺!'));
+			return Response::json(array('errCode' => 1,'message' => '你已拥有工作室!'));
 
 		$validator = Validator::make(
 			array(
@@ -52,7 +52,7 @@ class ShopController extends \BaseController {
 
 			$length = count($tags);
 			if($length > 5)
-				return Response::json(array('errCode' => 3,'message' => '创建店铺的标签不能多余5个!'));
+				return Response::json(array('errCode' => 3,'message' => '创建工作室的标签不能多余5个!'));
 			
 			foreach ($tags as $tag) {
 				$Tag = Tag::firstOrCreate(array('name' => $tag));
@@ -75,7 +75,7 @@ class ShopController extends \BaseController {
 
 		$shop = Shop::find($id);
 		if(!isset($shop))
-			return Response::json(array('errCode' => 1,'message' => '该店铺不存在!'));
+			return Response::json(array('errCode' => 1,'message' => '该工作室不存在!'));
 
 		if($user->id != $shop->user_id)
 			return Response::json(array('errCode' => 2,'message' => '你没有权限进行该操作!'));
@@ -111,7 +111,7 @@ class ShopController extends \BaseController {
 		$shop = Shop::find($shop_id);
 
 		if(!isset($shop))
-			return Response::json(array('errCode' => 1,'message' => '该店铺不存在!'));
+			return Response::json(array('errCode' => 1,'message' => '该工作室不存在!'));
 
 		if($shop->user_id != $user->id)
 			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
@@ -131,7 +131,7 @@ class ShopController extends \BaseController {
 		$shop = Shop::find($shop_id);
 
 		if(!isset($shop))
-			return Response::json(array('errCode' => 1,'message' => '该店铺不存在!'));
+			return Response::json(array('errCode' => 1,'message' => '该工作室不存在!'));
 
 		if($shop->user_id != $user->id)
 			return Response::json(array('errCode' => 2,'message' => '你没有操作权限!'));
@@ -159,7 +159,7 @@ class ShopController extends \BaseController {
 		$shop = Shop::where('user_id',$user->id)->first();
 
 		if(!isset($shop))
-			return Response::json(array('errCode' => 1,'message' => '店铺不存在!'));
+			return Response::json(array('errCode' => 1,'message' => '工作室不存在!'));
 
 		// $args = array();
 		// foreach ($shop->products as $product) {
@@ -184,7 +184,7 @@ class ShopController extends \BaseController {
 		return Response::json(array('errCode' => 2,'message' => '删除失败!'));
 	}
 
-	public function searchShopByTag()
+	public function searchShop()
 	{
 		$keyword = Input::get('keyword');
 
@@ -192,13 +192,21 @@ class ShopController extends \BaseController {
 		$shops = DB::table('shops')
 			->join('shop_tag','shops.id','=','shop_tag.shop_id')
 			->join('tags','tags.id','=','shop_tag.tag_id')
+			->join('users', 'users.id', "=", "shops.user_id")
 			->leftjoin('products','products.shop_id','=','shops.id')
 			->leftJoin('evaluations','products.id','=','evaluations.product_id')
-			->select(DB::raw('shops.id,shops.name,shops.description,shops.avatar,avg(evaluations.score) as aScore,tags.name as tagName'))
+			->select(DB::raw('shops.id,shops.name,shops.description,shops.avatar,avg(evaluations.score) as aScore,tags.name as tagName, users.username as sellerName'))
 			->where('tags.name','like','%'.$keyword.'%')
+			->orWhere('shops.name','like','%'.$keyword.'%')
 			->groupBy('shops.id')
 			->orderBy(DB::raw('avg(evaluations.score)'))
 			->paginate($numOfItemsPerPage);
+
+		// $usershops = DB::table("users")
+		// 	->join('shops', 'shops.user_id', "=", "users.id")
+		// 	->select(DB::raw('shops.id,shops.name,shops.description,shops.avatar,avg(evaluations.score) as aScore,tags.name as tagName, users.username as sellerName'))
+		// 	->where('users.username','like','%'.$keyword.'%')
+		// 	->paginate($numOfItemsPerPage);
 
 		return View::make('searchShop', array("shops" => $shops));
 	}
