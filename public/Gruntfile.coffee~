@@ -126,7 +126,7 @@ module.exports = (grunt)->
                     'dist/css/about/summary.css': ['src/pages/about/summary.less']
                     'dist/css/about/contactus.css': ['src/pages/about/contactus.less']
                     'dist/css/about/law.css': ['src/pages/about/law.less']
-
+                    'dist/css/helpCenter/helpCenter.css': ['src/pages/helpCenter/helpCenter.less']
         cssmin:
             compress:
                 files:

@@ -30,7 +30,7 @@
                 </a>
             </li>
             <li class="help">
-                <a href="#">
+                <a href="/helpCenter">
                     
                 </a>
             </li>
@@ -55,7 +55,7 @@
                 <a href="/user/login">登录</a>
             </li>
              <li class="help">
-                <a href="#">
+                <a href="/helpCenter">
                     
                 </a>
             </li>

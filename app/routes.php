@@ -213,6 +213,12 @@ Route::get('/about/law', function()
 	return View::make('about.law');
 	
 });
+//帮助中心
+Route::get('/helpCenter', function()
+{
+	return View::make('helpCenter');
+	
+});
 // 赏金猎人
 Route::group(array('prefix' => 'bounty-hunter', 'before' => 'auth.user.isIn'),function()
 {
